@@ -8,6 +8,13 @@ lifecycleRuntimeKtx = "2.6.1"
 activityCompose = "1.8.0"
 kotlin = "2.2.10"
 composeBom = "2024.09.00"
+# Pinned to the exact protoc-gen-java gencode version stamped in android/gen/
+# (see the "Protobuf Java Version:" header in the generated files) — the
+# runtime must be at least that version.
+protobuf = "4.35.1"
+grpc = "1.83.1"
+grpcKotlin = "1.5.0"
+kotlinxCoroutines = "1.11.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -24,6 +31,15 @@ androidx-compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "u
 androidx-compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 androidx-compose-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3" }
+
+# --- Generated contract runtime (android/gen/, from proto/smsgateway/v1) ---
+protobuf-java = { group = "com.google.protobuf", name = "protobuf-java", version.ref = "protobuf" }
+protobuf-kotlin = { group = "com.google.protobuf", name = "protobuf-kotlin", version.ref = "protobuf" }
+grpc-stub = { group = "io.grpc", name = "grpc-stub", version.ref = "grpc" }
+grpc-protobuf = { group = "io.grpc", name = "grpc-protobuf", version.ref = "grpc" }
+grpc-okhttp = { group = "io.grpc", name = "grpc-okhttp", version.ref = "grpc" }
+grpc-kotlin-stub = { group = "io.grpc", name = "grpc-kotlin-stub", version.ref = "grpcKotlin" }
+kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlinxCoroutines" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

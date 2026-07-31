@@ -143,16 +143,21 @@ constraints rather than details to discover late:
 
 ## Generated code
 
-`gen/` will hold the Kotlin and Java generated from
-`proto/smsgateway/v1/device.proto`, which lives in the
-[relaix monorepo](https://github.com/KGMA74/relaix) — the single source of truth for the
-contract, shared with the Go server.
+`gen/` holds the Kotlin and Java generated from `proto/smsgateway/v1/device.proto`, which
+lives in the [relaix monorepo](https://github.com/KGMA74/relaix) — the single source of truth
+for the contract, shared with the Go server. Generation runs through four Buf Schema Registry
+remote plugins (`protocolbuffers/java`, `protocolbuffers/kotlin`, `grpc/java`, `grpc/kotlin`),
+which means regenerating needs no local `protoc` or plugin install — just `buf`.
+
+That also means the runtime is **full `protobuf-java`/`grpc-java`, not the *lite* variants**:
+no `javalite` plugin is published on the BSR, and installing one locally would have meant
+maintaining a `protoc` toolchain just for this one case, defeating the point of using remote
+plugins. The APK-size cost of the full runtime is accepted; see `docs/backlog.md` for detail.
 
 The generated code is **committed here on purpose**, so building the app needs nothing but
-the Android toolchain: no `buf`, no `protoc`, no plugin set to keep in sync with CI. To
-regenerate after a change to the proto, run `buf generate` from the monorepo root — its
-`buf.gen.yaml` writes into this repository — then commit the result here alongside the proto
-change and bump the submodule pointer in the monorepo.
+the Android toolchain. To regenerate after a change to the proto, run `buf generate` from the
+monorepo root — its `buf.gen.yaml` writes into this repository — then commit the result here
+alongside the proto change and bump the submodule pointer in the monorepo.
 
 ## License
 
