@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.hilt)
 }
 
 android {
@@ -43,7 +45,12 @@ android {
     // server/gen/ on the Go side — building the app needs no protoc.
     sourceSets {
         getByName("main") {
+            // Both, deliberately: buf writes protobuf-java messages as .java
+            // and the gRPC coroutine stubs plus the builder DSL as .kt into
+            // the same tree. Registering only `java` compiles the messages and
+            // silently ignores the stubs.
             java.directories += "../gen"
+            kotlin.directories += "../gen"
         }
     }
 }
@@ -66,7 +73,16 @@ dependencies {
     implementation(libs.grpc.kotlin.stub)
     implementation(libs.kotlinx.coroutines.android)
 
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.compiler)
+    implementation(libs.androidx.hilt.navigation.compose)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+    implementation(libs.androidx.lifecycle.runtime.compose)
+
+    implementation(libs.androidx.datastore.preferences)
+
     testImplementation(libs.junit)
+    testImplementation(libs.org.json)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
