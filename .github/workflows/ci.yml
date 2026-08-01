@@ -1,0 +1,54 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+# A second push to the same branch makes the first run pointless; cancelling it
+# keeps the queue short without hiding anything.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      # JDK 21: what the Gradle toolchain in gradle/gradle-daemon-jvm.properties
+      # asks for. Letting the runner's default drift would produce a build that
+      # passes here and fails on a developer machine, or the reverse.
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - uses: gradle/actions/setup-gradle@v4
+
+      # Fails the build if the checked-in wrapper jar is not a published
+      # Gradle release — the wrapper is executable code fetched from the repo,
+      # so this is the one supply-chain check that costs nothing.
+      - uses: gradle/actions/wrapper-validation@v4
+
+      - name: Unit tests
+        run: ./gradlew testDebugUnitTest --stacktrace
+
+      - name: Assemble debug APK
+        run: ./gradlew assembleDebug --stacktrace
+
+      - name: Lint
+        run: ./gradlew lintDebug --stacktrace
+
+      # Reports are worth more when the build failed, hence always().
+      - name: Upload test and lint reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: reports
+          path: |
+            app/build/reports/tests/
+            app/build/reports/lint-results-debug.html
+          retention-days: 7
