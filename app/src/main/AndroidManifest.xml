@@ -12,6 +12,31 @@
         android:name="android.hardware.camera"
         android:required="false" />
 
+    <!-- The stream must outlive the UI, so it lives in a foreground service.
+         specialUse and not dataSync: dataSync is capped at 6h per 24h since
+         Android 15, which would stop a service whose whole job is to stay
+         connected. -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
+    <!-- Required since API 33 for the notification the service must show. -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <!-- Nobody is holding these phones; the agent has to come back by itself. -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <!-- Signal level and network type for DeviceHealth. -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <!-- The actual point of the app. The user can revoke it at any time, which
+         is why permissions_ok travels in every health report. -->
+    <uses-permission android:name="android.permission.SEND_SMS" />
+
+    <!-- Declared required="false" only to keep the manifest honest for stores
+         and Chrome OS; an agent without telephony is useless in practice, but
+         it installs, reports sim_ready=false and is simply never scheduled. -->
+    <uses-feature
+        android:name="android.hardware.telephony"
+        android:required="false" />
+
     <application
         android:name=".RelaixApplication"
         android:allowBackup="true"
@@ -33,6 +58,25 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <service
+            android:name=".connect.AgentService"
+            android:exported="false"
+            android:foregroundServiceType="specialUse">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="Holds a persistent gRPC control-plane stream so the server can
+                    push SMS jobs to this device at any time; the connection must not be
+                    interrupted while the device is enrolled." />
+        </service>
+
+        <receiver
+            android:name=".connect.BootReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>
