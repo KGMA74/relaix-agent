@@ -19,7 +19,7 @@ import javax.inject.Singleton
  */
 @Singleton
 class DeviceInfoProvider @Inject constructor(
-    @ApplicationContext private val context: Context,
+    @param:ApplicationContext private val context: Context,
 ) {
     fun deviceInfo(label: String): Device.DeviceInfo =
         Device.DeviceInfo.newBuilder()
@@ -44,6 +44,7 @@ class DeviceInfoProvider @Inject constructor(
      * never blocks enrollment.
      */
     @SuppressLint("MissingPermission")
+    @Suppress("DEPRECATION") // line1Number: no replacement that works without a carrier privilege
     private fun phoneNumber(): String {
         if (context.checkSelfPermission(android.Manifest.permission.READ_PHONE_NUMBERS)
             != PackageManager.PERMISSION_GRANTED

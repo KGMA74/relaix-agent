@@ -29,7 +29,7 @@ class Enroller @Inject constructor(
     private val deviceInfoProvider: DeviceInfoProvider,
     private val endpointStore: EndpointStore,
     private val identityStore: DeviceIdentityStore,
-    @IoDispatcher private val ioDispatcher: CoroutineDispatcher,
+    @param:IoDispatcher private val ioDispatcher: CoroutineDispatcher,
 ) {
     /**
      * Enrolls against the endpoint in [payload] and persists the result.

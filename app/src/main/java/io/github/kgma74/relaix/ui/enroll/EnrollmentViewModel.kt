@@ -16,6 +16,7 @@ import javax.inject.Inject
 data class EnrollmentUiState(
     val payloadText: String = "",
     val label: String = "",
+    val isScanning: Boolean = false,
     val isEnrolling: Boolean = false,
     val enrolledDeviceId: String? = null,
     val error: String? = null,
@@ -46,6 +47,20 @@ class EnrollmentViewModel @Inject constructor(
     fun onPayloadChange(value: String) = _state.update { it.copy(payloadText = value, error = null) }
 
     fun onLabelChange(value: String) = _state.update { it.copy(label = value) }
+
+    fun startScanning() = _state.update { it.copy(isScanning = true, error = null) }
+
+    fun stopScanning() = _state.update { it.copy(isScanning = false) }
+
+    /**
+     * A decoded QR goes straight to enrollment rather than filling the field
+     * and waiting for a tap: the operator already made the decision by
+     * pointing the camera at the code, and the token is short-lived.
+     */
+    fun onScanned(payload: String) {
+        _state.update { it.copy(payloadText = payload, isScanning = false, error = null) }
+        enroll()
+    }
 
     fun enroll() {
         val current = _state.value

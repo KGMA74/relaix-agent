@@ -5,6 +5,13 @@
     <!-- The agent dials out to the control plane; it is never dialled. -->
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <!-- Enrollment only: reading the QR code. Nothing else uses the camera,
+         and the agent works without it through manual entry. -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+
     <application
         android:name=".RelaixApplication"
         android:allowBackup="true"
