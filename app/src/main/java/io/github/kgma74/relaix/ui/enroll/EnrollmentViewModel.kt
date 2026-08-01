@@ -3,6 +3,8 @@ package io.github.kgma74.relaix.ui.enroll
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import io.github.kgma74.relaix.connect.ConnectionManager
+import io.github.kgma74.relaix.connect.ConnectionState
 import io.github.kgma74.relaix.enroll.EnrollmentPayload
 import io.github.kgma74.relaix.enroll.Enroller
 import io.github.kgma74.relaix.security.DeviceIdentityStore
@@ -19,6 +21,15 @@ data class EnrollmentUiState(
     val isScanning: Boolean = false,
     val isEnrolling: Boolean = false,
     val enrolledDeviceId: String? = null,
+    /**
+     * False until the stored identity has been read once.
+     *
+     * Without it, `enrolledDeviceId == null` is ambiguous — "not enrolled" and
+     * "not loaded yet" look identical — and acting on the second as if it were
+     * the first stops the service a fraction of a second after the system
+     * started it.
+     */
+    val identityLoaded: Boolean = false,
     val error: String? = null,
 ) {
     val canSubmit: Boolean get() = payloadText.isNotBlank() && !isEnrolling
@@ -28,10 +39,14 @@ data class EnrollmentUiState(
 class EnrollmentViewModel @Inject constructor(
     private val enroller: Enroller,
     private val identityStore: DeviceIdentityStore,
+    connectionManager: ConnectionManager,
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(EnrollmentUiState())
     val state: StateFlow<EnrollmentUiState> = _state.asStateFlow()
+
+    /** Surfaced so the screen can show why a phone is not taking work. */
+    val connection: StateFlow<ConnectionState> = connectionManager.state
 
     init {
         // An already-enrolled device must not silently re-enroll: the server
@@ -39,7 +54,12 @@ class EnrollmentViewModel @Inject constructor(
         // fleet as a phone that never reconnects.
         viewModelScope.launch {
             identityStore.deviceId.collect { existing ->
-                _state.update { it.copy(enrolledDeviceId = existing ?: it.enrolledDeviceId) }
+                _state.update {
+                    it.copy(
+                        enrolledDeviceId = existing ?: it.enrolledDeviceId,
+                        identityLoaded = true,
+                    )
+                }
             }
         }
     }

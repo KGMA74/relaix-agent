@@ -5,12 +5,11 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import dagger.hilt.android.AndroidEntryPoint
-import io.github.kgma74.relaix.ui.enroll.EnrollmentScreen
-import io.github.kgma74.relaix.ui.theme.AndroidTheme
+import io.github.kgma74.relaix.ui.RelaixApp
+import io.github.kgma74.relaix.ui.theme.RelaixTheme
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
@@ -18,9 +17,12 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            AndroidTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    EnrollmentScreen(modifier = Modifier.padding(innerPadding))
+            RelaixTheme {
+                Surface(
+                    modifier = Modifier.fillMaxSize(),
+                    color = androidx.compose.material3.MaterialTheme.colorScheme.background,
+                ) {
+                    RelaixApp()
                 }
             }
         }
