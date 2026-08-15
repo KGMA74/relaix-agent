@@ -104,6 +104,49 @@ public object JobAckKt {
     public fun clearReason() {
       _builder.clearReason()
     }
+
+    /**
+     * ```
+     * Whether retrying could ever help.
+     *
+     * Some refusals will not change by waiting: a SIM the handset does not have,
+     * a recipient the job never carried, a deadline already past. Releasing
+     * those back to the queue burns the job's attempts on a device that will
+     * refuse identically every time, and the caller ends up with a generic
+     * "too many attempts" instead of the reason the agent already knew.
+     *
+     * Default false means transient, which is how every refusal behaved before
+     * this field existed — an agent that does not set it keeps working.
+     * ```
+     *
+     * `bool permanent = 4 [json_name = "permanent"];`
+     */
+    public var permanent: kotlin.Boolean
+      @kotlin.jvm.JvmName("getPermanent")
+        get() = _builder.permanent
+      @kotlin.jvm.JvmName("setPermanent")
+        set(value) {
+        _builder.permanent = value
+      }
+    /**
+     * ```
+     * Whether retrying could ever help.
+     *
+     * Some refusals will not change by waiting: a SIM the handset does not have,
+     * a recipient the job never carried, a deadline already past. Releasing
+     * those back to the queue burns the job's attempts on a device that will
+     * refuse identically every time, and the caller ends up with a generic
+     * "too many attempts" instead of the reason the agent already knew.
+     *
+     * Default false means transient, which is how every refusal behaved before
+     * this field existed — an agent that does not set it keeps working.
+     * ```
+     *
+     * `bool permanent = 4 [json_name = "permanent"];`
+     */
+    public fun clearPermanent() {
+      _builder.clearPermanent()
+    }
   }
 }
 @kotlin.jvm.JvmSynthetic

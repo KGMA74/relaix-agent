@@ -1841,6 +1841,100 @@ public final class Device extends com.google.protobuf.GeneratedFile {
      */
     com.google.protobuf.ByteString
         getCarrierBytes();
+
+    /**
+     * <pre>
+     * Every SIM the handset can send from.
+     *
+     * phone_number and carrier above describe the *default* SMS subscription
+     * only, which is what a single-SIM phone reports and what a dual-SIM phone
+     * would send from if nobody said otherwise. They stay because every existing
+     * agent fills them and every existing row was written from them.
+     *
+     * A dual-SIM handset is really two sending nodes: sending limits are per SIM
+     * and the number a recipient sees is per SIM. Listing them lets a caller
+     * name one on SendSmsJob instead of being stuck with whatever the phone's
+     * settings happen to say.
+     * </pre>
+     *
+     * <code>repeated .smsgateway.v1.SimInfo sims = 8 [json_name = "sims"];</code>
+     */
+    java.util.List<smsgateway.v1.Device.SimInfo> 
+        getSimsList();
+    /**
+     * <pre>
+     * Every SIM the handset can send from.
+     *
+     * phone_number and carrier above describe the *default* SMS subscription
+     * only, which is what a single-SIM phone reports and what a dual-SIM phone
+     * would send from if nobody said otherwise. They stay because every existing
+     * agent fills them and every existing row was written from them.
+     *
+     * A dual-SIM handset is really two sending nodes: sending limits are per SIM
+     * and the number a recipient sees is per SIM. Listing them lets a caller
+     * name one on SendSmsJob instead of being stuck with whatever the phone's
+     * settings happen to say.
+     * </pre>
+     *
+     * <code>repeated .smsgateway.v1.SimInfo sims = 8 [json_name = "sims"];</code>
+     */
+    smsgateway.v1.Device.SimInfo getSims(int index);
+    /**
+     * <pre>
+     * Every SIM the handset can send from.
+     *
+     * phone_number and carrier above describe the *default* SMS subscription
+     * only, which is what a single-SIM phone reports and what a dual-SIM phone
+     * would send from if nobody said otherwise. They stay because every existing
+     * agent fills them and every existing row was written from them.
+     *
+     * A dual-SIM handset is really two sending nodes: sending limits are per SIM
+     * and the number a recipient sees is per SIM. Listing them lets a caller
+     * name one on SendSmsJob instead of being stuck with whatever the phone's
+     * settings happen to say.
+     * </pre>
+     *
+     * <code>repeated .smsgateway.v1.SimInfo sims = 8 [json_name = "sims"];</code>
+     */
+    int getSimsCount();
+    /**
+     * <pre>
+     * Every SIM the handset can send from.
+     *
+     * phone_number and carrier above describe the *default* SMS subscription
+     * only, which is what a single-SIM phone reports and what a dual-SIM phone
+     * would send from if nobody said otherwise. They stay because every existing
+     * agent fills them and every existing row was written from them.
+     *
+     * A dual-SIM handset is really two sending nodes: sending limits are per SIM
+     * and the number a recipient sees is per SIM. Listing them lets a caller
+     * name one on SendSmsJob instead of being stuck with whatever the phone's
+     * settings happen to say.
+     * </pre>
+     *
+     * <code>repeated .smsgateway.v1.SimInfo sims = 8 [json_name = "sims"];</code>
+     */
+    java.util.List<? extends smsgateway.v1.Device.SimInfoOrBuilder> 
+        getSimsOrBuilderList();
+    /**
+     * <pre>
+     * Every SIM the handset can send from.
+     *
+     * phone_number and carrier above describe the *default* SMS subscription
+     * only, which is what a single-SIM phone reports and what a dual-SIM phone
+     * would send from if nobody said otherwise. They stay because every existing
+     * agent fills them and every existing row was written from them.
+     *
+     * A dual-SIM handset is really two sending nodes: sending limits are per SIM
+     * and the number a recipient sees is per SIM. Listing them lets a caller
+     * name one on SendSmsJob instead of being stuck with whatever the phone's
+     * settings happen to say.
+     * </pre>
+     *
+     * <code>repeated .smsgateway.v1.SimInfo sims = 8 [json_name = "sims"];</code>
+     */
+    smsgateway.v1.Device.SimInfoOrBuilder getSimsOrBuilder(
+        int index);
   }
   /**
    * <pre>
@@ -1876,6 +1970,7 @@ public final class Device extends com.google.protobuf.GeneratedFile {
       osVersion_ = "";
       agentVersion_ = "";
       carrier_ = "";
+      sims_ = java.util.Collections.emptyList();
     }
 
     public static final com.google.protobuf.Descriptors.Descriptor
@@ -2213,6 +2308,117 @@ public final class Device extends com.google.protobuf.GeneratedFile {
       }
     }
 
+    public static final int SIMS_FIELD_NUMBER = 8;
+    @SuppressWarnings("serial")
+    private java.util.List<smsgateway.v1.Device.SimInfo> sims_;
+    /**
+     * <pre>
+     * Every SIM the handset can send from.
+     *
+     * phone_number and carrier above describe the *default* SMS subscription
+     * only, which is what a single-SIM phone reports and what a dual-SIM phone
+     * would send from if nobody said otherwise. They stay because every existing
+     * agent fills them and every existing row was written from them.
+     *
+     * A dual-SIM handset is really two sending nodes: sending limits are per SIM
+     * and the number a recipient sees is per SIM. Listing them lets a caller
+     * name one on SendSmsJob instead of being stuck with whatever the phone's
+     * settings happen to say.
+     * </pre>
+     *
+     * <code>repeated .smsgateway.v1.SimInfo sims = 8 [json_name = "sims"];</code>
+     */
+    @java.lang.Override
+    public java.util.List<smsgateway.v1.Device.SimInfo> getSimsList() {
+      return sims_;
+    }
+    /**
+     * <pre>
+     * Every SIM the handset can send from.
+     *
+     * phone_number and carrier above describe the *default* SMS subscription
+     * only, which is what a single-SIM phone reports and what a dual-SIM phone
+     * would send from if nobody said otherwise. They stay because every existing
+     * agent fills them and every existing row was written from them.
+     *
+     * A dual-SIM handset is really two sending nodes: sending limits are per SIM
+     * and the number a recipient sees is per SIM. Listing them lets a caller
+     * name one on SendSmsJob instead of being stuck with whatever the phone's
+     * settings happen to say.
+     * </pre>
+     *
+     * <code>repeated .smsgateway.v1.SimInfo sims = 8 [json_name = "sims"];</code>
+     */
+    @java.lang.Override
+    public java.util.List<? extends smsgateway.v1.Device.SimInfoOrBuilder> 
+        getSimsOrBuilderList() {
+      return sims_;
+    }
+    /**
+     * <pre>
+     * Every SIM the handset can send from.
+     *
+     * phone_number and carrier above describe the *default* SMS subscription
+     * only, which is what a single-SIM phone reports and what a dual-SIM phone
+     * would send from if nobody said otherwise. They stay because every existing
+     * agent fills them and every existing row was written from them.
+     *
+     * A dual-SIM handset is really two sending nodes: sending limits are per SIM
+     * and the number a recipient sees is per SIM. Listing them lets a caller
+     * name one on SendSmsJob instead of being stuck with whatever the phone's
+     * settings happen to say.
+     * </pre>
+     *
+     * <code>repeated .smsgateway.v1.SimInfo sims = 8 [json_name = "sims"];</code>
+     */
+    @java.lang.Override
+    public int getSimsCount() {
+      return sims_.size();
+    }
+    /**
+     * <pre>
+     * Every SIM the handset can send from.
+     *
+     * phone_number and carrier above describe the *default* SMS subscription
+     * only, which is what a single-SIM phone reports and what a dual-SIM phone
+     * would send from if nobody said otherwise. They stay because every existing
+     * agent fills them and every existing row was written from them.
+     *
+     * A dual-SIM handset is really two sending nodes: sending limits are per SIM
+     * and the number a recipient sees is per SIM. Listing them lets a caller
+     * name one on SendSmsJob instead of being stuck with whatever the phone's
+     * settings happen to say.
+     * </pre>
+     *
+     * <code>repeated .smsgateway.v1.SimInfo sims = 8 [json_name = "sims"];</code>
+     */
+    @java.lang.Override
+    public smsgateway.v1.Device.SimInfo getSims(int index) {
+      return sims_.get(index);
+    }
+    /**
+     * <pre>
+     * Every SIM the handset can send from.
+     *
+     * phone_number and carrier above describe the *default* SMS subscription
+     * only, which is what a single-SIM phone reports and what a dual-SIM phone
+     * would send from if nobody said otherwise. They stay because every existing
+     * agent fills them and every existing row was written from them.
+     *
+     * A dual-SIM handset is really two sending nodes: sending limits are per SIM
+     * and the number a recipient sees is per SIM. Listing them lets a caller
+     * name one on SendSmsJob instead of being stuck with whatever the phone's
+     * settings happen to say.
+     * </pre>
+     *
+     * <code>repeated .smsgateway.v1.SimInfo sims = 8 [json_name = "sims"];</code>
+     */
+    @java.lang.Override
+    public smsgateway.v1.Device.SimInfoOrBuilder getSimsOrBuilder(
+        int index) {
+      return sims_.get(index);
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -2248,6 +2454,9 @@ public final class Device extends com.google.protobuf.GeneratedFile {
       if (!com.google.protobuf.GeneratedMessage.isStringEmpty(carrier_)) {
         com.google.protobuf.GeneratedMessage.writeString(output, 7, carrier_);
       }
+      for (int i = 0; i < sims_.size(); i++) {
+        output.writeMessage(8, sims_.get(i));
+      }
       getUnknownFields().writeTo(output);
     }
     private int computeSerializedSize_0() {
@@ -2273,6 +2482,15 @@ public final class Device extends com.google.protobuf.GeneratedFile {
       if (!com.google.protobuf.GeneratedMessage.isStringEmpty(carrier_)) {
         size += com.google.protobuf.GeneratedMessage.computeStringSize(7, carrier_);
       }
+
+          {
+            final int count = sims_.size();
+            for (int i = 0; i < count; i++) {
+              size += com.google.protobuf.CodedOutputStream
+                .computeMessageSizeNoTag(sims_.get(i));
+            }
+            size += 1 * count;
+          }
       return size;
     }
     @java.lang.Override
@@ -2311,6 +2529,8 @@ public final class Device extends com.google.protobuf.GeneratedFile {
           .equals(other.getAgentVersion())) return false;
       if (!getCarrier()
           .equals(other.getCarrier())) return false;
+      if (!getSimsList()
+          .equals(other.getSimsList())) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -2336,6 +2556,10 @@ public final class Device extends com.google.protobuf.GeneratedFile {
       hash = (53 * hash) + getAgentVersion().hashCode();
       hash = (37 * hash) + CARRIER_FIELD_NUMBER;
       hash = (53 * hash) + getCarrier().hashCode();
+      if (getSimsCount() > 0) {
+        hash = (37 * hash) + SIMS_FIELD_NUMBER;
+        hash = (53 * hash) + getSimsList().hashCode();
+      }
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -2479,6 +2703,13 @@ public final class Device extends com.google.protobuf.GeneratedFile {
         osVersion_ = "";
         agentVersion_ = "";
         carrier_ = "";
+        if (simsBuilder_ == null) {
+          sims_ = java.util.Collections.emptyList();
+        } else {
+          sims_ = null;
+          simsBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000080);
         return this;
       }
 
@@ -2505,9 +2736,22 @@ public final class Device extends com.google.protobuf.GeneratedFile {
       @java.lang.Override
       public smsgateway.v1.Device.DeviceInfo buildPartial() {
         smsgateway.v1.Device.DeviceInfo result = new smsgateway.v1.Device.DeviceInfo(this);
+        buildPartialRepeatedFields(result);
         if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
+      }
+
+      private void buildPartialRepeatedFields(smsgateway.v1.Device.DeviceInfo result) {
+        if (simsBuilder_ == null) {
+          if (((bitField0_ & 0x00000080) != 0)) {
+            sims_ = java.util.Collections.unmodifiableList(sims_);
+            bitField0_ = (bitField0_ & ~0x00000080);
+          }
+          result.sims_ = sims_;
+        } else {
+          result.sims_ = simsBuilder_.build();
+        }
       }
 
       private void buildPartial0(smsgateway.v1.Device.DeviceInfo result) {
@@ -2582,6 +2826,32 @@ public final class Device extends com.google.protobuf.GeneratedFile {
           bitField0_ |= 0x00000040;
           onChanged();
         }
+        if (simsBuilder_ == null) {
+          if (!other.sims_.isEmpty()) {
+            if (sims_.isEmpty()) {
+              sims_ = other.sims_;
+              bitField0_ = (bitField0_ & ~0x00000080);
+            } else {
+              ensureSimsIsMutable();
+              sims_.addAll(other.sims_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.sims_.isEmpty()) {
+            if (simsBuilder_.isEmpty()) {
+              simsBuilder_.dispose();
+              simsBuilder_ = null;
+              sims_ = other.sims_;
+              bitField0_ = (bitField0_ & ~0x00000080);
+              simsBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   internalGetSimsFieldBuilder() : null;
+            } else {
+              simsBuilder_.addAllMessages(other.sims_);
+            }
+          }
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
@@ -2643,6 +2913,19 @@ public final class Device extends com.google.protobuf.GeneratedFile {
                 bitField0_ |= 0x00000040;
                 break;
               } // case 58
+              case 66: {
+                smsgateway.v1.Device.SimInfo m =
+                    input.readMessage(
+                        smsgateway.v1.Device.SimInfo.parser(),
+                        extensionRegistry);
+                if (simsBuilder_ == null) {
+                  ensureSimsIsMutable();
+                  sims_.add(m);
+                } else {
+                  simsBuilder_.addMessage(m);
+                }
+                break;
+              } // case 66
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -3274,6 +3557,498 @@ public final class Device extends com.google.protobuf.GeneratedFile {
         return this;
       }
 
+      private java.util.List<smsgateway.v1.Device.SimInfo> sims_ =
+        java.util.Collections.emptyList();
+      private void ensureSimsIsMutable() {
+        if (!((bitField0_ & 0x00000080) != 0)) {
+          sims_ = new java.util.ArrayList<smsgateway.v1.Device.SimInfo>(sims_);
+          bitField0_ |= 0x00000080;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          smsgateway.v1.Device.SimInfo, smsgateway.v1.Device.SimInfo.Builder, smsgateway.v1.Device.SimInfoOrBuilder> simsBuilder_;
+
+      /**
+       * <pre>
+       * Every SIM the handset can send from.
+       *
+       * phone_number and carrier above describe the *default* SMS subscription
+       * only, which is what a single-SIM phone reports and what a dual-SIM phone
+       * would send from if nobody said otherwise. They stay because every existing
+       * agent fills them and every existing row was written from them.
+       *
+       * A dual-SIM handset is really two sending nodes: sending limits are per SIM
+       * and the number a recipient sees is per SIM. Listing them lets a caller
+       * name one on SendSmsJob instead of being stuck with whatever the phone's
+       * settings happen to say.
+       * </pre>
+       *
+       * <code>repeated .smsgateway.v1.SimInfo sims = 8 [json_name = "sims"];</code>
+       */
+      public java.util.List<smsgateway.v1.Device.SimInfo> getSimsList() {
+        if (simsBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(sims_);
+        } else {
+          return simsBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <pre>
+       * Every SIM the handset can send from.
+       *
+       * phone_number and carrier above describe the *default* SMS subscription
+       * only, which is what a single-SIM phone reports and what a dual-SIM phone
+       * would send from if nobody said otherwise. They stay because every existing
+       * agent fills them and every existing row was written from them.
+       *
+       * A dual-SIM handset is really two sending nodes: sending limits are per SIM
+       * and the number a recipient sees is per SIM. Listing them lets a caller
+       * name one on SendSmsJob instead of being stuck with whatever the phone's
+       * settings happen to say.
+       * </pre>
+       *
+       * <code>repeated .smsgateway.v1.SimInfo sims = 8 [json_name = "sims"];</code>
+       */
+      public int getSimsCount() {
+        if (simsBuilder_ == null) {
+          return sims_.size();
+        } else {
+          return simsBuilder_.getCount();
+        }
+      }
+      /**
+       * <pre>
+       * Every SIM the handset can send from.
+       *
+       * phone_number and carrier above describe the *default* SMS subscription
+       * only, which is what a single-SIM phone reports and what a dual-SIM phone
+       * would send from if nobody said otherwise. They stay because every existing
+       * agent fills them and every existing row was written from them.
+       *
+       * A dual-SIM handset is really two sending nodes: sending limits are per SIM
+       * and the number a recipient sees is per SIM. Listing them lets a caller
+       * name one on SendSmsJob instead of being stuck with whatever the phone's
+       * settings happen to say.
+       * </pre>
+       *
+       * <code>repeated .smsgateway.v1.SimInfo sims = 8 [json_name = "sims"];</code>
+       */
+      public smsgateway.v1.Device.SimInfo getSims(int index) {
+        if (simsBuilder_ == null) {
+          return sims_.get(index);
+        } else {
+          return simsBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <pre>
+       * Every SIM the handset can send from.
+       *
+       * phone_number and carrier above describe the *default* SMS subscription
+       * only, which is what a single-SIM phone reports and what a dual-SIM phone
+       * would send from if nobody said otherwise. They stay because every existing
+       * agent fills them and every existing row was written from them.
+       *
+       * A dual-SIM handset is really two sending nodes: sending limits are per SIM
+       * and the number a recipient sees is per SIM. Listing them lets a caller
+       * name one on SendSmsJob instead of being stuck with whatever the phone's
+       * settings happen to say.
+       * </pre>
+       *
+       * <code>repeated .smsgateway.v1.SimInfo sims = 8 [json_name = "sims"];</code>
+       */
+      public Builder setSims(
+          int index, smsgateway.v1.Device.SimInfo value) {
+        if (simsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureSimsIsMutable();
+          sims_.set(index, value);
+          onChanged();
+        } else {
+          simsBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Every SIM the handset can send from.
+       *
+       * phone_number and carrier above describe the *default* SMS subscription
+       * only, which is what a single-SIM phone reports and what a dual-SIM phone
+       * would send from if nobody said otherwise. They stay because every existing
+       * agent fills them and every existing row was written from them.
+       *
+       * A dual-SIM handset is really two sending nodes: sending limits are per SIM
+       * and the number a recipient sees is per SIM. Listing them lets a caller
+       * name one on SendSmsJob instead of being stuck with whatever the phone's
+       * settings happen to say.
+       * </pre>
+       *
+       * <code>repeated .smsgateway.v1.SimInfo sims = 8 [json_name = "sims"];</code>
+       */
+      public Builder setSims(
+          int index, smsgateway.v1.Device.SimInfo.Builder builderForValue) {
+        if (simsBuilder_ == null) {
+          ensureSimsIsMutable();
+          sims_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          simsBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Every SIM the handset can send from.
+       *
+       * phone_number and carrier above describe the *default* SMS subscription
+       * only, which is what a single-SIM phone reports and what a dual-SIM phone
+       * would send from if nobody said otherwise. They stay because every existing
+       * agent fills them and every existing row was written from them.
+       *
+       * A dual-SIM handset is really two sending nodes: sending limits are per SIM
+       * and the number a recipient sees is per SIM. Listing them lets a caller
+       * name one on SendSmsJob instead of being stuck with whatever the phone's
+       * settings happen to say.
+       * </pre>
+       *
+       * <code>repeated .smsgateway.v1.SimInfo sims = 8 [json_name = "sims"];</code>
+       */
+      public Builder addSims(smsgateway.v1.Device.SimInfo value) {
+        if (simsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureSimsIsMutable();
+          sims_.add(value);
+          onChanged();
+        } else {
+          simsBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Every SIM the handset can send from.
+       *
+       * phone_number and carrier above describe the *default* SMS subscription
+       * only, which is what a single-SIM phone reports and what a dual-SIM phone
+       * would send from if nobody said otherwise. They stay because every existing
+       * agent fills them and every existing row was written from them.
+       *
+       * A dual-SIM handset is really two sending nodes: sending limits are per SIM
+       * and the number a recipient sees is per SIM. Listing them lets a caller
+       * name one on SendSmsJob instead of being stuck with whatever the phone's
+       * settings happen to say.
+       * </pre>
+       *
+       * <code>repeated .smsgateway.v1.SimInfo sims = 8 [json_name = "sims"];</code>
+       */
+      public Builder addSims(
+          int index, smsgateway.v1.Device.SimInfo value) {
+        if (simsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureSimsIsMutable();
+          sims_.add(index, value);
+          onChanged();
+        } else {
+          simsBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Every SIM the handset can send from.
+       *
+       * phone_number and carrier above describe the *default* SMS subscription
+       * only, which is what a single-SIM phone reports and what a dual-SIM phone
+       * would send from if nobody said otherwise. They stay because every existing
+       * agent fills them and every existing row was written from them.
+       *
+       * A dual-SIM handset is really two sending nodes: sending limits are per SIM
+       * and the number a recipient sees is per SIM. Listing them lets a caller
+       * name one on SendSmsJob instead of being stuck with whatever the phone's
+       * settings happen to say.
+       * </pre>
+       *
+       * <code>repeated .smsgateway.v1.SimInfo sims = 8 [json_name = "sims"];</code>
+       */
+      public Builder addSims(
+          smsgateway.v1.Device.SimInfo.Builder builderForValue) {
+        if (simsBuilder_ == null) {
+          ensureSimsIsMutable();
+          sims_.add(builderForValue.build());
+          onChanged();
+        } else {
+          simsBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Every SIM the handset can send from.
+       *
+       * phone_number and carrier above describe the *default* SMS subscription
+       * only, which is what a single-SIM phone reports and what a dual-SIM phone
+       * would send from if nobody said otherwise. They stay because every existing
+       * agent fills them and every existing row was written from them.
+       *
+       * A dual-SIM handset is really two sending nodes: sending limits are per SIM
+       * and the number a recipient sees is per SIM. Listing them lets a caller
+       * name one on SendSmsJob instead of being stuck with whatever the phone's
+       * settings happen to say.
+       * </pre>
+       *
+       * <code>repeated .smsgateway.v1.SimInfo sims = 8 [json_name = "sims"];</code>
+       */
+      public Builder addSims(
+          int index, smsgateway.v1.Device.SimInfo.Builder builderForValue) {
+        if (simsBuilder_ == null) {
+          ensureSimsIsMutable();
+          sims_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          simsBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Every SIM the handset can send from.
+       *
+       * phone_number and carrier above describe the *default* SMS subscription
+       * only, which is what a single-SIM phone reports and what a dual-SIM phone
+       * would send from if nobody said otherwise. They stay because every existing
+       * agent fills them and every existing row was written from them.
+       *
+       * A dual-SIM handset is really two sending nodes: sending limits are per SIM
+       * and the number a recipient sees is per SIM. Listing them lets a caller
+       * name one on SendSmsJob instead of being stuck with whatever the phone's
+       * settings happen to say.
+       * </pre>
+       *
+       * <code>repeated .smsgateway.v1.SimInfo sims = 8 [json_name = "sims"];</code>
+       */
+      public Builder addAllSims(
+          java.lang.Iterable<? extends smsgateway.v1.Device.SimInfo> values) {
+        if (simsBuilder_ == null) {
+          ensureSimsIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, sims_);
+          onChanged();
+        } else {
+          simsBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Every SIM the handset can send from.
+       *
+       * phone_number and carrier above describe the *default* SMS subscription
+       * only, which is what a single-SIM phone reports and what a dual-SIM phone
+       * would send from if nobody said otherwise. They stay because every existing
+       * agent fills them and every existing row was written from them.
+       *
+       * A dual-SIM handset is really two sending nodes: sending limits are per SIM
+       * and the number a recipient sees is per SIM. Listing them lets a caller
+       * name one on SendSmsJob instead of being stuck with whatever the phone's
+       * settings happen to say.
+       * </pre>
+       *
+       * <code>repeated .smsgateway.v1.SimInfo sims = 8 [json_name = "sims"];</code>
+       */
+      public Builder clearSims() {
+        if (simsBuilder_ == null) {
+          sims_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000080);
+          onChanged();
+        } else {
+          simsBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Every SIM the handset can send from.
+       *
+       * phone_number and carrier above describe the *default* SMS subscription
+       * only, which is what a single-SIM phone reports and what a dual-SIM phone
+       * would send from if nobody said otherwise. They stay because every existing
+       * agent fills them and every existing row was written from them.
+       *
+       * A dual-SIM handset is really two sending nodes: sending limits are per SIM
+       * and the number a recipient sees is per SIM. Listing them lets a caller
+       * name one on SendSmsJob instead of being stuck with whatever the phone's
+       * settings happen to say.
+       * </pre>
+       *
+       * <code>repeated .smsgateway.v1.SimInfo sims = 8 [json_name = "sims"];</code>
+       */
+      public Builder removeSims(int index) {
+        if (simsBuilder_ == null) {
+          ensureSimsIsMutable();
+          sims_.remove(index);
+          onChanged();
+        } else {
+          simsBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Every SIM the handset can send from.
+       *
+       * phone_number and carrier above describe the *default* SMS subscription
+       * only, which is what a single-SIM phone reports and what a dual-SIM phone
+       * would send from if nobody said otherwise. They stay because every existing
+       * agent fills them and every existing row was written from them.
+       *
+       * A dual-SIM handset is really two sending nodes: sending limits are per SIM
+       * and the number a recipient sees is per SIM. Listing them lets a caller
+       * name one on SendSmsJob instead of being stuck with whatever the phone's
+       * settings happen to say.
+       * </pre>
+       *
+       * <code>repeated .smsgateway.v1.SimInfo sims = 8 [json_name = "sims"];</code>
+       */
+      public smsgateway.v1.Device.SimInfo.Builder getSimsBuilder(
+          int index) {
+        return internalGetSimsFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <pre>
+       * Every SIM the handset can send from.
+       *
+       * phone_number and carrier above describe the *default* SMS subscription
+       * only, which is what a single-SIM phone reports and what a dual-SIM phone
+       * would send from if nobody said otherwise. They stay because every existing
+       * agent fills them and every existing row was written from them.
+       *
+       * A dual-SIM handset is really two sending nodes: sending limits are per SIM
+       * and the number a recipient sees is per SIM. Listing them lets a caller
+       * name one on SendSmsJob instead of being stuck with whatever the phone's
+       * settings happen to say.
+       * </pre>
+       *
+       * <code>repeated .smsgateway.v1.SimInfo sims = 8 [json_name = "sims"];</code>
+       */
+      public smsgateway.v1.Device.SimInfoOrBuilder getSimsOrBuilder(
+          int index) {
+        if (simsBuilder_ == null) {
+          return sims_.get(index);  } else {
+          return simsBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <pre>
+       * Every SIM the handset can send from.
+       *
+       * phone_number and carrier above describe the *default* SMS subscription
+       * only, which is what a single-SIM phone reports and what a dual-SIM phone
+       * would send from if nobody said otherwise. They stay because every existing
+       * agent fills them and every existing row was written from them.
+       *
+       * A dual-SIM handset is really two sending nodes: sending limits are per SIM
+       * and the number a recipient sees is per SIM. Listing them lets a caller
+       * name one on SendSmsJob instead of being stuck with whatever the phone's
+       * settings happen to say.
+       * </pre>
+       *
+       * <code>repeated .smsgateway.v1.SimInfo sims = 8 [json_name = "sims"];</code>
+       */
+      public java.util.List<? extends smsgateway.v1.Device.SimInfoOrBuilder> 
+           getSimsOrBuilderList() {
+        if (simsBuilder_ != null) {
+          return simsBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(sims_);
+        }
+      }
+      /**
+       * <pre>
+       * Every SIM the handset can send from.
+       *
+       * phone_number and carrier above describe the *default* SMS subscription
+       * only, which is what a single-SIM phone reports and what a dual-SIM phone
+       * would send from if nobody said otherwise. They stay because every existing
+       * agent fills them and every existing row was written from them.
+       *
+       * A dual-SIM handset is really two sending nodes: sending limits are per SIM
+       * and the number a recipient sees is per SIM. Listing them lets a caller
+       * name one on SendSmsJob instead of being stuck with whatever the phone's
+       * settings happen to say.
+       * </pre>
+       *
+       * <code>repeated .smsgateway.v1.SimInfo sims = 8 [json_name = "sims"];</code>
+       */
+      public smsgateway.v1.Device.SimInfo.Builder addSimsBuilder() {
+        return internalGetSimsFieldBuilder().addBuilder(
+            smsgateway.v1.Device.SimInfo.getDefaultInstance());
+      }
+      /**
+       * <pre>
+       * Every SIM the handset can send from.
+       *
+       * phone_number and carrier above describe the *default* SMS subscription
+       * only, which is what a single-SIM phone reports and what a dual-SIM phone
+       * would send from if nobody said otherwise. They stay because every existing
+       * agent fills them and every existing row was written from them.
+       *
+       * A dual-SIM handset is really two sending nodes: sending limits are per SIM
+       * and the number a recipient sees is per SIM. Listing them lets a caller
+       * name one on SendSmsJob instead of being stuck with whatever the phone's
+       * settings happen to say.
+       * </pre>
+       *
+       * <code>repeated .smsgateway.v1.SimInfo sims = 8 [json_name = "sims"];</code>
+       */
+      public smsgateway.v1.Device.SimInfo.Builder addSimsBuilder(
+          int index) {
+        return internalGetSimsFieldBuilder().addBuilder(
+            index, smsgateway.v1.Device.SimInfo.getDefaultInstance());
+      }
+      /**
+       * <pre>
+       * Every SIM the handset can send from.
+       *
+       * phone_number and carrier above describe the *default* SMS subscription
+       * only, which is what a single-SIM phone reports and what a dual-SIM phone
+       * would send from if nobody said otherwise. They stay because every existing
+       * agent fills them and every existing row was written from them.
+       *
+       * A dual-SIM handset is really two sending nodes: sending limits are per SIM
+       * and the number a recipient sees is per SIM. Listing them lets a caller
+       * name one on SendSmsJob instead of being stuck with whatever the phone's
+       * settings happen to say.
+       * </pre>
+       *
+       * <code>repeated .smsgateway.v1.SimInfo sims = 8 [json_name = "sims"];</code>
+       */
+      public java.util.List<smsgateway.v1.Device.SimInfo.Builder> 
+           getSimsBuilderList() {
+        return internalGetSimsFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          smsgateway.v1.Device.SimInfo, smsgateway.v1.Device.SimInfo.Builder, smsgateway.v1.Device.SimInfoOrBuilder> 
+          internalGetSimsFieldBuilder() {
+        if (simsBuilder_ == null) {
+          simsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              smsgateway.v1.Device.SimInfo, smsgateway.v1.Device.SimInfo.Builder, smsgateway.v1.Device.SimInfoOrBuilder>(
+                  sims_,
+                  ((bitField0_ & 0x00000080) != 0),
+                  getParentForChildren(),
+                  isClean());
+          sims_ = null;
+        }
+        return simsBuilder_;
+      }
+
       // @@protoc_insertion_point(builder_scope:smsgateway.v1.DeviceInfo)
     }
 
@@ -3320,6 +4095,1207 @@ public final class Device extends com.google.protobuf.GeneratedFile {
 
     @java.lang.Override
     public smsgateway.v1.Device.DeviceInfo getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface SimInfoOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:smsgateway.v1.SimInfo)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * Android's subscription id. Stable while the SIM stays in the phone, and
+     * the value SendSmsJob.subscription_id refers to. Not a slot: slots get
+     * reused when a SIM is swapped, which would silently redirect traffic.
+     * </pre>
+     *
+     * <code>int32 subscription_id = 1 [json_name = "subscriptionId"];</code>
+     * @return The subscriptionId.
+     */
+    int getSubscriptionId();
+
+    /**
+     * <pre>
+     * Physical slot, 0-based. Reported for the operator's benefit — "the one in
+     * the top tray" is how people actually talk about SIMs — never for routing.
+     * </pre>
+     *
+     * <code>int32 slot_index = 2 [json_name = "slotIndex"];</code>
+     * @return The slotIndex.
+     */
+    int getSlotIndex();
+
+    /**
+     * <pre>
+     * MSISDN in E.164 when the platform will say. Often empty; carriers do not
+     * reliably write it to the SIM.
+     * </pre>
+     *
+     * <code>string phone_number = 3 [json_name = "phoneNumber"];</code>
+     * @return The phoneNumber.
+     */
+    java.lang.String getPhoneNumber();
+    /**
+     * <pre>
+     * MSISDN in E.164 when the platform will say. Often empty; carriers do not
+     * reliably write it to the SIM.
+     * </pre>
+     *
+     * <code>string phone_number = 3 [json_name = "phoneNumber"];</code>
+     * @return The bytes for phoneNumber.
+     */
+    com.google.protobuf.ByteString
+        getPhoneNumberBytes();
+
+    /**
+     * <code>string carrier = 4 [json_name = "carrier"];</code>
+     * @return The carrier.
+     */
+    java.lang.String getCarrier();
+    /**
+     * <code>string carrier = 4 [json_name = "carrier"];</code>
+     * @return The bytes for carrier.
+     */
+    com.google.protobuf.ByteString
+        getCarrierBytes();
+
+    /**
+     * <pre>
+     * What the user named it in Android's settings, e.g. "Perso" or "Work".
+     * </pre>
+     *
+     * <code>string display_name = 5 [json_name = "displayName"];</code>
+     * @return The displayName.
+     */
+    java.lang.String getDisplayName();
+    /**
+     * <pre>
+     * What the user named it in Android's settings, e.g. "Perso" or "Work".
+     * </pre>
+     *
+     * <code>string display_name = 5 [json_name = "displayName"];</code>
+     * @return The bytes for displayName.
+     */
+    com.google.protobuf.ByteString
+        getDisplayNameBytes();
+
+    /**
+     * <pre>
+     * Whether this SIM is the default for outgoing SMS. Exactly one is, and it
+     * is the one used when a job names no subscription.
+     * </pre>
+     *
+     * <code>bool is_default_sms = 6 [json_name = "isDefaultSms"];</code>
+     * @return The isDefaultSms.
+     */
+    boolean getIsDefaultSms();
+  }
+  /**
+   * <pre>
+   * One SIM the agent can send from.
+   * </pre>
+   *
+   * Protobuf type {@code smsgateway.v1.SimInfo}
+   */
+  public static final class SimInfo extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:smsgateway.v1.SimInfo)
+      SimInfoOrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 35,
+        /* patch= */ 1,
+        /* suffix= */ "",
+        "SimInfo");
+    }
+    // Use SimInfo.newBuilder() to construct.
+    private SimInfo(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private SimInfo() {
+      phoneNumber_ = "";
+      carrier_ = "";
+      displayName_ = "";
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return smsgateway.v1.Device.internal_static_smsgateway_v1_SimInfo_descriptor;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+      return smsgateway.v1.Device.internal_static_smsgateway_v1_SimInfo_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return smsgateway.v1.Device.internal_static_smsgateway_v1_SimInfo_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              smsgateway.v1.Device.SimInfo.class, smsgateway.v1.Device.SimInfo.Builder.class);
+    }
+
+    public static final int SUBSCRIPTION_ID_FIELD_NUMBER = 1;
+    private int subscriptionId_ = 0;
+    /**
+     * <pre>
+     * Android's subscription id. Stable while the SIM stays in the phone, and
+     * the value SendSmsJob.subscription_id refers to. Not a slot: slots get
+     * reused when a SIM is swapped, which would silently redirect traffic.
+     * </pre>
+     *
+     * <code>int32 subscription_id = 1 [json_name = "subscriptionId"];</code>
+     * @return The subscriptionId.
+     */
+    @java.lang.Override
+    public int getSubscriptionId() {
+      return subscriptionId_;
+    }
+
+    public static final int SLOT_INDEX_FIELD_NUMBER = 2;
+    private int slotIndex_ = 0;
+    /**
+     * <pre>
+     * Physical slot, 0-based. Reported for the operator's benefit — "the one in
+     * the top tray" is how people actually talk about SIMs — never for routing.
+     * </pre>
+     *
+     * <code>int32 slot_index = 2 [json_name = "slotIndex"];</code>
+     * @return The slotIndex.
+     */
+    @java.lang.Override
+    public int getSlotIndex() {
+      return slotIndex_;
+    }
+
+    public static final int PHONE_NUMBER_FIELD_NUMBER = 3;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object phoneNumber_ = "";
+    /**
+     * <pre>
+     * MSISDN in E.164 when the platform will say. Often empty; carriers do not
+     * reliably write it to the SIM.
+     * </pre>
+     *
+     * <code>string phone_number = 3 [json_name = "phoneNumber"];</code>
+     * @return The phoneNumber.
+     */
+    @java.lang.Override
+    public java.lang.String getPhoneNumber() {
+      java.lang.Object ref = phoneNumber_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        phoneNumber_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * MSISDN in E.164 when the platform will say. Often empty; carriers do not
+     * reliably write it to the SIM.
+     * </pre>
+     *
+     * <code>string phone_number = 3 [json_name = "phoneNumber"];</code>
+     * @return The bytes for phoneNumber.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getPhoneNumberBytes() {
+      java.lang.Object ref = phoneNumber_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        phoneNumber_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int CARRIER_FIELD_NUMBER = 4;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object carrier_ = "";
+    /**
+     * <code>string carrier = 4 [json_name = "carrier"];</code>
+     * @return The carrier.
+     */
+    @java.lang.Override
+    public java.lang.String getCarrier() {
+      java.lang.Object ref = carrier_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        carrier_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string carrier = 4 [json_name = "carrier"];</code>
+     * @return The bytes for carrier.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getCarrierBytes() {
+      java.lang.Object ref = carrier_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        carrier_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int DISPLAY_NAME_FIELD_NUMBER = 5;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object displayName_ = "";
+    /**
+     * <pre>
+     * What the user named it in Android's settings, e.g. "Perso" or "Work".
+     * </pre>
+     *
+     * <code>string display_name = 5 [json_name = "displayName"];</code>
+     * @return The displayName.
+     */
+    @java.lang.Override
+    public java.lang.String getDisplayName() {
+      java.lang.Object ref = displayName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        displayName_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * What the user named it in Android's settings, e.g. "Perso" or "Work".
+     * </pre>
+     *
+     * <code>string display_name = 5 [json_name = "displayName"];</code>
+     * @return The bytes for displayName.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getDisplayNameBytes() {
+      java.lang.Object ref = displayName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        displayName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int IS_DEFAULT_SMS_FIELD_NUMBER = 6;
+    private boolean isDefaultSms_ = false;
+    /**
+     * <pre>
+     * Whether this SIM is the default for outgoing SMS. Exactly one is, and it
+     * is the one used when a job names no subscription.
+     * </pre>
+     *
+     * <code>bool is_default_sms = 6 [json_name = "isDefaultSms"];</code>
+     * @return The isDefaultSms.
+     */
+    @java.lang.Override
+    public boolean getIsDefaultSms() {
+      return isDefaultSms_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (subscriptionId_ != 0) {
+        output.writeInt32(1, subscriptionId_);
+      }
+      if (slotIndex_ != 0) {
+        output.writeInt32(2, slotIndex_);
+      }
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(phoneNumber_)) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 3, phoneNumber_);
+      }
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(carrier_)) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 4, carrier_);
+      }
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(displayName_)) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 5, displayName_);
+      }
+      if (isDefaultSms_ != false) {
+        output.writeBool(6, isDefaultSms_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+    private int computeSerializedSize_0() {
+      int size = 0;
+      if (subscriptionId_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, subscriptionId_);
+      }
+      if (slotIndex_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, slotIndex_);
+      }
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(phoneNumber_)) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(3, phoneNumber_);
+      }
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(carrier_)) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(4, carrier_);
+      }
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(displayName_)) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(5, displayName_);
+      }
+      if (isDefaultSms_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(6, isDefaultSms_);
+      }
+      return size;
+    }
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += computeSerializedSize_0();
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof smsgateway.v1.Device.SimInfo)) {
+        return super.equals(obj);
+      }
+      smsgateway.v1.Device.SimInfo other = (smsgateway.v1.Device.SimInfo) obj;
+
+      if (getSubscriptionId()
+          != other.getSubscriptionId()) return false;
+      if (getSlotIndex()
+          != other.getSlotIndex()) return false;
+      if (!getPhoneNumber()
+          .equals(other.getPhoneNumber())) return false;
+      if (!getCarrier()
+          .equals(other.getCarrier())) return false;
+      if (!getDisplayName()
+          .equals(other.getDisplayName())) return false;
+      if (getIsDefaultSms()
+          != other.getIsDefaultSms()) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + SUBSCRIPTION_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getSubscriptionId();
+      hash = (37 * hash) + SLOT_INDEX_FIELD_NUMBER;
+      hash = (53 * hash) + getSlotIndex();
+      hash = (37 * hash) + PHONE_NUMBER_FIELD_NUMBER;
+      hash = (53 * hash) + getPhoneNumber().hashCode();
+      hash = (37 * hash) + CARRIER_FIELD_NUMBER;
+      hash = (53 * hash) + getCarrier().hashCode();
+      hash = (37 * hash) + DISPLAY_NAME_FIELD_NUMBER;
+      hash = (53 * hash) + getDisplayName().hashCode();
+      hash = (37 * hash) + IS_DEFAULT_SMS_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getIsDefaultSms());
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static smsgateway.v1.Device.SimInfo parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static smsgateway.v1.Device.SimInfo parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static smsgateway.v1.Device.SimInfo parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static smsgateway.v1.Device.SimInfo parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static smsgateway.v1.Device.SimInfo parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static smsgateway.v1.Device.SimInfo parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static smsgateway.v1.Device.SimInfo parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static smsgateway.v1.Device.SimInfo parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static smsgateway.v1.Device.SimInfo parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static smsgateway.v1.Device.SimInfo parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static smsgateway.v1.Device.SimInfo parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static smsgateway.v1.Device.SimInfo parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(smsgateway.v1.Device.SimInfo prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * One SIM the agent can send from.
+     * </pre>
+     *
+     * Protobuf type {@code smsgateway.v1.SimInfo}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:smsgateway.v1.SimInfo)
+        smsgateway.v1.Device.SimInfoOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return smsgateway.v1.Device.internal_static_smsgateway_v1_SimInfo_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return smsgateway.v1.Device.internal_static_smsgateway_v1_SimInfo_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                smsgateway.v1.Device.SimInfo.class, smsgateway.v1.Device.SimInfo.Builder.class);
+      }
+
+      // Construct using smsgateway.v1.Device.SimInfo.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        subscriptionId_ = 0;
+        slotIndex_ = 0;
+        phoneNumber_ = "";
+        carrier_ = "";
+        displayName_ = "";
+        isDefaultSms_ = false;
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return smsgateway.v1.Device.internal_static_smsgateway_v1_SimInfo_descriptor;
+      }
+
+      @java.lang.Override
+      public smsgateway.v1.Device.SimInfo getDefaultInstanceForType() {
+        return smsgateway.v1.Device.SimInfo.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public smsgateway.v1.Device.SimInfo build() {
+        smsgateway.v1.Device.SimInfo result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public smsgateway.v1.Device.SimInfo buildPartial() {
+        smsgateway.v1.Device.SimInfo result = new smsgateway.v1.Device.SimInfo(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(smsgateway.v1.Device.SimInfo result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.subscriptionId_ = subscriptionId_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.slotIndex_ = slotIndex_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.phoneNumber_ = phoneNumber_;
+        }
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.carrier_ = carrier_;
+        }
+        if (((from_bitField0_ & 0x00000010) != 0)) {
+          result.displayName_ = displayName_;
+        }
+        if (((from_bitField0_ & 0x00000020) != 0)) {
+          result.isDefaultSms_ = isDefaultSms_;
+        }
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof smsgateway.v1.Device.SimInfo) {
+          return mergeFrom((smsgateway.v1.Device.SimInfo)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(smsgateway.v1.Device.SimInfo other) {
+        if (other == smsgateway.v1.Device.SimInfo.getDefaultInstance()) return this;
+        if (other.getSubscriptionId() != 0) {
+          setSubscriptionId(other.getSubscriptionId());
+        }
+        if (other.getSlotIndex() != 0) {
+          setSlotIndex(other.getSlotIndex());
+        }
+        if (!other.getPhoneNumber().isEmpty()) {
+          phoneNumber_ = other.phoneNumber_;
+          bitField0_ |= 0x00000004;
+          onChanged();
+        }
+        if (!other.getCarrier().isEmpty()) {
+          carrier_ = other.carrier_;
+          bitField0_ |= 0x00000008;
+          onChanged();
+        }
+        if (!other.getDisplayName().isEmpty()) {
+          displayName_ = other.displayName_;
+          bitField0_ |= 0x00000010;
+          onChanged();
+        }
+        if (other.getIsDefaultSms() != false) {
+          setIsDefaultSms(other.getIsDefaultSms());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 8: {
+                subscriptionId_ = input.readInt32();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 8
+              case 16: {
+                slotIndex_ = input.readInt32();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 16
+              case 26: {
+                phoneNumber_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 26
+              case 34: {
+                carrier_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000008;
+                break;
+              } // case 34
+              case 42: {
+                displayName_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000010;
+                break;
+              } // case 42
+              case 48: {
+                isDefaultSms_ = input.readBool();
+                bitField0_ |= 0x00000020;
+                break;
+              } // case 48
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private int subscriptionId_ ;
+      /**
+       * <pre>
+       * Android's subscription id. Stable while the SIM stays in the phone, and
+       * the value SendSmsJob.subscription_id refers to. Not a slot: slots get
+       * reused when a SIM is swapped, which would silently redirect traffic.
+       * </pre>
+       *
+       * <code>int32 subscription_id = 1 [json_name = "subscriptionId"];</code>
+       * @return The subscriptionId.
+       */
+      @java.lang.Override
+      public int getSubscriptionId() {
+        return subscriptionId_;
+      }
+      /**
+       * <pre>
+       * Android's subscription id. Stable while the SIM stays in the phone, and
+       * the value SendSmsJob.subscription_id refers to. Not a slot: slots get
+       * reused when a SIM is swapped, which would silently redirect traffic.
+       * </pre>
+       *
+       * <code>int32 subscription_id = 1 [json_name = "subscriptionId"];</code>
+       * @param value The subscriptionId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSubscriptionId(int value) {
+
+        subscriptionId_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Android's subscription id. Stable while the SIM stays in the phone, and
+       * the value SendSmsJob.subscription_id refers to. Not a slot: slots get
+       * reused when a SIM is swapped, which would silently redirect traffic.
+       * </pre>
+       *
+       * <code>int32 subscription_id = 1 [json_name = "subscriptionId"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSubscriptionId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        subscriptionId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int slotIndex_ ;
+      /**
+       * <pre>
+       * Physical slot, 0-based. Reported for the operator's benefit — "the one in
+       * the top tray" is how people actually talk about SIMs — never for routing.
+       * </pre>
+       *
+       * <code>int32 slot_index = 2 [json_name = "slotIndex"];</code>
+       * @return The slotIndex.
+       */
+      @java.lang.Override
+      public int getSlotIndex() {
+        return slotIndex_;
+      }
+      /**
+       * <pre>
+       * Physical slot, 0-based. Reported for the operator's benefit — "the one in
+       * the top tray" is how people actually talk about SIMs — never for routing.
+       * </pre>
+       *
+       * <code>int32 slot_index = 2 [json_name = "slotIndex"];</code>
+       * @param value The slotIndex to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSlotIndex(int value) {
+
+        slotIndex_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Physical slot, 0-based. Reported for the operator's benefit — "the one in
+       * the top tray" is how people actually talk about SIMs — never for routing.
+       * </pre>
+       *
+       * <code>int32 slot_index = 2 [json_name = "slotIndex"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSlotIndex() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        slotIndex_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object phoneNumber_ = "";
+      /**
+       * <pre>
+       * MSISDN in E.164 when the platform will say. Often empty; carriers do not
+       * reliably write it to the SIM.
+       * </pre>
+       *
+       * <code>string phone_number = 3 [json_name = "phoneNumber"];</code>
+       * @return The phoneNumber.
+       */
+      public java.lang.String getPhoneNumber() {
+        java.lang.Object ref = phoneNumber_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          phoneNumber_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * MSISDN in E.164 when the platform will say. Often empty; carriers do not
+       * reliably write it to the SIM.
+       * </pre>
+       *
+       * <code>string phone_number = 3 [json_name = "phoneNumber"];</code>
+       * @return The bytes for phoneNumber.
+       */
+      public com.google.protobuf.ByteString
+          getPhoneNumberBytes() {
+        java.lang.Object ref = phoneNumber_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          phoneNumber_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * MSISDN in E.164 when the platform will say. Often empty; carriers do not
+       * reliably write it to the SIM.
+       * </pre>
+       *
+       * <code>string phone_number = 3 [json_name = "phoneNumber"];</code>
+       * @param value The phoneNumber to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPhoneNumber(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        phoneNumber_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * MSISDN in E.164 when the platform will say. Often empty; carriers do not
+       * reliably write it to the SIM.
+       * </pre>
+       *
+       * <code>string phone_number = 3 [json_name = "phoneNumber"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearPhoneNumber() {
+        phoneNumber_ = getDefaultInstance().getPhoneNumber();
+        bitField0_ = (bitField0_ & ~0x00000004);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * MSISDN in E.164 when the platform will say. Often empty; carriers do not
+       * reliably write it to the SIM.
+       * </pre>
+       *
+       * <code>string phone_number = 3 [json_name = "phoneNumber"];</code>
+       * @param value The bytes for phoneNumber to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPhoneNumberBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        phoneNumber_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object carrier_ = "";
+      /**
+       * <code>string carrier = 4 [json_name = "carrier"];</code>
+       * @return The carrier.
+       */
+      public java.lang.String getCarrier() {
+        java.lang.Object ref = carrier_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          carrier_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string carrier = 4 [json_name = "carrier"];</code>
+       * @return The bytes for carrier.
+       */
+      public com.google.protobuf.ByteString
+          getCarrierBytes() {
+        java.lang.Object ref = carrier_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          carrier_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string carrier = 4 [json_name = "carrier"];</code>
+       * @param value The carrier to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCarrier(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        carrier_ = value;
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string carrier = 4 [json_name = "carrier"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearCarrier() {
+        carrier_ = getDefaultInstance().getCarrier();
+        bitField0_ = (bitField0_ & ~0x00000008);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string carrier = 4 [json_name = "carrier"];</code>
+       * @param value The bytes for carrier to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCarrierBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        carrier_ = value;
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object displayName_ = "";
+      /**
+       * <pre>
+       * What the user named it in Android's settings, e.g. "Perso" or "Work".
+       * </pre>
+       *
+       * <code>string display_name = 5 [json_name = "displayName"];</code>
+       * @return The displayName.
+       */
+      public java.lang.String getDisplayName() {
+        java.lang.Object ref = displayName_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          displayName_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * What the user named it in Android's settings, e.g. "Perso" or "Work".
+       * </pre>
+       *
+       * <code>string display_name = 5 [json_name = "displayName"];</code>
+       * @return The bytes for displayName.
+       */
+      public com.google.protobuf.ByteString
+          getDisplayNameBytes() {
+        java.lang.Object ref = displayName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          displayName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * What the user named it in Android's settings, e.g. "Perso" or "Work".
+       * </pre>
+       *
+       * <code>string display_name = 5 [json_name = "displayName"];</code>
+       * @param value The displayName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDisplayName(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        displayName_ = value;
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * What the user named it in Android's settings, e.g. "Perso" or "Work".
+       * </pre>
+       *
+       * <code>string display_name = 5 [json_name = "displayName"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearDisplayName() {
+        displayName_ = getDefaultInstance().getDisplayName();
+        bitField0_ = (bitField0_ & ~0x00000010);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * What the user named it in Android's settings, e.g. "Perso" or "Work".
+       * </pre>
+       *
+       * <code>string display_name = 5 [json_name = "displayName"];</code>
+       * @param value The bytes for displayName to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDisplayNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        displayName_ = value;
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return this;
+      }
+
+      private boolean isDefaultSms_ ;
+      /**
+       * <pre>
+       * Whether this SIM is the default for outgoing SMS. Exactly one is, and it
+       * is the one used when a job names no subscription.
+       * </pre>
+       *
+       * <code>bool is_default_sms = 6 [json_name = "isDefaultSms"];</code>
+       * @return The isDefaultSms.
+       */
+      @java.lang.Override
+      public boolean getIsDefaultSms() {
+        return isDefaultSms_;
+      }
+      /**
+       * <pre>
+       * Whether this SIM is the default for outgoing SMS. Exactly one is, and it
+       * is the one used when a job names no subscription.
+       * </pre>
+       *
+       * <code>bool is_default_sms = 6 [json_name = "isDefaultSms"];</code>
+       * @param value The isDefaultSms to set.
+       * @return This builder for chaining.
+       */
+      public Builder setIsDefaultSms(boolean value) {
+
+        isDefaultSms_ = value;
+        bitField0_ |= 0x00000020;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Whether this SIM is the default for outgoing SMS. Exactly one is, and it
+       * is the one used when a job names no subscription.
+       * </pre>
+       *
+       * <code>bool is_default_sms = 6 [json_name = "isDefaultSms"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearIsDefaultSms() {
+        bitField0_ = (bitField0_ & ~0x00000020);
+        isDefaultSms_ = false;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:smsgateway.v1.SimInfo)
+    }
+
+    // @@protoc_insertion_point(class_scope:smsgateway.v1.SimInfo)
+    private static final smsgateway.v1.Device.SimInfo DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new smsgateway.v1.Device.SimInfo();
+    }
+
+    public static smsgateway.v1.Device.SimInfo getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<SimInfo>
+        PARSER = new com.google.protobuf.AbstractParser<SimInfo>() {
+      @java.lang.Override
+      public SimInfo parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<SimInfo> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<SimInfo> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public smsgateway.v1.Device.SimInfo getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -8922,6 +10898,75 @@ public final class Device extends com.google.protobuf.GeneratedFile {
      * @return The permissionsOk.
      */
     boolean getPermissionsOk();
+
+    /**
+     * <pre>
+     * Per-SIM figures, when the handset has more than one.
+     *
+     * The fields above summarise the default SMS subscription, which is all a
+     * single-SIM phone has. These carry what differs between SIMs: signal is per
+     * radio, and the hourly count that matters for rate limiting is per SIM,
+     * because the carrier meters the SIM and not the handset.
+     * </pre>
+     *
+     * <code>repeated .smsgateway.v1.SimHealth sims = 8 [json_name = "sims"];</code>
+     */
+    java.util.List<smsgateway.v1.Device.SimHealth> 
+        getSimsList();
+    /**
+     * <pre>
+     * Per-SIM figures, when the handset has more than one.
+     *
+     * The fields above summarise the default SMS subscription, which is all a
+     * single-SIM phone has. These carry what differs between SIMs: signal is per
+     * radio, and the hourly count that matters for rate limiting is per SIM,
+     * because the carrier meters the SIM and not the handset.
+     * </pre>
+     *
+     * <code>repeated .smsgateway.v1.SimHealth sims = 8 [json_name = "sims"];</code>
+     */
+    smsgateway.v1.Device.SimHealth getSims(int index);
+    /**
+     * <pre>
+     * Per-SIM figures, when the handset has more than one.
+     *
+     * The fields above summarise the default SMS subscription, which is all a
+     * single-SIM phone has. These carry what differs between SIMs: signal is per
+     * radio, and the hourly count that matters for rate limiting is per SIM,
+     * because the carrier meters the SIM and not the handset.
+     * </pre>
+     *
+     * <code>repeated .smsgateway.v1.SimHealth sims = 8 [json_name = "sims"];</code>
+     */
+    int getSimsCount();
+    /**
+     * <pre>
+     * Per-SIM figures, when the handset has more than one.
+     *
+     * The fields above summarise the default SMS subscription, which is all a
+     * single-SIM phone has. These carry what differs between SIMs: signal is per
+     * radio, and the hourly count that matters for rate limiting is per SIM,
+     * because the carrier meters the SIM and not the handset.
+     * </pre>
+     *
+     * <code>repeated .smsgateway.v1.SimHealth sims = 8 [json_name = "sims"];</code>
+     */
+    java.util.List<? extends smsgateway.v1.Device.SimHealthOrBuilder> 
+        getSimsOrBuilderList();
+    /**
+     * <pre>
+     * Per-SIM figures, when the handset has more than one.
+     *
+     * The fields above summarise the default SMS subscription, which is all a
+     * single-SIM phone has. These carry what differs between SIMs: signal is per
+     * radio, and the hourly count that matters for rate limiting is per SIM,
+     * because the carrier meters the SIM and not the handset.
+     * </pre>
+     *
+     * <code>repeated .smsgateway.v1.SimHealth sims = 8 [json_name = "sims"];</code>
+     */
+    smsgateway.v1.Device.SimHealthOrBuilder getSimsOrBuilder(
+        int index);
   }
   /**
    * Protobuf type {@code smsgateway.v1.DeviceHealth}
@@ -8946,6 +10991,7 @@ public final class Device extends com.google.protobuf.GeneratedFile {
     }
     private DeviceHealth() {
       networkType_ = "";
+      sims_ = java.util.Collections.emptyList();
     }
 
     public static final com.google.protobuf.Descriptors.Descriptor
@@ -9113,6 +11159,92 @@ public final class Device extends com.google.protobuf.GeneratedFile {
       return permissionsOk_;
     }
 
+    public static final int SIMS_FIELD_NUMBER = 8;
+    @SuppressWarnings("serial")
+    private java.util.List<smsgateway.v1.Device.SimHealth> sims_;
+    /**
+     * <pre>
+     * Per-SIM figures, when the handset has more than one.
+     *
+     * The fields above summarise the default SMS subscription, which is all a
+     * single-SIM phone has. These carry what differs between SIMs: signal is per
+     * radio, and the hourly count that matters for rate limiting is per SIM,
+     * because the carrier meters the SIM and not the handset.
+     * </pre>
+     *
+     * <code>repeated .smsgateway.v1.SimHealth sims = 8 [json_name = "sims"];</code>
+     */
+    @java.lang.Override
+    public java.util.List<smsgateway.v1.Device.SimHealth> getSimsList() {
+      return sims_;
+    }
+    /**
+     * <pre>
+     * Per-SIM figures, when the handset has more than one.
+     *
+     * The fields above summarise the default SMS subscription, which is all a
+     * single-SIM phone has. These carry what differs between SIMs: signal is per
+     * radio, and the hourly count that matters for rate limiting is per SIM,
+     * because the carrier meters the SIM and not the handset.
+     * </pre>
+     *
+     * <code>repeated .smsgateway.v1.SimHealth sims = 8 [json_name = "sims"];</code>
+     */
+    @java.lang.Override
+    public java.util.List<? extends smsgateway.v1.Device.SimHealthOrBuilder> 
+        getSimsOrBuilderList() {
+      return sims_;
+    }
+    /**
+     * <pre>
+     * Per-SIM figures, when the handset has more than one.
+     *
+     * The fields above summarise the default SMS subscription, which is all a
+     * single-SIM phone has. These carry what differs between SIMs: signal is per
+     * radio, and the hourly count that matters for rate limiting is per SIM,
+     * because the carrier meters the SIM and not the handset.
+     * </pre>
+     *
+     * <code>repeated .smsgateway.v1.SimHealth sims = 8 [json_name = "sims"];</code>
+     */
+    @java.lang.Override
+    public int getSimsCount() {
+      return sims_.size();
+    }
+    /**
+     * <pre>
+     * Per-SIM figures, when the handset has more than one.
+     *
+     * The fields above summarise the default SMS subscription, which is all a
+     * single-SIM phone has. These carry what differs between SIMs: signal is per
+     * radio, and the hourly count that matters for rate limiting is per SIM,
+     * because the carrier meters the SIM and not the handset.
+     * </pre>
+     *
+     * <code>repeated .smsgateway.v1.SimHealth sims = 8 [json_name = "sims"];</code>
+     */
+    @java.lang.Override
+    public smsgateway.v1.Device.SimHealth getSims(int index) {
+      return sims_.get(index);
+    }
+    /**
+     * <pre>
+     * Per-SIM figures, when the handset has more than one.
+     *
+     * The fields above summarise the default SMS subscription, which is all a
+     * single-SIM phone has. These carry what differs between SIMs: signal is per
+     * radio, and the hourly count that matters for rate limiting is per SIM,
+     * because the carrier meters the SIM and not the handset.
+     * </pre>
+     *
+     * <code>repeated .smsgateway.v1.SimHealth sims = 8 [json_name = "sims"];</code>
+     */
+    @java.lang.Override
+    public smsgateway.v1.Device.SimHealthOrBuilder getSimsOrBuilder(
+        int index) {
+      return sims_.get(index);
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -9148,6 +11280,9 @@ public final class Device extends com.google.protobuf.GeneratedFile {
       if (permissionsOk_ != false) {
         output.writeBool(7, permissionsOk_);
       }
+      for (int i = 0; i < sims_.size(); i++) {
+        output.writeMessage(8, sims_.get(i));
+      }
       getUnknownFields().writeTo(output);
     }
     private int computeSerializedSize_0() {
@@ -9179,6 +11314,15 @@ public final class Device extends com.google.protobuf.GeneratedFile {
         size += com.google.protobuf.CodedOutputStream
           .computeBoolSize(7, permissionsOk_);
       }
+
+          {
+            final int count = sims_.size();
+            for (int i = 0; i < count; i++) {
+              size += com.google.protobuf.CodedOutputStream
+                .computeMessageSizeNoTag(sims_.get(i));
+            }
+            size += 1 * count;
+          }
       return size;
     }
     @java.lang.Override
@@ -9217,6 +11361,8 @@ public final class Device extends com.google.protobuf.GeneratedFile {
           != other.getSentLastHour()) return false;
       if (getPermissionsOk()
           != other.getPermissionsOk()) return false;
+      if (!getSimsList()
+          .equals(other.getSimsList())) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -9245,6 +11391,10 @@ public final class Device extends com.google.protobuf.GeneratedFile {
       hash = (37 * hash) + PERMISSIONS_OK_FIELD_NUMBER;
       hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
           getPermissionsOk());
+      if (getSimsCount() > 0) {
+        hash = (37 * hash) + SIMS_FIELD_NUMBER;
+        hash = (53 * hash) + getSimsList().hashCode();
+      }
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -9383,6 +11533,13 @@ public final class Device extends com.google.protobuf.GeneratedFile {
         simReady_ = false;
         sentLastHour_ = 0;
         permissionsOk_ = false;
+        if (simsBuilder_ == null) {
+          sims_ = java.util.Collections.emptyList();
+        } else {
+          sims_ = null;
+          simsBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000080);
         return this;
       }
 
@@ -9409,9 +11566,22 @@ public final class Device extends com.google.protobuf.GeneratedFile {
       @java.lang.Override
       public smsgateway.v1.Device.DeviceHealth buildPartial() {
         smsgateway.v1.Device.DeviceHealth result = new smsgateway.v1.Device.DeviceHealth(this);
+        buildPartialRepeatedFields(result);
         if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
+      }
+
+      private void buildPartialRepeatedFields(smsgateway.v1.Device.DeviceHealth result) {
+        if (simsBuilder_ == null) {
+          if (((bitField0_ & 0x00000080) != 0)) {
+            sims_ = java.util.Collections.unmodifiableList(sims_);
+            bitField0_ = (bitField0_ & ~0x00000080);
+          }
+          result.sims_ = sims_;
+        } else {
+          result.sims_ = simsBuilder_.build();
+        }
       }
 
       private void buildPartial0(smsgateway.v1.Device.DeviceHealth result) {
@@ -9474,6 +11644,32 @@ public final class Device extends com.google.protobuf.GeneratedFile {
         if (other.getPermissionsOk() != false) {
           setPermissionsOk(other.getPermissionsOk());
         }
+        if (simsBuilder_ == null) {
+          if (!other.sims_.isEmpty()) {
+            if (sims_.isEmpty()) {
+              sims_ = other.sims_;
+              bitField0_ = (bitField0_ & ~0x00000080);
+            } else {
+              ensureSimsIsMutable();
+              sims_.addAll(other.sims_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.sims_.isEmpty()) {
+            if (simsBuilder_.isEmpty()) {
+              simsBuilder_.dispose();
+              simsBuilder_ = null;
+              sims_ = other.sims_;
+              bitField0_ = (bitField0_ & ~0x00000080);
+              simsBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   internalGetSimsFieldBuilder() : null;
+            } else {
+              simsBuilder_.addAllMessages(other.sims_);
+            }
+          }
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
@@ -9535,6 +11731,19 @@ public final class Device extends com.google.protobuf.GeneratedFile {
                 bitField0_ |= 0x00000040;
                 break;
               } // case 56
+              case 66: {
+                smsgateway.v1.Device.SimHealth m =
+                    input.readMessage(
+                        smsgateway.v1.Device.SimHealth.parser(),
+                        extensionRegistry);
+                if (simsBuilder_ == null) {
+                  ensureSimsIsMutable();
+                  sims_.add(m);
+                } else {
+                  simsBuilder_.addMessage(m);
+                }
+                break;
+              } // case 66
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -9938,6 +12147,408 @@ public final class Device extends com.google.protobuf.GeneratedFile {
         return this;
       }
 
+      private java.util.List<smsgateway.v1.Device.SimHealth> sims_ =
+        java.util.Collections.emptyList();
+      private void ensureSimsIsMutable() {
+        if (!((bitField0_ & 0x00000080) != 0)) {
+          sims_ = new java.util.ArrayList<smsgateway.v1.Device.SimHealth>(sims_);
+          bitField0_ |= 0x00000080;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          smsgateway.v1.Device.SimHealth, smsgateway.v1.Device.SimHealth.Builder, smsgateway.v1.Device.SimHealthOrBuilder> simsBuilder_;
+
+      /**
+       * <pre>
+       * Per-SIM figures, when the handset has more than one.
+       *
+       * The fields above summarise the default SMS subscription, which is all a
+       * single-SIM phone has. These carry what differs between SIMs: signal is per
+       * radio, and the hourly count that matters for rate limiting is per SIM,
+       * because the carrier meters the SIM and not the handset.
+       * </pre>
+       *
+       * <code>repeated .smsgateway.v1.SimHealth sims = 8 [json_name = "sims"];</code>
+       */
+      public java.util.List<smsgateway.v1.Device.SimHealth> getSimsList() {
+        if (simsBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(sims_);
+        } else {
+          return simsBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <pre>
+       * Per-SIM figures, when the handset has more than one.
+       *
+       * The fields above summarise the default SMS subscription, which is all a
+       * single-SIM phone has. These carry what differs between SIMs: signal is per
+       * radio, and the hourly count that matters for rate limiting is per SIM,
+       * because the carrier meters the SIM and not the handset.
+       * </pre>
+       *
+       * <code>repeated .smsgateway.v1.SimHealth sims = 8 [json_name = "sims"];</code>
+       */
+      public int getSimsCount() {
+        if (simsBuilder_ == null) {
+          return sims_.size();
+        } else {
+          return simsBuilder_.getCount();
+        }
+      }
+      /**
+       * <pre>
+       * Per-SIM figures, when the handset has more than one.
+       *
+       * The fields above summarise the default SMS subscription, which is all a
+       * single-SIM phone has. These carry what differs between SIMs: signal is per
+       * radio, and the hourly count that matters for rate limiting is per SIM,
+       * because the carrier meters the SIM and not the handset.
+       * </pre>
+       *
+       * <code>repeated .smsgateway.v1.SimHealth sims = 8 [json_name = "sims"];</code>
+       */
+      public smsgateway.v1.Device.SimHealth getSims(int index) {
+        if (simsBuilder_ == null) {
+          return sims_.get(index);
+        } else {
+          return simsBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <pre>
+       * Per-SIM figures, when the handset has more than one.
+       *
+       * The fields above summarise the default SMS subscription, which is all a
+       * single-SIM phone has. These carry what differs between SIMs: signal is per
+       * radio, and the hourly count that matters for rate limiting is per SIM,
+       * because the carrier meters the SIM and not the handset.
+       * </pre>
+       *
+       * <code>repeated .smsgateway.v1.SimHealth sims = 8 [json_name = "sims"];</code>
+       */
+      public Builder setSims(
+          int index, smsgateway.v1.Device.SimHealth value) {
+        if (simsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureSimsIsMutable();
+          sims_.set(index, value);
+          onChanged();
+        } else {
+          simsBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Per-SIM figures, when the handset has more than one.
+       *
+       * The fields above summarise the default SMS subscription, which is all a
+       * single-SIM phone has. These carry what differs between SIMs: signal is per
+       * radio, and the hourly count that matters for rate limiting is per SIM,
+       * because the carrier meters the SIM and not the handset.
+       * </pre>
+       *
+       * <code>repeated .smsgateway.v1.SimHealth sims = 8 [json_name = "sims"];</code>
+       */
+      public Builder setSims(
+          int index, smsgateway.v1.Device.SimHealth.Builder builderForValue) {
+        if (simsBuilder_ == null) {
+          ensureSimsIsMutable();
+          sims_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          simsBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Per-SIM figures, when the handset has more than one.
+       *
+       * The fields above summarise the default SMS subscription, which is all a
+       * single-SIM phone has. These carry what differs between SIMs: signal is per
+       * radio, and the hourly count that matters for rate limiting is per SIM,
+       * because the carrier meters the SIM and not the handset.
+       * </pre>
+       *
+       * <code>repeated .smsgateway.v1.SimHealth sims = 8 [json_name = "sims"];</code>
+       */
+      public Builder addSims(smsgateway.v1.Device.SimHealth value) {
+        if (simsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureSimsIsMutable();
+          sims_.add(value);
+          onChanged();
+        } else {
+          simsBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Per-SIM figures, when the handset has more than one.
+       *
+       * The fields above summarise the default SMS subscription, which is all a
+       * single-SIM phone has. These carry what differs between SIMs: signal is per
+       * radio, and the hourly count that matters for rate limiting is per SIM,
+       * because the carrier meters the SIM and not the handset.
+       * </pre>
+       *
+       * <code>repeated .smsgateway.v1.SimHealth sims = 8 [json_name = "sims"];</code>
+       */
+      public Builder addSims(
+          int index, smsgateway.v1.Device.SimHealth value) {
+        if (simsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureSimsIsMutable();
+          sims_.add(index, value);
+          onChanged();
+        } else {
+          simsBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Per-SIM figures, when the handset has more than one.
+       *
+       * The fields above summarise the default SMS subscription, which is all a
+       * single-SIM phone has. These carry what differs between SIMs: signal is per
+       * radio, and the hourly count that matters for rate limiting is per SIM,
+       * because the carrier meters the SIM and not the handset.
+       * </pre>
+       *
+       * <code>repeated .smsgateway.v1.SimHealth sims = 8 [json_name = "sims"];</code>
+       */
+      public Builder addSims(
+          smsgateway.v1.Device.SimHealth.Builder builderForValue) {
+        if (simsBuilder_ == null) {
+          ensureSimsIsMutable();
+          sims_.add(builderForValue.build());
+          onChanged();
+        } else {
+          simsBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Per-SIM figures, when the handset has more than one.
+       *
+       * The fields above summarise the default SMS subscription, which is all a
+       * single-SIM phone has. These carry what differs between SIMs: signal is per
+       * radio, and the hourly count that matters for rate limiting is per SIM,
+       * because the carrier meters the SIM and not the handset.
+       * </pre>
+       *
+       * <code>repeated .smsgateway.v1.SimHealth sims = 8 [json_name = "sims"];</code>
+       */
+      public Builder addSims(
+          int index, smsgateway.v1.Device.SimHealth.Builder builderForValue) {
+        if (simsBuilder_ == null) {
+          ensureSimsIsMutable();
+          sims_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          simsBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Per-SIM figures, when the handset has more than one.
+       *
+       * The fields above summarise the default SMS subscription, which is all a
+       * single-SIM phone has. These carry what differs between SIMs: signal is per
+       * radio, and the hourly count that matters for rate limiting is per SIM,
+       * because the carrier meters the SIM and not the handset.
+       * </pre>
+       *
+       * <code>repeated .smsgateway.v1.SimHealth sims = 8 [json_name = "sims"];</code>
+       */
+      public Builder addAllSims(
+          java.lang.Iterable<? extends smsgateway.v1.Device.SimHealth> values) {
+        if (simsBuilder_ == null) {
+          ensureSimsIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, sims_);
+          onChanged();
+        } else {
+          simsBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Per-SIM figures, when the handset has more than one.
+       *
+       * The fields above summarise the default SMS subscription, which is all a
+       * single-SIM phone has. These carry what differs between SIMs: signal is per
+       * radio, and the hourly count that matters for rate limiting is per SIM,
+       * because the carrier meters the SIM and not the handset.
+       * </pre>
+       *
+       * <code>repeated .smsgateway.v1.SimHealth sims = 8 [json_name = "sims"];</code>
+       */
+      public Builder clearSims() {
+        if (simsBuilder_ == null) {
+          sims_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000080);
+          onChanged();
+        } else {
+          simsBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Per-SIM figures, when the handset has more than one.
+       *
+       * The fields above summarise the default SMS subscription, which is all a
+       * single-SIM phone has. These carry what differs between SIMs: signal is per
+       * radio, and the hourly count that matters for rate limiting is per SIM,
+       * because the carrier meters the SIM and not the handset.
+       * </pre>
+       *
+       * <code>repeated .smsgateway.v1.SimHealth sims = 8 [json_name = "sims"];</code>
+       */
+      public Builder removeSims(int index) {
+        if (simsBuilder_ == null) {
+          ensureSimsIsMutable();
+          sims_.remove(index);
+          onChanged();
+        } else {
+          simsBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Per-SIM figures, when the handset has more than one.
+       *
+       * The fields above summarise the default SMS subscription, which is all a
+       * single-SIM phone has. These carry what differs between SIMs: signal is per
+       * radio, and the hourly count that matters for rate limiting is per SIM,
+       * because the carrier meters the SIM and not the handset.
+       * </pre>
+       *
+       * <code>repeated .smsgateway.v1.SimHealth sims = 8 [json_name = "sims"];</code>
+       */
+      public smsgateway.v1.Device.SimHealth.Builder getSimsBuilder(
+          int index) {
+        return internalGetSimsFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <pre>
+       * Per-SIM figures, when the handset has more than one.
+       *
+       * The fields above summarise the default SMS subscription, which is all a
+       * single-SIM phone has. These carry what differs between SIMs: signal is per
+       * radio, and the hourly count that matters for rate limiting is per SIM,
+       * because the carrier meters the SIM and not the handset.
+       * </pre>
+       *
+       * <code>repeated .smsgateway.v1.SimHealth sims = 8 [json_name = "sims"];</code>
+       */
+      public smsgateway.v1.Device.SimHealthOrBuilder getSimsOrBuilder(
+          int index) {
+        if (simsBuilder_ == null) {
+          return sims_.get(index);  } else {
+          return simsBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <pre>
+       * Per-SIM figures, when the handset has more than one.
+       *
+       * The fields above summarise the default SMS subscription, which is all a
+       * single-SIM phone has. These carry what differs between SIMs: signal is per
+       * radio, and the hourly count that matters for rate limiting is per SIM,
+       * because the carrier meters the SIM and not the handset.
+       * </pre>
+       *
+       * <code>repeated .smsgateway.v1.SimHealth sims = 8 [json_name = "sims"];</code>
+       */
+      public java.util.List<? extends smsgateway.v1.Device.SimHealthOrBuilder> 
+           getSimsOrBuilderList() {
+        if (simsBuilder_ != null) {
+          return simsBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(sims_);
+        }
+      }
+      /**
+       * <pre>
+       * Per-SIM figures, when the handset has more than one.
+       *
+       * The fields above summarise the default SMS subscription, which is all a
+       * single-SIM phone has. These carry what differs between SIMs: signal is per
+       * radio, and the hourly count that matters for rate limiting is per SIM,
+       * because the carrier meters the SIM and not the handset.
+       * </pre>
+       *
+       * <code>repeated .smsgateway.v1.SimHealth sims = 8 [json_name = "sims"];</code>
+       */
+      public smsgateway.v1.Device.SimHealth.Builder addSimsBuilder() {
+        return internalGetSimsFieldBuilder().addBuilder(
+            smsgateway.v1.Device.SimHealth.getDefaultInstance());
+      }
+      /**
+       * <pre>
+       * Per-SIM figures, when the handset has more than one.
+       *
+       * The fields above summarise the default SMS subscription, which is all a
+       * single-SIM phone has. These carry what differs between SIMs: signal is per
+       * radio, and the hourly count that matters for rate limiting is per SIM,
+       * because the carrier meters the SIM and not the handset.
+       * </pre>
+       *
+       * <code>repeated .smsgateway.v1.SimHealth sims = 8 [json_name = "sims"];</code>
+       */
+      public smsgateway.v1.Device.SimHealth.Builder addSimsBuilder(
+          int index) {
+        return internalGetSimsFieldBuilder().addBuilder(
+            index, smsgateway.v1.Device.SimHealth.getDefaultInstance());
+      }
+      /**
+       * <pre>
+       * Per-SIM figures, when the handset has more than one.
+       *
+       * The fields above summarise the default SMS subscription, which is all a
+       * single-SIM phone has. These carry what differs between SIMs: signal is per
+       * radio, and the hourly count that matters for rate limiting is per SIM,
+       * because the carrier meters the SIM and not the handset.
+       * </pre>
+       *
+       * <code>repeated .smsgateway.v1.SimHealth sims = 8 [json_name = "sims"];</code>
+       */
+      public java.util.List<smsgateway.v1.Device.SimHealth.Builder> 
+           getSimsBuilderList() {
+        return internalGetSimsFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          smsgateway.v1.Device.SimHealth, smsgateway.v1.Device.SimHealth.Builder, smsgateway.v1.Device.SimHealthOrBuilder> 
+          internalGetSimsFieldBuilder() {
+        if (simsBuilder_ == null) {
+          simsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              smsgateway.v1.Device.SimHealth, smsgateway.v1.Device.SimHealth.Builder, smsgateway.v1.Device.SimHealthOrBuilder>(
+                  sims_,
+                  ((bitField0_ & 0x00000080) != 0),
+                  getParentForChildren(),
+                  isClean());
+          sims_ = null;
+        }
+        return simsBuilder_;
+      }
+
       // @@protoc_insertion_point(builder_scope:smsgateway.v1.DeviceHealth)
     }
 
@@ -9989,6 +12600,746 @@ public final class Device extends com.google.protobuf.GeneratedFile {
 
   }
 
+  public interface SimHealthOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:smsgateway.v1.SimHealth)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * Matches SimInfo.subscription_id.
+     * </pre>
+     *
+     * <code>int32 subscription_id = 1 [json_name = "subscriptionId"];</code>
+     * @return The subscriptionId.
+     */
+    int getSubscriptionId();
+
+    /**
+     * <pre>
+     * Normalized 0-4, same scale and same reason as the field above.
+     * </pre>
+     *
+     * <code>int32 signal_strength = 2 [json_name = "signalStrength"];</code>
+     * @return The signalStrength.
+     */
+    int getSignalStrength();
+
+    /**
+     * <code>bool sim_ready = 3 [json_name = "simReady"];</code>
+     * @return The simReady.
+     */
+    boolean getSimReady();
+
+    /**
+     * <pre>
+     * SMS parts sent from this SIM in the trailing hour. The per-device total
+     * above is the sum, and it is the wrong number to rate limit on: two SIMs
+     * each at their carrier's ceiling look like one device at twice the limit.
+     * </pre>
+     *
+     * <code>int32 sent_last_hour = 4 [json_name = "sentLastHour"];</code>
+     * @return The sentLastHour.
+     */
+    int getSentLastHour();
+  }
+  /**
+   * <pre>
+   * The changing half of a SIM. Identity lives in SimInfo; this is what a
+   * heartbeat refreshes.
+   * </pre>
+   *
+   * Protobuf type {@code smsgateway.v1.SimHealth}
+   */
+  public static final class SimHealth extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:smsgateway.v1.SimHealth)
+      SimHealthOrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 35,
+        /* patch= */ 1,
+        /* suffix= */ "",
+        "SimHealth");
+    }
+    // Use SimHealth.newBuilder() to construct.
+    private SimHealth(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private SimHealth() {
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return smsgateway.v1.Device.internal_static_smsgateway_v1_SimHealth_descriptor;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+      return smsgateway.v1.Device.internal_static_smsgateway_v1_SimHealth_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return smsgateway.v1.Device.internal_static_smsgateway_v1_SimHealth_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              smsgateway.v1.Device.SimHealth.class, smsgateway.v1.Device.SimHealth.Builder.class);
+    }
+
+    public static final int SUBSCRIPTION_ID_FIELD_NUMBER = 1;
+    private int subscriptionId_ = 0;
+    /**
+     * <pre>
+     * Matches SimInfo.subscription_id.
+     * </pre>
+     *
+     * <code>int32 subscription_id = 1 [json_name = "subscriptionId"];</code>
+     * @return The subscriptionId.
+     */
+    @java.lang.Override
+    public int getSubscriptionId() {
+      return subscriptionId_;
+    }
+
+    public static final int SIGNAL_STRENGTH_FIELD_NUMBER = 2;
+    private int signalStrength_ = 0;
+    /**
+     * <pre>
+     * Normalized 0-4, same scale and same reason as the field above.
+     * </pre>
+     *
+     * <code>int32 signal_strength = 2 [json_name = "signalStrength"];</code>
+     * @return The signalStrength.
+     */
+    @java.lang.Override
+    public int getSignalStrength() {
+      return signalStrength_;
+    }
+
+    public static final int SIM_READY_FIELD_NUMBER = 3;
+    private boolean simReady_ = false;
+    /**
+     * <code>bool sim_ready = 3 [json_name = "simReady"];</code>
+     * @return The simReady.
+     */
+    @java.lang.Override
+    public boolean getSimReady() {
+      return simReady_;
+    }
+
+    public static final int SENT_LAST_HOUR_FIELD_NUMBER = 4;
+    private int sentLastHour_ = 0;
+    /**
+     * <pre>
+     * SMS parts sent from this SIM in the trailing hour. The per-device total
+     * above is the sum, and it is the wrong number to rate limit on: two SIMs
+     * each at their carrier's ceiling look like one device at twice the limit.
+     * </pre>
+     *
+     * <code>int32 sent_last_hour = 4 [json_name = "sentLastHour"];</code>
+     * @return The sentLastHour.
+     */
+    @java.lang.Override
+    public int getSentLastHour() {
+      return sentLastHour_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (subscriptionId_ != 0) {
+        output.writeInt32(1, subscriptionId_);
+      }
+      if (signalStrength_ != 0) {
+        output.writeInt32(2, signalStrength_);
+      }
+      if (simReady_ != false) {
+        output.writeBool(3, simReady_);
+      }
+      if (sentLastHour_ != 0) {
+        output.writeInt32(4, sentLastHour_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+    private int computeSerializedSize_0() {
+      int size = 0;
+      if (subscriptionId_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, subscriptionId_);
+      }
+      if (signalStrength_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, signalStrength_);
+      }
+      if (simReady_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(3, simReady_);
+      }
+      if (sentLastHour_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(4, sentLastHour_);
+      }
+      return size;
+    }
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += computeSerializedSize_0();
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof smsgateway.v1.Device.SimHealth)) {
+        return super.equals(obj);
+      }
+      smsgateway.v1.Device.SimHealth other = (smsgateway.v1.Device.SimHealth) obj;
+
+      if (getSubscriptionId()
+          != other.getSubscriptionId()) return false;
+      if (getSignalStrength()
+          != other.getSignalStrength()) return false;
+      if (getSimReady()
+          != other.getSimReady()) return false;
+      if (getSentLastHour()
+          != other.getSentLastHour()) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + SUBSCRIPTION_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getSubscriptionId();
+      hash = (37 * hash) + SIGNAL_STRENGTH_FIELD_NUMBER;
+      hash = (53 * hash) + getSignalStrength();
+      hash = (37 * hash) + SIM_READY_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getSimReady());
+      hash = (37 * hash) + SENT_LAST_HOUR_FIELD_NUMBER;
+      hash = (53 * hash) + getSentLastHour();
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static smsgateway.v1.Device.SimHealth parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static smsgateway.v1.Device.SimHealth parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static smsgateway.v1.Device.SimHealth parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static smsgateway.v1.Device.SimHealth parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static smsgateway.v1.Device.SimHealth parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static smsgateway.v1.Device.SimHealth parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static smsgateway.v1.Device.SimHealth parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static smsgateway.v1.Device.SimHealth parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static smsgateway.v1.Device.SimHealth parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static smsgateway.v1.Device.SimHealth parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static smsgateway.v1.Device.SimHealth parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static smsgateway.v1.Device.SimHealth parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(smsgateway.v1.Device.SimHealth prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * The changing half of a SIM. Identity lives in SimInfo; this is what a
+     * heartbeat refreshes.
+     * </pre>
+     *
+     * Protobuf type {@code smsgateway.v1.SimHealth}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:smsgateway.v1.SimHealth)
+        smsgateway.v1.Device.SimHealthOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return smsgateway.v1.Device.internal_static_smsgateway_v1_SimHealth_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return smsgateway.v1.Device.internal_static_smsgateway_v1_SimHealth_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                smsgateway.v1.Device.SimHealth.class, smsgateway.v1.Device.SimHealth.Builder.class);
+      }
+
+      // Construct using smsgateway.v1.Device.SimHealth.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        subscriptionId_ = 0;
+        signalStrength_ = 0;
+        simReady_ = false;
+        sentLastHour_ = 0;
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return smsgateway.v1.Device.internal_static_smsgateway_v1_SimHealth_descriptor;
+      }
+
+      @java.lang.Override
+      public smsgateway.v1.Device.SimHealth getDefaultInstanceForType() {
+        return smsgateway.v1.Device.SimHealth.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public smsgateway.v1.Device.SimHealth build() {
+        smsgateway.v1.Device.SimHealth result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public smsgateway.v1.Device.SimHealth buildPartial() {
+        smsgateway.v1.Device.SimHealth result = new smsgateway.v1.Device.SimHealth(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(smsgateway.v1.Device.SimHealth result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.subscriptionId_ = subscriptionId_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.signalStrength_ = signalStrength_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.simReady_ = simReady_;
+        }
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.sentLastHour_ = sentLastHour_;
+        }
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof smsgateway.v1.Device.SimHealth) {
+          return mergeFrom((smsgateway.v1.Device.SimHealth)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(smsgateway.v1.Device.SimHealth other) {
+        if (other == smsgateway.v1.Device.SimHealth.getDefaultInstance()) return this;
+        if (other.getSubscriptionId() != 0) {
+          setSubscriptionId(other.getSubscriptionId());
+        }
+        if (other.getSignalStrength() != 0) {
+          setSignalStrength(other.getSignalStrength());
+        }
+        if (other.getSimReady() != false) {
+          setSimReady(other.getSimReady());
+        }
+        if (other.getSentLastHour() != 0) {
+          setSentLastHour(other.getSentLastHour());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 8: {
+                subscriptionId_ = input.readInt32();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 8
+              case 16: {
+                signalStrength_ = input.readInt32();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 16
+              case 24: {
+                simReady_ = input.readBool();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 24
+              case 32: {
+                sentLastHour_ = input.readInt32();
+                bitField0_ |= 0x00000008;
+                break;
+              } // case 32
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private int subscriptionId_ ;
+      /**
+       * <pre>
+       * Matches SimInfo.subscription_id.
+       * </pre>
+       *
+       * <code>int32 subscription_id = 1 [json_name = "subscriptionId"];</code>
+       * @return The subscriptionId.
+       */
+      @java.lang.Override
+      public int getSubscriptionId() {
+        return subscriptionId_;
+      }
+      /**
+       * <pre>
+       * Matches SimInfo.subscription_id.
+       * </pre>
+       *
+       * <code>int32 subscription_id = 1 [json_name = "subscriptionId"];</code>
+       * @param value The subscriptionId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSubscriptionId(int value) {
+
+        subscriptionId_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Matches SimInfo.subscription_id.
+       * </pre>
+       *
+       * <code>int32 subscription_id = 1 [json_name = "subscriptionId"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSubscriptionId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        subscriptionId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int signalStrength_ ;
+      /**
+       * <pre>
+       * Normalized 0-4, same scale and same reason as the field above.
+       * </pre>
+       *
+       * <code>int32 signal_strength = 2 [json_name = "signalStrength"];</code>
+       * @return The signalStrength.
+       */
+      @java.lang.Override
+      public int getSignalStrength() {
+        return signalStrength_;
+      }
+      /**
+       * <pre>
+       * Normalized 0-4, same scale and same reason as the field above.
+       * </pre>
+       *
+       * <code>int32 signal_strength = 2 [json_name = "signalStrength"];</code>
+       * @param value The signalStrength to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSignalStrength(int value) {
+
+        signalStrength_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Normalized 0-4, same scale and same reason as the field above.
+       * </pre>
+       *
+       * <code>int32 signal_strength = 2 [json_name = "signalStrength"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSignalStrength() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        signalStrength_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private boolean simReady_ ;
+      /**
+       * <code>bool sim_ready = 3 [json_name = "simReady"];</code>
+       * @return The simReady.
+       */
+      @java.lang.Override
+      public boolean getSimReady() {
+        return simReady_;
+      }
+      /**
+       * <code>bool sim_ready = 3 [json_name = "simReady"];</code>
+       * @param value The simReady to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSimReady(boolean value) {
+
+        simReady_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>bool sim_ready = 3 [json_name = "simReady"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSimReady() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        simReady_ = false;
+        onChanged();
+        return this;
+      }
+
+      private int sentLastHour_ ;
+      /**
+       * <pre>
+       * SMS parts sent from this SIM in the trailing hour. The per-device total
+       * above is the sum, and it is the wrong number to rate limit on: two SIMs
+       * each at their carrier's ceiling look like one device at twice the limit.
+       * </pre>
+       *
+       * <code>int32 sent_last_hour = 4 [json_name = "sentLastHour"];</code>
+       * @return The sentLastHour.
+       */
+      @java.lang.Override
+      public int getSentLastHour() {
+        return sentLastHour_;
+      }
+      /**
+       * <pre>
+       * SMS parts sent from this SIM in the trailing hour. The per-device total
+       * above is the sum, and it is the wrong number to rate limit on: two SIMs
+       * each at their carrier's ceiling look like one device at twice the limit.
+       * </pre>
+       *
+       * <code>int32 sent_last_hour = 4 [json_name = "sentLastHour"];</code>
+       * @param value The sentLastHour to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSentLastHour(int value) {
+
+        sentLastHour_ = value;
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * SMS parts sent from this SIM in the trailing hour. The per-device total
+       * above is the sum, and it is the wrong number to rate limit on: two SIMs
+       * each at their carrier's ceiling look like one device at twice the limit.
+       * </pre>
+       *
+       * <code>int32 sent_last_hour = 4 [json_name = "sentLastHour"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSentLastHour() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        sentLastHour_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:smsgateway.v1.SimHealth)
+    }
+
+    // @@protoc_insertion_point(class_scope:smsgateway.v1.SimHealth)
+    private static final smsgateway.v1.Device.SimHealth DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new smsgateway.v1.Device.SimHealth();
+    }
+
+    public static smsgateway.v1.Device.SimHealth getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<SimHealth>
+        PARSER = new com.google.protobuf.AbstractParser<SimHealth>() {
+      @java.lang.Override
+      public SimHealth parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<SimHealth> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<SimHealth> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public smsgateway.v1.Device.SimHealth getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   public interface JobAckOrBuilder extends
       // @@protoc_insertion_point(interface_extends:smsgateway.v1.JobAck)
       com.google.protobuf.MessageOrBuilder {
@@ -10035,6 +13386,25 @@ public final class Device extends com.google.protobuf.GeneratedFile {
      */
     com.google.protobuf.ByteString
         getReasonBytes();
+
+    /**
+     * <pre>
+     * Whether retrying could ever help.
+     *
+     * Some refusals will not change by waiting: a SIM the handset does not have,
+     * a recipient the job never carried, a deadline already past. Releasing
+     * those back to the queue burns the job's attempts on a device that will
+     * refuse identically every time, and the caller ends up with a generic
+     * "too many attempts" instead of the reason the agent already knew.
+     *
+     * Default false means transient, which is how every refusal behaved before
+     * this field existed — an agent that does not set it keeps working.
+     * </pre>
+     *
+     * <code>bool permanent = 4 [json_name = "permanent"];</code>
+     * @return The permanent.
+     */
+    boolean getPermanent();
   }
   /**
    * <pre>
@@ -10189,6 +13559,30 @@ public final class Device extends com.google.protobuf.GeneratedFile {
       }
     }
 
+    public static final int PERMANENT_FIELD_NUMBER = 4;
+    private boolean permanent_ = false;
+    /**
+     * <pre>
+     * Whether retrying could ever help.
+     *
+     * Some refusals will not change by waiting: a SIM the handset does not have,
+     * a recipient the job never carried, a deadline already past. Releasing
+     * those back to the queue burns the job's attempts on a device that will
+     * refuse identically every time, and the caller ends up with a generic
+     * "too many attempts" instead of the reason the agent already knew.
+     *
+     * Default false means transient, which is how every refusal behaved before
+     * this field existed — an agent that does not set it keeps working.
+     * </pre>
+     *
+     * <code>bool permanent = 4 [json_name = "permanent"];</code>
+     * @return The permanent.
+     */
+    @java.lang.Override
+    public boolean getPermanent() {
+      return permanent_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -10212,6 +13606,9 @@ public final class Device extends com.google.protobuf.GeneratedFile {
       if (!com.google.protobuf.GeneratedMessage.isStringEmpty(reason_)) {
         com.google.protobuf.GeneratedMessage.writeString(output, 3, reason_);
       }
+      if (permanent_ != false) {
+        output.writeBool(4, permanent_);
+      }
       getUnknownFields().writeTo(output);
     }
     private int computeSerializedSize_0() {
@@ -10225,6 +13622,10 @@ public final class Device extends com.google.protobuf.GeneratedFile {
       }
       if (!com.google.protobuf.GeneratedMessage.isStringEmpty(reason_)) {
         size += com.google.protobuf.GeneratedMessage.computeStringSize(3, reason_);
+      }
+      if (permanent_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(4, permanent_);
       }
       return size;
     }
@@ -10256,6 +13657,8 @@ public final class Device extends com.google.protobuf.GeneratedFile {
           != other.getAccepted()) return false;
       if (!getReason()
           .equals(other.getReason())) return false;
+      if (getPermanent()
+          != other.getPermanent()) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -10274,6 +13677,9 @@ public final class Device extends com.google.protobuf.GeneratedFile {
           getAccepted());
       hash = (37 * hash) + REASON_FIELD_NUMBER;
       hash = (53 * hash) + getReason().hashCode();
+      hash = (37 * hash) + PERMANENT_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getPermanent());
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -10415,6 +13821,7 @@ public final class Device extends com.google.protobuf.GeneratedFile {
         jobId_ = "";
         accepted_ = false;
         reason_ = "";
+        permanent_ = false;
         return this;
       }
 
@@ -10457,6 +13864,9 @@ public final class Device extends com.google.protobuf.GeneratedFile {
         if (((from_bitField0_ & 0x00000004) != 0)) {
           result.reason_ = reason_;
         }
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.permanent_ = permanent_;
+        }
       }
 
       @java.lang.Override
@@ -10483,6 +13893,9 @@ public final class Device extends com.google.protobuf.GeneratedFile {
           reason_ = other.reason_;
           bitField0_ |= 0x00000004;
           onChanged();
+        }
+        if (other.getPermanent() != false) {
+          setPermanent(other.getPermanent());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
@@ -10525,6 +13938,11 @@ public final class Device extends com.google.protobuf.GeneratedFile {
                 bitField0_ |= 0x00000004;
                 break;
               } // case 26
+              case 32: {
+                permanent_ = input.readBool();
+                bitField0_ |= 0x00000008;
+                break;
+              } // case 32
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -10749,6 +14167,77 @@ public final class Device extends com.google.protobuf.GeneratedFile {
         checkByteStringIsUtf8(value);
         reason_ = value;
         bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+
+      private boolean permanent_ ;
+      /**
+       * <pre>
+       * Whether retrying could ever help.
+       *
+       * Some refusals will not change by waiting: a SIM the handset does not have,
+       * a recipient the job never carried, a deadline already past. Releasing
+       * those back to the queue burns the job's attempts on a device that will
+       * refuse identically every time, and the caller ends up with a generic
+       * "too many attempts" instead of the reason the agent already knew.
+       *
+       * Default false means transient, which is how every refusal behaved before
+       * this field existed — an agent that does not set it keeps working.
+       * </pre>
+       *
+       * <code>bool permanent = 4 [json_name = "permanent"];</code>
+       * @return The permanent.
+       */
+      @java.lang.Override
+      public boolean getPermanent() {
+        return permanent_;
+      }
+      /**
+       * <pre>
+       * Whether retrying could ever help.
+       *
+       * Some refusals will not change by waiting: a SIM the handset does not have,
+       * a recipient the job never carried, a deadline already past. Releasing
+       * those back to the queue burns the job's attempts on a device that will
+       * refuse identically every time, and the caller ends up with a generic
+       * "too many attempts" instead of the reason the agent already knew.
+       *
+       * Default false means transient, which is how every refusal behaved before
+       * this field existed — an agent that does not set it keeps working.
+       * </pre>
+       *
+       * <code>bool permanent = 4 [json_name = "permanent"];</code>
+       * @param value The permanent to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPermanent(boolean value) {
+
+        permanent_ = value;
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Whether retrying could ever help.
+       *
+       * Some refusals will not change by waiting: a SIM the handset does not have,
+       * a recipient the job never carried, a deadline already past. Releasing
+       * those back to the queue burns the job's attempts on a device that will
+       * refuse identically every time, and the caller ends up with a generic
+       * "too many attempts" instead of the reason the agent already knew.
+       *
+       * Default false means transient, which is how every refusal behaved before
+       * this field existed — an agent that does not set it keeps working.
+       * </pre>
+       *
+       * <code>bool permanent = 4 [json_name = "permanent"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearPermanent() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        permanent_ = false;
         onChanged();
         return this;
       }
@@ -13355,6 +16844,24 @@ public final class Device extends com.google.protobuf.GeneratedFile {
      * <code>.google.protobuf.Timestamp expires_at = 5 [json_name = "expiresAt"];</code>
      */
     com.google.protobuf.TimestampOrBuilder getExpiresAtOrBuilder();
+
+    /**
+     * <pre>
+     * Which SIM to send from, matching a SimInfo.subscription_id the device
+     * reported. Zero means "the handset's default SMS subscription", which is
+     * what every job carried before this field existed and what a single-SIM
+     * phone always uses.
+     *
+     * A named subscription the device does not have is refused in JobAck rather
+     * than quietly sent from another SIM: the recipient sees the sender's
+     * number, and silently changing it would bill the wrong SIM and break any
+     * reply the caller expected.
+     * </pre>
+     *
+     * <code>int32 subscription_id = 6 [json_name = "subscriptionId"];</code>
+     * @return The subscriptionId.
+     */
+    int getSubscriptionId();
   }
   /**
    * Protobuf type {@code smsgateway.v1.SendSmsJob}
@@ -13607,6 +17114,29 @@ public final class Device extends com.google.protobuf.GeneratedFile {
       return expiresAt_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : expiresAt_;
     }
 
+    public static final int SUBSCRIPTION_ID_FIELD_NUMBER = 6;
+    private int subscriptionId_ = 0;
+    /**
+     * <pre>
+     * Which SIM to send from, matching a SimInfo.subscription_id the device
+     * reported. Zero means "the handset's default SMS subscription", which is
+     * what every job carried before this field existed and what a single-SIM
+     * phone always uses.
+     *
+     * A named subscription the device does not have is refused in JobAck rather
+     * than quietly sent from another SIM: the recipient sees the sender's
+     * number, and silently changing it would bill the wrong SIM and break any
+     * reply the caller expected.
+     * </pre>
+     *
+     * <code>int32 subscription_id = 6 [json_name = "subscriptionId"];</code>
+     * @return The subscriptionId.
+     */
+    @java.lang.Override
+    public int getSubscriptionId() {
+      return subscriptionId_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -13636,6 +17166,9 @@ public final class Device extends com.google.protobuf.GeneratedFile {
       if (((bitField0_ & 0x00000001) != 0)) {
         output.writeMessage(5, getExpiresAt());
       }
+      if (subscriptionId_ != 0) {
+        output.writeInt32(6, subscriptionId_);
+      }
       getUnknownFields().writeTo(output);
     }
     private int computeSerializedSize_0() {
@@ -13656,6 +17189,10 @@ public final class Device extends com.google.protobuf.GeneratedFile {
       if (((bitField0_ & 0x00000001) != 0)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(5, getExpiresAt());
+      }
+      if (subscriptionId_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(6, subscriptionId_);
       }
       return size;
     }
@@ -13694,6 +17231,8 @@ public final class Device extends com.google.protobuf.GeneratedFile {
         if (!getExpiresAt()
             .equals(other.getExpiresAt())) return false;
       }
+      if (getSubscriptionId()
+          != other.getSubscriptionId()) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -13717,6 +17256,8 @@ public final class Device extends com.google.protobuf.GeneratedFile {
         hash = (37 * hash) + EXPIRES_AT_FIELD_NUMBER;
         hash = (53 * hash) + getExpiresAt().hashCode();
       }
+      hash = (37 * hash) + SUBSCRIPTION_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getSubscriptionId();
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -13863,6 +17404,7 @@ public final class Device extends com.google.protobuf.GeneratedFile {
           expiresAtBuilder_.dispose();
           expiresAtBuilder_ = null;
         }
+        subscriptionId_ = 0;
         return this;
       }
 
@@ -13915,6 +17457,9 @@ public final class Device extends com.google.protobuf.GeneratedFile {
               : expiresAtBuilder_.build();
           to_bitField0_ |= 0x00000001;
         }
+        if (((from_bitField0_ & 0x00000020) != 0)) {
+          result.subscriptionId_ = subscriptionId_;
+        }
         result.bitField0_ |= to_bitField0_;
       }
 
@@ -13950,6 +17495,9 @@ public final class Device extends com.google.protobuf.GeneratedFile {
         }
         if (other.hasExpiresAt()) {
           mergeExpiresAt(other.getExpiresAt());
+        }
+        if (other.getSubscriptionId() != 0) {
+          setSubscriptionId(other.getSubscriptionId());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
@@ -14004,6 +17552,11 @@ public final class Device extends com.google.protobuf.GeneratedFile {
                 bitField0_ |= 0x00000010;
                 break;
               } // case 42
+              case 48: {
+                subscriptionId_ = input.readInt32();
+                bitField0_ |= 0x00000020;
+                break;
+              } // case 48
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -14527,6 +18080,74 @@ public final class Device extends com.google.protobuf.GeneratedFile {
           expiresAt_ = null;
         }
         return expiresAtBuilder_;
+      }
+
+      private int subscriptionId_ ;
+      /**
+       * <pre>
+       * Which SIM to send from, matching a SimInfo.subscription_id the device
+       * reported. Zero means "the handset's default SMS subscription", which is
+       * what every job carried before this field existed and what a single-SIM
+       * phone always uses.
+       *
+       * A named subscription the device does not have is refused in JobAck rather
+       * than quietly sent from another SIM: the recipient sees the sender's
+       * number, and silently changing it would bill the wrong SIM and break any
+       * reply the caller expected.
+       * </pre>
+       *
+       * <code>int32 subscription_id = 6 [json_name = "subscriptionId"];</code>
+       * @return The subscriptionId.
+       */
+      @java.lang.Override
+      public int getSubscriptionId() {
+        return subscriptionId_;
+      }
+      /**
+       * <pre>
+       * Which SIM to send from, matching a SimInfo.subscription_id the device
+       * reported. Zero means "the handset's default SMS subscription", which is
+       * what every job carried before this field existed and what a single-SIM
+       * phone always uses.
+       *
+       * A named subscription the device does not have is refused in JobAck rather
+       * than quietly sent from another SIM: the recipient sees the sender's
+       * number, and silently changing it would bill the wrong SIM and break any
+       * reply the caller expected.
+       * </pre>
+       *
+       * <code>int32 subscription_id = 6 [json_name = "subscriptionId"];</code>
+       * @param value The subscriptionId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSubscriptionId(int value) {
+
+        subscriptionId_ = value;
+        bitField0_ |= 0x00000020;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Which SIM to send from, matching a SimInfo.subscription_id the device
+       * reported. Zero means "the handset's default SMS subscription", which is
+       * what every job carried before this field existed and what a single-SIM
+       * phone always uses.
+       *
+       * A named subscription the device does not have is refused in JobAck rather
+       * than quietly sent from another SIM: the recipient sees the sender's
+       * number, and silently changing it would bill the wrong SIM and break any
+       * reply the caller expected.
+       * </pre>
+       *
+       * <code>int32 subscription_id = 6 [json_name = "subscriptionId"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSubscriptionId() {
+        bitField0_ = (bitField0_ & ~0x00000020);
+        subscriptionId_ = 0;
+        onChanged();
+        return this;
       }
 
       // @@protoc_insertion_point(builder_scope:smsgateway.v1.SendSmsJob)
@@ -15500,6 +19121,11 @@ public final class Device extends com.google.protobuf.GeneratedFile {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_smsgateway_v1_DeviceInfo_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_smsgateway_v1_SimInfo_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_smsgateway_v1_SimInfo_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_smsgateway_v1_DeviceMessage_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -15524,6 +19150,11 @@ public final class Device extends com.google.protobuf.GeneratedFile {
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_smsgateway_v1_DeviceHealth_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_smsgateway_v1_SimHealth_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_smsgateway_v1_SimHealth_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_smsgateway_v1_JobAck_descriptor;
   private static final 
@@ -15569,71 +19200,84 @@ public final class Device extends com.google.protobuf.GeneratedFile {
       "\017enrollmentToken\022:\n\013device_info\030\002 \001(\0132\031." +
       "smsgateway.v1.DeviceInfoR\ndeviceInfo\"P\n\016" +
       "EnrollResponse\022\033\n\tdevice_id\030\001 \001(\tR\010devic" +
-      "eId\022!\n\014device_token\030\002 \001(\tR\013deviceToken\"\335" +
-      "\001\n\nDeviceInfo\022\024\n\005label\030\001 \001(\tR\005label\022!\n\014p" +
+      "eId\022!\n\014device_token\030\002 \001(\tR\013deviceToken\"\211" +
+      "\002\n\nDeviceInfo\022\024\n\005label\030\001 \001(\tR\005label\022!\n\014p" +
       "hone_number\030\002 \001(\tR\013phoneNumber\022\"\n\014manufa" +
       "cturer\030\003 \001(\tR\014manufacturer\022\024\n\005model\030\004 \001(" +
       "\tR\005model\022\035\n\nos_version\030\005 \001(\tR\tosVersion\022" +
       "#\n\ragent_version\030\006 \001(\tR\014agentVersion\022\030\n\007" +
-      "carrier\030\007 \001(\tR\007carrier\"\357\002\n\rDeviceMessage" +
-      "\022\035\n\nmessage_id\030\001 \001(\tR\tmessageId\022!\n\014devic" +
-      "e_token\030\002 \001(\tR\013deviceToken\0223\n\007sent_at\030\003 " +
-      "\001(\0132\032.google.protobuf.TimestampR\006sentAt\022" +
-      "5\n\010register\030\n \001(\0132\027.smsgateway.v1.Regist" +
-      "erH\000R\010register\0228\n\theartbeat\030\013 \001(\0132\030.smsg" +
-      "ateway.v1.HeartbeatH\000R\theartbeat\0220\n\007job_" +
-      "ack\030\014 \001(\0132\025.smsgateway.v1.JobAckH\000R\006jobA" +
-      "ck\0229\n\njob_result\030\r \001(\0132\030.smsgateway.v1.J" +
-      "obResultH\000R\tjobResultB\t\n\007payload\"\324\002\n\rSer" +
-      "verMessage\022\035\n\nmessage_id\030\001 \001(\tR\tmessageI" +
-      "d\0223\n\007sent_at\030\002 \001(\0132\032.google.protobuf.Tim" +
-      "estampR\006sentAt\022?\n\014register_ack\030\n \001(\0132\032.s" +
-      "msgateway.v1.RegisterAckH\000R\013registerAck\022" +
-      "=\n\014send_sms_job\030\013 \001(\0132\031.smsgateway.v1.Se" +
-      "ndSmsJobH\000R\nsendSmsJob\0229\n\ncancel_job\030\014 \001" +
-      "(\0132\030.smsgateway.v1.CancelJobH\000R\tcancelJo" +
-      "b\022)\n\004ping\030\r \001(\0132\023.smsgateway.v1.PingH\000R\004" +
-      "pingB\t\n\007payload\"\243\001\n\010Register\022:\n\013device_i" +
-      "nfo\030\001 \001(\0132\031.smsgateway.v1.DeviceInfoR\nde" +
-      "viceInfo\0223\n\006health\030\002 \001(\0132\033.smsgateway.v1" +
-      ".DeviceHealthR\006health\022&\n\017pending_job_ids" +
-      "\030\003 \003(\tR\rpendingJobIds\"@\n\tHeartbeat\0223\n\006he" +
-      "alth\030\001 \001(\0132\033.smsgateway.v1.DeviceHealthR" +
-      "\006health\"\212\002\n\014DeviceHealth\022#\n\rbattery_leve" +
-      "l\030\001 \001(\005R\014batteryLevel\022\037\n\013is_charging\030\002 \001" +
-      "(\010R\nisCharging\022\'\n\017signal_strength\030\003 \001(\005R" +
-      "\016signalStrength\022!\n\014network_type\030\004 \001(\tR\013n" +
-      "etworkType\022\033\n\tsim_ready\030\005 \001(\010R\010simReady\022" +
-      "$\n\016sent_last_hour\030\006 \001(\005R\014sentLastHour\022%\n" +
-      "\016permissions_ok\030\007 \001(\010R\rpermissionsOk\"S\n\006" +
-      "JobAck\022\025\n\006job_id\030\001 \001(\tR\005jobId\022\032\n\010accepte" +
-      "d\030\002 \001(\010R\010accepted\022\026\n\006reason\030\003 \001(\tR\006reaso" +
-      "n\"\366\001\n\tJobResult\022\025\n\006job_id\030\001 \001(\tR\005jobId\0220" +
-      "\n\006status\030\002 \001(\0162\030.smsgateway.v1.JobStatus" +
-      "R\006status\022\035\n\nerror_code\030\003 \001(\tR\terrorCode\022" +
-      "#\n\rerror_message\030\004 \001(\tR\014errorMessage\022\035\n\n" +
-      "parts_sent\030\005 \001(\005R\tpartsSent\022=\n\014completed" +
-      "_at\030\006 \001(\0132\032.google.protobuf.TimestampR\013c" +
-      "ompletedAt\"\243\001\n\013RegisterAck\022\032\n\010accepted\030\001" +
-      " \001(\010R\010accepted\022\026\n\006reason\030\002 \001(\tR\006reason\022<" +
-      "\n\032heartbeat_interval_seconds\030\003 \001(\005R\030hear" +
-      "tbeatIntervalSeconds\022\"\n\rstale_job_ids\030\004 " +
-      "\003(\tR\013staleJobIds\"\254\001\n\nSendSmsJob\022\025\n\006job_i" +
-      "d\030\001 \001(\tR\005jobId\022\034\n\trecipient\030\002 \001(\tR\trecip" +
-      "ient\022\022\n\004body\030\003 \001(\tR\004body\022\032\n\010priority\030\004 \001" +
-      "(\005R\010priority\0229\n\nexpires_at\030\005 \001(\0132\032.googl" +
-      "e.protobuf.TimestampR\texpiresAt\"\"\n\tCance" +
-      "lJob\022\025\n\006job_id\030\001 \001(\tR\005jobId\"\006\n\004Ping*\207\001\n\t" +
-      "JobStatus\022\032\n\026JOB_STATUS_UNSPECIFIED\020\000\022\023\n" +
-      "\017JOB_STATUS_SENT\020\001\022\030\n\024JOB_STATUS_DELIVER" +
-      "ED\020\002\022\025\n\021JOB_STATUS_FAILED\020\003\022\030\n\024JOB_STATU" +
-      "S_CANCELLED\020\0042\241\001\n\rDeviceGateway\022E\n\006Enrol" +
-      "l\022\034.smsgateway.v1.EnrollRequest\032\035.smsgat" +
-      "eway.v1.EnrollResponse\022I\n\007Connect\022\034.smsg" +
-      "ateway.v1.DeviceMessage\032\034.smsgateway.v1." +
-      "ServerMessage(\0010\001B@Z>github.com/KGMA74/r" +
-      "elaix-server/gen/smsgateway/v1;smsgatewa" +
-      "yv1b\006proto3"
+      "carrier\030\007 \001(\tR\007carrier\022*\n\004sims\030\010 \003(\0132\026.s" +
+      "msgateway.v1.SimInfoR\004sims\"\327\001\n\007SimInfo\022\'" +
+      "\n\017subscription_id\030\001 \001(\005R\016subscriptionId\022" +
+      "\035\n\nslot_index\030\002 \001(\005R\tslotIndex\022!\n\014phone_" +
+      "number\030\003 \001(\tR\013phoneNumber\022\030\n\007carrier\030\004 \001" +
+      "(\tR\007carrier\022!\n\014display_name\030\005 \001(\tR\013displ" +
+      "ayName\022$\n\016is_default_sms\030\006 \001(\010R\014isDefaul" +
+      "tSms\"\357\002\n\rDeviceMessage\022\035\n\nmessage_id\030\001 \001" +
+      "(\tR\tmessageId\022!\n\014device_token\030\002 \001(\tR\013dev" +
+      "iceToken\0223\n\007sent_at\030\003 \001(\0132\032.google.proto" +
+      "buf.TimestampR\006sentAt\0225\n\010register\030\n \001(\0132" +
+      "\027.smsgateway.v1.RegisterH\000R\010register\0228\n\t" +
+      "heartbeat\030\013 \001(\0132\030.smsgateway.v1.Heartbea" +
+      "tH\000R\theartbeat\0220\n\007job_ack\030\014 \001(\0132\025.smsgat" +
+      "eway.v1.JobAckH\000R\006jobAck\0229\n\njob_result\030\r" +
+      " \001(\0132\030.smsgateway.v1.JobResultH\000R\tjobRes" +
+      "ultB\t\n\007payload\"\324\002\n\rServerMessage\022\035\n\nmess" +
+      "age_id\030\001 \001(\tR\tmessageId\0223\n\007sent_at\030\002 \001(\013" +
+      "2\032.google.protobuf.TimestampR\006sentAt\022?\n\014" +
+      "register_ack\030\n \001(\0132\032.smsgateway.v1.Regis" +
+      "terAckH\000R\013registerAck\022=\n\014send_sms_job\030\013 " +
+      "\001(\0132\031.smsgateway.v1.SendSmsJobH\000R\nsendSm" +
+      "sJob\0229\n\ncancel_job\030\014 \001(\0132\030.smsgateway.v1" +
+      ".CancelJobH\000R\tcancelJob\022)\n\004ping\030\r \001(\0132\023." +
+      "smsgateway.v1.PingH\000R\004pingB\t\n\007payload\"\243\001" +
+      "\n\010Register\022:\n\013device_info\030\001 \001(\0132\031.smsgat" +
+      "eway.v1.DeviceInfoR\ndeviceInfo\0223\n\006health" +
+      "\030\002 \001(\0132\033.smsgateway.v1.DeviceHealthR\006hea" +
+      "lth\022&\n\017pending_job_ids\030\003 \003(\tR\rpendingJob" +
+      "Ids\"@\n\tHeartbeat\0223\n\006health\030\001 \001(\0132\033.smsga" +
+      "teway.v1.DeviceHealthR\006health\"\270\002\n\014Device" +
+      "Health\022#\n\rbattery_level\030\001 \001(\005R\014batteryLe" +
+      "vel\022\037\n\013is_charging\030\002 \001(\010R\nisCharging\022\'\n\017" +
+      "signal_strength\030\003 \001(\005R\016signalStrength\022!\n" +
+      "\014network_type\030\004 \001(\tR\013networkType\022\033\n\tsim_" +
+      "ready\030\005 \001(\010R\010simReady\022$\n\016sent_last_hour\030" +
+      "\006 \001(\005R\014sentLastHour\022%\n\016permissions_ok\030\007 " +
+      "\001(\010R\rpermissionsOk\022,\n\004sims\030\010 \003(\0132\030.smsga" +
+      "teway.v1.SimHealthR\004sims\"\240\001\n\tSimHealth\022\'" +
+      "\n\017subscription_id\030\001 \001(\005R\016subscriptionId\022" +
+      "\'\n\017signal_strength\030\002 \001(\005R\016signalStrength" +
+      "\022\033\n\tsim_ready\030\003 \001(\010R\010simReady\022$\n\016sent_la" +
+      "st_hour\030\004 \001(\005R\014sentLastHour\"q\n\006JobAck\022\025\n" +
+      "\006job_id\030\001 \001(\tR\005jobId\022\032\n\010accepted\030\002 \001(\010R\010" +
+      "accepted\022\026\n\006reason\030\003 \001(\tR\006reason\022\034\n\tperm" +
+      "anent\030\004 \001(\010R\tpermanent\"\366\001\n\tJobResult\022\025\n\006" +
+      "job_id\030\001 \001(\tR\005jobId\0220\n\006status\030\002 \001(\0162\030.sm" +
+      "sgateway.v1.JobStatusR\006status\022\035\n\nerror_c" +
+      "ode\030\003 \001(\tR\terrorCode\022#\n\rerror_message\030\004 " +
+      "\001(\tR\014errorMessage\022\035\n\nparts_sent\030\005 \001(\005R\tp" +
+      "artsSent\022=\n\014completed_at\030\006 \001(\0132\032.google." +
+      "protobuf.TimestampR\013completedAt\"\243\001\n\013Regi" +
+      "sterAck\022\032\n\010accepted\030\001 \001(\010R\010accepted\022\026\n\006r" +
+      "eason\030\002 \001(\tR\006reason\022<\n\032heartbeat_interva" +
+      "l_seconds\030\003 \001(\005R\030heartbeatIntervalSecond" +
+      "s\022\"\n\rstale_job_ids\030\004 \003(\tR\013staleJobIds\"\325\001" +
+      "\n\nSendSmsJob\022\025\n\006job_id\030\001 \001(\tR\005jobId\022\034\n\tr" +
+      "ecipient\030\002 \001(\tR\trecipient\022\022\n\004body\030\003 \001(\tR" +
+      "\004body\022\032\n\010priority\030\004 \001(\005R\010priority\0229\n\nexp" +
+      "ires_at\030\005 \001(\0132\032.google.protobuf.Timestam" +
+      "pR\texpiresAt\022\'\n\017subscription_id\030\006 \001(\005R\016s" +
+      "ubscriptionId\"\"\n\tCancelJob\022\025\n\006job_id\030\001 \001" +
+      "(\tR\005jobId\"\006\n\004Ping*\207\001\n\tJobStatus\022\032\n\026JOB_S" +
+      "TATUS_UNSPECIFIED\020\000\022\023\n\017JOB_STATUS_SENT\020\001" +
+      "\022\030\n\024JOB_STATUS_DELIVERED\020\002\022\025\n\021JOB_STATUS" +
+      "_FAILED\020\003\022\030\n\024JOB_STATUS_CANCELLED\020\0042\241\001\n\r" +
+      "DeviceGateway\022E\n\006Enroll\022\034.smsgateway.v1." +
+      "EnrollRequest\032\035.smsgateway.v1.EnrollResp" +
+      "onse\022I\n\007Connect\022\034.smsgateway.v1.DeviceMe" +
+      "ssage\032\034.smsgateway.v1.ServerMessage(\0010\001B" +
+      "@Z>github.com/KGMA74/relaix-server/gen/s" +
+      "msgateway/v1;smsgatewayv1b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -15657,69 +19301,81 @@ public final class Device extends com.google.protobuf.GeneratedFile {
     internal_static_smsgateway_v1_DeviceInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_smsgateway_v1_DeviceInfo_descriptor,
-        new java.lang.String[] { "Label", "PhoneNumber", "Manufacturer", "Model", "OsVersion", "AgentVersion", "Carrier", });
-    internal_static_smsgateway_v1_DeviceMessage_descriptor =
+        new java.lang.String[] { "Label", "PhoneNumber", "Manufacturer", "Model", "OsVersion", "AgentVersion", "Carrier", "Sims", });
+    internal_static_smsgateway_v1_SimInfo_descriptor =
       getDescriptor().getMessageType(3);
+    internal_static_smsgateway_v1_SimInfo_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_smsgateway_v1_SimInfo_descriptor,
+        new java.lang.String[] { "SubscriptionId", "SlotIndex", "PhoneNumber", "Carrier", "DisplayName", "IsDefaultSms", });
+    internal_static_smsgateway_v1_DeviceMessage_descriptor =
+      getDescriptor().getMessageType(4);
     internal_static_smsgateway_v1_DeviceMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_smsgateway_v1_DeviceMessage_descriptor,
         new java.lang.String[] { "MessageId", "DeviceToken", "SentAt", "Register", "Heartbeat", "JobAck", "JobResult", "Payload", });
     internal_static_smsgateway_v1_ServerMessage_descriptor =
-      getDescriptor().getMessageType(4);
+      getDescriptor().getMessageType(5);
     internal_static_smsgateway_v1_ServerMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_smsgateway_v1_ServerMessage_descriptor,
         new java.lang.String[] { "MessageId", "SentAt", "RegisterAck", "SendSmsJob", "CancelJob", "Ping", "Payload", });
     internal_static_smsgateway_v1_Register_descriptor =
-      getDescriptor().getMessageType(5);
+      getDescriptor().getMessageType(6);
     internal_static_smsgateway_v1_Register_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_smsgateway_v1_Register_descriptor,
         new java.lang.String[] { "DeviceInfo", "Health", "PendingJobIds", });
     internal_static_smsgateway_v1_Heartbeat_descriptor =
-      getDescriptor().getMessageType(6);
+      getDescriptor().getMessageType(7);
     internal_static_smsgateway_v1_Heartbeat_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_smsgateway_v1_Heartbeat_descriptor,
         new java.lang.String[] { "Health", });
     internal_static_smsgateway_v1_DeviceHealth_descriptor =
-      getDescriptor().getMessageType(7);
+      getDescriptor().getMessageType(8);
     internal_static_smsgateway_v1_DeviceHealth_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_smsgateway_v1_DeviceHealth_descriptor,
-        new java.lang.String[] { "BatteryLevel", "IsCharging", "SignalStrength", "NetworkType", "SimReady", "SentLastHour", "PermissionsOk", });
+        new java.lang.String[] { "BatteryLevel", "IsCharging", "SignalStrength", "NetworkType", "SimReady", "SentLastHour", "PermissionsOk", "Sims", });
+    internal_static_smsgateway_v1_SimHealth_descriptor =
+      getDescriptor().getMessageType(9);
+    internal_static_smsgateway_v1_SimHealth_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_smsgateway_v1_SimHealth_descriptor,
+        new java.lang.String[] { "SubscriptionId", "SignalStrength", "SimReady", "SentLastHour", });
     internal_static_smsgateway_v1_JobAck_descriptor =
-      getDescriptor().getMessageType(8);
+      getDescriptor().getMessageType(10);
     internal_static_smsgateway_v1_JobAck_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_smsgateway_v1_JobAck_descriptor,
-        new java.lang.String[] { "JobId", "Accepted", "Reason", });
+        new java.lang.String[] { "JobId", "Accepted", "Reason", "Permanent", });
     internal_static_smsgateway_v1_JobResult_descriptor =
-      getDescriptor().getMessageType(9);
+      getDescriptor().getMessageType(11);
     internal_static_smsgateway_v1_JobResult_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_smsgateway_v1_JobResult_descriptor,
         new java.lang.String[] { "JobId", "Status", "ErrorCode", "ErrorMessage", "PartsSent", "CompletedAt", });
     internal_static_smsgateway_v1_RegisterAck_descriptor =
-      getDescriptor().getMessageType(10);
+      getDescriptor().getMessageType(12);
     internal_static_smsgateway_v1_RegisterAck_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_smsgateway_v1_RegisterAck_descriptor,
         new java.lang.String[] { "Accepted", "Reason", "HeartbeatIntervalSeconds", "StaleJobIds", });
     internal_static_smsgateway_v1_SendSmsJob_descriptor =
-      getDescriptor().getMessageType(11);
+      getDescriptor().getMessageType(13);
     internal_static_smsgateway_v1_SendSmsJob_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_smsgateway_v1_SendSmsJob_descriptor,
-        new java.lang.String[] { "JobId", "Recipient", "Body", "Priority", "ExpiresAt", });
+        new java.lang.String[] { "JobId", "Recipient", "Body", "Priority", "ExpiresAt", "SubscriptionId", });
     internal_static_smsgateway_v1_CancelJob_descriptor =
-      getDescriptor().getMessageType(12);
+      getDescriptor().getMessageType(14);
     internal_static_smsgateway_v1_CancelJob_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_smsgateway_v1_CancelJob_descriptor,
         new java.lang.String[] { "JobId", });
     internal_static_smsgateway_v1_Ping_descriptor =
-      getDescriptor().getMessageType(13);
+      getDescriptor().getMessageType(15);
     internal_static_smsgateway_v1_Ping_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_smsgateway_v1_Ping_descriptor,

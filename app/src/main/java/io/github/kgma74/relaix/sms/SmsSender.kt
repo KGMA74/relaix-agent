@@ -5,6 +5,7 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
+import android.os.Build
 import android.telephony.SmsManager
 import androidx.core.content.ContextCompat
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -43,9 +44,21 @@ data class SendOutcome(
 class SmsSender @Inject constructor(
     @param:ApplicationContext private val context: Context,
 ) {
-    suspend fun send(jobId: String, recipient: String, body: String): SendOutcome =
+    /**
+     * @param subscriptionId the SIM to send from, or 0 for the handset's
+     *   default SMS subscription. Callers are expected to have checked that
+     *   the device actually has it — [SimProvider.hasSubscription] — because a
+     *   bad id here fails at the radio with a generic error rather than
+     *   something an operator can act on.
+     */
+    suspend fun send(
+        jobId: String,
+        recipient: String,
+        body: String,
+        subscriptionId: Int = 0,
+    ): SendOutcome =
         suspendCancellableCoroutine { continuation ->
-            val smsManager = context.getSystemService(SmsManager::class.java)
+            val smsManager = smsManagerFor(subscriptionId)
             val parts = smsManager.divideMessage(body)
             val partCount = parts.size
 
@@ -140,6 +153,29 @@ class SmsSender @Inject constructor(
                 }
             }
         }
+
+    /**
+     * The SmsManager bound to a specific SIM.
+     *
+     * Choosing at all matters: the default manager follows a system setting
+     * the agent neither controls nor sees change, so on a dual-SIM handset a
+     * message would leave from whichever SIM the user last picked in Settings.
+     *
+     * Two APIs for the same thing — the instance method arrived in API 31,
+     * and below that only the deprecated static exists. minSdk is 26, so both
+     * paths are real.
+     */
+    @Suppress("DEPRECATION")
+    private fun smsManagerFor(subscriptionId: Int): SmsManager {
+        val default = context.getSystemService(SmsManager::class.java)
+        if (subscriptionId <= 0) return default
+
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            default.createForSubscriptionId(subscriptionId)
+        } else {
+            SmsManager.getSmsManagerForSubscriptionId(subscriptionId)
+        }
+    }
 
     private fun outcome(failureCode: Int?, partCount: Int): SendOutcome =
         if (failureCode == null) {

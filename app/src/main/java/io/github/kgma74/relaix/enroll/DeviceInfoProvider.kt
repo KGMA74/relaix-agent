@@ -6,6 +6,7 @@ import android.content.pm.PackageManager
 import android.os.Build
 import android.telephony.TelephonyManager
 import dagger.hilt.android.qualifiers.ApplicationContext
+import io.github.kgma74.relaix.health.SimProvider
 import smsgateway.v1.Device
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -20,6 +21,7 @@ import javax.inject.Singleton
 @Singleton
 class DeviceInfoProvider @Inject constructor(
     @param:ApplicationContext private val context: Context,
+    private val simProvider: SimProvider,
 ) {
     fun deviceInfo(label: String): Device.DeviceInfo =
         Device.DeviceInfo.newBuilder()
@@ -30,6 +32,10 @@ class DeviceInfoProvider @Inject constructor(
             .setOsVersion(Build.VERSION.RELEASE.orEmpty())
             .setAgentVersion(agentVersion())
             .setCarrier(carrier())
+            // Sent on every Register, not only at enrollment: a SIM swap
+            // changes this list, and the contract already re-sends DeviceInfo
+            // for exactly that reason.
+            .addAllSims(simProvider.sims())
             .build()
 
     private fun defaultLabel(): String = "${Build.MANUFACTURER} ${Build.MODEL}".trim()

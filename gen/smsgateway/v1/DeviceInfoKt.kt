@@ -196,6 +196,175 @@ public object DeviceInfoKt {
     public fun clearCarrier() {
       _builder.clearCarrier()
     }
+
+    /**
+     * An uninstantiable, behaviorless type to represent the field in
+     * generics.
+     */
+    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
+    public class SimsProxy private constructor() : com.google.protobuf.kotlin.DslProxy()
+    /**
+     * ```
+     * Every SIM the handset can send from.
+     *
+     * phone_number and carrier above describe the *default* SMS subscription
+     * only, which is what a single-SIM phone reports and what a dual-SIM phone
+     * would send from if nobody said otherwise. They stay because every existing
+     * agent fills them and every existing row was written from them.
+     *
+     * A dual-SIM handset is really two sending nodes: sending limits are per SIM
+     * and the number a recipient sees is per SIM. Listing them lets a caller
+     * name one on SendSmsJob instead of being stuck with whatever the phone's
+     * settings happen to say.
+     * ```
+     *
+     * `repeated .smsgateway.v1.SimInfo sims = 8 [json_name = "sims"];`
+     */
+     public val sims: com.google.protobuf.kotlin.DslList<smsgateway.v1.Device.SimInfo, SimsProxy>
+      @kotlin.jvm.JvmSynthetic
+  get() = com.google.protobuf.kotlin.DslList(
+        _builder.simsList
+      )
+    /**
+     * ```
+     * Every SIM the handset can send from.
+     *
+     * phone_number and carrier above describe the *default* SMS subscription
+     * only, which is what a single-SIM phone reports and what a dual-SIM phone
+     * would send from if nobody said otherwise. They stay because every existing
+     * agent fills them and every existing row was written from them.
+     *
+     * A dual-SIM handset is really two sending nodes: sending limits are per SIM
+     * and the number a recipient sees is per SIM. Listing them lets a caller
+     * name one on SendSmsJob instead of being stuck with whatever the phone's
+     * settings happen to say.
+     * ```
+     *
+     * `repeated .smsgateway.v1.SimInfo sims = 8 [json_name = "sims"];`
+     * @param value The sims to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+@kotlin.jvm.JvmName("addSims")
+    public fun com.google.protobuf.kotlin.DslList<smsgateway.v1.Device.SimInfo, SimsProxy>.add(value: smsgateway.v1.Device.SimInfo) {
+      _builder.addSims(value)
+    }
+    /**
+     * ```
+     * Every SIM the handset can send from.
+     *
+     * phone_number and carrier above describe the *default* SMS subscription
+     * only, which is what a single-SIM phone reports and what a dual-SIM phone
+     * would send from if nobody said otherwise. They stay because every existing
+     * agent fills them and every existing row was written from them.
+     *
+     * A dual-SIM handset is really two sending nodes: sending limits are per SIM
+     * and the number a recipient sees is per SIM. Listing them lets a caller
+     * name one on SendSmsJob instead of being stuck with whatever the phone's
+     * settings happen to say.
+     * ```
+     *
+     * `repeated .smsgateway.v1.SimInfo sims = 8 [json_name = "sims"];`
+     * @param value The sims to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+@kotlin.jvm.JvmName("plusAssignSims")
+    @Suppress("NOTHING_TO_INLINE")
+    public inline operator fun com.google.protobuf.kotlin.DslList<smsgateway.v1.Device.SimInfo, SimsProxy>.plusAssign(value: smsgateway.v1.Device.SimInfo) {
+      add(value)
+    }
+    /**
+     * ```
+     * Every SIM the handset can send from.
+     *
+     * phone_number and carrier above describe the *default* SMS subscription
+     * only, which is what a single-SIM phone reports and what a dual-SIM phone
+     * would send from if nobody said otherwise. They stay because every existing
+     * agent fills them and every existing row was written from them.
+     *
+     * A dual-SIM handset is really two sending nodes: sending limits are per SIM
+     * and the number a recipient sees is per SIM. Listing them lets a caller
+     * name one on SendSmsJob instead of being stuck with whatever the phone's
+     * settings happen to say.
+     * ```
+     *
+     * `repeated .smsgateway.v1.SimInfo sims = 8 [json_name = "sims"];`
+     * @param values The sims to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+@kotlin.jvm.JvmName("addAllSims")
+    public fun com.google.protobuf.kotlin.DslList<smsgateway.v1.Device.SimInfo, SimsProxy>.addAll(values: kotlin.collections.Iterable<smsgateway.v1.Device.SimInfo>) {
+      _builder.addAllSims(values)
+    }
+    /**
+     * ```
+     * Every SIM the handset can send from.
+     *
+     * phone_number and carrier above describe the *default* SMS subscription
+     * only, which is what a single-SIM phone reports and what a dual-SIM phone
+     * would send from if nobody said otherwise. They stay because every existing
+     * agent fills them and every existing row was written from them.
+     *
+     * A dual-SIM handset is really two sending nodes: sending limits are per SIM
+     * and the number a recipient sees is per SIM. Listing them lets a caller
+     * name one on SendSmsJob instead of being stuck with whatever the phone's
+     * settings happen to say.
+     * ```
+     *
+     * `repeated .smsgateway.v1.SimInfo sims = 8 [json_name = "sims"];`
+     * @param values The sims to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+@kotlin.jvm.JvmName("plusAssignAllSims")
+    @Suppress("NOTHING_TO_INLINE")
+    public inline operator fun com.google.protobuf.kotlin.DslList<smsgateway.v1.Device.SimInfo, SimsProxy>.plusAssign(values: kotlin.collections.Iterable<smsgateway.v1.Device.SimInfo>) {
+      addAll(values)
+    }
+    /**
+     * ```
+     * Every SIM the handset can send from.
+     *
+     * phone_number and carrier above describe the *default* SMS subscription
+     * only, which is what a single-SIM phone reports and what a dual-SIM phone
+     * would send from if nobody said otherwise. They stay because every existing
+     * agent fills them and every existing row was written from them.
+     *
+     * A dual-SIM handset is really two sending nodes: sending limits are per SIM
+     * and the number a recipient sees is per SIM. Listing them lets a caller
+     * name one on SendSmsJob instead of being stuck with whatever the phone's
+     * settings happen to say.
+     * ```
+     *
+     * `repeated .smsgateway.v1.SimInfo sims = 8 [json_name = "sims"];`
+     * @param index The index to set the value at.
+     * @param value The sims to set.
+     */
+    @kotlin.jvm.JvmSynthetic
+@kotlin.jvm.JvmName("setSims")
+    public operator fun com.google.protobuf.kotlin.DslList<smsgateway.v1.Device.SimInfo, SimsProxy>.set(index: kotlin.Int, value: smsgateway.v1.Device.SimInfo) {
+      _builder.setSims(index, value)
+    }
+    /**
+     * ```
+     * Every SIM the handset can send from.
+     *
+     * phone_number and carrier above describe the *default* SMS subscription
+     * only, which is what a single-SIM phone reports and what a dual-SIM phone
+     * would send from if nobody said otherwise. They stay because every existing
+     * agent fills them and every existing row was written from them.
+     *
+     * A dual-SIM handset is really two sending nodes: sending limits are per SIM
+     * and the number a recipient sees is per SIM. Listing them lets a caller
+     * name one on SendSmsJob instead of being stuck with whatever the phone's
+     * settings happen to say.
+     * ```
+     *
+     * `repeated .smsgateway.v1.SimInfo sims = 8 [json_name = "sims"];`
+     */
+    @kotlin.jvm.JvmSynthetic
+@kotlin.jvm.JvmName("clearSims")
+    public fun com.google.protobuf.kotlin.DslList<smsgateway.v1.Device.SimInfo, SimsProxy>.clear() {
+      _builder.clearSims()
+    }
   }
 }
 @kotlin.jvm.JvmSynthetic

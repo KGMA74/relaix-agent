@@ -179,6 +179,47 @@ public object SendSmsJobKt {
 
     public val SendSmsJobKt.Dsl.expiresAtOrNull: com.google.protobuf.Timestamp?
       get() = _builder.expiresAtOrNull
+
+    /**
+     * ```
+     * Which SIM to send from, matching a SimInfo.subscription_id the device
+     * reported. Zero means "the handset's default SMS subscription", which is
+     * what every job carried before this field existed and what a single-SIM
+     * phone always uses.
+     *
+     * A named subscription the device does not have is refused in JobAck rather
+     * than quietly sent from another SIM: the recipient sees the sender's
+     * number, and silently changing it would bill the wrong SIM and break any
+     * reply the caller expected.
+     * ```
+     *
+     * `int32 subscription_id = 6 [json_name = "subscriptionId"];`
+     */
+    public var subscriptionId: kotlin.Int
+      @kotlin.jvm.JvmName("getSubscriptionId")
+        get() = _builder.subscriptionId
+      @kotlin.jvm.JvmName("setSubscriptionId")
+        set(value) {
+        _builder.subscriptionId = value
+      }
+    /**
+     * ```
+     * Which SIM to send from, matching a SimInfo.subscription_id the device
+     * reported. Zero means "the handset's default SMS subscription", which is
+     * what every job carried before this field existed and what a single-SIM
+     * phone always uses.
+     *
+     * A named subscription the device does not have is refused in JobAck rather
+     * than quietly sent from another SIM: the recipient sees the sender's
+     * number, and silently changing it would bill the wrong SIM and break any
+     * reply the caller expected.
+     * ```
+     *
+     * `int32 subscription_id = 6 [json_name = "subscriptionId"];`
+     */
+    public fun clearSubscriptionId() {
+      _builder.clearSubscriptionId()
+    }
   }
 }
 @kotlin.jvm.JvmSynthetic

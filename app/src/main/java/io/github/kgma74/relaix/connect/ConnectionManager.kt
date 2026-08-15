@@ -232,7 +232,7 @@ class ConnectionManager @Inject constructor(
             val message = envelope(token)
                 .setHeartbeat(
                     Device.Heartbeat.newBuilder()
-                        .setHealth(healthProvider.snapshot(jobProcessor.sentLastHour()))
+                        .setHealth(healthProvider.snapshot(jobProcessor.sentLastHour(), jobProcessor.sentLastHourBySubscription()))
                         .build(),
                 )
                 .build()
@@ -245,7 +245,7 @@ class ConnectionManager @Inject constructor(
             .setRegister(
                 Device.Register.newBuilder()
                     .setDeviceInfo(deviceInfoProvider.deviceInfo(""))
-                    .setHealth(healthProvider.snapshot(jobProcessor.sentLastHour()))
+                    .setHealth(healthProvider.snapshot(jobProcessor.sentLastHour(), jobProcessor.sentLastHourBySubscription()))
                     // Jobs this handset still holds. Reported so the server
                     // reconciles instead of blindly re-dispatching work that
                     // is already in flight here.

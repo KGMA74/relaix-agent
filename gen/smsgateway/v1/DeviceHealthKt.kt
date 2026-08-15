@@ -223,6 +223,140 @@ public object DeviceHealthKt {
     public fun clearPermissionsOk() {
       _builder.clearPermissionsOk()
     }
+
+    /**
+     * An uninstantiable, behaviorless type to represent the field in
+     * generics.
+     */
+    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
+    public class SimsProxy private constructor() : com.google.protobuf.kotlin.DslProxy()
+    /**
+     * ```
+     * Per-SIM figures, when the handset has more than one.
+     *
+     * The fields above summarise the default SMS subscription, which is all a
+     * single-SIM phone has. These carry what differs between SIMs: signal is per
+     * radio, and the hourly count that matters for rate limiting is per SIM,
+     * because the carrier meters the SIM and not the handset.
+     * ```
+     *
+     * `repeated .smsgateway.v1.SimHealth sims = 8 [json_name = "sims"];`
+     */
+     public val sims: com.google.protobuf.kotlin.DslList<smsgateway.v1.Device.SimHealth, SimsProxy>
+      @kotlin.jvm.JvmSynthetic
+  get() = com.google.protobuf.kotlin.DslList(
+        _builder.simsList
+      )
+    /**
+     * ```
+     * Per-SIM figures, when the handset has more than one.
+     *
+     * The fields above summarise the default SMS subscription, which is all a
+     * single-SIM phone has. These carry what differs between SIMs: signal is per
+     * radio, and the hourly count that matters for rate limiting is per SIM,
+     * because the carrier meters the SIM and not the handset.
+     * ```
+     *
+     * `repeated .smsgateway.v1.SimHealth sims = 8 [json_name = "sims"];`
+     * @param value The sims to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+@kotlin.jvm.JvmName("addSims")
+    public fun com.google.protobuf.kotlin.DslList<smsgateway.v1.Device.SimHealth, SimsProxy>.add(value: smsgateway.v1.Device.SimHealth) {
+      _builder.addSims(value)
+    }
+    /**
+     * ```
+     * Per-SIM figures, when the handset has more than one.
+     *
+     * The fields above summarise the default SMS subscription, which is all a
+     * single-SIM phone has. These carry what differs between SIMs: signal is per
+     * radio, and the hourly count that matters for rate limiting is per SIM,
+     * because the carrier meters the SIM and not the handset.
+     * ```
+     *
+     * `repeated .smsgateway.v1.SimHealth sims = 8 [json_name = "sims"];`
+     * @param value The sims to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+@kotlin.jvm.JvmName("plusAssignSims")
+    @Suppress("NOTHING_TO_INLINE")
+    public inline operator fun com.google.protobuf.kotlin.DslList<smsgateway.v1.Device.SimHealth, SimsProxy>.plusAssign(value: smsgateway.v1.Device.SimHealth) {
+      add(value)
+    }
+    /**
+     * ```
+     * Per-SIM figures, when the handset has more than one.
+     *
+     * The fields above summarise the default SMS subscription, which is all a
+     * single-SIM phone has. These carry what differs between SIMs: signal is per
+     * radio, and the hourly count that matters for rate limiting is per SIM,
+     * because the carrier meters the SIM and not the handset.
+     * ```
+     *
+     * `repeated .smsgateway.v1.SimHealth sims = 8 [json_name = "sims"];`
+     * @param values The sims to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+@kotlin.jvm.JvmName("addAllSims")
+    public fun com.google.protobuf.kotlin.DslList<smsgateway.v1.Device.SimHealth, SimsProxy>.addAll(values: kotlin.collections.Iterable<smsgateway.v1.Device.SimHealth>) {
+      _builder.addAllSims(values)
+    }
+    /**
+     * ```
+     * Per-SIM figures, when the handset has more than one.
+     *
+     * The fields above summarise the default SMS subscription, which is all a
+     * single-SIM phone has. These carry what differs between SIMs: signal is per
+     * radio, and the hourly count that matters for rate limiting is per SIM,
+     * because the carrier meters the SIM and not the handset.
+     * ```
+     *
+     * `repeated .smsgateway.v1.SimHealth sims = 8 [json_name = "sims"];`
+     * @param values The sims to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+@kotlin.jvm.JvmName("plusAssignAllSims")
+    @Suppress("NOTHING_TO_INLINE")
+    public inline operator fun com.google.protobuf.kotlin.DslList<smsgateway.v1.Device.SimHealth, SimsProxy>.plusAssign(values: kotlin.collections.Iterable<smsgateway.v1.Device.SimHealth>) {
+      addAll(values)
+    }
+    /**
+     * ```
+     * Per-SIM figures, when the handset has more than one.
+     *
+     * The fields above summarise the default SMS subscription, which is all a
+     * single-SIM phone has. These carry what differs between SIMs: signal is per
+     * radio, and the hourly count that matters for rate limiting is per SIM,
+     * because the carrier meters the SIM and not the handset.
+     * ```
+     *
+     * `repeated .smsgateway.v1.SimHealth sims = 8 [json_name = "sims"];`
+     * @param index The index to set the value at.
+     * @param value The sims to set.
+     */
+    @kotlin.jvm.JvmSynthetic
+@kotlin.jvm.JvmName("setSims")
+    public operator fun com.google.protobuf.kotlin.DslList<smsgateway.v1.Device.SimHealth, SimsProxy>.set(index: kotlin.Int, value: smsgateway.v1.Device.SimHealth) {
+      _builder.setSims(index, value)
+    }
+    /**
+     * ```
+     * Per-SIM figures, when the handset has more than one.
+     *
+     * The fields above summarise the default SMS subscription, which is all a
+     * single-SIM phone has. These carry what differs between SIMs: signal is per
+     * radio, and the hourly count that matters for rate limiting is per SIM,
+     * because the carrier meters the SIM and not the handset.
+     * ```
+     *
+     * `repeated .smsgateway.v1.SimHealth sims = 8 [json_name = "sims"];`
+     */
+    @kotlin.jvm.JvmSynthetic
+@kotlin.jvm.JvmName("clearSims")
+    public fun com.google.protobuf.kotlin.DslList<smsgateway.v1.Device.SimHealth, SimsProxy>.clear() {
+      _builder.clearSims()
+    }
   }
 }
 @kotlin.jvm.JvmSynthetic

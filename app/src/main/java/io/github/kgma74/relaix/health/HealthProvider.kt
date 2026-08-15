@@ -25,8 +25,12 @@ import javax.inject.Singleton
 @Singleton
 class HealthProvider @Inject constructor(
     @param:ApplicationContext private val context: Context,
+    private val simProvider: SimProvider,
 ) {
-    fun snapshot(sentLastHour: Int = 0): Device.DeviceHealth =
+    fun snapshot(
+        sentLastHour: Int = 0,
+        sentLastHourBySub: Map<Int, Int> = emptyMap(),
+    ): Device.DeviceHealth =
         Device.DeviceHealth.newBuilder()
             .setBatteryLevel(batteryLevel())
             .setIsCharging(isCharging())
@@ -35,6 +39,10 @@ class HealthProvider @Inject constructor(
             .setSimReady(isSimReady())
             .setSentLastHour(sentLastHour)
             .setPermissionsOk(permissionsGranted())
+            // Empty on a single-SIM phone: the fields above already describe
+            // its only subscription, and repeating them would invite a reader
+            // to treat the absence of a list as "no SIM".
+            .addAllSims(simProvider.health(sentLastHourBySub))
             .build()
 
     private fun batteryManager(): BatteryManager? =

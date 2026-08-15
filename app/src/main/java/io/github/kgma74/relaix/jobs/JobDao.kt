@@ -2,6 +2,7 @@ package io.github.kgma74.relaix.jobs
 
 import androidx.room.Dao
 import androidx.room.Insert
+import androidx.room.MapColumn
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import kotlinx.coroutines.flow.Flow
@@ -66,6 +67,25 @@ interface JobDao {
         """,
     )
     suspend fun partsSentSince(sinceMillis: Long): Int
+
+    /**
+     * The same count broken down per SIM, for `SimHealth.sent_last_hour`: the
+     * carrier meters each SIM separately, so the device-wide total above is
+     * the wrong number to rate-limit any one of them against.
+     */
+    @Query(
+        """
+        SELECT subscriptionId, COALESCE(SUM(partsSent), 0) AS partsSent FROM jobs
+        WHERE completedAtMillis IS NOT NULL
+          AND completedAtMillis >= :sinceMillis
+          AND status IN ('SENT', 'DELIVERED')
+        GROUP BY subscriptionId
+        """,
+    )
+    suspend fun partsSentSinceBySubscription(sinceMillis: Long): Map<
+        @MapColumn(columnName = "subscriptionId") Int,
+        @MapColumn(columnName = "partsSent") Int,
+        >
 
     /**
      * Drops jobs the server has given up on, so the handset stops offering

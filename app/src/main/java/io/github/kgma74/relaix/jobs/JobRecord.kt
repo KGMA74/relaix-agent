@@ -20,6 +20,11 @@ data class JobRecord(
     @PrimaryKey val jobId: String,
     val recipient: String,
     val status: JobState,
+    /** Which SIM this was sent from; 0 is the handset's default subscription.
+     *  Kept per-job so `sent_last_hour` can be broken down per SIM — the
+     *  carrier meters the SIM, not the handset, so the device-wide sum is the
+     *  wrong number to rate-limit any one SIM against. */
+    val subscriptionId: Int = 0,
     /** Parts actually handed to the network, for cost reconciliation. */
     val partsSent: Int = 0,
     val errorCode: String = "",

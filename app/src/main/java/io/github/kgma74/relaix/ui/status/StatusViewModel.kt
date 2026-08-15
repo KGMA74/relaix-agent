@@ -55,8 +55,12 @@ class StatusViewModel @Inject constructor(
                 // sentLastHour has to be passed in, exactly as the heartbeat
                 // does it: snapshot() defaults it to zero, and a screen showing
                 // "0 parts" while the server was told "3" would send an
-                // operator hunting for a bug that is not there.
-                _health.value = healthProvider.snapshot(jobProcessor.sentLastHour())
+                // operator hunting for a bug that is not there. Same reasoning
+                // for the per-SIM breakdown.
+                _health.value = healthProvider.snapshot(
+                    jobProcessor.sentLastHour(),
+                    jobProcessor.sentLastHourBySubscription(),
+                )
                 delay(REFRESH_MILLIS)
             }
         }

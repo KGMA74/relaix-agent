@@ -6,6 +6,7 @@ import android.content.pm.PackageManager
 import android.telephony.TelephonyManager
 import android.util.Log
 import dagger.hilt.android.qualifiers.ApplicationContext
+import io.github.kgma74.relaix.health.SimProvider
 import io.github.kgma74.relaix.sms.SmsSender
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.channels.ReceiveChannel
@@ -32,6 +33,7 @@ class JobProcessor @Inject constructor(
     @param:ApplicationContext private val context: Context,
     private val jobDao: JobDao,
     private val smsSender: SmsSender,
+    private val simProvider: SimProvider,
 ) {
     /**
      * Decides whether to take the job, before sending anything.
@@ -44,8 +46,16 @@ class JobProcessor @Inject constructor(
     suspend fun accept(job: Device.SendSmsJob): JobDecision {
         val now = System.currentTimeMillis()
 
-        refuseReason(job, now)?.let { reason ->
-            return JobDecision(ack(job.jobId, accepted = false, reason = reason), shouldSend = false)
+        refusal(job, now)?.let { refusal ->
+            return JobDecision(
+                ack(
+                    jobId = job.jobId,
+                    accepted = false,
+                    reason = refusal.reason,
+                    permanent = refusal.permanent,
+                ),
+                shouldSend = false,
+            )
         }
 
         val inserted = jobDao.insertIfNew(
@@ -53,6 +63,7 @@ class JobProcessor @Inject constructor(
                 jobId = job.jobId,
                 recipient = job.recipient,
                 status = JobState.ACCEPTED,
+                subscriptionId = job.subscriptionId,
                 receivedAtMillis = now,
                 expiresAtMillis = if (job.hasExpiresAt()) job.expiresAt.seconds * 1_000 else null,
             ),
@@ -96,7 +107,12 @@ class JobProcessor @Inject constructor(
         }
 
         jobDao.updateStatus(job.jobId, JobState.SENDING)
-        val outcome = smsSender.send(job.jobId, job.recipient, job.body)
+        val outcome = smsSender.send(
+            jobId = job.jobId,
+            recipient = job.recipient,
+            body = job.body,
+            subscriptionId = job.subscriptionId,
+        )
         val completedAt = System.currentTimeMillis()
 
         val state = if (outcome.success) JobState.SENT else JobState.FAILED
@@ -208,30 +224,68 @@ class JobProcessor @Inject constructor(
     suspend fun sentLastHour(): Int =
         jobDao.partsSentSince(System.currentTimeMillis() - ONE_HOUR_MILLIS)
 
+    /** The same count, per SIM, for each SimHealth.sent_last_hour. */
+    suspend fun sentLastHourBySubscription(): Map<Int, Int> =
+        jobDao.partsSentSinceBySubscription(System.currentTimeMillis() - ONE_HOUR_MILLIS)
+
     /**
      * Reasons this device knows it cannot send, checked before accepting so
      * the scheduler can reassign immediately. A device that accepts and then
      * fails everything is the failure mode this prevents.
      */
-    private fun refuseReason(job: Device.SendSmsJob, now: Long): String? = when {
+    /**
+     * A refusal, and whether asking again could ever change the answer.
+     *
+     * The distinction is the agent's to make because only it knows why: the
+     * server can see that a job was refused, not whether the cause is a
+     * missing SIM that will never appear or a permission the user is about to
+     * grant.
+     */
+    private data class Refusal(val reason: String, val permanent: Boolean)
+
+    private fun refusal(job: Device.SendSmsJob, now: Long): Refusal? = when {
+        // Transient: the operator may grant it a moment later, and the server
+        // already keeps a device without it out of the ready set.
         context.checkSelfPermission(Manifest.permission.SEND_SMS) !=
-            PackageManager.PERMISSION_GRANTED -> "SEND_SMS permission not granted"
+            PackageManager.PERMISSION_GRANTED ->
+            Refusal("SEND_SMS permission not granted", permanent = false)
 
+        // Transient too: a SIM can be re-seated, or finish unlocking.
         context.getSystemService(TelephonyManager::class.java)?.simState !=
-            TelephonyManager.SIM_STATE_READY -> "SIM not ready"
+            TelephonyManager.SIM_STATE_READY ->
+            Refusal("SIM not ready", permanent = false)
 
-        job.recipient.isBlank() -> "recipient is empty"
+        // The job itself is wrong. No device will ever accept it.
+        job.recipient.isBlank() -> Refusal("recipient is empty", permanent = true)
 
-        job.hasExpiresAt() && now > job.expiresAt.seconds * 1_000 -> "job already expired"
+        job.hasExpiresAt() && now > job.expiresAt.seconds * 1_000 ->
+            Refusal("job already expired", permanent = true)
+
+        // Refused rather than sent from another SIM: the recipient sees the
+        // sender's number, so silently substituting one would bill the wrong
+        // SIM and break any reply the caller expected. Permanent, because a
+        // subscription id is pinned to this handset — retrying asks the same
+        // phone for a SIM it does not have.
+        !simProvider.hasSubscription(job.subscriptionId) ->
+            Refusal(
+                "subscription ${job.subscriptionId} is not on this device",
+                permanent = true,
+            )
 
         else -> null
     }
 
-    private fun ack(jobId: String, accepted: Boolean, reason: String): Device.JobAck =
+    private fun ack(
+        jobId: String,
+        accepted: Boolean,
+        reason: String,
+        permanent: Boolean = false,
+    ): Device.JobAck =
         Device.JobAck.newBuilder()
             .setJobId(jobId)
             .setAccepted(accepted)
             .setReason(reason)
+            .setPermanent(permanent)
             .build()
 
     private fun result(
