@@ -7,6 +7,7 @@ import androidx.datastore.preferences.core.stringPreferencesKey
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.map
+import java.security.GeneralSecurityException
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -40,10 +41,25 @@ class DeviceIdentityStore @Inject constructor(
      * moment — building a message — and decrypting it on every emission of an
      * unrelated preference change would be wasteful and would keep plaintext
      * alive longer than necessary.
+     *
+     * A blob that no longer decrypts is forgotten, and this device reads as not
+     * enrolled. It happens when the keystore key is gone but the blob is not —
+     * a reinstall whose data came back from a backup the key was never part
+     * of — and no retry will ever bring the key back. Throwing instead would
+     * crash the connection loop on every launch, with no way out short of
+     * clearing the app's data by hand.
      */
     suspend fun deviceToken(): String? {
         val blob = dataStore.data.first()[KEY_DEVICE_TOKEN] ?: return null
-        return cipher.decrypt(blob)
+        return try {
+            cipher.decrypt(blob)
+        } catch (e: GeneralSecurityException) {
+            clear()
+            null
+        } catch (e: IllegalArgumentException) {
+            clear()
+            null
+        }
     }
 
     suspend fun save(deviceId: String, deviceToken: String) {
