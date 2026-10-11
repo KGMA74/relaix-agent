@@ -70,6 +70,19 @@ fun OverviewScreen(
         ActivityResultContracts.RequestPermission(),
     ) { granted -> smsGranted = granted }
 
+    // Signal, network type and the per-SIM inventory are all behind
+    // READ_PHONE_STATE. Without it they read as 0 and blank — not because the
+    // phone has no signal, but because it is not allowed to say.
+    var phoneGranted by remember {
+        mutableStateOf(
+            ContextCompat.checkSelfPermission(context, Manifest.permission.READ_PHONE_STATE) ==
+                PackageManager.PERMISSION_GRANTED,
+        )
+    }
+    val phoneLauncher = rememberLauncherForActivityResult(
+        ActivityResultContracts.RequestPermission(),
+    ) { granted -> phoneGranted = granted }
+
     LazyColumn(
         modifier = modifier
             .fillMaxSize()
@@ -91,6 +104,18 @@ fun OverviewScreen(
             }
         }
 
+        if (!phoneGranted) {
+            item {
+                WarningCard(
+                    title = "Phone permission missing",
+                    detail = "Signal and SIM state cannot be read without READ_PHONE_STATE, " +
+                        "so the server sees signal 0 and keeps this device out of the ready set.",
+                    actionLabel = "Grant permission",
+                    onAction = { phoneLauncher.launch(Manifest.permission.READ_PHONE_STATE) },
+                )
+            }
+        }
+
         val h = health
         if (h != null) {
             if (!h.simReady) {
@@ -102,7 +127,8 @@ fun OverviewScreen(
                     )
                 }
             }
-            if (h.signalStrength <= 0) {
+            // Without the permission, 0 means "unreadable", already explained above.
+            if (phoneGranted && h.signalStrength <= 0) {
                 item {
                     WarningCard(
                         title = "No signal",
