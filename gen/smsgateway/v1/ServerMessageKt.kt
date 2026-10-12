@@ -173,6 +173,45 @@ public object ServerMessageKt {
     public fun hasPing(): kotlin.Boolean {
       return _builder.hasPing()
     }
+
+    /**
+     * ```
+     * The rules changed — from the dashboard, or from this phone and now
+     * stored. Replaces the phone's copy.
+     * ```
+     *
+     * `.smsgateway.v1.DevicePolicy policy = 14 [json_name = "policy"];`
+     */
+    public var policy: smsgateway.v1.Device.DevicePolicy
+      @kotlin.jvm.JvmName("getPolicy")
+        get() = _builder.policy
+      @kotlin.jvm.JvmName("setPolicy")
+        set(value) {
+        _builder.policy = value
+      }
+    /**
+     * ```
+     * The rules changed — from the dashboard, or from this phone and now
+     * stored. Replaces the phone's copy.
+     * ```
+     *
+     * `.smsgateway.v1.DevicePolicy policy = 14 [json_name = "policy"];`
+     */
+    public fun clearPolicy() {
+      _builder.clearPolicy()
+    }
+    /**
+     * ```
+     * The rules changed — from the dashboard, or from this phone and now
+     * stored. Replaces the phone's copy.
+     * ```
+     *
+     * `.smsgateway.v1.DevicePolicy policy = 14 [json_name = "policy"];`
+     * @return Whether the policy field is set.
+     */
+    public fun hasPolicy(): kotlin.Boolean {
+      return _builder.hasPolicy()
+    }
     public val payloadCase: smsgateway.v1.Device.ServerMessage.PayloadCase
     @kotlin.jvm.JvmName("getPayloadCase")
       get() = _builder.getPayloadCase()
@@ -200,4 +239,7 @@ public val smsgateway.v1.Device.ServerMessageOrBuilder.cancelJobOrNull: smsgatew
 
 public val smsgateway.v1.Device.ServerMessageOrBuilder.pingOrNull: smsgateway.v1.Device.Ping?
   get() = if (hasPing()) getPing() else null
+
+public val smsgateway.v1.Device.ServerMessageOrBuilder.policyOrNull: smsgateway.v1.Device.DevicePolicy?
+  get() = if (hasPolicy()) getPolicy() else null
 

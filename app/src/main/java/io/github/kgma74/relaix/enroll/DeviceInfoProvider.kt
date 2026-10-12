@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Build
+import android.provider.Settings
 import android.telephony.TelephonyManager
 import dagger.hilt.android.qualifiers.ApplicationContext
 import io.github.kgma74.relaix.health.SimProvider
@@ -36,7 +37,23 @@ class DeviceInfoProvider @Inject constructor(
             // changes this list, and the contract already re-sends DeviceInfo
             // for exactly that reason.
             .addAllSims(simProvider.sims())
+            .setHardwareId(hardwareId())
+            // The default zone for the availability windows: "08:00" in the
+            // rules means eight o'clock where the phone is.
+            .setTimeZone(java.time.ZoneId.systemDefault().id)
             .build()
+
+    /**
+     * Settings.Secure.ANDROID_ID: what lets the server keep one entry per
+     * phone. Scoped to this app's signing key, the user and the handset, so it
+     * survives a reinstall — exactly the case it is for — yet means nothing to
+     * any other app, and needs no permission. The server stores only an HMAC
+     * of it. It does change on a factory reset, after which the phone is,
+     * reasonably, a new device.
+     */
+    @SuppressLint("HardwareIds")
+    private fun hardwareId(): String =
+        Settings.Secure.getString(context.contentResolver, Settings.Secure.ANDROID_ID).orEmpty()
 
     private fun defaultLabel(): String = "${Build.MANUFACTURER} ${Build.MODEL}".trim()
 

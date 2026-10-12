@@ -227,6 +227,54 @@ public object DeviceMessageKt {
     public fun hasJobResult(): kotlin.Boolean {
       return _builder.hasJobResult()
     }
+
+    /**
+     * `.smsgateway.v1.Leave leave = 14 [json_name = "leave"];`
+     */
+    public var leave: smsgateway.v1.Device.Leave
+      @kotlin.jvm.JvmName("getLeave")
+        get() = _builder.leave
+      @kotlin.jvm.JvmName("setLeave")
+        set(value) {
+        _builder.leave = value
+      }
+    /**
+     * `.smsgateway.v1.Leave leave = 14 [json_name = "leave"];`
+     */
+    public fun clearLeave() {
+      _builder.clearLeave()
+    }
+    /**
+     * `.smsgateway.v1.Leave leave = 14 [json_name = "leave"];`
+     * @return Whether the leave field is set.
+     */
+    public fun hasLeave(): kotlin.Boolean {
+      return _builder.hasLeave()
+    }
+
+    /**
+     * `.smsgateway.v1.PolicyUpdate policy_update = 15 [json_name = "policyUpdate"];`
+     */
+    public var policyUpdate: smsgateway.v1.Device.PolicyUpdate
+      @kotlin.jvm.JvmName("getPolicyUpdate")
+        get() = _builder.policyUpdate
+      @kotlin.jvm.JvmName("setPolicyUpdate")
+        set(value) {
+        _builder.policyUpdate = value
+      }
+    /**
+     * `.smsgateway.v1.PolicyUpdate policy_update = 15 [json_name = "policyUpdate"];`
+     */
+    public fun clearPolicyUpdate() {
+      _builder.clearPolicyUpdate()
+    }
+    /**
+     * `.smsgateway.v1.PolicyUpdate policy_update = 15 [json_name = "policyUpdate"];`
+     * @return Whether the policyUpdate field is set.
+     */
+    public fun hasPolicyUpdate(): kotlin.Boolean {
+      return _builder.hasPolicyUpdate()
+    }
     public val payloadCase: smsgateway.v1.Device.DeviceMessage.PayloadCase
     @kotlin.jvm.JvmName("getPayloadCase")
       get() = _builder.getPayloadCase()
@@ -254,4 +302,10 @@ public val smsgateway.v1.Device.DeviceMessageOrBuilder.jobAckOrNull: smsgateway.
 
 public val smsgateway.v1.Device.DeviceMessageOrBuilder.jobResultOrNull: smsgateway.v1.Device.JobResult?
   get() = if (hasJobResult()) getJobResult() else null
+
+public val smsgateway.v1.Device.DeviceMessageOrBuilder.leaveOrNull: smsgateway.v1.Device.Leave?
+  get() = if (hasLeave()) getLeave() else null
+
+public val smsgateway.v1.Device.DeviceMessageOrBuilder.policyUpdateOrNull: smsgateway.v1.Device.PolicyUpdate?
+  get() = if (hasPolicyUpdate()) getPolicyUpdate() else null
 

@@ -52,11 +52,16 @@ class EnrollmentViewModel @Inject constructor(
         // An already-enrolled device must not silently re-enroll: the server
         // would mint a second identity and the first would linger in the
         // fleet as a phone that never reconnects.
+        //
+        // The store is the single source of truth both ways: a null here is a
+        // forgotten (or unreadable) enrollment, and must take the app back to
+        // this screen. Keeping the previous id on null is what left "Forget"
+        // doing nothing visible while the service kept running.
         viewModelScope.launch {
             identityStore.deviceId.collect { existing ->
                 _state.update {
                     it.copy(
-                        enrolledDeviceId = existing ?: it.enrolledDeviceId,
+                        enrolledDeviceId = existing,
                         identityLoaded = true,
                     )
                 }

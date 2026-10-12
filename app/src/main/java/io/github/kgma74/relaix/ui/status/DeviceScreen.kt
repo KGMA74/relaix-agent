@@ -4,7 +4,10 @@ import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
 import android.os.Build
+import android.widget.Toast
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -13,9 +16,13 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.Logout
 import androidx.compose.material.icons.filled.ContentCopy
+import androidx.compose.material.icons.filled.PhoneAndroid
 import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -34,8 +41,11 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import io.github.kgma74.relaix.ui.components.RowDivider
 import io.github.kgma74.relaix.ui.components.SectionCard
+import io.github.kgma74.relaix.ui.components.SectionLabel
 import io.github.kgma74.relaix.ui.theme.LocalStatusColors
+import io.github.kgma74.relaix.ui.theme.soft
 
 /**
  * Identity and the one destructive action, kept away from the screens an
@@ -49,8 +59,8 @@ fun DeviceScreen(
     val deviceId by viewModel.deviceId.collectAsStateWithLifecycle()
     val endpoint by viewModel.endpoint.collectAsStateWithLifecycle()
     val status = LocalStatusColors.current
-    val clipboard = LocalContext.current
-        .getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+    val context = LocalContext.current
+    val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
     var confirming by remember { mutableStateOf(false) }
 
     LazyColumn(
@@ -62,63 +72,91 @@ fun DeviceScreen(
     ) {
         item {
             SectionCard {
-                Column(
+                Row(
                     modifier = Modifier.padding(16.dp),
-                    verticalArrangement = Arrangement.spacedBy(12.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(14.dp),
                 ) {
-                    Text("Identity", style = MaterialTheme.typography.titleMedium)
+                    Box(
+                        modifier = Modifier
+                            .size(48.dp)
+                            .background(soft(MaterialTheme.colorScheme.primary), RoundedCornerShape(12.dp)),
+                        contentAlignment = Alignment.Center,
+                    ) {
+                        Icon(
+                            Icons.Default.PhoneAndroid,
+                            contentDescription = null,
+                            tint = MaterialTheme.colorScheme.primary,
+                        )
+                    }
+                    Column {
+                        Text(
+                            "${Build.MANUFACTURER.replaceFirstChar { it.uppercase() }} ${Build.MODEL}",
+                            style = MaterialTheme.typography.titleMedium,
+                        )
+                        Text(
+                            "Android ${Build.VERSION.RELEASE ?: "—"} · API ${Build.VERSION.SDK_INT}",
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        )
+                    }
+                }
+            }
+        }
+
+        item { SectionLabel("Identité") }
+        item {
+            SectionCard {
+                Column {
                     // The device id is what an operator passes as deviceId on
                     // POST /send, so copying it is the action, not reading it.
                     DetailRow(
-                        label = "device id",
+                        label = "Identifiant de l'appareil",
                         value = deviceId ?: "—",
                         monospace = true,
                         onCopy = deviceId?.let {
                             {
                                 clipboard.setPrimaryClip(ClipData.newPlainText("device id", it))
+                                // Android 13+ shows its own clipboard confirmation.
+                                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) {
+                                    Toast.makeText(context, "Identifiant copié", Toast.LENGTH_SHORT).show()
+                                }
                             }
                         },
                     )
-                    DetailRow("endpoint", endpoint?.toString() ?: "—", monospace = true)
-                }
-            }
-        }
-
-        item {
-            SectionCard {
-                Column(
-                    modifier = Modifier.padding(16.dp),
-                    verticalArrangement = Arrangement.spacedBy(12.dp),
-                ) {
-                    Text("Handset", style = MaterialTheme.typography.titleMedium)
-                    DetailRow("model", "${Build.MANUFACTURER} ${Build.MODEL}")
-                    DetailRow("android", Build.VERSION.RELEASE ?: "—")
-                }
-            }
-        }
-
-        item {
-            SectionCard {
-                Column(
-                    modifier = Modifier.padding(16.dp),
-                    verticalArrangement = Arrangement.spacedBy(8.dp),
-                ) {
-                    Text(
-                        "Danger zone",
-                        style = MaterialTheme.typography.titleMedium,
-                        color = status.bad,
+                    RowDivider(Modifier.padding(start = 16.dp))
+                    DetailRow(
+                        label = "Passerelle",
+                        value = endpoint?.let { "${it.host}:${it.port}" + if (it.useTls) " · TLS" else "" } ?: "—",
+                        monospace = true,
                     )
+                }
+            }
+        }
+
+        item { SectionLabel("Zone sensible") }
+        item {
+            SectionCard(borderColor = soft(status.bad, 0.4f)) {
+                Column(
+                    modifier = Modifier.padding(16.dp),
+                    verticalArrangement = Arrangement.spacedBy(10.dp),
+                ) {
+                    Text("Oublier cet enrôlement", style = MaterialTheme.typography.titleSmall)
                     Text(
-                        "Forgetting the enrollment deletes the device token from this " +
-                            "phone. The server keeps its record, so the device would have " +
-                            "to be enrolled again with a fresh token.",
+                        "Supprime le jeton de ce téléphone et arrête le service. Le serveur " +
+                            "garde sa fiche : pour rejoindre la flotte, il faudra un nouveau QR code.",
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                     )
                     OutlinedButton(
                         onClick = { confirming = true },
                         modifier = Modifier.fillMaxWidth(),
-                    ) { Text("Forget this enrollment") }
+                        colors = ButtonDefaults.outlinedButtonColors(contentColor = status.bad),
+                        border = androidx.compose.foundation.BorderStroke(1.dp, soft(status.bad, 0.5f)),
+                    ) {
+                        Icon(Icons.AutoMirrored.Filled.Logout, contentDescription = null, modifier = Modifier.size(18.dp))
+                        Text("Oublier", modifier = Modifier.padding(start = 8.dp))
+                    }
                 }
             }
         }
@@ -129,11 +167,11 @@ fun DeviceScreen(
     if (confirming) {
         AlertDialog(
             onDismissRequest = { confirming = false },
-            title = { Text("Forget this enrollment?") },
+            title = { Text("Oublier cet enrôlement ?") },
             text = {
                 Text(
-                    "The device token will be deleted from this phone. Re-enrolling " +
-                        "needs a new token from the server.",
+                    "Le jeton sera supprimé de ce téléphone. Pour le réenrôler, il faudra " +
+                        "un nouveau code depuis le dashboard.",
                 )
             },
             confirmButton = {
@@ -142,10 +180,10 @@ fun DeviceScreen(
                         confirming = false
                         viewModel.forget()
                     },
-                ) { Text("Forget", color = status.bad) }
+                ) { Text("Oublier", color = status.bad) }
             },
             dismissButton = {
-                TextButton(onClick = { confirming = false }) { Text("Cancel") }
+                TextButton(onClick = { confirming = false }) { Text("Annuler") }
             },
         )
     }
@@ -158,31 +196,38 @@ private fun DetailRow(
     monospace: Boolean = false,
     onCopy: (() -> Unit)? = null,
 ) {
-    Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
-        Text(
-            label.uppercase(),
-            style = MaterialTheme.typography.labelSmall,
-            color = MaterialTheme.colorScheme.onSurfaceVariant,
-        )
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            verticalAlignment = Alignment.CenterVertically,
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(start = 16.dp, end = 4.dp, top = 12.dp, bottom = 12.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Column(
+            modifier = Modifier.weight(1f),
+            verticalArrangement = Arrangement.spacedBy(2.dp),
         ) {
+            Text(
+                label,
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
             Text(
                 value,
                 style = MaterialTheme.typography.bodyMedium,
                 fontFamily = if (monospace) FontFamily.Monospace else FontFamily.Default,
-                modifier = Modifier.weight(1f),
             )
-            if (onCopy != null) {
-                IconButton(onClick = onCopy) {
-                    Icon(
-                        Icons.Default.ContentCopy,
-                        contentDescription = "Copy $label",
-                        modifier = Modifier.size(18.dp),
-                    )
-                }
+        }
+        if (onCopy != null) {
+            IconButton(onClick = onCopy) {
+                Icon(
+                    Icons.Default.ContentCopy,
+                    contentDescription = "Copier",
+                    tint = MaterialTheme.colorScheme.onSurfaceVariant,
+                    modifier = Modifier.size(18.dp),
+                )
             }
+        } else {
+            Box(Modifier.size(12.dp))
         }
     }
 }

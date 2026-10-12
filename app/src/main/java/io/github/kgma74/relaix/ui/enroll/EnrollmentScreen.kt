@@ -39,8 +39,10 @@ import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import io.github.kgma74.relaix.ui.components.BrandMark
 import io.github.kgma74.relaix.ui.components.SectionCard
 import io.github.kgma74.relaix.ui.theme.LocalStatusColors
+import io.github.kgma74.relaix.ui.theme.soft
 
 /**
  * First screen a handset ever shows: joining the fleet.
@@ -97,15 +99,12 @@ fun EnrollmentScreen(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(8.dp),
         ) {
-            Icon(
-                Icons.Default.QrCodeScanner,
-                contentDescription = null,
-                tint = MaterialTheme.colorScheme.primary,
-                modifier = Modifier.size(56.dp),
-            )
-            Text("Relaix agent", style = MaterialTheme.typography.headlineMedium)
+            BrandMark(size = 64.dp)
+            Spacer(Modifier.height(8.dp))
+            Text("Relaix", style = MaterialTheme.typography.headlineMedium)
             Text(
-                "This phone is not part of a fleet yet. Scan an enrollment code to join one.",
+                "Ce téléphone ne fait pas encore partie d'une flotte. Dans le dashboard, " +
+                    "ouvrez Appareils → Ajouter un téléphone, puis scannez le QR code.",
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                 textAlign = TextAlign.Center,
@@ -126,7 +125,7 @@ fun EnrollmentScreen(
             Icon(Icons.Default.QrCodeScanner, contentDescription = null,
                 modifier = Modifier.size(20.dp))
             Spacer(Modifier.size(8.dp))
-            Text("Scan QR code")
+            Text("Scanner le QR code")
         }
 
         SectionCard {
@@ -134,10 +133,10 @@ fun EnrollmentScreen(
                 modifier = Modifier.padding(16.dp),
                 verticalArrangement = Arrangement.spacedBy(10.dp),
             ) {
-                Text("Or paste the payload", style = MaterialTheme.typography.titleSmall)
+                Text("Ou collez la configuration", style = MaterialTheme.typography.titleSmall)
                 Text(
-                    "From POST /admin/devices/enroll-token. Escaped quotes are accepted, " +
-                        "so a value copied straight out of a terminal works.",
+                    "Le bouton « Copier la configuration » sous le QR code, ou le champ payload " +
+                        "de POST /admin/devices/enroll-token. Les guillemets échappés sont acceptés.",
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                 )
@@ -151,8 +150,8 @@ fun EnrollmentScreen(
                 OutlinedTextField(
                     value = state.label,
                     onValueChange = viewModel::onLabelChange,
-                    label = { Text("Label (optional)") },
-                    placeholder = { Text("desk phone") },
+                    label = { Text("Nom (facultatif)") },
+                    placeholder = { Text("téléphone du bureau") },
                     singleLine = true,
                     modifier = Modifier.fillMaxWidth(),
                 )
@@ -161,7 +160,7 @@ fun EnrollmentScreen(
                     enabled = state.canSubmit,
                     modifier = Modifier.fillMaxWidth(),
                 ) {
-                    Text(if (state.isEnrolling) "Enrolling…" else "Enroll")
+                    Text(if (state.isEnrolling) "Enrôlement…" else "Enrôler")
                 }
             }
         }
@@ -174,7 +173,7 @@ fun EnrollmentScreen(
         }
 
         state.error?.let { message ->
-            SectionCard {
+            SectionCard(color = soft(status.bad, 0.10f), borderColor = soft(status.bad, 0.4f)) {
                 Text(
                     message,
                     modifier = Modifier.padding(14.dp),
@@ -198,9 +197,9 @@ private fun ScanningView(
             .padding(24.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp),
     ) {
-        Text("Point at the code", style = MaterialTheme.typography.headlineSmall)
+        Text("Visez le QR code", style = MaterialTheme.typography.headlineSmall)
         Text(
-            "Enrollment starts on its own as soon as the code is read.",
+            "L'enrôlement démarre dès que le code est lu.",
             style = MaterialTheme.typography.bodySmall,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
         )
@@ -212,7 +211,7 @@ private fun ScanningView(
                 .clip(RoundedCornerShape(20.dp)),
         )
         OutlinedButton(onClick = onCancel, modifier = Modifier.fillMaxWidth()) {
-            Text("Cancel")
+            Text("Annuler")
         }
     }
 }

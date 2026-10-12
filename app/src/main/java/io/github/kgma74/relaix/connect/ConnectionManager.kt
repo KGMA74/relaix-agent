@@ -8,6 +8,7 @@ import io.github.kgma74.relaix.enroll.DeviceInfoProvider
 import io.github.kgma74.relaix.grpc.ChannelFactory
 import io.github.kgma74.relaix.health.HealthProvider
 import io.github.kgma74.relaix.jobs.JobProcessor
+import io.github.kgma74.relaix.policy.PolicyStore
 import io.github.kgma74.relaix.security.DeviceIdentityStore
 import io.grpc.ManagedChannel
 import io.grpc.Status
@@ -25,6 +26,7 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import kotlinx.coroutines.withTimeoutOrNull
 import smsgateway.v1.Device
 import smsgateway.v1.DeviceGatewayGrpcKt
 import java.util.UUID
@@ -53,12 +55,88 @@ class ConnectionManager @Inject constructor(
     private val deviceInfoProvider: DeviceInfoProvider,
     private val healthProvider: HealthProvider,
     private val jobProcessor: JobProcessor,
+    private val policyStore: PolicyStore,
     @param:IoDispatcher private val ioDispatcher: kotlinx.coroutines.CoroutineDispatcher,
 ) {
     private val _state = MutableStateFlow<ConnectionState>(ConnectionState.Idle)
     val state: StateFlow<ConnectionState> = _state.asStateFlow()
 
+    // Conflated: however many nudges land between two heartbeats, one early
+    // heartbeat answers them all.
+    private val heartbeatNudges = Channel<Unit>(Channel.CONFLATED)
+
+    /**
+     * Sends a heartbeat now instead of at the next tick.
+     *
+     * For a change the server schedules on — a permission just granted, a SIM
+     * just inserted. Waiting out the interval (30 s by default) leaves the
+     * dashboard saying "not ready" about a phone that already is, which reads
+     * as the grant not having worked.
+     */
+    fun heartbeatNow() {
+        heartbeatNudges.trySend(Unit)
+    }
+
     private var runner: Job? = null
+
+    // The registered session's writer and credential, for leave(). Null while
+    // not connected: there is then nobody to tell.
+    @Volatile private var liveOutgoing: Channel<Device.DeviceMessage>? = null
+    @Volatile private var liveToken: String? = null
+
+    // Set by leave(): the stream the server is about to close must not be
+    // reconnected with a token that no longer exists.
+    @Volatile private var leaving = false
+
+    /**
+     * Sends rules edited on the phone. The server stores them and answers with
+     * the stored version, which lands in [PolicyStore] like any other change.
+     *
+     * Needs the stream: rules are the server's, and an edit it has not seen is
+     * not in force. Returns false when not connected.
+     */
+    suspend fun updatePolicy(policy: Device.DevicePolicy): Boolean {
+        val out = liveOutgoing ?: return false
+        val token = liveToken ?: return false
+        return runCatching {
+            out.send(
+                envelope(token)
+                    .setPolicyUpdate(Device.PolicyUpdate.newBuilder().setPolicy(policy))
+                    .build(),
+            )
+        }.isSuccess
+    }
+
+    /**
+     * Tells the server this phone is leaving the fleet, then stops.
+     *
+     * Best effort, by design: offline, there is no one to tell, and forgetting
+     * the enrollment on the phone must work regardless — the operator can still
+     * remove the device from the dashboard. Waits up to [timeoutMillis] for the
+     * server to close the stream, which is its acknowledgement.
+     *
+     * @return whether the server was told.
+     */
+    suspend fun leave(timeoutMillis: Long = LEAVE_TIMEOUT_MS): Boolean {
+        val out = liveOutgoing
+        val token = liveToken
+        if (out == null || token == null) {
+            stop()
+            return false
+        }
+        leaving = true
+        val sent = runCatching {
+            out.send(
+                envelope(token)
+                    .setLeave(Device.Leave.newBuilder().setReason("forgotten on the device"))
+                    .build(),
+            )
+        }.isSuccess
+        if (sent) withTimeoutOrNull(timeoutMillis) { runner?.join() }
+        stop()
+        leaving = false
+        return sent
+    }
 
     /** Starts the connect/retry loop. Safe to call twice; the second is a no-op. */
     fun start(scope: CoroutineScope) {
@@ -90,6 +168,10 @@ class ConnectionManager @Inject constructor(
 
             try {
                 session(channel, token, backoff)
+                if (leaving) {
+                    _state.value = ConnectionState.Idle
+                    return
+                }
             } catch (e: StatusException) {
                 if (e.status.code == Status.Code.PERMISSION_DENIED ||
                     e.status.code == Status.Code.UNAUTHENTICATED
@@ -145,6 +227,7 @@ class ConnectionManager @Inject constructor(
                                 )
                             }
                             backoff.reset()
+                            if (ack.hasPolicy()) policyStore.save(ack.policy)
                             // Jobs the server has given up on: drop them
                             // rather than send a message it may have already
                             // re-dispatched to another handset.
@@ -153,6 +236,8 @@ class ConnectionManager @Inject constructor(
                             val interval = ack.heartbeatIntervalSeconds
                                 .takeIf { it > 0 } ?: DEFAULT_HEARTBEAT_S
                             _state.value = ConnectionState.Connected(interval)
+                            liveOutgoing = outgoing
+                            liveToken = token
 
                             heartbeatJob?.cancel()
                             heartbeatJob = launch {
@@ -179,6 +264,10 @@ class ConnectionManager @Inject constructor(
                             launch { handleJob(message.sendSmsJob, outgoing, token) }
                         }
 
+                        // New rules: from the dashboard, or the echo of an
+                        // edit made on this phone.
+                        message.hasPolicy() -> policyStore.save(message.policy)
+
                         message.hasCancelJob() -> {
                             launch {
                                 jobProcessor.cancel(message.cancelJob.jobId)?.let { result ->
@@ -199,6 +288,8 @@ class ConnectionManager @Inject constructor(
                 }
             }
         } finally {
+            liveOutgoing = null
+            liveToken = null
             heartbeatJob?.cancel()
             lateResultsJob?.cancel()
             outgoing.close()
@@ -228,7 +319,8 @@ class ConnectionManager @Inject constructor(
         intervalSeconds: Int,
     ) {
         while (true) {
-            delay(intervalSeconds * 1_000L)
+            // The interval, cut short by a nudge.
+            withTimeoutOrNull(intervalSeconds * 1_000L) { heartbeatNudges.receive() }
             val message = envelope(token)
                 .setHeartbeat(
                     Device.Heartbeat.newBuilder()
@@ -281,6 +373,7 @@ class ConnectionManager @Inject constructor(
     private companion object {
         const val TAG = "RelaixConnect"
         const val DEFAULT_HEARTBEAT_S = 30
+        const val LEAVE_TIMEOUT_MS = 3_000L
         const val SHUTDOWN_TIMEOUT_S = 5L
     }
 }

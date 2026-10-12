@@ -50,7 +50,7 @@ class AgentService : Service() {
     override fun onCreate() {
         super.onCreate()
         createNotificationChannel()
-        startForeground(NOTIFICATION_ID, buildNotification("Starting…"))
+        startForeground(NOTIFICATION_ID, buildNotification("Démarrage…"))
 
         // NOT_EXPORTED: a delivery report is ours, and an exported receiver
         // would let any app claim a job was delivered.
@@ -90,12 +90,12 @@ class AgentService : Service() {
     }
 
     private fun describe(state: ConnectionState): String = when (state) {
-        ConnectionState.Idle -> "Not enrolled"
-        ConnectionState.Connecting -> "Connecting…"
-        is ConnectionState.Connected -> "Connected · heartbeat ${state.heartbeatSeconds}s"
+        ConnectionState.Idle -> "Non enrôlé"
+        ConnectionState.Connecting -> "Connexion…"
+        is ConnectionState.Connected -> "En ligne · battement toutes les ${state.heartbeatSeconds} s"
         is ConnectionState.Reconnecting ->
-            "Reconnecting in ${state.retryInSeconds}s (${state.reason})"
-        is ConnectionState.Refused -> "Refused: ${state.reason}"
+            "Reconnexion dans ${state.retryInSeconds} s (${state.reason})"
+        is ConnectionState.Refused -> "Refusé : ${state.reason}"
     }
 
     private fun buildNotification(text: String): Notification {
@@ -107,7 +107,7 @@ class AgentService : Service() {
         )
 
         return Notification.Builder(this, CHANNEL_ID)
-            .setContentTitle("Relaix agent")
+            .setContentTitle("Relaix")
             .setContentText(text)
             .setSmallIcon(R.drawable.ic_launcher_foreground)
             .setContentIntent(openApp)
@@ -121,10 +121,10 @@ class AgentService : Service() {
         // every reconnect.
         val channel = NotificationChannel(
             CHANNEL_ID,
-            "Agent connection",
+            "Connexion à la passerelle",
             NotificationManager.IMPORTANCE_LOW,
         ).apply {
-            description = "Shows whether the agent is connected to the control plane."
+            description = "Indique si le téléphone est connecté à la passerelle Relaix."
             setShowBadge(false)
         }
         notificationManager().createNotificationChannel(channel)

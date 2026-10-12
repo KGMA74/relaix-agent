@@ -365,6 +365,74 @@ public object DeviceInfoKt {
     public fun com.google.protobuf.kotlin.DslList<smsgateway.v1.Device.SimInfo, SimsProxy>.clear() {
       _builder.clearSims()
     }
+
+    /**
+     * ```
+     * Stable identifier of this handset, so the fleet holds one entry per phone.
+     * On Android, Settings.Secure.ANDROID_ID: scoped to the app's signing key,
+     * the user and the device, so it survives a reinstall but is meaningless to
+     * any other app. Read on Enroll: a phone that enrolls again — after a
+     * reinstall, a forget, a lost token — takes back its existing device, id and
+     * history included, instead of adding a second one. The server stores only
+     * an HMAC of it, never the value. Empty from agents that predate it, which
+     * then enroll as a new device every time, as before.
+     * ```
+     *
+     * `string hardware_id = 9 [json_name = "hardwareId"];`
+     */
+    public var hardwareId: kotlin.String
+      @kotlin.jvm.JvmName("getHardwareId")
+        get() = _builder.hardwareId
+      @kotlin.jvm.JvmName("setHardwareId")
+        set(value) {
+        _builder.hardwareId = value
+      }
+    /**
+     * ```
+     * Stable identifier of this handset, so the fleet holds one entry per phone.
+     * On Android, Settings.Secure.ANDROID_ID: scoped to the app's signing key,
+     * the user and the device, so it survives a reinstall but is meaningless to
+     * any other app. Read on Enroll: a phone that enrolls again — after a
+     * reinstall, a forget, a lost token — takes back its existing device, id and
+     * history included, instead of adding a second one. The server stores only
+     * an HMAC of it, never the value. Empty from agents that predate it, which
+     * then enroll as a new device every time, as before.
+     * ```
+     *
+     * `string hardware_id = 9 [json_name = "hardwareId"];`
+     */
+    public fun clearHardwareId() {
+      _builder.clearHardwareId()
+    }
+
+    /**
+     * ```
+     * IANA zone the handset is set to, e.g. "Africa/Ouagadougou". The default
+     * zone for its availability windows (DevicePolicy), so "08:00" means eight
+     * in the morning where the phone is, not where the server runs.
+     * ```
+     *
+     * `string time_zone = 10 [json_name = "timeZone"];`
+     */
+    public var timeZone: kotlin.String
+      @kotlin.jvm.JvmName("getTimeZone")
+        get() = _builder.timeZone
+      @kotlin.jvm.JvmName("setTimeZone")
+        set(value) {
+        _builder.timeZone = value
+      }
+    /**
+     * ```
+     * IANA zone the handset is set to, e.g. "Africa/Ouagadougou". The default
+     * zone for its availability windows (DevicePolicy), so "08:00" means eight
+     * in the morning where the phone is, not where the server runs.
+     * ```
+     *
+     * `string time_zone = 10 [json_name = "timeZone"];`
+     */
+    public fun clearTimeZone() {
+      _builder.clearTimeZone()
+    }
   }
 }
 @kotlin.jvm.JvmSynthetic

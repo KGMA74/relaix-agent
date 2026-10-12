@@ -2,33 +2,37 @@ package io.github.kgma74.relaix.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-// Relaix palette. A teal-slate base rather than the scaffold's purple: this is
-// an operator tool living on an always-on handset, and its whole job is to make
-// one question — is this node working — answerable at a glance.
+// Relaix palette, shared with the web dashboard (server/ui/src/index.css) so
+// the phone and the console read as one product: an indigo brand on cool
+// neutrals. The brand colour is for identity and actions only; whether this
+// node is working is said by the status colours below, never by indigo.
 
-val RelaixTeal = Color(0xFF00A99B)
-val RelaixTealDark = Color(0xFF00695F)
-val RelaixTealLight = Color(0xFF6FE3D6)
+val Indigo600 = Color(0xFF4F46E5)
+val Indigo400 = Color(0xFF818CF8)
+val Indigo100 = Color(0xFFE0E7FF)
+val Indigo900 = Color(0xFF312E81)
 
-val RelaixSlate = Color(0xFF3E5060)
-val RelaixSlateLight = Color(0xFFB8C7D4)
+// Light
+val BackgroundLight = Color(0xFFF5F6FA)
+val CardLight = Color(0xFFFFFFFF)
+val InkLight = Color(0xFF15171C)
+val MutedInkLight = Color(0xFF5C6475)
+val BorderLight = Color(0xFFDFE2EA)
+val SubtleLight = Color(0xFFECEEF4)
 
-val RelaixAmber = Color(0xFFB26A00)
-val RelaixAmberLight = Color(0xFFFFCF8B)
-
-val RelaixRed = Color(0xFFB3253A)
-val RelaixRedLight = Color(0xFFFFB3B8)
+// Dark
+val BackgroundDark = Color(0xFF0E1116)
+val CardDark = Color(0xFF161A21)
+val InkDark = Color(0xFFE6E8EE)
+val MutedInkDark = Color(0xFF8B93A3)
+val BorderDark = Color(0xFF252B35)
+val SubtleDark = Color(0xFF1D222B)
 
 // Status colours named for meaning, not appearance, so no screen ever
 // hard-codes "green" and every state stays legible in both themes.
-val StatusOkLight = RelaixTealDark
-val StatusOkDark = RelaixTealLight
-val StatusWaitingLight = RelaixAmber
-val StatusWaitingDark = RelaixAmberLight
-val StatusBadLight = RelaixRed
-val StatusBadDark = RelaixRedLight
-
-val SurfaceDark = Color(0xFF10161A)
-val SurfaceDarkElevated = Color(0xFF1A2328)
-val SurfaceLight = Color(0xFFF5F8F9)
-val SurfaceLightElevated = Color(0xFFFFFFFF)
+val StatusOkLight = Color(0xFF15803D)
+val StatusOkDark = Color(0xFF34D399)
+val StatusWaitingLight = Color(0xFFB45309)
+val StatusWaitingDark = Color(0xFFFBBF24)
+val StatusBadLight = Color(0xFFC62828)
+val StatusBadDark = Color(0xFFF87171)

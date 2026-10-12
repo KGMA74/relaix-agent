@@ -1,5 +1,6 @@
 package io.github.kgma74.relaix.ui.status
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -11,6 +12,8 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.Message
+import androidx.compose.material.icons.filled.ErrorOutline
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.FilterChip
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -30,8 +33,10 @@ import io.github.kgma74.relaix.jobs.JobRecord
 import io.github.kgma74.relaix.jobs.JobState
 import io.github.kgma74.relaix.ui.components.EmptyState
 import io.github.kgma74.relaix.ui.components.SectionCard
+import io.github.kgma74.relaix.ui.components.StatTile
 import io.github.kgma74.relaix.ui.components.StatusChip
 import io.github.kgma74.relaix.ui.theme.LocalStatusColors
+import io.github.kgma74.relaix.ui.theme.soft
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -44,9 +49,9 @@ import java.util.Locale
  * when a message did not arrive.
  */
 private enum class JobFilter(val label: String) {
-    All("All"),
-    Sent("Sent"),
-    Failed("Failed"),
+    All("Tous"),
+    Sent("Envoyés"),
+    Failed("Échecs"),
     ;
 
     fun accepts(state: JobState): Boolean = when (this) {
@@ -67,8 +72,8 @@ fun JobsScreen(
     if (jobs.isEmpty()) {
         EmptyState(
             icon = Icons.AutoMirrored.Filled.Message,
-            title = "No jobs yet",
-            detail = "Messages pushed to this device will appear here.",
+            title = "Aucun envoi",
+            detail = "Les messages confiés à ce téléphone apparaîtront ici.",
             modifier = modifier.fillMaxSize(),
         )
         return
@@ -100,8 +105,8 @@ fun JobsScreen(
         if (shown.isEmpty()) {
             EmptyState(
                 icon = Icons.AutoMirrored.Filled.Message,
-                title = "Nothing here",
-                detail = "No job matches this filter.",
+                title = "Rien ici",
+                detail = "Aucun envoi ne correspond à ce filtre.",
                 modifier = Modifier.fillMaxWidth(),
             )
             return
@@ -129,32 +134,22 @@ private fun Summary(total: Int, failed: Int) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = 16.dp, vertical = 12.dp),
-        horizontalArrangement = Arrangement.spacedBy(24.dp),
+            .padding(start = 16.dp, end = 16.dp, top = 16.dp, bottom = 4.dp),
+        horizontalArrangement = Arrangement.spacedBy(12.dp),
     ) {
-        Column {
-            Text(
-                "$total",
-                style = MaterialTheme.typography.headlineSmall,
-            )
-            Text(
-                "RECORDED",
-                style = MaterialTheme.typography.labelSmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-            )
-        }
-        Column {
-            Text(
-                "$failed",
-                style = MaterialTheme.typography.headlineSmall,
-                color = if (failed > 0) status.bad else MaterialTheme.colorScheme.onSurface,
-            )
-            Text(
-                "FAILED",
-                style = MaterialTheme.typography.labelSmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-            )
-        }
+        StatTile(
+            label = "Envois récents",
+            value = "$total",
+            icon = Icons.AutoMirrored.Filled.Message,
+            modifier = Modifier.weight(1f),
+        )
+        StatTile(
+            label = "Échecs",
+            value = "$failed",
+            icon = Icons.Default.ErrorOutline,
+            accent = if (failed > 0) status.bad else MaterialTheme.colorScheme.onSurfaceVariant,
+            modifier = Modifier.weight(1f),
+        )
     }
 }
 
@@ -178,7 +173,7 @@ private fun JobCard(job: JobRecord) {
                     style = MaterialTheme.typography.titleSmall,
                     fontFamily = FontFamily.Monospace,
                 )
-                StatusChip(job.status.name, colour)
+                StatusChip(labelFor(job.status), colour)
             }
 
             Row(
@@ -190,24 +185,45 @@ private fun JobCard(job: JobRecord) {
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                 )
-                if (job.partsSent > 0) {
+                val meta = listOfNotNull(
                     // Parts are what the carrier bills, so they belong next to
                     // the outcome rather than hidden in a detail view.
+                    job.partsSent.takeIf { it > 0 }?.let { "$it part" + if (it > 1) "s" else "" },
+                    job.subscriptionId.takeIf { it > 0 }?.let { "SIM $it" },
+                ).joinToString(" · ")
+                if (meta.isNotEmpty()) {
                     Text(
-                        "${job.partsSent} part${if (job.partsSent > 1) "s" else ""}",
+                        meta,
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                     )
                 }
             }
 
-            if (job.errorCode.isNotBlank()) {
-                Text(
-                    job.errorCode,
-                    style = MaterialTheme.typography.bodySmall,
-                    color = status.bad,
-                    fontFamily = FontFamily.Monospace,
-                )
+            if (job.errorCode.isNotBlank() || job.errorMessage.isNotBlank()) {
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .background(soft(status.bad, 0.10f), RoundedCornerShape(8.dp))
+                        .padding(horizontal = 10.dp, vertical = 8.dp),
+                    verticalArrangement = Arrangement.spacedBy(2.dp),
+                ) {
+                    if (job.errorCode.isNotBlank()) {
+                        Text(
+                            job.errorCode,
+                            style = MaterialTheme.typography.labelMedium,
+                            color = status.bad,
+                            fontFamily = FontFamily.Monospace,
+                        )
+                    }
+                    if (job.errorMessage.isNotBlank()) {
+                        Text(
+                            job.errorMessage,
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        )
+                    }
+                }
             }
         }
     }
@@ -217,9 +233,19 @@ private fun colourFor(state: JobState, ok: Color, waiting: Color, bad: Color): C
     when (state) {
         JobState.SENT, JobState.DELIVERED -> ok
         JobState.FAILED -> bad
-        JobState.CANCELLED -> bad
+        // Cancelled is a decision, not a fault: quiet, not red.
+        JobState.CANCELLED -> waiting
         JobState.ACCEPTED, JobState.SENDING -> waiting
     }
+
+private fun labelFor(state: JobState): String = when (state) {
+    JobState.ACCEPTED -> "Reçu"
+    JobState.SENDING -> "Envoi…"
+    JobState.SENT -> "Envoyé"
+    JobState.DELIVERED -> "Délivré"
+    JobState.FAILED -> "Échoué"
+    JobState.CANCELLED -> "Annulé"
+}
 
 private fun timestamp(millis: Long): String =
     SimpleDateFormat("d MMM · HH:mm:ss", Locale.getDefault()).format(Date(millis))

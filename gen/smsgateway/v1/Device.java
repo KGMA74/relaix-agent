@@ -1935,6 +1935,64 @@ public final class Device extends com.google.protobuf.GeneratedFile {
      */
     smsgateway.v1.Device.SimInfoOrBuilder getSimsOrBuilder(
         int index);
+
+    /**
+     * <pre>
+     * Stable identifier of this handset, so the fleet holds one entry per phone.
+     * On Android, Settings.Secure.ANDROID_ID: scoped to the app's signing key,
+     * the user and the device, so it survives a reinstall but is meaningless to
+     * any other app. Read on Enroll: a phone that enrolls again — after a
+     * reinstall, a forget, a lost token — takes back its existing device, id and
+     * history included, instead of adding a second one. The server stores only
+     * an HMAC of it, never the value. Empty from agents that predate it, which
+     * then enroll as a new device every time, as before.
+     * </pre>
+     *
+     * <code>string hardware_id = 9 [json_name = "hardwareId"];</code>
+     * @return The hardwareId.
+     */
+    java.lang.String getHardwareId();
+    /**
+     * <pre>
+     * Stable identifier of this handset, so the fleet holds one entry per phone.
+     * On Android, Settings.Secure.ANDROID_ID: scoped to the app's signing key,
+     * the user and the device, so it survives a reinstall but is meaningless to
+     * any other app. Read on Enroll: a phone that enrolls again — after a
+     * reinstall, a forget, a lost token — takes back its existing device, id and
+     * history included, instead of adding a second one. The server stores only
+     * an HMAC of it, never the value. Empty from agents that predate it, which
+     * then enroll as a new device every time, as before.
+     * </pre>
+     *
+     * <code>string hardware_id = 9 [json_name = "hardwareId"];</code>
+     * @return The bytes for hardwareId.
+     */
+    com.google.protobuf.ByteString
+        getHardwareIdBytes();
+
+    /**
+     * <pre>
+     * IANA zone the handset is set to, e.g. "Africa/Ouagadougou". The default
+     * zone for its availability windows (DevicePolicy), so "08:00" means eight
+     * in the morning where the phone is, not where the server runs.
+     * </pre>
+     *
+     * <code>string time_zone = 10 [json_name = "timeZone"];</code>
+     * @return The timeZone.
+     */
+    java.lang.String getTimeZone();
+    /**
+     * <pre>
+     * IANA zone the handset is set to, e.g. "Africa/Ouagadougou". The default
+     * zone for its availability windows (DevicePolicy), so "08:00" means eight
+     * in the morning where the phone is, not where the server runs.
+     * </pre>
+     *
+     * <code>string time_zone = 10 [json_name = "timeZone"];</code>
+     * @return The bytes for timeZone.
+     */
+    com.google.protobuf.ByteString
+        getTimeZoneBytes();
   }
   /**
    * <pre>
@@ -1971,6 +2029,8 @@ public final class Device extends com.google.protobuf.GeneratedFile {
       agentVersion_ = "";
       carrier_ = "";
       sims_ = java.util.Collections.emptyList();
+      hardwareId_ = "";
+      timeZone_ = "";
     }
 
     public static final com.google.protobuf.Descriptors.Descriptor
@@ -2419,6 +2479,118 @@ public final class Device extends com.google.protobuf.GeneratedFile {
       return sims_.get(index);
     }
 
+    public static final int HARDWARE_ID_FIELD_NUMBER = 9;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object hardwareId_ = "";
+    /**
+     * <pre>
+     * Stable identifier of this handset, so the fleet holds one entry per phone.
+     * On Android, Settings.Secure.ANDROID_ID: scoped to the app's signing key,
+     * the user and the device, so it survives a reinstall but is meaningless to
+     * any other app. Read on Enroll: a phone that enrolls again — after a
+     * reinstall, a forget, a lost token — takes back its existing device, id and
+     * history included, instead of adding a second one. The server stores only
+     * an HMAC of it, never the value. Empty from agents that predate it, which
+     * then enroll as a new device every time, as before.
+     * </pre>
+     *
+     * <code>string hardware_id = 9 [json_name = "hardwareId"];</code>
+     * @return The hardwareId.
+     */
+    @java.lang.Override
+    public java.lang.String getHardwareId() {
+      java.lang.Object ref = hardwareId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        hardwareId_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * Stable identifier of this handset, so the fleet holds one entry per phone.
+     * On Android, Settings.Secure.ANDROID_ID: scoped to the app's signing key,
+     * the user and the device, so it survives a reinstall but is meaningless to
+     * any other app. Read on Enroll: a phone that enrolls again — after a
+     * reinstall, a forget, a lost token — takes back its existing device, id and
+     * history included, instead of adding a second one. The server stores only
+     * an HMAC of it, never the value. Empty from agents that predate it, which
+     * then enroll as a new device every time, as before.
+     * </pre>
+     *
+     * <code>string hardware_id = 9 [json_name = "hardwareId"];</code>
+     * @return The bytes for hardwareId.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getHardwareIdBytes() {
+      java.lang.Object ref = hardwareId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        hardwareId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int TIME_ZONE_FIELD_NUMBER = 10;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object timeZone_ = "";
+    /**
+     * <pre>
+     * IANA zone the handset is set to, e.g. "Africa/Ouagadougou". The default
+     * zone for its availability windows (DevicePolicy), so "08:00" means eight
+     * in the morning where the phone is, not where the server runs.
+     * </pre>
+     *
+     * <code>string time_zone = 10 [json_name = "timeZone"];</code>
+     * @return The timeZone.
+     */
+    @java.lang.Override
+    public java.lang.String getTimeZone() {
+      java.lang.Object ref = timeZone_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        timeZone_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * IANA zone the handset is set to, e.g. "Africa/Ouagadougou". The default
+     * zone for its availability windows (DevicePolicy), so "08:00" means eight
+     * in the morning where the phone is, not where the server runs.
+     * </pre>
+     *
+     * <code>string time_zone = 10 [json_name = "timeZone"];</code>
+     * @return The bytes for timeZone.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getTimeZoneBytes() {
+      java.lang.Object ref = timeZone_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        timeZone_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -2457,6 +2629,12 @@ public final class Device extends com.google.protobuf.GeneratedFile {
       for (int i = 0; i < sims_.size(); i++) {
         output.writeMessage(8, sims_.get(i));
       }
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(hardwareId_)) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 9, hardwareId_);
+      }
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(timeZone_)) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 10, timeZone_);
+      }
       getUnknownFields().writeTo(output);
     }
     private int computeSerializedSize_0() {
@@ -2491,6 +2669,12 @@ public final class Device extends com.google.protobuf.GeneratedFile {
             }
             size += 1 * count;
           }
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(hardwareId_)) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(9, hardwareId_);
+      }
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(timeZone_)) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(10, timeZone_);
+      }
       return size;
     }
     @java.lang.Override
@@ -2531,6 +2715,10 @@ public final class Device extends com.google.protobuf.GeneratedFile {
           .equals(other.getCarrier())) return false;
       if (!getSimsList()
           .equals(other.getSimsList())) return false;
+      if (!getHardwareId()
+          .equals(other.getHardwareId())) return false;
+      if (!getTimeZone()
+          .equals(other.getTimeZone())) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -2560,6 +2748,10 @@ public final class Device extends com.google.protobuf.GeneratedFile {
         hash = (37 * hash) + SIMS_FIELD_NUMBER;
         hash = (53 * hash) + getSimsList().hashCode();
       }
+      hash = (37 * hash) + HARDWARE_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getHardwareId().hashCode();
+      hash = (37 * hash) + TIME_ZONE_FIELD_NUMBER;
+      hash = (53 * hash) + getTimeZone().hashCode();
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -2710,6 +2902,8 @@ public final class Device extends com.google.protobuf.GeneratedFile {
           simsBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000080);
+        hardwareId_ = "";
+        timeZone_ = "";
         return this;
       }
 
@@ -2776,6 +2970,12 @@ public final class Device extends com.google.protobuf.GeneratedFile {
         }
         if (((from_bitField0_ & 0x00000040) != 0)) {
           result.carrier_ = carrier_;
+        }
+        if (((from_bitField0_ & 0x00000100) != 0)) {
+          result.hardwareId_ = hardwareId_;
+        }
+        if (((from_bitField0_ & 0x00000200) != 0)) {
+          result.timeZone_ = timeZone_;
         }
       }
 
@@ -2852,6 +3052,16 @@ public final class Device extends com.google.protobuf.GeneratedFile {
             }
           }
         }
+        if (!other.getHardwareId().isEmpty()) {
+          hardwareId_ = other.hardwareId_;
+          bitField0_ |= 0x00000100;
+          onChanged();
+        }
+        if (!other.getTimeZone().isEmpty()) {
+          timeZone_ = other.timeZone_;
+          bitField0_ |= 0x00000200;
+          onChanged();
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
@@ -2926,6 +3136,16 @@ public final class Device extends com.google.protobuf.GeneratedFile {
                 }
                 break;
               } // case 66
+              case 74: {
+                hardwareId_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000100;
+                break;
+              } // case 74
+              case 82: {
+                timeZone_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000200;
+                break;
+              } // case 82
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -4047,6 +4267,235 @@ public final class Device extends com.google.protobuf.GeneratedFile {
           sims_ = null;
         }
         return simsBuilder_;
+      }
+
+      private java.lang.Object hardwareId_ = "";
+      /**
+       * <pre>
+       * Stable identifier of this handset, so the fleet holds one entry per phone.
+       * On Android, Settings.Secure.ANDROID_ID: scoped to the app's signing key,
+       * the user and the device, so it survives a reinstall but is meaningless to
+       * any other app. Read on Enroll: a phone that enrolls again — after a
+       * reinstall, a forget, a lost token — takes back its existing device, id and
+       * history included, instead of adding a second one. The server stores only
+       * an HMAC of it, never the value. Empty from agents that predate it, which
+       * then enroll as a new device every time, as before.
+       * </pre>
+       *
+       * <code>string hardware_id = 9 [json_name = "hardwareId"];</code>
+       * @return The hardwareId.
+       */
+      public java.lang.String getHardwareId() {
+        java.lang.Object ref = hardwareId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          hardwareId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * Stable identifier of this handset, so the fleet holds one entry per phone.
+       * On Android, Settings.Secure.ANDROID_ID: scoped to the app's signing key,
+       * the user and the device, so it survives a reinstall but is meaningless to
+       * any other app. Read on Enroll: a phone that enrolls again — after a
+       * reinstall, a forget, a lost token — takes back its existing device, id and
+       * history included, instead of adding a second one. The server stores only
+       * an HMAC of it, never the value. Empty from agents that predate it, which
+       * then enroll as a new device every time, as before.
+       * </pre>
+       *
+       * <code>string hardware_id = 9 [json_name = "hardwareId"];</code>
+       * @return The bytes for hardwareId.
+       */
+      public com.google.protobuf.ByteString
+          getHardwareIdBytes() {
+        java.lang.Object ref = hardwareId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          hardwareId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * Stable identifier of this handset, so the fleet holds one entry per phone.
+       * On Android, Settings.Secure.ANDROID_ID: scoped to the app's signing key,
+       * the user and the device, so it survives a reinstall but is meaningless to
+       * any other app. Read on Enroll: a phone that enrolls again — after a
+       * reinstall, a forget, a lost token — takes back its existing device, id and
+       * history included, instead of adding a second one. The server stores only
+       * an HMAC of it, never the value. Empty from agents that predate it, which
+       * then enroll as a new device every time, as before.
+       * </pre>
+       *
+       * <code>string hardware_id = 9 [json_name = "hardwareId"];</code>
+       * @param value The hardwareId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setHardwareId(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        hardwareId_ = value;
+        bitField0_ |= 0x00000100;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Stable identifier of this handset, so the fleet holds one entry per phone.
+       * On Android, Settings.Secure.ANDROID_ID: scoped to the app's signing key,
+       * the user and the device, so it survives a reinstall but is meaningless to
+       * any other app. Read on Enroll: a phone that enrolls again — after a
+       * reinstall, a forget, a lost token — takes back its existing device, id and
+       * history included, instead of adding a second one. The server stores only
+       * an HMAC of it, never the value. Empty from agents that predate it, which
+       * then enroll as a new device every time, as before.
+       * </pre>
+       *
+       * <code>string hardware_id = 9 [json_name = "hardwareId"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearHardwareId() {
+        hardwareId_ = getDefaultInstance().getHardwareId();
+        bitField0_ = (bitField0_ & ~0x00000100);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Stable identifier of this handset, so the fleet holds one entry per phone.
+       * On Android, Settings.Secure.ANDROID_ID: scoped to the app's signing key,
+       * the user and the device, so it survives a reinstall but is meaningless to
+       * any other app. Read on Enroll: a phone that enrolls again — after a
+       * reinstall, a forget, a lost token — takes back its existing device, id and
+       * history included, instead of adding a second one. The server stores only
+       * an HMAC of it, never the value. Empty from agents that predate it, which
+       * then enroll as a new device every time, as before.
+       * </pre>
+       *
+       * <code>string hardware_id = 9 [json_name = "hardwareId"];</code>
+       * @param value The bytes for hardwareId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setHardwareIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        hardwareId_ = value;
+        bitField0_ |= 0x00000100;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object timeZone_ = "";
+      /**
+       * <pre>
+       * IANA zone the handset is set to, e.g. "Africa/Ouagadougou". The default
+       * zone for its availability windows (DevicePolicy), so "08:00" means eight
+       * in the morning where the phone is, not where the server runs.
+       * </pre>
+       *
+       * <code>string time_zone = 10 [json_name = "timeZone"];</code>
+       * @return The timeZone.
+       */
+      public java.lang.String getTimeZone() {
+        java.lang.Object ref = timeZone_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          timeZone_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * IANA zone the handset is set to, e.g. "Africa/Ouagadougou". The default
+       * zone for its availability windows (DevicePolicy), so "08:00" means eight
+       * in the morning where the phone is, not where the server runs.
+       * </pre>
+       *
+       * <code>string time_zone = 10 [json_name = "timeZone"];</code>
+       * @return The bytes for timeZone.
+       */
+      public com.google.protobuf.ByteString
+          getTimeZoneBytes() {
+        java.lang.Object ref = timeZone_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          timeZone_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * IANA zone the handset is set to, e.g. "Africa/Ouagadougou". The default
+       * zone for its availability windows (DevicePolicy), so "08:00" means eight
+       * in the morning where the phone is, not where the server runs.
+       * </pre>
+       *
+       * <code>string time_zone = 10 [json_name = "timeZone"];</code>
+       * @param value The timeZone to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTimeZone(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        timeZone_ = value;
+        bitField0_ |= 0x00000200;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * IANA zone the handset is set to, e.g. "Africa/Ouagadougou". The default
+       * zone for its availability windows (DevicePolicy), so "08:00" means eight
+       * in the morning where the phone is, not where the server runs.
+       * </pre>
+       *
+       * <code>string time_zone = 10 [json_name = "timeZone"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTimeZone() {
+        timeZone_ = getDefaultInstance().getTimeZone();
+        bitField0_ = (bitField0_ & ~0x00000200);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * IANA zone the handset is set to, e.g. "Africa/Ouagadougou". The default
+       * zone for its availability windows (DevicePolicy), so "08:00" means eight
+       * in the morning where the phone is, not where the server runs.
+       * </pre>
+       *
+       * <code>string time_zone = 10 [json_name = "timeZone"];</code>
+       * @param value The bytes for timeZone to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTimeZoneBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        timeZone_ = value;
+        bitField0_ |= 0x00000200;
+        onChanged();
+        return this;
       }
 
       // @@protoc_insertion_point(builder_scope:smsgateway.v1.DeviceInfo)
@@ -5441,6 +5890,36 @@ public final class Device extends com.google.protobuf.GeneratedFile {
      */
     smsgateway.v1.Device.JobResultOrBuilder getJobResultOrBuilder();
 
+    /**
+     * <code>.smsgateway.v1.Leave leave = 14 [json_name = "leave"];</code>
+     * @return Whether the leave field is set.
+     */
+    boolean hasLeave();
+    /**
+     * <code>.smsgateway.v1.Leave leave = 14 [json_name = "leave"];</code>
+     * @return The leave.
+     */
+    smsgateway.v1.Device.Leave getLeave();
+    /**
+     * <code>.smsgateway.v1.Leave leave = 14 [json_name = "leave"];</code>
+     */
+    smsgateway.v1.Device.LeaveOrBuilder getLeaveOrBuilder();
+
+    /**
+     * <code>.smsgateway.v1.PolicyUpdate policy_update = 15 [json_name = "policyUpdate"];</code>
+     * @return Whether the policyUpdate field is set.
+     */
+    boolean hasPolicyUpdate();
+    /**
+     * <code>.smsgateway.v1.PolicyUpdate policy_update = 15 [json_name = "policyUpdate"];</code>
+     * @return The policyUpdate.
+     */
+    smsgateway.v1.Device.PolicyUpdate getPolicyUpdate();
+    /**
+     * <code>.smsgateway.v1.PolicyUpdate policy_update = 15 [json_name = "policyUpdate"];</code>
+     */
+    smsgateway.v1.Device.PolicyUpdateOrBuilder getPolicyUpdateOrBuilder();
+
     smsgateway.v1.Device.DeviceMessage.PayloadCase getPayloadCase();
   }
   /**
@@ -5503,6 +5982,8 @@ public final class Device extends com.google.protobuf.GeneratedFile {
       HEARTBEAT(11),
       JOB_ACK(12),
       JOB_RESULT(13),
+      LEAVE(14),
+      POLICY_UPDATE(15),
       PAYLOAD_NOT_SET(0);
       private final int value;
       private PayloadCase(int value) {
@@ -5524,6 +6005,8 @@ public final class Device extends com.google.protobuf.GeneratedFile {
           case 11: return HEARTBEAT;
           case 12: return JOB_ACK;
           case 13: return JOB_RESULT;
+          case 14: return LEAVE;
+          case 15: return POLICY_UPDATE;
           case 0: return PAYLOAD_NOT_SET;
           default: return null;
         }
@@ -5804,6 +6287,68 @@ public final class Device extends com.google.protobuf.GeneratedFile {
       return smsgateway.v1.Device.JobResult.getDefaultInstance();
     }
 
+    public static final int LEAVE_FIELD_NUMBER = 14;
+    /**
+     * <code>.smsgateway.v1.Leave leave = 14 [json_name = "leave"];</code>
+     * @return Whether the leave field is set.
+     */
+    @java.lang.Override
+    public boolean hasLeave() {
+      return payloadCase_ == 14;
+    }
+    /**
+     * <code>.smsgateway.v1.Leave leave = 14 [json_name = "leave"];</code>
+     * @return The leave.
+     */
+    @java.lang.Override
+    public smsgateway.v1.Device.Leave getLeave() {
+      if (payloadCase_ == 14) {
+         return (smsgateway.v1.Device.Leave) payload_;
+      }
+      return smsgateway.v1.Device.Leave.getDefaultInstance();
+    }
+    /**
+     * <code>.smsgateway.v1.Leave leave = 14 [json_name = "leave"];</code>
+     */
+    @java.lang.Override
+    public smsgateway.v1.Device.LeaveOrBuilder getLeaveOrBuilder() {
+      if (payloadCase_ == 14) {
+         return (smsgateway.v1.Device.Leave) payload_;
+      }
+      return smsgateway.v1.Device.Leave.getDefaultInstance();
+    }
+
+    public static final int POLICY_UPDATE_FIELD_NUMBER = 15;
+    /**
+     * <code>.smsgateway.v1.PolicyUpdate policy_update = 15 [json_name = "policyUpdate"];</code>
+     * @return Whether the policyUpdate field is set.
+     */
+    @java.lang.Override
+    public boolean hasPolicyUpdate() {
+      return payloadCase_ == 15;
+    }
+    /**
+     * <code>.smsgateway.v1.PolicyUpdate policy_update = 15 [json_name = "policyUpdate"];</code>
+     * @return The policyUpdate.
+     */
+    @java.lang.Override
+    public smsgateway.v1.Device.PolicyUpdate getPolicyUpdate() {
+      if (payloadCase_ == 15) {
+         return (smsgateway.v1.Device.PolicyUpdate) payload_;
+      }
+      return smsgateway.v1.Device.PolicyUpdate.getDefaultInstance();
+    }
+    /**
+     * <code>.smsgateway.v1.PolicyUpdate policy_update = 15 [json_name = "policyUpdate"];</code>
+     */
+    @java.lang.Override
+    public smsgateway.v1.Device.PolicyUpdateOrBuilder getPolicyUpdateOrBuilder() {
+      if (payloadCase_ == 15) {
+         return (smsgateway.v1.Device.PolicyUpdate) payload_;
+      }
+      return smsgateway.v1.Device.PolicyUpdate.getDefaultInstance();
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -5839,6 +6384,12 @@ public final class Device extends com.google.protobuf.GeneratedFile {
       if (payloadCase_ == 13) {
         output.writeMessage(13, (smsgateway.v1.Device.JobResult) payload_);
       }
+      if (payloadCase_ == 14) {
+        output.writeMessage(14, (smsgateway.v1.Device.Leave) payload_);
+      }
+      if (payloadCase_ == 15) {
+        output.writeMessage(15, (smsgateway.v1.Device.PolicyUpdate) payload_);
+      }
       getUnknownFields().writeTo(output);
     }
     private int computeSerializedSize_0() {
@@ -5868,6 +6419,14 @@ public final class Device extends com.google.protobuf.GeneratedFile {
       if (payloadCase_ == 13) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(13, (smsgateway.v1.Device.JobResult) payload_);
+      }
+      if (payloadCase_ == 14) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(14, (smsgateway.v1.Device.Leave) payload_);
+      }
+      if (payloadCase_ == 15) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(15, (smsgateway.v1.Device.PolicyUpdate) payload_);
       }
       return size;
     }
@@ -5920,6 +6479,14 @@ public final class Device extends com.google.protobuf.GeneratedFile {
           if (!getJobResult()
               .equals(other.getJobResult())) return false;
           break;
+        case 14:
+          if (!getLeave()
+              .equals(other.getLeave())) return false;
+          break;
+        case 15:
+          if (!getPolicyUpdate()
+              .equals(other.getPolicyUpdate())) return false;
+          break;
         case 0:
         default:
       }
@@ -5958,6 +6525,14 @@ public final class Device extends com.google.protobuf.GeneratedFile {
         case 13:
           hash = (37 * hash) + JOB_RESULT_FIELD_NUMBER;
           hash = (53 * hash) + getJobResult().hashCode();
+          break;
+        case 14:
+          hash = (37 * hash) + LEAVE_FIELD_NUMBER;
+          hash = (53 * hash) + getLeave().hashCode();
+          break;
+        case 15:
+          hash = (37 * hash) + POLICY_UPDATE_FIELD_NUMBER;
+          hash = (53 * hash) + getPolicyUpdate().hashCode();
           break;
         case 0:
         default:
@@ -6123,6 +6698,12 @@ public final class Device extends com.google.protobuf.GeneratedFile {
         if (jobResultBuilder_ != null) {
           jobResultBuilder_.clear();
         }
+        if (leaveBuilder_ != null) {
+          leaveBuilder_.clear();
+        }
+        if (policyUpdateBuilder_ != null) {
+          policyUpdateBuilder_.clear();
+        }
         payloadCase_ = 0;
         payload_ = null;
         return this;
@@ -6194,6 +6775,14 @@ public final class Device extends com.google.protobuf.GeneratedFile {
             jobResultBuilder_ != null) {
           result.payload_ = jobResultBuilder_.build();
         }
+        if (payloadCase_ == 14 &&
+            leaveBuilder_ != null) {
+          result.payload_ = leaveBuilder_.build();
+        }
+        if (payloadCase_ == 15 &&
+            policyUpdateBuilder_ != null) {
+          result.payload_ = policyUpdateBuilder_.build();
+        }
       }
 
       @java.lang.Override
@@ -6236,6 +6825,14 @@ public final class Device extends com.google.protobuf.GeneratedFile {
           }
           case JOB_RESULT: {
             mergeJobResult(other.getJobResult());
+            break;
+          }
+          case LEAVE: {
+            mergeLeave(other.getLeave());
+            break;
+          }
+          case POLICY_UPDATE: {
+            mergePolicyUpdate(other.getPolicyUpdate());
             break;
           }
           case PAYLOAD_NOT_SET: {
@@ -6313,6 +6910,20 @@ public final class Device extends com.google.protobuf.GeneratedFile {
                 payloadCase_ = 13;
                 break;
               } // case 106
+              case 114: {
+                input.readMessage(
+                    internalGetLeaveFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                payloadCase_ = 14;
+                break;
+              } // case 114
+              case 122: {
+                input.readMessage(
+                    internalGetPolicyUpdateFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                payloadCase_ = 15;
+                break;
+              } // case 122
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -7278,6 +7889,290 @@ public final class Device extends com.google.protobuf.GeneratedFile {
         return jobResultBuilder_;
       }
 
+      private com.google.protobuf.SingleFieldBuilder<
+          smsgateway.v1.Device.Leave, smsgateway.v1.Device.Leave.Builder, smsgateway.v1.Device.LeaveOrBuilder> leaveBuilder_;
+      /**
+       * <code>.smsgateway.v1.Leave leave = 14 [json_name = "leave"];</code>
+       * @return Whether the leave field is set.
+       */
+      @java.lang.Override
+      public boolean hasLeave() {
+        return payloadCase_ == 14;
+      }
+      /**
+       * <code>.smsgateway.v1.Leave leave = 14 [json_name = "leave"];</code>
+       * @return The leave.
+       */
+      @java.lang.Override
+      public smsgateway.v1.Device.Leave getLeave() {
+        if (leaveBuilder_ == null) {
+          if (payloadCase_ == 14) {
+            return (smsgateway.v1.Device.Leave) payload_;
+          }
+          return smsgateway.v1.Device.Leave.getDefaultInstance();
+        } else {
+          if (payloadCase_ == 14) {
+            return leaveBuilder_.getMessage();
+          }
+          return smsgateway.v1.Device.Leave.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.smsgateway.v1.Leave leave = 14 [json_name = "leave"];</code>
+       */
+      public Builder setLeave(smsgateway.v1.Device.Leave value) {
+        if (leaveBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          payload_ = value;
+          onChanged();
+        } else {
+          leaveBuilder_.setMessage(value);
+        }
+        payloadCase_ = 14;
+        return this;
+      }
+      /**
+       * <code>.smsgateway.v1.Leave leave = 14 [json_name = "leave"];</code>
+       */
+      public Builder setLeave(
+          smsgateway.v1.Device.Leave.Builder builderForValue) {
+        if (leaveBuilder_ == null) {
+          payload_ = builderForValue.build();
+          onChanged();
+        } else {
+          leaveBuilder_.setMessage(builderForValue.build());
+        }
+        payloadCase_ = 14;
+        return this;
+      }
+      /**
+       * <code>.smsgateway.v1.Leave leave = 14 [json_name = "leave"];</code>
+       */
+      public Builder mergeLeave(smsgateway.v1.Device.Leave value) {
+        if (leaveBuilder_ == null) {
+          if (payloadCase_ == 14 &&
+              payload_ != smsgateway.v1.Device.Leave.getDefaultInstance()) {
+            payload_ = smsgateway.v1.Device.Leave.newBuilder((smsgateway.v1.Device.Leave) payload_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            payload_ = value;
+          }
+          onChanged();
+        } else {
+          if (payloadCase_ == 14) {
+            leaveBuilder_.mergeFrom(value);
+          } else {
+            leaveBuilder_.setMessage(value);
+          }
+        }
+        payloadCase_ = 14;
+        return this;
+      }
+      /**
+       * <code>.smsgateway.v1.Leave leave = 14 [json_name = "leave"];</code>
+       */
+      public Builder clearLeave() {
+        if (leaveBuilder_ == null) {
+          if (payloadCase_ == 14) {
+            payloadCase_ = 0;
+            payload_ = null;
+            onChanged();
+          }
+        } else {
+          if (payloadCase_ == 14) {
+            payloadCase_ = 0;
+            payload_ = null;
+          }
+          leaveBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.smsgateway.v1.Leave leave = 14 [json_name = "leave"];</code>
+       */
+      public smsgateway.v1.Device.Leave.Builder getLeaveBuilder() {
+        return internalGetLeaveFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.smsgateway.v1.Leave leave = 14 [json_name = "leave"];</code>
+       */
+      @java.lang.Override
+      public smsgateway.v1.Device.LeaveOrBuilder getLeaveOrBuilder() {
+        if ((payloadCase_ == 14) && (leaveBuilder_ != null)) {
+          return leaveBuilder_.getMessageOrBuilder();
+        } else {
+          if (payloadCase_ == 14) {
+            return (smsgateway.v1.Device.Leave) payload_;
+          }
+          return smsgateway.v1.Device.Leave.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.smsgateway.v1.Leave leave = 14 [json_name = "leave"];</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          smsgateway.v1.Device.Leave, smsgateway.v1.Device.Leave.Builder, smsgateway.v1.Device.LeaveOrBuilder> 
+          internalGetLeaveFieldBuilder() {
+        if (leaveBuilder_ == null) {
+          if (!(payloadCase_ == 14)) {
+            payload_ = smsgateway.v1.Device.Leave.getDefaultInstance();
+          }
+          leaveBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              smsgateway.v1.Device.Leave, smsgateway.v1.Device.Leave.Builder, smsgateway.v1.Device.LeaveOrBuilder>(
+                  (smsgateway.v1.Device.Leave) payload_,
+                  getParentForChildren(),
+                  isClean());
+          payload_ = null;
+        }
+        payloadCase_ = 14;
+        onChanged();
+        return leaveBuilder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilder<
+          smsgateway.v1.Device.PolicyUpdate, smsgateway.v1.Device.PolicyUpdate.Builder, smsgateway.v1.Device.PolicyUpdateOrBuilder> policyUpdateBuilder_;
+      /**
+       * <code>.smsgateway.v1.PolicyUpdate policy_update = 15 [json_name = "policyUpdate"];</code>
+       * @return Whether the policyUpdate field is set.
+       */
+      @java.lang.Override
+      public boolean hasPolicyUpdate() {
+        return payloadCase_ == 15;
+      }
+      /**
+       * <code>.smsgateway.v1.PolicyUpdate policy_update = 15 [json_name = "policyUpdate"];</code>
+       * @return The policyUpdate.
+       */
+      @java.lang.Override
+      public smsgateway.v1.Device.PolicyUpdate getPolicyUpdate() {
+        if (policyUpdateBuilder_ == null) {
+          if (payloadCase_ == 15) {
+            return (smsgateway.v1.Device.PolicyUpdate) payload_;
+          }
+          return smsgateway.v1.Device.PolicyUpdate.getDefaultInstance();
+        } else {
+          if (payloadCase_ == 15) {
+            return policyUpdateBuilder_.getMessage();
+          }
+          return smsgateway.v1.Device.PolicyUpdate.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.smsgateway.v1.PolicyUpdate policy_update = 15 [json_name = "policyUpdate"];</code>
+       */
+      public Builder setPolicyUpdate(smsgateway.v1.Device.PolicyUpdate value) {
+        if (policyUpdateBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          payload_ = value;
+          onChanged();
+        } else {
+          policyUpdateBuilder_.setMessage(value);
+        }
+        payloadCase_ = 15;
+        return this;
+      }
+      /**
+       * <code>.smsgateway.v1.PolicyUpdate policy_update = 15 [json_name = "policyUpdate"];</code>
+       */
+      public Builder setPolicyUpdate(
+          smsgateway.v1.Device.PolicyUpdate.Builder builderForValue) {
+        if (policyUpdateBuilder_ == null) {
+          payload_ = builderForValue.build();
+          onChanged();
+        } else {
+          policyUpdateBuilder_.setMessage(builderForValue.build());
+        }
+        payloadCase_ = 15;
+        return this;
+      }
+      /**
+       * <code>.smsgateway.v1.PolicyUpdate policy_update = 15 [json_name = "policyUpdate"];</code>
+       */
+      public Builder mergePolicyUpdate(smsgateway.v1.Device.PolicyUpdate value) {
+        if (policyUpdateBuilder_ == null) {
+          if (payloadCase_ == 15 &&
+              payload_ != smsgateway.v1.Device.PolicyUpdate.getDefaultInstance()) {
+            payload_ = smsgateway.v1.Device.PolicyUpdate.newBuilder((smsgateway.v1.Device.PolicyUpdate) payload_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            payload_ = value;
+          }
+          onChanged();
+        } else {
+          if (payloadCase_ == 15) {
+            policyUpdateBuilder_.mergeFrom(value);
+          } else {
+            policyUpdateBuilder_.setMessage(value);
+          }
+        }
+        payloadCase_ = 15;
+        return this;
+      }
+      /**
+       * <code>.smsgateway.v1.PolicyUpdate policy_update = 15 [json_name = "policyUpdate"];</code>
+       */
+      public Builder clearPolicyUpdate() {
+        if (policyUpdateBuilder_ == null) {
+          if (payloadCase_ == 15) {
+            payloadCase_ = 0;
+            payload_ = null;
+            onChanged();
+          }
+        } else {
+          if (payloadCase_ == 15) {
+            payloadCase_ = 0;
+            payload_ = null;
+          }
+          policyUpdateBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.smsgateway.v1.PolicyUpdate policy_update = 15 [json_name = "policyUpdate"];</code>
+       */
+      public smsgateway.v1.Device.PolicyUpdate.Builder getPolicyUpdateBuilder() {
+        return internalGetPolicyUpdateFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.smsgateway.v1.PolicyUpdate policy_update = 15 [json_name = "policyUpdate"];</code>
+       */
+      @java.lang.Override
+      public smsgateway.v1.Device.PolicyUpdateOrBuilder getPolicyUpdateOrBuilder() {
+        if ((payloadCase_ == 15) && (policyUpdateBuilder_ != null)) {
+          return policyUpdateBuilder_.getMessageOrBuilder();
+        } else {
+          if (payloadCase_ == 15) {
+            return (smsgateway.v1.Device.PolicyUpdate) payload_;
+          }
+          return smsgateway.v1.Device.PolicyUpdate.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.smsgateway.v1.PolicyUpdate policy_update = 15 [json_name = "policyUpdate"];</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          smsgateway.v1.Device.PolicyUpdate, smsgateway.v1.Device.PolicyUpdate.Builder, smsgateway.v1.Device.PolicyUpdateOrBuilder> 
+          internalGetPolicyUpdateFieldBuilder() {
+        if (policyUpdateBuilder_ == null) {
+          if (!(payloadCase_ == 15)) {
+            payload_ = smsgateway.v1.Device.PolicyUpdate.getDefaultInstance();
+          }
+          policyUpdateBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              smsgateway.v1.Device.PolicyUpdate, smsgateway.v1.Device.PolicyUpdate.Builder, smsgateway.v1.Device.PolicyUpdateOrBuilder>(
+                  (smsgateway.v1.Device.PolicyUpdate) payload_,
+                  getParentForChildren(),
+                  isClean());
+          payload_ = null;
+        }
+        payloadCase_ = 15;
+        onChanged();
+        return policyUpdateBuilder_;
+      }
+
       // @@protoc_insertion_point(builder_scope:smsgateway.v1.DeviceMessage)
     }
 
@@ -7420,6 +8315,36 @@ public final class Device extends com.google.protobuf.GeneratedFile {
      */
     smsgateway.v1.Device.PingOrBuilder getPingOrBuilder();
 
+    /**
+     * <pre>
+     * The rules changed — from the dashboard, or from this phone and now
+     * stored. Replaces the phone's copy.
+     * </pre>
+     *
+     * <code>.smsgateway.v1.DevicePolicy policy = 14 [json_name = "policy"];</code>
+     * @return Whether the policy field is set.
+     */
+    boolean hasPolicy();
+    /**
+     * <pre>
+     * The rules changed — from the dashboard, or from this phone and now
+     * stored. Replaces the phone's copy.
+     * </pre>
+     *
+     * <code>.smsgateway.v1.DevicePolicy policy = 14 [json_name = "policy"];</code>
+     * @return The policy.
+     */
+    smsgateway.v1.Device.DevicePolicy getPolicy();
+    /**
+     * <pre>
+     * The rules changed — from the dashboard, or from this phone and now
+     * stored. Replaces the phone's copy.
+     * </pre>
+     *
+     * <code>.smsgateway.v1.DevicePolicy policy = 14 [json_name = "policy"];</code>
+     */
+    smsgateway.v1.Device.DevicePolicyOrBuilder getPolicyOrBuilder();
+
     smsgateway.v1.Device.ServerMessage.PayloadCase getPayloadCase();
   }
   /**
@@ -7481,6 +8406,7 @@ public final class Device extends com.google.protobuf.GeneratedFile {
       SEND_SMS_JOB(11),
       CANCEL_JOB(12),
       PING(13),
+      POLICY(14),
       PAYLOAD_NOT_SET(0);
       private final int value;
       private PayloadCase(int value) {
@@ -7502,6 +8428,7 @@ public final class Device extends com.google.protobuf.GeneratedFile {
           case 11: return SEND_SMS_JOB;
           case 12: return CANCEL_JOB;
           case 13: return PING;
+          case 14: return POLICY;
           case 0: return PAYLOAD_NOT_SET;
           default: return null;
         }
@@ -7706,6 +8633,52 @@ public final class Device extends com.google.protobuf.GeneratedFile {
       return smsgateway.v1.Device.Ping.getDefaultInstance();
     }
 
+    public static final int POLICY_FIELD_NUMBER = 14;
+    /**
+     * <pre>
+     * The rules changed — from the dashboard, or from this phone and now
+     * stored. Replaces the phone's copy.
+     * </pre>
+     *
+     * <code>.smsgateway.v1.DevicePolicy policy = 14 [json_name = "policy"];</code>
+     * @return Whether the policy field is set.
+     */
+    @java.lang.Override
+    public boolean hasPolicy() {
+      return payloadCase_ == 14;
+    }
+    /**
+     * <pre>
+     * The rules changed — from the dashboard, or from this phone and now
+     * stored. Replaces the phone's copy.
+     * </pre>
+     *
+     * <code>.smsgateway.v1.DevicePolicy policy = 14 [json_name = "policy"];</code>
+     * @return The policy.
+     */
+    @java.lang.Override
+    public smsgateway.v1.Device.DevicePolicy getPolicy() {
+      if (payloadCase_ == 14) {
+         return (smsgateway.v1.Device.DevicePolicy) payload_;
+      }
+      return smsgateway.v1.Device.DevicePolicy.getDefaultInstance();
+    }
+    /**
+     * <pre>
+     * The rules changed — from the dashboard, or from this phone and now
+     * stored. Replaces the phone's copy.
+     * </pre>
+     *
+     * <code>.smsgateway.v1.DevicePolicy policy = 14 [json_name = "policy"];</code>
+     */
+    @java.lang.Override
+    public smsgateway.v1.Device.DevicePolicyOrBuilder getPolicyOrBuilder() {
+      if (payloadCase_ == 14) {
+         return (smsgateway.v1.Device.DevicePolicy) payload_;
+      }
+      return smsgateway.v1.Device.DevicePolicy.getDefaultInstance();
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -7738,6 +8711,9 @@ public final class Device extends com.google.protobuf.GeneratedFile {
       if (payloadCase_ == 13) {
         output.writeMessage(13, (smsgateway.v1.Device.Ping) payload_);
       }
+      if (payloadCase_ == 14) {
+        output.writeMessage(14, (smsgateway.v1.Device.DevicePolicy) payload_);
+      }
       getUnknownFields().writeTo(output);
     }
     private int computeSerializedSize_0() {
@@ -7764,6 +8740,10 @@ public final class Device extends com.google.protobuf.GeneratedFile {
       if (payloadCase_ == 13) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(13, (smsgateway.v1.Device.Ping) payload_);
+      }
+      if (payloadCase_ == 14) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(14, (smsgateway.v1.Device.DevicePolicy) payload_);
       }
       return size;
     }
@@ -7814,6 +8794,10 @@ public final class Device extends com.google.protobuf.GeneratedFile {
           if (!getPing()
               .equals(other.getPing())) return false;
           break;
+        case 14:
+          if (!getPolicy()
+              .equals(other.getPolicy())) return false;
+          break;
         case 0:
         default:
       }
@@ -7850,6 +8834,10 @@ public final class Device extends com.google.protobuf.GeneratedFile {
         case 13:
           hash = (37 * hash) + PING_FIELD_NUMBER;
           hash = (53 * hash) + getPing().hashCode();
+          break;
+        case 14:
+          hash = (37 * hash) + POLICY_FIELD_NUMBER;
+          hash = (53 * hash) + getPolicy().hashCode();
           break;
         case 0:
         default:
@@ -8014,6 +9002,9 @@ public final class Device extends com.google.protobuf.GeneratedFile {
         if (pingBuilder_ != null) {
           pingBuilder_.clear();
         }
+        if (policyBuilder_ != null) {
+          policyBuilder_.clear();
+        }
         payloadCase_ = 0;
         payload_ = null;
         return this;
@@ -8082,6 +9073,10 @@ public final class Device extends com.google.protobuf.GeneratedFile {
             pingBuilder_ != null) {
           result.payload_ = pingBuilder_.build();
         }
+        if (payloadCase_ == 14 &&
+            policyBuilder_ != null) {
+          result.payload_ = policyBuilder_.build();
+        }
       }
 
       @java.lang.Override
@@ -8119,6 +9114,10 @@ public final class Device extends com.google.protobuf.GeneratedFile {
           }
           case PING: {
             mergePing(other.getPing());
+            break;
+          }
+          case POLICY: {
+            mergePolicy(other.getPolicy());
             break;
           }
           case PAYLOAD_NOT_SET: {
@@ -8191,6 +9190,13 @@ public final class Device extends com.google.protobuf.GeneratedFile {
                 payloadCase_ = 13;
                 break;
               } // case 106
+              case 114: {
+                input.readMessage(
+                    internalGetPolicyFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                payloadCase_ = 14;
+                break;
+              } // case 114
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -8982,6 +9988,193 @@ public final class Device extends com.google.protobuf.GeneratedFile {
         payloadCase_ = 13;
         onChanged();
         return pingBuilder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilder<
+          smsgateway.v1.Device.DevicePolicy, smsgateway.v1.Device.DevicePolicy.Builder, smsgateway.v1.Device.DevicePolicyOrBuilder> policyBuilder_;
+      /**
+       * <pre>
+       * The rules changed — from the dashboard, or from this phone and now
+       * stored. Replaces the phone's copy.
+       * </pre>
+       *
+       * <code>.smsgateway.v1.DevicePolicy policy = 14 [json_name = "policy"];</code>
+       * @return Whether the policy field is set.
+       */
+      @java.lang.Override
+      public boolean hasPolicy() {
+        return payloadCase_ == 14;
+      }
+      /**
+       * <pre>
+       * The rules changed — from the dashboard, or from this phone and now
+       * stored. Replaces the phone's copy.
+       * </pre>
+       *
+       * <code>.smsgateway.v1.DevicePolicy policy = 14 [json_name = "policy"];</code>
+       * @return The policy.
+       */
+      @java.lang.Override
+      public smsgateway.v1.Device.DevicePolicy getPolicy() {
+        if (policyBuilder_ == null) {
+          if (payloadCase_ == 14) {
+            return (smsgateway.v1.Device.DevicePolicy) payload_;
+          }
+          return smsgateway.v1.Device.DevicePolicy.getDefaultInstance();
+        } else {
+          if (payloadCase_ == 14) {
+            return policyBuilder_.getMessage();
+          }
+          return smsgateway.v1.Device.DevicePolicy.getDefaultInstance();
+        }
+      }
+      /**
+       * <pre>
+       * The rules changed — from the dashboard, or from this phone and now
+       * stored. Replaces the phone's copy.
+       * </pre>
+       *
+       * <code>.smsgateway.v1.DevicePolicy policy = 14 [json_name = "policy"];</code>
+       */
+      public Builder setPolicy(smsgateway.v1.Device.DevicePolicy value) {
+        if (policyBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          payload_ = value;
+          onChanged();
+        } else {
+          policyBuilder_.setMessage(value);
+        }
+        payloadCase_ = 14;
+        return this;
+      }
+      /**
+       * <pre>
+       * The rules changed — from the dashboard, or from this phone and now
+       * stored. Replaces the phone's copy.
+       * </pre>
+       *
+       * <code>.smsgateway.v1.DevicePolicy policy = 14 [json_name = "policy"];</code>
+       */
+      public Builder setPolicy(
+          smsgateway.v1.Device.DevicePolicy.Builder builderForValue) {
+        if (policyBuilder_ == null) {
+          payload_ = builderForValue.build();
+          onChanged();
+        } else {
+          policyBuilder_.setMessage(builderForValue.build());
+        }
+        payloadCase_ = 14;
+        return this;
+      }
+      /**
+       * <pre>
+       * The rules changed — from the dashboard, or from this phone and now
+       * stored. Replaces the phone's copy.
+       * </pre>
+       *
+       * <code>.smsgateway.v1.DevicePolicy policy = 14 [json_name = "policy"];</code>
+       */
+      public Builder mergePolicy(smsgateway.v1.Device.DevicePolicy value) {
+        if (policyBuilder_ == null) {
+          if (payloadCase_ == 14 &&
+              payload_ != smsgateway.v1.Device.DevicePolicy.getDefaultInstance()) {
+            payload_ = smsgateway.v1.Device.DevicePolicy.newBuilder((smsgateway.v1.Device.DevicePolicy) payload_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            payload_ = value;
+          }
+          onChanged();
+        } else {
+          if (payloadCase_ == 14) {
+            policyBuilder_.mergeFrom(value);
+          } else {
+            policyBuilder_.setMessage(value);
+          }
+        }
+        payloadCase_ = 14;
+        return this;
+      }
+      /**
+       * <pre>
+       * The rules changed — from the dashboard, or from this phone and now
+       * stored. Replaces the phone's copy.
+       * </pre>
+       *
+       * <code>.smsgateway.v1.DevicePolicy policy = 14 [json_name = "policy"];</code>
+       */
+      public Builder clearPolicy() {
+        if (policyBuilder_ == null) {
+          if (payloadCase_ == 14) {
+            payloadCase_ = 0;
+            payload_ = null;
+            onChanged();
+          }
+        } else {
+          if (payloadCase_ == 14) {
+            payloadCase_ = 0;
+            payload_ = null;
+          }
+          policyBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * The rules changed — from the dashboard, or from this phone and now
+       * stored. Replaces the phone's copy.
+       * </pre>
+       *
+       * <code>.smsgateway.v1.DevicePolicy policy = 14 [json_name = "policy"];</code>
+       */
+      public smsgateway.v1.Device.DevicePolicy.Builder getPolicyBuilder() {
+        return internalGetPolicyFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       * The rules changed — from the dashboard, or from this phone and now
+       * stored. Replaces the phone's copy.
+       * </pre>
+       *
+       * <code>.smsgateway.v1.DevicePolicy policy = 14 [json_name = "policy"];</code>
+       */
+      @java.lang.Override
+      public smsgateway.v1.Device.DevicePolicyOrBuilder getPolicyOrBuilder() {
+        if ((payloadCase_ == 14) && (policyBuilder_ != null)) {
+          return policyBuilder_.getMessageOrBuilder();
+        } else {
+          if (payloadCase_ == 14) {
+            return (smsgateway.v1.Device.DevicePolicy) payload_;
+          }
+          return smsgateway.v1.Device.DevicePolicy.getDefaultInstance();
+        }
+      }
+      /**
+       * <pre>
+       * The rules changed — from the dashboard, or from this phone and now
+       * stored. Replaces the phone's copy.
+       * </pre>
+       *
+       * <code>.smsgateway.v1.DevicePolicy policy = 14 [json_name = "policy"];</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          smsgateway.v1.Device.DevicePolicy, smsgateway.v1.Device.DevicePolicy.Builder, smsgateway.v1.Device.DevicePolicyOrBuilder> 
+          internalGetPolicyFieldBuilder() {
+        if (policyBuilder_ == null) {
+          if (!(payloadCase_ == 14)) {
+            payload_ = smsgateway.v1.Device.DevicePolicy.getDefaultInstance();
+          }
+          policyBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              smsgateway.v1.Device.DevicePolicy, smsgateway.v1.Device.DevicePolicy.Builder, smsgateway.v1.Device.DevicePolicyOrBuilder>(
+                  (smsgateway.v1.Device.DevicePolicy) payload_,
+                  getParentForChildren(),
+                  isClean());
+          payload_ = null;
+        }
+        payloadCase_ = 14;
+        onChanged();
+        return policyBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:smsgateway.v1.ServerMessage)
@@ -10209,6 +11402,6542 @@ public final class Device extends com.google.protobuf.GeneratedFile {
 
     @java.lang.Override
     public smsgateway.v1.Device.Register getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface PolicyUpdateOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:smsgateway.v1.PolicyUpdate)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>.smsgateway.v1.DevicePolicy policy = 1 [json_name = "policy"];</code>
+     * @return Whether the policy field is set.
+     */
+    boolean hasPolicy();
+    /**
+     * <code>.smsgateway.v1.DevicePolicy policy = 1 [json_name = "policy"];</code>
+     * @return The policy.
+     */
+    smsgateway.v1.Device.DevicePolicy getPolicy();
+    /**
+     * <code>.smsgateway.v1.DevicePolicy policy = 1 [json_name = "policy"];</code>
+     */
+    smsgateway.v1.Device.DevicePolicyOrBuilder getPolicyOrBuilder();
+  }
+  /**
+   * <pre>
+   * The device is leaving the fleet for good: its operator chose to forget the
+   * enrollment on the phone. The server retires the device — the same as
+   * DELETE /devices/{id} — and closes the stream. Sent best-effort before the
+   * agent drops its token: a phone offline at that moment cannot say goodbye,
+   * and stays listed until an operator removes it.
+   * The operator edited this phone's rules on the phone itself. The server
+   * validates and stores them, then sends the result back as a DevicePolicy —
+   * the same message a dashboard edit produces — so both sides end up holding
+   * what the server holds. Last write wins: the server stamps a new version.
+   * </pre>
+   *
+   * Protobuf type {@code smsgateway.v1.PolicyUpdate}
+   */
+  public static final class PolicyUpdate extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:smsgateway.v1.PolicyUpdate)
+      PolicyUpdateOrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 35,
+        /* patch= */ 1,
+        /* suffix= */ "",
+        "PolicyUpdate");
+    }
+    // Use PolicyUpdate.newBuilder() to construct.
+    private PolicyUpdate(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private PolicyUpdate() {
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return smsgateway.v1.Device.internal_static_smsgateway_v1_PolicyUpdate_descriptor;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+      return smsgateway.v1.Device.internal_static_smsgateway_v1_PolicyUpdate_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return smsgateway.v1.Device.internal_static_smsgateway_v1_PolicyUpdate_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              smsgateway.v1.Device.PolicyUpdate.class, smsgateway.v1.Device.PolicyUpdate.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int POLICY_FIELD_NUMBER = 1;
+    private smsgateway.v1.Device.DevicePolicy policy_;
+    /**
+     * <code>.smsgateway.v1.DevicePolicy policy = 1 [json_name = "policy"];</code>
+     * @return Whether the policy field is set.
+     */
+    @java.lang.Override
+    public boolean hasPolicy() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <code>.smsgateway.v1.DevicePolicy policy = 1 [json_name = "policy"];</code>
+     * @return The policy.
+     */
+    @java.lang.Override
+    public smsgateway.v1.Device.DevicePolicy getPolicy() {
+      return policy_ == null ? smsgateway.v1.Device.DevicePolicy.getDefaultInstance() : policy_;
+    }
+    /**
+     * <code>.smsgateway.v1.DevicePolicy policy = 1 [json_name = "policy"];</code>
+     */
+    @java.lang.Override
+    public smsgateway.v1.Device.DevicePolicyOrBuilder getPolicyOrBuilder() {
+      return policy_ == null ? smsgateway.v1.Device.DevicePolicy.getDefaultInstance() : policy_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) != 0)) {
+        output.writeMessage(1, getPolicy());
+      }
+      getUnknownFields().writeTo(output);
+    }
+    private int computeSerializedSize_0() {
+      int size = 0;
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(1, getPolicy());
+      }
+      return size;
+    }
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += computeSerializedSize_0();
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof smsgateway.v1.Device.PolicyUpdate)) {
+        return super.equals(obj);
+      }
+      smsgateway.v1.Device.PolicyUpdate other = (smsgateway.v1.Device.PolicyUpdate) obj;
+
+      if (hasPolicy() != other.hasPolicy()) return false;
+      if (hasPolicy()) {
+        if (!getPolicy()
+            .equals(other.getPolicy())) return false;
+      }
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasPolicy()) {
+        hash = (37 * hash) + POLICY_FIELD_NUMBER;
+        hash = (53 * hash) + getPolicy().hashCode();
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static smsgateway.v1.Device.PolicyUpdate parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static smsgateway.v1.Device.PolicyUpdate parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static smsgateway.v1.Device.PolicyUpdate parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static smsgateway.v1.Device.PolicyUpdate parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static smsgateway.v1.Device.PolicyUpdate parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static smsgateway.v1.Device.PolicyUpdate parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static smsgateway.v1.Device.PolicyUpdate parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static smsgateway.v1.Device.PolicyUpdate parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static smsgateway.v1.Device.PolicyUpdate parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static smsgateway.v1.Device.PolicyUpdate parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static smsgateway.v1.Device.PolicyUpdate parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static smsgateway.v1.Device.PolicyUpdate parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(smsgateway.v1.Device.PolicyUpdate prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * The device is leaving the fleet for good: its operator chose to forget the
+     * enrollment on the phone. The server retires the device — the same as
+     * DELETE /devices/{id} — and closes the stream. Sent best-effort before the
+     * agent drops its token: a phone offline at that moment cannot say goodbye,
+     * and stays listed until an operator removes it.
+     * The operator edited this phone's rules on the phone itself. The server
+     * validates and stores them, then sends the result back as a DevicePolicy —
+     * the same message a dashboard edit produces — so both sides end up holding
+     * what the server holds. Last write wins: the server stamps a new version.
+     * </pre>
+     *
+     * Protobuf type {@code smsgateway.v1.PolicyUpdate}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:smsgateway.v1.PolicyUpdate)
+        smsgateway.v1.Device.PolicyUpdateOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return smsgateway.v1.Device.internal_static_smsgateway_v1_PolicyUpdate_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return smsgateway.v1.Device.internal_static_smsgateway_v1_PolicyUpdate_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                smsgateway.v1.Device.PolicyUpdate.class, smsgateway.v1.Device.PolicyUpdate.Builder.class);
+      }
+
+      // Construct using smsgateway.v1.Device.PolicyUpdate.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage
+                .alwaysUseFieldBuilders) {
+          internalGetPolicyFieldBuilder();
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        policy_ = null;
+        if (policyBuilder_ != null) {
+          policyBuilder_.dispose();
+          policyBuilder_ = null;
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return smsgateway.v1.Device.internal_static_smsgateway_v1_PolicyUpdate_descriptor;
+      }
+
+      @java.lang.Override
+      public smsgateway.v1.Device.PolicyUpdate getDefaultInstanceForType() {
+        return smsgateway.v1.Device.PolicyUpdate.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public smsgateway.v1.Device.PolicyUpdate build() {
+        smsgateway.v1.Device.PolicyUpdate result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public smsgateway.v1.Device.PolicyUpdate buildPartial() {
+        smsgateway.v1.Device.PolicyUpdate result = new smsgateway.v1.Device.PolicyUpdate(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(smsgateway.v1.Device.PolicyUpdate result) {
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.policy_ = policyBuilder_ == null
+              ? policy_
+              : policyBuilder_.build();
+          to_bitField0_ |= 0x00000001;
+        }
+        result.bitField0_ |= to_bitField0_;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof smsgateway.v1.Device.PolicyUpdate) {
+          return mergeFrom((smsgateway.v1.Device.PolicyUpdate)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(smsgateway.v1.Device.PolicyUpdate other) {
+        if (other == smsgateway.v1.Device.PolicyUpdate.getDefaultInstance()) return this;
+        if (other.hasPolicy()) {
+          mergePolicy(other.getPolicy());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                input.readMessage(
+                    internalGetPolicyFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private smsgateway.v1.Device.DevicePolicy policy_;
+      private com.google.protobuf.SingleFieldBuilder<
+          smsgateway.v1.Device.DevicePolicy, smsgateway.v1.Device.DevicePolicy.Builder, smsgateway.v1.Device.DevicePolicyOrBuilder> policyBuilder_;
+      /**
+       * <code>.smsgateway.v1.DevicePolicy policy = 1 [json_name = "policy"];</code>
+       * @return Whether the policy field is set.
+       */
+      public boolean hasPolicy() {
+        return ((bitField0_ & 0x00000001) != 0);
+      }
+      /**
+       * <code>.smsgateway.v1.DevicePolicy policy = 1 [json_name = "policy"];</code>
+       * @return The policy.
+       */
+      public smsgateway.v1.Device.DevicePolicy getPolicy() {
+        if (policyBuilder_ == null) {
+          return policy_ == null ? smsgateway.v1.Device.DevicePolicy.getDefaultInstance() : policy_;
+        } else {
+          return policyBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.smsgateway.v1.DevicePolicy policy = 1 [json_name = "policy"];</code>
+       */
+      public Builder setPolicy(smsgateway.v1.Device.DevicePolicy value) {
+        if (policyBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          policy_ = value;
+        } else {
+          policyBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.smsgateway.v1.DevicePolicy policy = 1 [json_name = "policy"];</code>
+       */
+      public Builder setPolicy(
+          smsgateway.v1.Device.DevicePolicy.Builder builderForValue) {
+        if (policyBuilder_ == null) {
+          policy_ = builderForValue.build();
+        } else {
+          policyBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.smsgateway.v1.DevicePolicy policy = 1 [json_name = "policy"];</code>
+       */
+      public Builder mergePolicy(smsgateway.v1.Device.DevicePolicy value) {
+        if (policyBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) != 0) &&
+            policy_ != null &&
+            policy_ != smsgateway.v1.Device.DevicePolicy.getDefaultInstance()) {
+            getPolicyBuilder().mergeFrom(value);
+          } else {
+            policy_ = value;
+          }
+        } else {
+          policyBuilder_.mergeFrom(value);
+        }
+        if (policy_ != null) {
+          bitField0_ |= 0x00000001;
+          onChanged();
+        }
+        return this;
+      }
+      /**
+       * <code>.smsgateway.v1.DevicePolicy policy = 1 [json_name = "policy"];</code>
+       */
+      public Builder clearPolicy() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        policy_ = null;
+        if (policyBuilder_ != null) {
+          policyBuilder_.dispose();
+          policyBuilder_ = null;
+        }
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.smsgateway.v1.DevicePolicy policy = 1 [json_name = "policy"];</code>
+       */
+      public smsgateway.v1.Device.DevicePolicy.Builder getPolicyBuilder() {
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return internalGetPolicyFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.smsgateway.v1.DevicePolicy policy = 1 [json_name = "policy"];</code>
+       */
+      public smsgateway.v1.Device.DevicePolicyOrBuilder getPolicyOrBuilder() {
+        if (policyBuilder_ != null) {
+          return policyBuilder_.getMessageOrBuilder();
+        } else {
+          return policy_ == null ?
+              smsgateway.v1.Device.DevicePolicy.getDefaultInstance() : policy_;
+        }
+      }
+      /**
+       * <code>.smsgateway.v1.DevicePolicy policy = 1 [json_name = "policy"];</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          smsgateway.v1.Device.DevicePolicy, smsgateway.v1.Device.DevicePolicy.Builder, smsgateway.v1.Device.DevicePolicyOrBuilder> 
+          internalGetPolicyFieldBuilder() {
+        if (policyBuilder_ == null) {
+          policyBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              smsgateway.v1.Device.DevicePolicy, smsgateway.v1.Device.DevicePolicy.Builder, smsgateway.v1.Device.DevicePolicyOrBuilder>(
+                  getPolicy(),
+                  getParentForChildren(),
+                  isClean());
+          policy_ = null;
+        }
+        return policyBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:smsgateway.v1.PolicyUpdate)
+    }
+
+    // @@protoc_insertion_point(class_scope:smsgateway.v1.PolicyUpdate)
+    private static final smsgateway.v1.Device.PolicyUpdate DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new smsgateway.v1.Device.PolicyUpdate();
+    }
+
+    public static smsgateway.v1.Device.PolicyUpdate getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<PolicyUpdate>
+        PARSER = new com.google.protobuf.AbstractParser<PolicyUpdate>() {
+      @java.lang.Override
+      public PolicyUpdate parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<PolicyUpdate> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<PolicyUpdate> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public smsgateway.v1.Device.PolicyUpdate getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface DevicePolicyOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:smsgateway.v1.DevicePolicy)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * Server-assigned, incremented on every change. Lets a holder tell whether
+     * its copy is current.
+     * </pre>
+     *
+     * <code>int64 version = 1 [json_name = "version"];</code>
+     * @return The version.
+     */
+    long getVersion();
+
+    /**
+     * <code>.smsgateway.v1.Availability availability = 2 [json_name = "availability"];</code>
+     * @return Whether the availability field is set.
+     */
+    boolean hasAvailability();
+    /**
+     * <code>.smsgateway.v1.Availability availability = 2 [json_name = "availability"];</code>
+     * @return The availability.
+     */
+    smsgateway.v1.Device.Availability getAvailability();
+    /**
+     * <code>.smsgateway.v1.Availability availability = 2 [json_name = "availability"];</code>
+     */
+    smsgateway.v1.Device.AvailabilityOrBuilder getAvailabilityOrBuilder();
+
+    /**
+     * <code>.smsgateway.v1.AcceptRules accept = 3 [json_name = "accept"];</code>
+     * @return Whether the accept field is set.
+     */
+    boolean hasAccept();
+    /**
+     * <code>.smsgateway.v1.AcceptRules accept = 3 [json_name = "accept"];</code>
+     * @return The accept.
+     */
+    smsgateway.v1.Device.AcceptRules getAccept();
+    /**
+     * <code>.smsgateway.v1.AcceptRules accept = 3 [json_name = "accept"];</code>
+     */
+    smsgateway.v1.Device.AcceptRulesOrBuilder getAcceptOrBuilder();
+
+    /**
+     * <pre>
+     * Per-SIM rules, on top of the device's: a SIM must satisfy both.
+     * </pre>
+     *
+     * <code>repeated .smsgateway.v1.SimPolicy sims = 4 [json_name = "sims"];</code>
+     */
+    java.util.List<smsgateway.v1.Device.SimPolicy> 
+        getSimsList();
+    /**
+     * <pre>
+     * Per-SIM rules, on top of the device's: a SIM must satisfy both.
+     * </pre>
+     *
+     * <code>repeated .smsgateway.v1.SimPolicy sims = 4 [json_name = "sims"];</code>
+     */
+    smsgateway.v1.Device.SimPolicy getSims(int index);
+    /**
+     * <pre>
+     * Per-SIM rules, on top of the device's: a SIM must satisfy both.
+     * </pre>
+     *
+     * <code>repeated .smsgateway.v1.SimPolicy sims = 4 [json_name = "sims"];</code>
+     */
+    int getSimsCount();
+    /**
+     * <pre>
+     * Per-SIM rules, on top of the device's: a SIM must satisfy both.
+     * </pre>
+     *
+     * <code>repeated .smsgateway.v1.SimPolicy sims = 4 [json_name = "sims"];</code>
+     */
+    java.util.List<? extends smsgateway.v1.Device.SimPolicyOrBuilder> 
+        getSimsOrBuilderList();
+    /**
+     * <pre>
+     * Per-SIM rules, on top of the device's: a SIM must satisfy both.
+     * </pre>
+     *
+     * <code>repeated .smsgateway.v1.SimPolicy sims = 4 [json_name = "sims"];</code>
+     */
+    smsgateway.v1.Device.SimPolicyOrBuilder getSimsOrBuilder(
+        int index);
+
+    /**
+     * <code>.google.protobuf.Timestamp updated_at = 5 [json_name = "updatedAt"];</code>
+     * @return Whether the updatedAt field is set.
+     */
+    boolean hasUpdatedAt();
+    /**
+     * <code>.google.protobuf.Timestamp updated_at = 5 [json_name = "updatedAt"];</code>
+     * @return The updatedAt.
+     */
+    com.google.protobuf.Timestamp getUpdatedAt();
+    /**
+     * <code>.google.protobuf.Timestamp updated_at = 5 [json_name = "updatedAt"];</code>
+     */
+    com.google.protobuf.TimestampOrBuilder getUpdatedAtOrBuilder();
+  }
+  /**
+   * <pre>
+   * When and for what a device takes work. Held by the server, which is the only
+   * one that enforces it: the scheduler never hands a job to a device, or a SIM,
+   * whose rules refuse it. Editable from the dashboard and from the phone; each
+   * copy is a view of the server's.
+   *
+   * Every field's empty value means "no restriction", so the zero policy is a
+   * phone that sends anything, any time — what every device was before rules
+   * existed.
+   * </pre>
+   *
+   * Protobuf type {@code smsgateway.v1.DevicePolicy}
+   */
+  public static final class DevicePolicy extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:smsgateway.v1.DevicePolicy)
+      DevicePolicyOrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 35,
+        /* patch= */ 1,
+        /* suffix= */ "",
+        "DevicePolicy");
+    }
+    // Use DevicePolicy.newBuilder() to construct.
+    private DevicePolicy(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private DevicePolicy() {
+      sims_ = java.util.Collections.emptyList();
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return smsgateway.v1.Device.internal_static_smsgateway_v1_DevicePolicy_descriptor;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+      return smsgateway.v1.Device.internal_static_smsgateway_v1_DevicePolicy_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return smsgateway.v1.Device.internal_static_smsgateway_v1_DevicePolicy_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              smsgateway.v1.Device.DevicePolicy.class, smsgateway.v1.Device.DevicePolicy.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int VERSION_FIELD_NUMBER = 1;
+    private long version_ = 0L;
+    /**
+     * <pre>
+     * Server-assigned, incremented on every change. Lets a holder tell whether
+     * its copy is current.
+     * </pre>
+     *
+     * <code>int64 version = 1 [json_name = "version"];</code>
+     * @return The version.
+     */
+    @java.lang.Override
+    public long getVersion() {
+      return version_;
+    }
+
+    public static final int AVAILABILITY_FIELD_NUMBER = 2;
+    private smsgateway.v1.Device.Availability availability_;
+    /**
+     * <code>.smsgateway.v1.Availability availability = 2 [json_name = "availability"];</code>
+     * @return Whether the availability field is set.
+     */
+    @java.lang.Override
+    public boolean hasAvailability() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <code>.smsgateway.v1.Availability availability = 2 [json_name = "availability"];</code>
+     * @return The availability.
+     */
+    @java.lang.Override
+    public smsgateway.v1.Device.Availability getAvailability() {
+      return availability_ == null ? smsgateway.v1.Device.Availability.getDefaultInstance() : availability_;
+    }
+    /**
+     * <code>.smsgateway.v1.Availability availability = 2 [json_name = "availability"];</code>
+     */
+    @java.lang.Override
+    public smsgateway.v1.Device.AvailabilityOrBuilder getAvailabilityOrBuilder() {
+      return availability_ == null ? smsgateway.v1.Device.Availability.getDefaultInstance() : availability_;
+    }
+
+    public static final int ACCEPT_FIELD_NUMBER = 3;
+    private smsgateway.v1.Device.AcceptRules accept_;
+    /**
+     * <code>.smsgateway.v1.AcceptRules accept = 3 [json_name = "accept"];</code>
+     * @return Whether the accept field is set.
+     */
+    @java.lang.Override
+    public boolean hasAccept() {
+      return ((bitField0_ & 0x00000002) != 0);
+    }
+    /**
+     * <code>.smsgateway.v1.AcceptRules accept = 3 [json_name = "accept"];</code>
+     * @return The accept.
+     */
+    @java.lang.Override
+    public smsgateway.v1.Device.AcceptRules getAccept() {
+      return accept_ == null ? smsgateway.v1.Device.AcceptRules.getDefaultInstance() : accept_;
+    }
+    /**
+     * <code>.smsgateway.v1.AcceptRules accept = 3 [json_name = "accept"];</code>
+     */
+    @java.lang.Override
+    public smsgateway.v1.Device.AcceptRulesOrBuilder getAcceptOrBuilder() {
+      return accept_ == null ? smsgateway.v1.Device.AcceptRules.getDefaultInstance() : accept_;
+    }
+
+    public static final int SIMS_FIELD_NUMBER = 4;
+    @SuppressWarnings("serial")
+    private java.util.List<smsgateway.v1.Device.SimPolicy> sims_;
+    /**
+     * <pre>
+     * Per-SIM rules, on top of the device's: a SIM must satisfy both.
+     * </pre>
+     *
+     * <code>repeated .smsgateway.v1.SimPolicy sims = 4 [json_name = "sims"];</code>
+     */
+    @java.lang.Override
+    public java.util.List<smsgateway.v1.Device.SimPolicy> getSimsList() {
+      return sims_;
+    }
+    /**
+     * <pre>
+     * Per-SIM rules, on top of the device's: a SIM must satisfy both.
+     * </pre>
+     *
+     * <code>repeated .smsgateway.v1.SimPolicy sims = 4 [json_name = "sims"];</code>
+     */
+    @java.lang.Override
+    public java.util.List<? extends smsgateway.v1.Device.SimPolicyOrBuilder> 
+        getSimsOrBuilderList() {
+      return sims_;
+    }
+    /**
+     * <pre>
+     * Per-SIM rules, on top of the device's: a SIM must satisfy both.
+     * </pre>
+     *
+     * <code>repeated .smsgateway.v1.SimPolicy sims = 4 [json_name = "sims"];</code>
+     */
+    @java.lang.Override
+    public int getSimsCount() {
+      return sims_.size();
+    }
+    /**
+     * <pre>
+     * Per-SIM rules, on top of the device's: a SIM must satisfy both.
+     * </pre>
+     *
+     * <code>repeated .smsgateway.v1.SimPolicy sims = 4 [json_name = "sims"];</code>
+     */
+    @java.lang.Override
+    public smsgateway.v1.Device.SimPolicy getSims(int index) {
+      return sims_.get(index);
+    }
+    /**
+     * <pre>
+     * Per-SIM rules, on top of the device's: a SIM must satisfy both.
+     * </pre>
+     *
+     * <code>repeated .smsgateway.v1.SimPolicy sims = 4 [json_name = "sims"];</code>
+     */
+    @java.lang.Override
+    public smsgateway.v1.Device.SimPolicyOrBuilder getSimsOrBuilder(
+        int index) {
+      return sims_.get(index);
+    }
+
+    public static final int UPDATED_AT_FIELD_NUMBER = 5;
+    private com.google.protobuf.Timestamp updatedAt_;
+    /**
+     * <code>.google.protobuf.Timestamp updated_at = 5 [json_name = "updatedAt"];</code>
+     * @return Whether the updatedAt field is set.
+     */
+    @java.lang.Override
+    public boolean hasUpdatedAt() {
+      return ((bitField0_ & 0x00000004) != 0);
+    }
+    /**
+     * <code>.google.protobuf.Timestamp updated_at = 5 [json_name = "updatedAt"];</code>
+     * @return The updatedAt.
+     */
+    @java.lang.Override
+    public com.google.protobuf.Timestamp getUpdatedAt() {
+      return updatedAt_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : updatedAt_;
+    }
+    /**
+     * <code>.google.protobuf.Timestamp updated_at = 5 [json_name = "updatedAt"];</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.TimestampOrBuilder getUpdatedAtOrBuilder() {
+      return updatedAt_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : updatedAt_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (version_ != 0L) {
+        output.writeInt64(1, version_);
+      }
+      if (((bitField0_ & 0x00000001) != 0)) {
+        output.writeMessage(2, getAvailability());
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        output.writeMessage(3, getAccept());
+      }
+      for (int i = 0; i < sims_.size(); i++) {
+        output.writeMessage(4, sims_.get(i));
+      }
+      if (((bitField0_ & 0x00000004) != 0)) {
+        output.writeMessage(5, getUpdatedAt());
+      }
+      getUnknownFields().writeTo(output);
+    }
+    private int computeSerializedSize_0() {
+      int size = 0;
+      if (version_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(1, version_);
+      }
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(2, getAvailability());
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, getAccept());
+      }
+
+          {
+            final int count = sims_.size();
+            for (int i = 0; i < count; i++) {
+              size += com.google.protobuf.CodedOutputStream
+                .computeMessageSizeNoTag(sims_.get(i));
+            }
+            size += 1 * count;
+          }
+      if (((bitField0_ & 0x00000004) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(5, getUpdatedAt());
+      }
+      return size;
+    }
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += computeSerializedSize_0();
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof smsgateway.v1.Device.DevicePolicy)) {
+        return super.equals(obj);
+      }
+      smsgateway.v1.Device.DevicePolicy other = (smsgateway.v1.Device.DevicePolicy) obj;
+
+      if (getVersion()
+          != other.getVersion()) return false;
+      if (hasAvailability() != other.hasAvailability()) return false;
+      if (hasAvailability()) {
+        if (!getAvailability()
+            .equals(other.getAvailability())) return false;
+      }
+      if (hasAccept() != other.hasAccept()) return false;
+      if (hasAccept()) {
+        if (!getAccept()
+            .equals(other.getAccept())) return false;
+      }
+      if (!getSimsList()
+          .equals(other.getSimsList())) return false;
+      if (hasUpdatedAt() != other.hasUpdatedAt()) return false;
+      if (hasUpdatedAt()) {
+        if (!getUpdatedAt()
+            .equals(other.getUpdatedAt())) return false;
+      }
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + VERSION_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getVersion());
+      if (hasAvailability()) {
+        hash = (37 * hash) + AVAILABILITY_FIELD_NUMBER;
+        hash = (53 * hash) + getAvailability().hashCode();
+      }
+      if (hasAccept()) {
+        hash = (37 * hash) + ACCEPT_FIELD_NUMBER;
+        hash = (53 * hash) + getAccept().hashCode();
+      }
+      if (getSimsCount() > 0) {
+        hash = (37 * hash) + SIMS_FIELD_NUMBER;
+        hash = (53 * hash) + getSimsList().hashCode();
+      }
+      if (hasUpdatedAt()) {
+        hash = (37 * hash) + UPDATED_AT_FIELD_NUMBER;
+        hash = (53 * hash) + getUpdatedAt().hashCode();
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static smsgateway.v1.Device.DevicePolicy parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static smsgateway.v1.Device.DevicePolicy parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static smsgateway.v1.Device.DevicePolicy parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static smsgateway.v1.Device.DevicePolicy parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static smsgateway.v1.Device.DevicePolicy parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static smsgateway.v1.Device.DevicePolicy parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static smsgateway.v1.Device.DevicePolicy parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static smsgateway.v1.Device.DevicePolicy parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static smsgateway.v1.Device.DevicePolicy parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static smsgateway.v1.Device.DevicePolicy parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static smsgateway.v1.Device.DevicePolicy parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static smsgateway.v1.Device.DevicePolicy parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(smsgateway.v1.Device.DevicePolicy prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * When and for what a device takes work. Held by the server, which is the only
+     * one that enforces it: the scheduler never hands a job to a device, or a SIM,
+     * whose rules refuse it. Editable from the dashboard and from the phone; each
+     * copy is a view of the server's.
+     *
+     * Every field's empty value means "no restriction", so the zero policy is a
+     * phone that sends anything, any time — what every device was before rules
+     * existed.
+     * </pre>
+     *
+     * Protobuf type {@code smsgateway.v1.DevicePolicy}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:smsgateway.v1.DevicePolicy)
+        smsgateway.v1.Device.DevicePolicyOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return smsgateway.v1.Device.internal_static_smsgateway_v1_DevicePolicy_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return smsgateway.v1.Device.internal_static_smsgateway_v1_DevicePolicy_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                smsgateway.v1.Device.DevicePolicy.class, smsgateway.v1.Device.DevicePolicy.Builder.class);
+      }
+
+      // Construct using smsgateway.v1.Device.DevicePolicy.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage
+                .alwaysUseFieldBuilders) {
+          internalGetAvailabilityFieldBuilder();
+          internalGetAcceptFieldBuilder();
+          internalGetSimsFieldBuilder();
+          internalGetUpdatedAtFieldBuilder();
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        version_ = 0L;
+        availability_ = null;
+        if (availabilityBuilder_ != null) {
+          availabilityBuilder_.dispose();
+          availabilityBuilder_ = null;
+        }
+        accept_ = null;
+        if (acceptBuilder_ != null) {
+          acceptBuilder_.dispose();
+          acceptBuilder_ = null;
+        }
+        if (simsBuilder_ == null) {
+          sims_ = java.util.Collections.emptyList();
+        } else {
+          sims_ = null;
+          simsBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000008);
+        updatedAt_ = null;
+        if (updatedAtBuilder_ != null) {
+          updatedAtBuilder_.dispose();
+          updatedAtBuilder_ = null;
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return smsgateway.v1.Device.internal_static_smsgateway_v1_DevicePolicy_descriptor;
+      }
+
+      @java.lang.Override
+      public smsgateway.v1.Device.DevicePolicy getDefaultInstanceForType() {
+        return smsgateway.v1.Device.DevicePolicy.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public smsgateway.v1.Device.DevicePolicy build() {
+        smsgateway.v1.Device.DevicePolicy result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public smsgateway.v1.Device.DevicePolicy buildPartial() {
+        smsgateway.v1.Device.DevicePolicy result = new smsgateway.v1.Device.DevicePolicy(this);
+        buildPartialRepeatedFields(result);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartialRepeatedFields(smsgateway.v1.Device.DevicePolicy result) {
+        if (simsBuilder_ == null) {
+          if (((bitField0_ & 0x00000008) != 0)) {
+            sims_ = java.util.Collections.unmodifiableList(sims_);
+            bitField0_ = (bitField0_ & ~0x00000008);
+          }
+          result.sims_ = sims_;
+        } else {
+          result.sims_ = simsBuilder_.build();
+        }
+      }
+
+      private void buildPartial0(smsgateway.v1.Device.DevicePolicy result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.version_ = version_;
+        }
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.availability_ = availabilityBuilder_ == null
+              ? availability_
+              : availabilityBuilder_.build();
+          to_bitField0_ |= 0x00000001;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.accept_ = acceptBuilder_ == null
+              ? accept_
+              : acceptBuilder_.build();
+          to_bitField0_ |= 0x00000002;
+        }
+        if (((from_bitField0_ & 0x00000010) != 0)) {
+          result.updatedAt_ = updatedAtBuilder_ == null
+              ? updatedAt_
+              : updatedAtBuilder_.build();
+          to_bitField0_ |= 0x00000004;
+        }
+        result.bitField0_ |= to_bitField0_;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof smsgateway.v1.Device.DevicePolicy) {
+          return mergeFrom((smsgateway.v1.Device.DevicePolicy)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(smsgateway.v1.Device.DevicePolicy other) {
+        if (other == smsgateway.v1.Device.DevicePolicy.getDefaultInstance()) return this;
+        if (other.getVersion() != 0L) {
+          setVersion(other.getVersion());
+        }
+        if (other.hasAvailability()) {
+          mergeAvailability(other.getAvailability());
+        }
+        if (other.hasAccept()) {
+          mergeAccept(other.getAccept());
+        }
+        if (simsBuilder_ == null) {
+          if (!other.sims_.isEmpty()) {
+            if (sims_.isEmpty()) {
+              sims_ = other.sims_;
+              bitField0_ = (bitField0_ & ~0x00000008);
+            } else {
+              ensureSimsIsMutable();
+              sims_.addAll(other.sims_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.sims_.isEmpty()) {
+            if (simsBuilder_.isEmpty()) {
+              simsBuilder_.dispose();
+              simsBuilder_ = null;
+              sims_ = other.sims_;
+              bitField0_ = (bitField0_ & ~0x00000008);
+              simsBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   internalGetSimsFieldBuilder() : null;
+            } else {
+              simsBuilder_.addAllMessages(other.sims_);
+            }
+          }
+        }
+        if (other.hasUpdatedAt()) {
+          mergeUpdatedAt(other.getUpdatedAt());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 8: {
+                version_ = input.readInt64();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 8
+              case 18: {
+                input.readMessage(
+                    internalGetAvailabilityFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 18
+              case 26: {
+                input.readMessage(
+                    internalGetAcceptFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 26
+              case 34: {
+                smsgateway.v1.Device.SimPolicy m =
+                    input.readMessage(
+                        smsgateway.v1.Device.SimPolicy.parser(),
+                        extensionRegistry);
+                if (simsBuilder_ == null) {
+                  ensureSimsIsMutable();
+                  sims_.add(m);
+                } else {
+                  simsBuilder_.addMessage(m);
+                }
+                break;
+              } // case 34
+              case 42: {
+                input.readMessage(
+                    internalGetUpdatedAtFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                bitField0_ |= 0x00000010;
+                break;
+              } // case 42
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private long version_ ;
+      /**
+       * <pre>
+       * Server-assigned, incremented on every change. Lets a holder tell whether
+       * its copy is current.
+       * </pre>
+       *
+       * <code>int64 version = 1 [json_name = "version"];</code>
+       * @return The version.
+       */
+      @java.lang.Override
+      public long getVersion() {
+        return version_;
+      }
+      /**
+       * <pre>
+       * Server-assigned, incremented on every change. Lets a holder tell whether
+       * its copy is current.
+       * </pre>
+       *
+       * <code>int64 version = 1 [json_name = "version"];</code>
+       * @param value The version to set.
+       * @return This builder for chaining.
+       */
+      public Builder setVersion(long value) {
+
+        version_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Server-assigned, incremented on every change. Lets a holder tell whether
+       * its copy is current.
+       * </pre>
+       *
+       * <code>int64 version = 1 [json_name = "version"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearVersion() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        version_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private smsgateway.v1.Device.Availability availability_;
+      private com.google.protobuf.SingleFieldBuilder<
+          smsgateway.v1.Device.Availability, smsgateway.v1.Device.Availability.Builder, smsgateway.v1.Device.AvailabilityOrBuilder> availabilityBuilder_;
+      /**
+       * <code>.smsgateway.v1.Availability availability = 2 [json_name = "availability"];</code>
+       * @return Whether the availability field is set.
+       */
+      public boolean hasAvailability() {
+        return ((bitField0_ & 0x00000002) != 0);
+      }
+      /**
+       * <code>.smsgateway.v1.Availability availability = 2 [json_name = "availability"];</code>
+       * @return The availability.
+       */
+      public smsgateway.v1.Device.Availability getAvailability() {
+        if (availabilityBuilder_ == null) {
+          return availability_ == null ? smsgateway.v1.Device.Availability.getDefaultInstance() : availability_;
+        } else {
+          return availabilityBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.smsgateway.v1.Availability availability = 2 [json_name = "availability"];</code>
+       */
+      public Builder setAvailability(smsgateway.v1.Device.Availability value) {
+        if (availabilityBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          availability_ = value;
+        } else {
+          availabilityBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.smsgateway.v1.Availability availability = 2 [json_name = "availability"];</code>
+       */
+      public Builder setAvailability(
+          smsgateway.v1.Device.Availability.Builder builderForValue) {
+        if (availabilityBuilder_ == null) {
+          availability_ = builderForValue.build();
+        } else {
+          availabilityBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.smsgateway.v1.Availability availability = 2 [json_name = "availability"];</code>
+       */
+      public Builder mergeAvailability(smsgateway.v1.Device.Availability value) {
+        if (availabilityBuilder_ == null) {
+          if (((bitField0_ & 0x00000002) != 0) &&
+            availability_ != null &&
+            availability_ != smsgateway.v1.Device.Availability.getDefaultInstance()) {
+            getAvailabilityBuilder().mergeFrom(value);
+          } else {
+            availability_ = value;
+          }
+        } else {
+          availabilityBuilder_.mergeFrom(value);
+        }
+        if (availability_ != null) {
+          bitField0_ |= 0x00000002;
+          onChanged();
+        }
+        return this;
+      }
+      /**
+       * <code>.smsgateway.v1.Availability availability = 2 [json_name = "availability"];</code>
+       */
+      public Builder clearAvailability() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        availability_ = null;
+        if (availabilityBuilder_ != null) {
+          availabilityBuilder_.dispose();
+          availabilityBuilder_ = null;
+        }
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.smsgateway.v1.Availability availability = 2 [json_name = "availability"];</code>
+       */
+      public smsgateway.v1.Device.Availability.Builder getAvailabilityBuilder() {
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return internalGetAvailabilityFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.smsgateway.v1.Availability availability = 2 [json_name = "availability"];</code>
+       */
+      public smsgateway.v1.Device.AvailabilityOrBuilder getAvailabilityOrBuilder() {
+        if (availabilityBuilder_ != null) {
+          return availabilityBuilder_.getMessageOrBuilder();
+        } else {
+          return availability_ == null ?
+              smsgateway.v1.Device.Availability.getDefaultInstance() : availability_;
+        }
+      }
+      /**
+       * <code>.smsgateway.v1.Availability availability = 2 [json_name = "availability"];</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          smsgateway.v1.Device.Availability, smsgateway.v1.Device.Availability.Builder, smsgateway.v1.Device.AvailabilityOrBuilder> 
+          internalGetAvailabilityFieldBuilder() {
+        if (availabilityBuilder_ == null) {
+          availabilityBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              smsgateway.v1.Device.Availability, smsgateway.v1.Device.Availability.Builder, smsgateway.v1.Device.AvailabilityOrBuilder>(
+                  getAvailability(),
+                  getParentForChildren(),
+                  isClean());
+          availability_ = null;
+        }
+        return availabilityBuilder_;
+      }
+
+      private smsgateway.v1.Device.AcceptRules accept_;
+      private com.google.protobuf.SingleFieldBuilder<
+          smsgateway.v1.Device.AcceptRules, smsgateway.v1.Device.AcceptRules.Builder, smsgateway.v1.Device.AcceptRulesOrBuilder> acceptBuilder_;
+      /**
+       * <code>.smsgateway.v1.AcceptRules accept = 3 [json_name = "accept"];</code>
+       * @return Whether the accept field is set.
+       */
+      public boolean hasAccept() {
+        return ((bitField0_ & 0x00000004) != 0);
+      }
+      /**
+       * <code>.smsgateway.v1.AcceptRules accept = 3 [json_name = "accept"];</code>
+       * @return The accept.
+       */
+      public smsgateway.v1.Device.AcceptRules getAccept() {
+        if (acceptBuilder_ == null) {
+          return accept_ == null ? smsgateway.v1.Device.AcceptRules.getDefaultInstance() : accept_;
+        } else {
+          return acceptBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.smsgateway.v1.AcceptRules accept = 3 [json_name = "accept"];</code>
+       */
+      public Builder setAccept(smsgateway.v1.Device.AcceptRules value) {
+        if (acceptBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          accept_ = value;
+        } else {
+          acceptBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.smsgateway.v1.AcceptRules accept = 3 [json_name = "accept"];</code>
+       */
+      public Builder setAccept(
+          smsgateway.v1.Device.AcceptRules.Builder builderForValue) {
+        if (acceptBuilder_ == null) {
+          accept_ = builderForValue.build();
+        } else {
+          acceptBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.smsgateway.v1.AcceptRules accept = 3 [json_name = "accept"];</code>
+       */
+      public Builder mergeAccept(smsgateway.v1.Device.AcceptRules value) {
+        if (acceptBuilder_ == null) {
+          if (((bitField0_ & 0x00000004) != 0) &&
+            accept_ != null &&
+            accept_ != smsgateway.v1.Device.AcceptRules.getDefaultInstance()) {
+            getAcceptBuilder().mergeFrom(value);
+          } else {
+            accept_ = value;
+          }
+        } else {
+          acceptBuilder_.mergeFrom(value);
+        }
+        if (accept_ != null) {
+          bitField0_ |= 0x00000004;
+          onChanged();
+        }
+        return this;
+      }
+      /**
+       * <code>.smsgateway.v1.AcceptRules accept = 3 [json_name = "accept"];</code>
+       */
+      public Builder clearAccept() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        accept_ = null;
+        if (acceptBuilder_ != null) {
+          acceptBuilder_.dispose();
+          acceptBuilder_ = null;
+        }
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.smsgateway.v1.AcceptRules accept = 3 [json_name = "accept"];</code>
+       */
+      public smsgateway.v1.Device.AcceptRules.Builder getAcceptBuilder() {
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return internalGetAcceptFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.smsgateway.v1.AcceptRules accept = 3 [json_name = "accept"];</code>
+       */
+      public smsgateway.v1.Device.AcceptRulesOrBuilder getAcceptOrBuilder() {
+        if (acceptBuilder_ != null) {
+          return acceptBuilder_.getMessageOrBuilder();
+        } else {
+          return accept_ == null ?
+              smsgateway.v1.Device.AcceptRules.getDefaultInstance() : accept_;
+        }
+      }
+      /**
+       * <code>.smsgateway.v1.AcceptRules accept = 3 [json_name = "accept"];</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          smsgateway.v1.Device.AcceptRules, smsgateway.v1.Device.AcceptRules.Builder, smsgateway.v1.Device.AcceptRulesOrBuilder> 
+          internalGetAcceptFieldBuilder() {
+        if (acceptBuilder_ == null) {
+          acceptBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              smsgateway.v1.Device.AcceptRules, smsgateway.v1.Device.AcceptRules.Builder, smsgateway.v1.Device.AcceptRulesOrBuilder>(
+                  getAccept(),
+                  getParentForChildren(),
+                  isClean());
+          accept_ = null;
+        }
+        return acceptBuilder_;
+      }
+
+      private java.util.List<smsgateway.v1.Device.SimPolicy> sims_ =
+        java.util.Collections.emptyList();
+      private void ensureSimsIsMutable() {
+        if (!((bitField0_ & 0x00000008) != 0)) {
+          sims_ = new java.util.ArrayList<smsgateway.v1.Device.SimPolicy>(sims_);
+          bitField0_ |= 0x00000008;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          smsgateway.v1.Device.SimPolicy, smsgateway.v1.Device.SimPolicy.Builder, smsgateway.v1.Device.SimPolicyOrBuilder> simsBuilder_;
+
+      /**
+       * <pre>
+       * Per-SIM rules, on top of the device's: a SIM must satisfy both.
+       * </pre>
+       *
+       * <code>repeated .smsgateway.v1.SimPolicy sims = 4 [json_name = "sims"];</code>
+       */
+      public java.util.List<smsgateway.v1.Device.SimPolicy> getSimsList() {
+        if (simsBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(sims_);
+        } else {
+          return simsBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <pre>
+       * Per-SIM rules, on top of the device's: a SIM must satisfy both.
+       * </pre>
+       *
+       * <code>repeated .smsgateway.v1.SimPolicy sims = 4 [json_name = "sims"];</code>
+       */
+      public int getSimsCount() {
+        if (simsBuilder_ == null) {
+          return sims_.size();
+        } else {
+          return simsBuilder_.getCount();
+        }
+      }
+      /**
+       * <pre>
+       * Per-SIM rules, on top of the device's: a SIM must satisfy both.
+       * </pre>
+       *
+       * <code>repeated .smsgateway.v1.SimPolicy sims = 4 [json_name = "sims"];</code>
+       */
+      public smsgateway.v1.Device.SimPolicy getSims(int index) {
+        if (simsBuilder_ == null) {
+          return sims_.get(index);
+        } else {
+          return simsBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <pre>
+       * Per-SIM rules, on top of the device's: a SIM must satisfy both.
+       * </pre>
+       *
+       * <code>repeated .smsgateway.v1.SimPolicy sims = 4 [json_name = "sims"];</code>
+       */
+      public Builder setSims(
+          int index, smsgateway.v1.Device.SimPolicy value) {
+        if (simsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureSimsIsMutable();
+          sims_.set(index, value);
+          onChanged();
+        } else {
+          simsBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Per-SIM rules, on top of the device's: a SIM must satisfy both.
+       * </pre>
+       *
+       * <code>repeated .smsgateway.v1.SimPolicy sims = 4 [json_name = "sims"];</code>
+       */
+      public Builder setSims(
+          int index, smsgateway.v1.Device.SimPolicy.Builder builderForValue) {
+        if (simsBuilder_ == null) {
+          ensureSimsIsMutable();
+          sims_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          simsBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Per-SIM rules, on top of the device's: a SIM must satisfy both.
+       * </pre>
+       *
+       * <code>repeated .smsgateway.v1.SimPolicy sims = 4 [json_name = "sims"];</code>
+       */
+      public Builder addSims(smsgateway.v1.Device.SimPolicy value) {
+        if (simsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureSimsIsMutable();
+          sims_.add(value);
+          onChanged();
+        } else {
+          simsBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Per-SIM rules, on top of the device's: a SIM must satisfy both.
+       * </pre>
+       *
+       * <code>repeated .smsgateway.v1.SimPolicy sims = 4 [json_name = "sims"];</code>
+       */
+      public Builder addSims(
+          int index, smsgateway.v1.Device.SimPolicy value) {
+        if (simsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureSimsIsMutable();
+          sims_.add(index, value);
+          onChanged();
+        } else {
+          simsBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Per-SIM rules, on top of the device's: a SIM must satisfy both.
+       * </pre>
+       *
+       * <code>repeated .smsgateway.v1.SimPolicy sims = 4 [json_name = "sims"];</code>
+       */
+      public Builder addSims(
+          smsgateway.v1.Device.SimPolicy.Builder builderForValue) {
+        if (simsBuilder_ == null) {
+          ensureSimsIsMutable();
+          sims_.add(builderForValue.build());
+          onChanged();
+        } else {
+          simsBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Per-SIM rules, on top of the device's: a SIM must satisfy both.
+       * </pre>
+       *
+       * <code>repeated .smsgateway.v1.SimPolicy sims = 4 [json_name = "sims"];</code>
+       */
+      public Builder addSims(
+          int index, smsgateway.v1.Device.SimPolicy.Builder builderForValue) {
+        if (simsBuilder_ == null) {
+          ensureSimsIsMutable();
+          sims_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          simsBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Per-SIM rules, on top of the device's: a SIM must satisfy both.
+       * </pre>
+       *
+       * <code>repeated .smsgateway.v1.SimPolicy sims = 4 [json_name = "sims"];</code>
+       */
+      public Builder addAllSims(
+          java.lang.Iterable<? extends smsgateway.v1.Device.SimPolicy> values) {
+        if (simsBuilder_ == null) {
+          ensureSimsIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, sims_);
+          onChanged();
+        } else {
+          simsBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Per-SIM rules, on top of the device's: a SIM must satisfy both.
+       * </pre>
+       *
+       * <code>repeated .smsgateway.v1.SimPolicy sims = 4 [json_name = "sims"];</code>
+       */
+      public Builder clearSims() {
+        if (simsBuilder_ == null) {
+          sims_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000008);
+          onChanged();
+        } else {
+          simsBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Per-SIM rules, on top of the device's: a SIM must satisfy both.
+       * </pre>
+       *
+       * <code>repeated .smsgateway.v1.SimPolicy sims = 4 [json_name = "sims"];</code>
+       */
+      public Builder removeSims(int index) {
+        if (simsBuilder_ == null) {
+          ensureSimsIsMutable();
+          sims_.remove(index);
+          onChanged();
+        } else {
+          simsBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Per-SIM rules, on top of the device's: a SIM must satisfy both.
+       * </pre>
+       *
+       * <code>repeated .smsgateway.v1.SimPolicy sims = 4 [json_name = "sims"];</code>
+       */
+      public smsgateway.v1.Device.SimPolicy.Builder getSimsBuilder(
+          int index) {
+        return internalGetSimsFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <pre>
+       * Per-SIM rules, on top of the device's: a SIM must satisfy both.
+       * </pre>
+       *
+       * <code>repeated .smsgateway.v1.SimPolicy sims = 4 [json_name = "sims"];</code>
+       */
+      public smsgateway.v1.Device.SimPolicyOrBuilder getSimsOrBuilder(
+          int index) {
+        if (simsBuilder_ == null) {
+          return sims_.get(index);  } else {
+          return simsBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <pre>
+       * Per-SIM rules, on top of the device's: a SIM must satisfy both.
+       * </pre>
+       *
+       * <code>repeated .smsgateway.v1.SimPolicy sims = 4 [json_name = "sims"];</code>
+       */
+      public java.util.List<? extends smsgateway.v1.Device.SimPolicyOrBuilder> 
+           getSimsOrBuilderList() {
+        if (simsBuilder_ != null) {
+          return simsBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(sims_);
+        }
+      }
+      /**
+       * <pre>
+       * Per-SIM rules, on top of the device's: a SIM must satisfy both.
+       * </pre>
+       *
+       * <code>repeated .smsgateway.v1.SimPolicy sims = 4 [json_name = "sims"];</code>
+       */
+      public smsgateway.v1.Device.SimPolicy.Builder addSimsBuilder() {
+        return internalGetSimsFieldBuilder().addBuilder(
+            smsgateway.v1.Device.SimPolicy.getDefaultInstance());
+      }
+      /**
+       * <pre>
+       * Per-SIM rules, on top of the device's: a SIM must satisfy both.
+       * </pre>
+       *
+       * <code>repeated .smsgateway.v1.SimPolicy sims = 4 [json_name = "sims"];</code>
+       */
+      public smsgateway.v1.Device.SimPolicy.Builder addSimsBuilder(
+          int index) {
+        return internalGetSimsFieldBuilder().addBuilder(
+            index, smsgateway.v1.Device.SimPolicy.getDefaultInstance());
+      }
+      /**
+       * <pre>
+       * Per-SIM rules, on top of the device's: a SIM must satisfy both.
+       * </pre>
+       *
+       * <code>repeated .smsgateway.v1.SimPolicy sims = 4 [json_name = "sims"];</code>
+       */
+      public java.util.List<smsgateway.v1.Device.SimPolicy.Builder> 
+           getSimsBuilderList() {
+        return internalGetSimsFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          smsgateway.v1.Device.SimPolicy, smsgateway.v1.Device.SimPolicy.Builder, smsgateway.v1.Device.SimPolicyOrBuilder> 
+          internalGetSimsFieldBuilder() {
+        if (simsBuilder_ == null) {
+          simsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              smsgateway.v1.Device.SimPolicy, smsgateway.v1.Device.SimPolicy.Builder, smsgateway.v1.Device.SimPolicyOrBuilder>(
+                  sims_,
+                  ((bitField0_ & 0x00000008) != 0),
+                  getParentForChildren(),
+                  isClean());
+          sims_ = null;
+        }
+        return simsBuilder_;
+      }
+
+      private com.google.protobuf.Timestamp updatedAt_;
+      private com.google.protobuf.SingleFieldBuilder<
+          com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> updatedAtBuilder_;
+      /**
+       * <code>.google.protobuf.Timestamp updated_at = 5 [json_name = "updatedAt"];</code>
+       * @return Whether the updatedAt field is set.
+       */
+      public boolean hasUpdatedAt() {
+        return ((bitField0_ & 0x00000010) != 0);
+      }
+      /**
+       * <code>.google.protobuf.Timestamp updated_at = 5 [json_name = "updatedAt"];</code>
+       * @return The updatedAt.
+       */
+      public com.google.protobuf.Timestamp getUpdatedAt() {
+        if (updatedAtBuilder_ == null) {
+          return updatedAt_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : updatedAt_;
+        } else {
+          return updatedAtBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.google.protobuf.Timestamp updated_at = 5 [json_name = "updatedAt"];</code>
+       */
+      public Builder setUpdatedAt(com.google.protobuf.Timestamp value) {
+        if (updatedAtBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          updatedAt_ = value;
+        } else {
+          updatedAtBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.Timestamp updated_at = 5 [json_name = "updatedAt"];</code>
+       */
+      public Builder setUpdatedAt(
+          com.google.protobuf.Timestamp.Builder builderForValue) {
+        if (updatedAtBuilder_ == null) {
+          updatedAt_ = builderForValue.build();
+        } else {
+          updatedAtBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.Timestamp updated_at = 5 [json_name = "updatedAt"];</code>
+       */
+      public Builder mergeUpdatedAt(com.google.protobuf.Timestamp value) {
+        if (updatedAtBuilder_ == null) {
+          if (((bitField0_ & 0x00000010) != 0) &&
+            updatedAt_ != null &&
+            updatedAt_ != com.google.protobuf.Timestamp.getDefaultInstance()) {
+            getUpdatedAtBuilder().mergeFrom(value);
+          } else {
+            updatedAt_ = value;
+          }
+        } else {
+          updatedAtBuilder_.mergeFrom(value);
+        }
+        if (updatedAt_ != null) {
+          bitField0_ |= 0x00000010;
+          onChanged();
+        }
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.Timestamp updated_at = 5 [json_name = "updatedAt"];</code>
+       */
+      public Builder clearUpdatedAt() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        updatedAt_ = null;
+        if (updatedAtBuilder_ != null) {
+          updatedAtBuilder_.dispose();
+          updatedAtBuilder_ = null;
+        }
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.Timestamp updated_at = 5 [json_name = "updatedAt"];</code>
+       */
+      public com.google.protobuf.Timestamp.Builder getUpdatedAtBuilder() {
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return internalGetUpdatedAtFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.google.protobuf.Timestamp updated_at = 5 [json_name = "updatedAt"];</code>
+       */
+      public com.google.protobuf.TimestampOrBuilder getUpdatedAtOrBuilder() {
+        if (updatedAtBuilder_ != null) {
+          return updatedAtBuilder_.getMessageOrBuilder();
+        } else {
+          return updatedAt_ == null ?
+              com.google.protobuf.Timestamp.getDefaultInstance() : updatedAt_;
+        }
+      }
+      /**
+       * <code>.google.protobuf.Timestamp updated_at = 5 [json_name = "updatedAt"];</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> 
+          internalGetUpdatedAtFieldBuilder() {
+        if (updatedAtBuilder_ == null) {
+          updatedAtBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder>(
+                  getUpdatedAt(),
+                  getParentForChildren(),
+                  isClean());
+          updatedAt_ = null;
+        }
+        return updatedAtBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:smsgateway.v1.DevicePolicy)
+    }
+
+    // @@protoc_insertion_point(class_scope:smsgateway.v1.DevicePolicy)
+    private static final smsgateway.v1.Device.DevicePolicy DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new smsgateway.v1.Device.DevicePolicy();
+    }
+
+    public static smsgateway.v1.Device.DevicePolicy getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<DevicePolicy>
+        PARSER = new com.google.protobuf.AbstractParser<DevicePolicy>() {
+      @java.lang.Override
+      public DevicePolicy parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<DevicePolicy> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<DevicePolicy> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public smsgateway.v1.Device.DevicePolicy getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface AvailabilityOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:smsgateway.v1.Availability)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * IANA zone the windows are read in. Empty: the zone the phone reports
+     * (DeviceInfo.time_zone), then UTC.
+     * </pre>
+     *
+     * <code>string time_zone = 1 [json_name = "timeZone"];</code>
+     * @return The timeZone.
+     */
+    java.lang.String getTimeZone();
+    /**
+     * <pre>
+     * IANA zone the windows are read in. Empty: the zone the phone reports
+     * (DeviceInfo.time_zone), then UTC.
+     * </pre>
+     *
+     * <code>string time_zone = 1 [json_name = "timeZone"];</code>
+     * @return The bytes for timeZone.
+     */
+    com.google.protobuf.ByteString
+        getTimeZoneBytes();
+
+    /**
+     * <pre>
+     * Available while inside any window. None: always available.
+     * </pre>
+     *
+     * <code>repeated .smsgateway.v1.TimeWindow windows = 2 [json_name = "windows"];</code>
+     */
+    java.util.List<smsgateway.v1.Device.TimeWindow> 
+        getWindowsList();
+    /**
+     * <pre>
+     * Available while inside any window. None: always available.
+     * </pre>
+     *
+     * <code>repeated .smsgateway.v1.TimeWindow windows = 2 [json_name = "windows"];</code>
+     */
+    smsgateway.v1.Device.TimeWindow getWindows(int index);
+    /**
+     * <pre>
+     * Available while inside any window. None: always available.
+     * </pre>
+     *
+     * <code>repeated .smsgateway.v1.TimeWindow windows = 2 [json_name = "windows"];</code>
+     */
+    int getWindowsCount();
+    /**
+     * <pre>
+     * Available while inside any window. None: always available.
+     * </pre>
+     *
+     * <code>repeated .smsgateway.v1.TimeWindow windows = 2 [json_name = "windows"];</code>
+     */
+    java.util.List<? extends smsgateway.v1.Device.TimeWindowOrBuilder> 
+        getWindowsOrBuilderList();
+    /**
+     * <pre>
+     * Available while inside any window. None: always available.
+     * </pre>
+     *
+     * <code>repeated .smsgateway.v1.TimeWindow windows = 2 [json_name = "windows"];</code>
+     */
+    smsgateway.v1.Device.TimeWindowOrBuilder getWindowsOrBuilder(
+        int index);
+  }
+  /**
+   * <pre>
+   * When a device takes work.
+   * </pre>
+   *
+   * Protobuf type {@code smsgateway.v1.Availability}
+   */
+  public static final class Availability extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:smsgateway.v1.Availability)
+      AvailabilityOrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 35,
+        /* patch= */ 1,
+        /* suffix= */ "",
+        "Availability");
+    }
+    // Use Availability.newBuilder() to construct.
+    private Availability(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private Availability() {
+      timeZone_ = "";
+      windows_ = java.util.Collections.emptyList();
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return smsgateway.v1.Device.internal_static_smsgateway_v1_Availability_descriptor;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+      return smsgateway.v1.Device.internal_static_smsgateway_v1_Availability_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return smsgateway.v1.Device.internal_static_smsgateway_v1_Availability_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              smsgateway.v1.Device.Availability.class, smsgateway.v1.Device.Availability.Builder.class);
+    }
+
+    public static final int TIME_ZONE_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object timeZone_ = "";
+    /**
+     * <pre>
+     * IANA zone the windows are read in. Empty: the zone the phone reports
+     * (DeviceInfo.time_zone), then UTC.
+     * </pre>
+     *
+     * <code>string time_zone = 1 [json_name = "timeZone"];</code>
+     * @return The timeZone.
+     */
+    @java.lang.Override
+    public java.lang.String getTimeZone() {
+      java.lang.Object ref = timeZone_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        timeZone_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * IANA zone the windows are read in. Empty: the zone the phone reports
+     * (DeviceInfo.time_zone), then UTC.
+     * </pre>
+     *
+     * <code>string time_zone = 1 [json_name = "timeZone"];</code>
+     * @return The bytes for timeZone.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getTimeZoneBytes() {
+      java.lang.Object ref = timeZone_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        timeZone_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int WINDOWS_FIELD_NUMBER = 2;
+    @SuppressWarnings("serial")
+    private java.util.List<smsgateway.v1.Device.TimeWindow> windows_;
+    /**
+     * <pre>
+     * Available while inside any window. None: always available.
+     * </pre>
+     *
+     * <code>repeated .smsgateway.v1.TimeWindow windows = 2 [json_name = "windows"];</code>
+     */
+    @java.lang.Override
+    public java.util.List<smsgateway.v1.Device.TimeWindow> getWindowsList() {
+      return windows_;
+    }
+    /**
+     * <pre>
+     * Available while inside any window. None: always available.
+     * </pre>
+     *
+     * <code>repeated .smsgateway.v1.TimeWindow windows = 2 [json_name = "windows"];</code>
+     */
+    @java.lang.Override
+    public java.util.List<? extends smsgateway.v1.Device.TimeWindowOrBuilder> 
+        getWindowsOrBuilderList() {
+      return windows_;
+    }
+    /**
+     * <pre>
+     * Available while inside any window. None: always available.
+     * </pre>
+     *
+     * <code>repeated .smsgateway.v1.TimeWindow windows = 2 [json_name = "windows"];</code>
+     */
+    @java.lang.Override
+    public int getWindowsCount() {
+      return windows_.size();
+    }
+    /**
+     * <pre>
+     * Available while inside any window. None: always available.
+     * </pre>
+     *
+     * <code>repeated .smsgateway.v1.TimeWindow windows = 2 [json_name = "windows"];</code>
+     */
+    @java.lang.Override
+    public smsgateway.v1.Device.TimeWindow getWindows(int index) {
+      return windows_.get(index);
+    }
+    /**
+     * <pre>
+     * Available while inside any window. None: always available.
+     * </pre>
+     *
+     * <code>repeated .smsgateway.v1.TimeWindow windows = 2 [json_name = "windows"];</code>
+     */
+    @java.lang.Override
+    public smsgateway.v1.Device.TimeWindowOrBuilder getWindowsOrBuilder(
+        int index) {
+      return windows_.get(index);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(timeZone_)) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 1, timeZone_);
+      }
+      for (int i = 0; i < windows_.size(); i++) {
+        output.writeMessage(2, windows_.get(i));
+      }
+      getUnknownFields().writeTo(output);
+    }
+    private int computeSerializedSize_0() {
+      int size = 0;
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(timeZone_)) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, timeZone_);
+      }
+
+          {
+            final int count = windows_.size();
+            for (int i = 0; i < count; i++) {
+              size += com.google.protobuf.CodedOutputStream
+                .computeMessageSizeNoTag(windows_.get(i));
+            }
+            size += 1 * count;
+          }
+      return size;
+    }
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += computeSerializedSize_0();
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof smsgateway.v1.Device.Availability)) {
+        return super.equals(obj);
+      }
+      smsgateway.v1.Device.Availability other = (smsgateway.v1.Device.Availability) obj;
+
+      if (!getTimeZone()
+          .equals(other.getTimeZone())) return false;
+      if (!getWindowsList()
+          .equals(other.getWindowsList())) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + TIME_ZONE_FIELD_NUMBER;
+      hash = (53 * hash) + getTimeZone().hashCode();
+      if (getWindowsCount() > 0) {
+        hash = (37 * hash) + WINDOWS_FIELD_NUMBER;
+        hash = (53 * hash) + getWindowsList().hashCode();
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static smsgateway.v1.Device.Availability parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static smsgateway.v1.Device.Availability parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static smsgateway.v1.Device.Availability parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static smsgateway.v1.Device.Availability parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static smsgateway.v1.Device.Availability parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static smsgateway.v1.Device.Availability parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static smsgateway.v1.Device.Availability parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static smsgateway.v1.Device.Availability parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static smsgateway.v1.Device.Availability parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static smsgateway.v1.Device.Availability parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static smsgateway.v1.Device.Availability parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static smsgateway.v1.Device.Availability parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(smsgateway.v1.Device.Availability prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * When a device takes work.
+     * </pre>
+     *
+     * Protobuf type {@code smsgateway.v1.Availability}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:smsgateway.v1.Availability)
+        smsgateway.v1.Device.AvailabilityOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return smsgateway.v1.Device.internal_static_smsgateway_v1_Availability_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return smsgateway.v1.Device.internal_static_smsgateway_v1_Availability_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                smsgateway.v1.Device.Availability.class, smsgateway.v1.Device.Availability.Builder.class);
+      }
+
+      // Construct using smsgateway.v1.Device.Availability.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        timeZone_ = "";
+        if (windowsBuilder_ == null) {
+          windows_ = java.util.Collections.emptyList();
+        } else {
+          windows_ = null;
+          windowsBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return smsgateway.v1.Device.internal_static_smsgateway_v1_Availability_descriptor;
+      }
+
+      @java.lang.Override
+      public smsgateway.v1.Device.Availability getDefaultInstanceForType() {
+        return smsgateway.v1.Device.Availability.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public smsgateway.v1.Device.Availability build() {
+        smsgateway.v1.Device.Availability result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public smsgateway.v1.Device.Availability buildPartial() {
+        smsgateway.v1.Device.Availability result = new smsgateway.v1.Device.Availability(this);
+        buildPartialRepeatedFields(result);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartialRepeatedFields(smsgateway.v1.Device.Availability result) {
+        if (windowsBuilder_ == null) {
+          if (((bitField0_ & 0x00000002) != 0)) {
+            windows_ = java.util.Collections.unmodifiableList(windows_);
+            bitField0_ = (bitField0_ & ~0x00000002);
+          }
+          result.windows_ = windows_;
+        } else {
+          result.windows_ = windowsBuilder_.build();
+        }
+      }
+
+      private void buildPartial0(smsgateway.v1.Device.Availability result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.timeZone_ = timeZone_;
+        }
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof smsgateway.v1.Device.Availability) {
+          return mergeFrom((smsgateway.v1.Device.Availability)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(smsgateway.v1.Device.Availability other) {
+        if (other == smsgateway.v1.Device.Availability.getDefaultInstance()) return this;
+        if (!other.getTimeZone().isEmpty()) {
+          timeZone_ = other.timeZone_;
+          bitField0_ |= 0x00000001;
+          onChanged();
+        }
+        if (windowsBuilder_ == null) {
+          if (!other.windows_.isEmpty()) {
+            if (windows_.isEmpty()) {
+              windows_ = other.windows_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+            } else {
+              ensureWindowsIsMutable();
+              windows_.addAll(other.windows_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.windows_.isEmpty()) {
+            if (windowsBuilder_.isEmpty()) {
+              windowsBuilder_.dispose();
+              windowsBuilder_ = null;
+              windows_ = other.windows_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+              windowsBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   internalGetWindowsFieldBuilder() : null;
+            } else {
+              windowsBuilder_.addAllMessages(other.windows_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                timeZone_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              case 18: {
+                smsgateway.v1.Device.TimeWindow m =
+                    input.readMessage(
+                        smsgateway.v1.Device.TimeWindow.parser(),
+                        extensionRegistry);
+                if (windowsBuilder_ == null) {
+                  ensureWindowsIsMutable();
+                  windows_.add(m);
+                } else {
+                  windowsBuilder_.addMessage(m);
+                }
+                break;
+              } // case 18
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private java.lang.Object timeZone_ = "";
+      /**
+       * <pre>
+       * IANA zone the windows are read in. Empty: the zone the phone reports
+       * (DeviceInfo.time_zone), then UTC.
+       * </pre>
+       *
+       * <code>string time_zone = 1 [json_name = "timeZone"];</code>
+       * @return The timeZone.
+       */
+      public java.lang.String getTimeZone() {
+        java.lang.Object ref = timeZone_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          timeZone_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * IANA zone the windows are read in. Empty: the zone the phone reports
+       * (DeviceInfo.time_zone), then UTC.
+       * </pre>
+       *
+       * <code>string time_zone = 1 [json_name = "timeZone"];</code>
+       * @return The bytes for timeZone.
+       */
+      public com.google.protobuf.ByteString
+          getTimeZoneBytes() {
+        java.lang.Object ref = timeZone_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          timeZone_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * IANA zone the windows are read in. Empty: the zone the phone reports
+       * (DeviceInfo.time_zone), then UTC.
+       * </pre>
+       *
+       * <code>string time_zone = 1 [json_name = "timeZone"];</code>
+       * @param value The timeZone to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTimeZone(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        timeZone_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * IANA zone the windows are read in. Empty: the zone the phone reports
+       * (DeviceInfo.time_zone), then UTC.
+       * </pre>
+       *
+       * <code>string time_zone = 1 [json_name = "timeZone"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTimeZone() {
+        timeZone_ = getDefaultInstance().getTimeZone();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * IANA zone the windows are read in. Empty: the zone the phone reports
+       * (DeviceInfo.time_zone), then UTC.
+       * </pre>
+       *
+       * <code>string time_zone = 1 [json_name = "timeZone"];</code>
+       * @param value The bytes for timeZone to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTimeZoneBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        timeZone_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+
+      private java.util.List<smsgateway.v1.Device.TimeWindow> windows_ =
+        java.util.Collections.emptyList();
+      private void ensureWindowsIsMutable() {
+        if (!((bitField0_ & 0x00000002) != 0)) {
+          windows_ = new java.util.ArrayList<smsgateway.v1.Device.TimeWindow>(windows_);
+          bitField0_ |= 0x00000002;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          smsgateway.v1.Device.TimeWindow, smsgateway.v1.Device.TimeWindow.Builder, smsgateway.v1.Device.TimeWindowOrBuilder> windowsBuilder_;
+
+      /**
+       * <pre>
+       * Available while inside any window. None: always available.
+       * </pre>
+       *
+       * <code>repeated .smsgateway.v1.TimeWindow windows = 2 [json_name = "windows"];</code>
+       */
+      public java.util.List<smsgateway.v1.Device.TimeWindow> getWindowsList() {
+        if (windowsBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(windows_);
+        } else {
+          return windowsBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <pre>
+       * Available while inside any window. None: always available.
+       * </pre>
+       *
+       * <code>repeated .smsgateway.v1.TimeWindow windows = 2 [json_name = "windows"];</code>
+       */
+      public int getWindowsCount() {
+        if (windowsBuilder_ == null) {
+          return windows_.size();
+        } else {
+          return windowsBuilder_.getCount();
+        }
+      }
+      /**
+       * <pre>
+       * Available while inside any window. None: always available.
+       * </pre>
+       *
+       * <code>repeated .smsgateway.v1.TimeWindow windows = 2 [json_name = "windows"];</code>
+       */
+      public smsgateway.v1.Device.TimeWindow getWindows(int index) {
+        if (windowsBuilder_ == null) {
+          return windows_.get(index);
+        } else {
+          return windowsBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <pre>
+       * Available while inside any window. None: always available.
+       * </pre>
+       *
+       * <code>repeated .smsgateway.v1.TimeWindow windows = 2 [json_name = "windows"];</code>
+       */
+      public Builder setWindows(
+          int index, smsgateway.v1.Device.TimeWindow value) {
+        if (windowsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureWindowsIsMutable();
+          windows_.set(index, value);
+          onChanged();
+        } else {
+          windowsBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Available while inside any window. None: always available.
+       * </pre>
+       *
+       * <code>repeated .smsgateway.v1.TimeWindow windows = 2 [json_name = "windows"];</code>
+       */
+      public Builder setWindows(
+          int index, smsgateway.v1.Device.TimeWindow.Builder builderForValue) {
+        if (windowsBuilder_ == null) {
+          ensureWindowsIsMutable();
+          windows_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          windowsBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Available while inside any window. None: always available.
+       * </pre>
+       *
+       * <code>repeated .smsgateway.v1.TimeWindow windows = 2 [json_name = "windows"];</code>
+       */
+      public Builder addWindows(smsgateway.v1.Device.TimeWindow value) {
+        if (windowsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureWindowsIsMutable();
+          windows_.add(value);
+          onChanged();
+        } else {
+          windowsBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Available while inside any window. None: always available.
+       * </pre>
+       *
+       * <code>repeated .smsgateway.v1.TimeWindow windows = 2 [json_name = "windows"];</code>
+       */
+      public Builder addWindows(
+          int index, smsgateway.v1.Device.TimeWindow value) {
+        if (windowsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureWindowsIsMutable();
+          windows_.add(index, value);
+          onChanged();
+        } else {
+          windowsBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Available while inside any window. None: always available.
+       * </pre>
+       *
+       * <code>repeated .smsgateway.v1.TimeWindow windows = 2 [json_name = "windows"];</code>
+       */
+      public Builder addWindows(
+          smsgateway.v1.Device.TimeWindow.Builder builderForValue) {
+        if (windowsBuilder_ == null) {
+          ensureWindowsIsMutable();
+          windows_.add(builderForValue.build());
+          onChanged();
+        } else {
+          windowsBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Available while inside any window. None: always available.
+       * </pre>
+       *
+       * <code>repeated .smsgateway.v1.TimeWindow windows = 2 [json_name = "windows"];</code>
+       */
+      public Builder addWindows(
+          int index, smsgateway.v1.Device.TimeWindow.Builder builderForValue) {
+        if (windowsBuilder_ == null) {
+          ensureWindowsIsMutable();
+          windows_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          windowsBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Available while inside any window. None: always available.
+       * </pre>
+       *
+       * <code>repeated .smsgateway.v1.TimeWindow windows = 2 [json_name = "windows"];</code>
+       */
+      public Builder addAllWindows(
+          java.lang.Iterable<? extends smsgateway.v1.Device.TimeWindow> values) {
+        if (windowsBuilder_ == null) {
+          ensureWindowsIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, windows_);
+          onChanged();
+        } else {
+          windowsBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Available while inside any window. None: always available.
+       * </pre>
+       *
+       * <code>repeated .smsgateway.v1.TimeWindow windows = 2 [json_name = "windows"];</code>
+       */
+      public Builder clearWindows() {
+        if (windowsBuilder_ == null) {
+          windows_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000002);
+          onChanged();
+        } else {
+          windowsBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Available while inside any window. None: always available.
+       * </pre>
+       *
+       * <code>repeated .smsgateway.v1.TimeWindow windows = 2 [json_name = "windows"];</code>
+       */
+      public Builder removeWindows(int index) {
+        if (windowsBuilder_ == null) {
+          ensureWindowsIsMutable();
+          windows_.remove(index);
+          onChanged();
+        } else {
+          windowsBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Available while inside any window. None: always available.
+       * </pre>
+       *
+       * <code>repeated .smsgateway.v1.TimeWindow windows = 2 [json_name = "windows"];</code>
+       */
+      public smsgateway.v1.Device.TimeWindow.Builder getWindowsBuilder(
+          int index) {
+        return internalGetWindowsFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <pre>
+       * Available while inside any window. None: always available.
+       * </pre>
+       *
+       * <code>repeated .smsgateway.v1.TimeWindow windows = 2 [json_name = "windows"];</code>
+       */
+      public smsgateway.v1.Device.TimeWindowOrBuilder getWindowsOrBuilder(
+          int index) {
+        if (windowsBuilder_ == null) {
+          return windows_.get(index);  } else {
+          return windowsBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <pre>
+       * Available while inside any window. None: always available.
+       * </pre>
+       *
+       * <code>repeated .smsgateway.v1.TimeWindow windows = 2 [json_name = "windows"];</code>
+       */
+      public java.util.List<? extends smsgateway.v1.Device.TimeWindowOrBuilder> 
+           getWindowsOrBuilderList() {
+        if (windowsBuilder_ != null) {
+          return windowsBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(windows_);
+        }
+      }
+      /**
+       * <pre>
+       * Available while inside any window. None: always available.
+       * </pre>
+       *
+       * <code>repeated .smsgateway.v1.TimeWindow windows = 2 [json_name = "windows"];</code>
+       */
+      public smsgateway.v1.Device.TimeWindow.Builder addWindowsBuilder() {
+        return internalGetWindowsFieldBuilder().addBuilder(
+            smsgateway.v1.Device.TimeWindow.getDefaultInstance());
+      }
+      /**
+       * <pre>
+       * Available while inside any window. None: always available.
+       * </pre>
+       *
+       * <code>repeated .smsgateway.v1.TimeWindow windows = 2 [json_name = "windows"];</code>
+       */
+      public smsgateway.v1.Device.TimeWindow.Builder addWindowsBuilder(
+          int index) {
+        return internalGetWindowsFieldBuilder().addBuilder(
+            index, smsgateway.v1.Device.TimeWindow.getDefaultInstance());
+      }
+      /**
+       * <pre>
+       * Available while inside any window. None: always available.
+       * </pre>
+       *
+       * <code>repeated .smsgateway.v1.TimeWindow windows = 2 [json_name = "windows"];</code>
+       */
+      public java.util.List<smsgateway.v1.Device.TimeWindow.Builder> 
+           getWindowsBuilderList() {
+        return internalGetWindowsFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          smsgateway.v1.Device.TimeWindow, smsgateway.v1.Device.TimeWindow.Builder, smsgateway.v1.Device.TimeWindowOrBuilder> 
+          internalGetWindowsFieldBuilder() {
+        if (windowsBuilder_ == null) {
+          windowsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              smsgateway.v1.Device.TimeWindow, smsgateway.v1.Device.TimeWindow.Builder, smsgateway.v1.Device.TimeWindowOrBuilder>(
+                  windows_,
+                  ((bitField0_ & 0x00000002) != 0),
+                  getParentForChildren(),
+                  isClean());
+          windows_ = null;
+        }
+        return windowsBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:smsgateway.v1.Availability)
+    }
+
+    // @@protoc_insertion_point(class_scope:smsgateway.v1.Availability)
+    private static final smsgateway.v1.Device.Availability DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new smsgateway.v1.Device.Availability();
+    }
+
+    public static smsgateway.v1.Device.Availability getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<Availability>
+        PARSER = new com.google.protobuf.AbstractParser<Availability>() {
+      @java.lang.Override
+      public Availability parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<Availability> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Availability> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public smsgateway.v1.Device.Availability getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface TimeWindowOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:smsgateway.v1.TimeWindow)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * ISO weekdays, 1 = Monday … 7 = Sunday. Empty: every day.
+     * </pre>
+     *
+     * <code>repeated int32 days = 1 [json_name = "days"];</code>
+     * @return A list containing the days.
+     */
+    java.util.List<java.lang.Integer> getDaysList();
+    /**
+     * <pre>
+     * ISO weekdays, 1 = Monday … 7 = Sunday. Empty: every day.
+     * </pre>
+     *
+     * <code>repeated int32 days = 1 [json_name = "days"];</code>
+     * @return The count of days.
+     */
+    int getDaysCount();
+    /**
+     * <pre>
+     * ISO weekdays, 1 = Monday … 7 = Sunday. Empty: every day.
+     * </pre>
+     *
+     * <code>repeated int32 days = 1 [json_name = "days"];</code>
+     * @param index The index of the element to return.
+     * @return The days at the given index.
+     */
+    int getDays(int index);
+
+    /**
+     * <pre>
+     * Minutes since midnight, start inclusive, end exclusive. An end at or
+     * before the start runs past midnight into the next day, so 22:00–06:00 is
+     * one window. Both 0 is the whole day.
+     * </pre>
+     *
+     * <code>int32 start_minute = 2 [json_name = "startMinute"];</code>
+     * @return The startMinute.
+     */
+    int getStartMinute();
+
+    /**
+     * <code>int32 end_minute = 3 [json_name = "endMinute"];</code>
+     * @return The endMinute.
+     */
+    int getEndMinute();
+  }
+  /**
+   * <pre>
+   * A daily slot, e.g. weekdays 08:00–20:00.
+   * </pre>
+   *
+   * Protobuf type {@code smsgateway.v1.TimeWindow}
+   */
+  public static final class TimeWindow extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:smsgateway.v1.TimeWindow)
+      TimeWindowOrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 35,
+        /* patch= */ 1,
+        /* suffix= */ "",
+        "TimeWindow");
+    }
+    // Use TimeWindow.newBuilder() to construct.
+    private TimeWindow(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private TimeWindow() {
+      days_ = emptyIntList();
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return smsgateway.v1.Device.internal_static_smsgateway_v1_TimeWindow_descriptor;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+      return smsgateway.v1.Device.internal_static_smsgateway_v1_TimeWindow_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return smsgateway.v1.Device.internal_static_smsgateway_v1_TimeWindow_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              smsgateway.v1.Device.TimeWindow.class, smsgateway.v1.Device.TimeWindow.Builder.class);
+    }
+
+    public static final int DAYS_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
+    private com.google.protobuf.Internal.IntList days_ =
+        emptyIntList();
+    /**
+     * <pre>
+     * ISO weekdays, 1 = Monday … 7 = Sunday. Empty: every day.
+     * </pre>
+     *
+     * <code>repeated int32 days = 1 [json_name = "days"];</code>
+     * @return A list containing the days.
+     */
+    @java.lang.Override
+    public java.util.List<java.lang.Integer>
+        getDaysList() {
+      return days_;
+    }
+    /**
+     * <pre>
+     * ISO weekdays, 1 = Monday … 7 = Sunday. Empty: every day.
+     * </pre>
+     *
+     * <code>repeated int32 days = 1 [json_name = "days"];</code>
+     * @return The count of days.
+     */
+    public int getDaysCount() {
+      return days_.size();
+    }
+    /**
+     * <pre>
+     * ISO weekdays, 1 = Monday … 7 = Sunday. Empty: every day.
+     * </pre>
+     *
+     * <code>repeated int32 days = 1 [json_name = "days"];</code>
+     * @param index The index of the element to return.
+     * @return The days at the given index.
+     */
+    public int getDays(int index) {
+      return days_.getInt(index);
+    }
+    private int daysMemoizedSerializedSize = -1;
+
+    public static final int START_MINUTE_FIELD_NUMBER = 2;
+    private int startMinute_ = 0;
+    /**
+     * <pre>
+     * Minutes since midnight, start inclusive, end exclusive. An end at or
+     * before the start runs past midnight into the next day, so 22:00–06:00 is
+     * one window. Both 0 is the whole day.
+     * </pre>
+     *
+     * <code>int32 start_minute = 2 [json_name = "startMinute"];</code>
+     * @return The startMinute.
+     */
+    @java.lang.Override
+    public int getStartMinute() {
+      return startMinute_;
+    }
+
+    public static final int END_MINUTE_FIELD_NUMBER = 3;
+    private int endMinute_ = 0;
+    /**
+     * <code>int32 end_minute = 3 [json_name = "endMinute"];</code>
+     * @return The endMinute.
+     */
+    @java.lang.Override
+    public int getEndMinute() {
+      return endMinute_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (getDaysList().size() > 0) {
+        output.writeUInt32NoTag(10);
+        output.writeUInt32NoTag(daysMemoizedSerializedSize);
+      }
+      for (int i = 0; i < days_.size(); i++) {
+        output.writeInt32NoTag(days_.getInt(i));
+      }
+      if (startMinute_ != 0) {
+        output.writeInt32(2, startMinute_);
+      }
+      if (endMinute_ != 0) {
+        output.writeInt32(3, endMinute_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+    private int computeSerializedSize_0() {
+      int size = 0;
+      {
+        int dataSize = 0;
+        for (int i = 0; i < days_.size(); i++) {
+          dataSize += com.google.protobuf.CodedOutputStream
+            .computeInt32SizeNoTag(days_.getInt(i));
+        }
+        size += dataSize;
+        if (!getDaysList().isEmpty()) {
+          size += 1;
+          size += com.google.protobuf.CodedOutputStream
+              .computeInt32SizeNoTag(dataSize);
+        }
+        daysMemoizedSerializedSize = dataSize;
+      }
+      if (startMinute_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, startMinute_);
+      }
+      if (endMinute_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, endMinute_);
+      }
+      return size;
+    }
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += computeSerializedSize_0();
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof smsgateway.v1.Device.TimeWindow)) {
+        return super.equals(obj);
+      }
+      smsgateway.v1.Device.TimeWindow other = (smsgateway.v1.Device.TimeWindow) obj;
+
+      if (!getDaysList()
+          .equals(other.getDaysList())) return false;
+      if (getStartMinute()
+          != other.getStartMinute()) return false;
+      if (getEndMinute()
+          != other.getEndMinute()) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (getDaysCount() > 0) {
+        hash = (37 * hash) + DAYS_FIELD_NUMBER;
+        hash = (53 * hash) + getDaysList().hashCode();
+      }
+      hash = (37 * hash) + START_MINUTE_FIELD_NUMBER;
+      hash = (53 * hash) + getStartMinute();
+      hash = (37 * hash) + END_MINUTE_FIELD_NUMBER;
+      hash = (53 * hash) + getEndMinute();
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static smsgateway.v1.Device.TimeWindow parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static smsgateway.v1.Device.TimeWindow parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static smsgateway.v1.Device.TimeWindow parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static smsgateway.v1.Device.TimeWindow parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static smsgateway.v1.Device.TimeWindow parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static smsgateway.v1.Device.TimeWindow parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static smsgateway.v1.Device.TimeWindow parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static smsgateway.v1.Device.TimeWindow parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static smsgateway.v1.Device.TimeWindow parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static smsgateway.v1.Device.TimeWindow parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static smsgateway.v1.Device.TimeWindow parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static smsgateway.v1.Device.TimeWindow parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(smsgateway.v1.Device.TimeWindow prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * A daily slot, e.g. weekdays 08:00–20:00.
+     * </pre>
+     *
+     * Protobuf type {@code smsgateway.v1.TimeWindow}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:smsgateway.v1.TimeWindow)
+        smsgateway.v1.Device.TimeWindowOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return smsgateway.v1.Device.internal_static_smsgateway_v1_TimeWindow_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return smsgateway.v1.Device.internal_static_smsgateway_v1_TimeWindow_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                smsgateway.v1.Device.TimeWindow.class, smsgateway.v1.Device.TimeWindow.Builder.class);
+      }
+
+      // Construct using smsgateway.v1.Device.TimeWindow.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        days_ = emptyIntList();
+        startMinute_ = 0;
+        endMinute_ = 0;
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return smsgateway.v1.Device.internal_static_smsgateway_v1_TimeWindow_descriptor;
+      }
+
+      @java.lang.Override
+      public smsgateway.v1.Device.TimeWindow getDefaultInstanceForType() {
+        return smsgateway.v1.Device.TimeWindow.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public smsgateway.v1.Device.TimeWindow build() {
+        smsgateway.v1.Device.TimeWindow result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public smsgateway.v1.Device.TimeWindow buildPartial() {
+        smsgateway.v1.Device.TimeWindow result = new smsgateway.v1.Device.TimeWindow(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(smsgateway.v1.Device.TimeWindow result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          days_.makeImmutable();
+          result.days_ = days_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.startMinute_ = startMinute_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.endMinute_ = endMinute_;
+        }
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof smsgateway.v1.Device.TimeWindow) {
+          return mergeFrom((smsgateway.v1.Device.TimeWindow)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(smsgateway.v1.Device.TimeWindow other) {
+        if (other == smsgateway.v1.Device.TimeWindow.getDefaultInstance()) return this;
+        if (!other.days_.isEmpty()) {
+          if (days_.isEmpty()) {
+            days_ = other.days_;
+            days_.makeImmutable();
+            bitField0_ |= 0x00000001;
+          } else {
+            ensureDaysIsMutable();
+            days_.addAll(other.days_);
+          }
+          onChanged();
+        }
+        if (other.getStartMinute() != 0) {
+          setStartMinute(other.getStartMinute());
+        }
+        if (other.getEndMinute() != 0) {
+          setEndMinute(other.getEndMinute());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 8: {
+                int v = input.readInt32();
+                ensureDaysIsMutable();
+                days_.addInt(v);
+                break;
+              } // case 8
+              case 10: {
+                int length = input.readRawVarint32();
+                int limit = input.pushLimit(length);
+                ensureDaysIsMutable();
+                while (input.getBytesUntilLimit() > 0) {
+                  days_.addInt(input.readInt32());
+                }
+                input.popLimit(limit);
+                break;
+              } // case 10
+              case 16: {
+                startMinute_ = input.readInt32();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 16
+              case 24: {
+                endMinute_ = input.readInt32();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 24
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private com.google.protobuf.Internal.IntList days_ = emptyIntList();
+      private void ensureDaysIsMutable() {
+        if (!days_.isModifiable()) {
+          days_ = makeMutableCopy(days_);
+        }
+        bitField0_ |= 0x00000001;
+      }
+      /**
+       * <pre>
+       * ISO weekdays, 1 = Monday … 7 = Sunday. Empty: every day.
+       * </pre>
+       *
+       * <code>repeated int32 days = 1 [json_name = "days"];</code>
+       * @return A list containing the days.
+       */
+      public java.util.List<java.lang.Integer>
+          getDaysList() {
+        days_.makeImmutable();
+        return days_;
+      }
+      /**
+       * <pre>
+       * ISO weekdays, 1 = Monday … 7 = Sunday. Empty: every day.
+       * </pre>
+       *
+       * <code>repeated int32 days = 1 [json_name = "days"];</code>
+       * @return The count of days.
+       */
+      public int getDaysCount() {
+        return days_.size();
+      }
+      /**
+       * <pre>
+       * ISO weekdays, 1 = Monday … 7 = Sunday. Empty: every day.
+       * </pre>
+       *
+       * <code>repeated int32 days = 1 [json_name = "days"];</code>
+       * @param index The index of the element to return.
+       * @return The days at the given index.
+       */
+      public int getDays(int index) {
+        return days_.getInt(index);
+      }
+      /**
+       * <pre>
+       * ISO weekdays, 1 = Monday … 7 = Sunday. Empty: every day.
+       * </pre>
+       *
+       * <code>repeated int32 days = 1 [json_name = "days"];</code>
+       * @param index The index to set the value at.
+       * @param value The days to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDays(
+          int index, int value) {
+
+        ensureDaysIsMutable();
+        days_.setInt(index, value);
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * ISO weekdays, 1 = Monday … 7 = Sunday. Empty: every day.
+       * </pre>
+       *
+       * <code>repeated int32 days = 1 [json_name = "days"];</code>
+       * @param value The days to add.
+       * @return This builder for chaining.
+       */
+      public Builder addDays(int value) {
+
+        ensureDaysIsMutable();
+        days_.addInt(value);
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * ISO weekdays, 1 = Monday … 7 = Sunday. Empty: every day.
+       * </pre>
+       *
+       * <code>repeated int32 days = 1 [json_name = "days"];</code>
+       * @param values The days to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllDays(
+          java.lang.Iterable<? extends java.lang.Integer> values) {
+        ensureDaysIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, days_);
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * ISO weekdays, 1 = Monday … 7 = Sunday. Empty: every day.
+       * </pre>
+       *
+       * <code>repeated int32 days = 1 [json_name = "days"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearDays() {
+        days_ = emptyIntList();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+        return this;
+      }
+
+      private int startMinute_ ;
+      /**
+       * <pre>
+       * Minutes since midnight, start inclusive, end exclusive. An end at or
+       * before the start runs past midnight into the next day, so 22:00–06:00 is
+       * one window. Both 0 is the whole day.
+       * </pre>
+       *
+       * <code>int32 start_minute = 2 [json_name = "startMinute"];</code>
+       * @return The startMinute.
+       */
+      @java.lang.Override
+      public int getStartMinute() {
+        return startMinute_;
+      }
+      /**
+       * <pre>
+       * Minutes since midnight, start inclusive, end exclusive. An end at or
+       * before the start runs past midnight into the next day, so 22:00–06:00 is
+       * one window. Both 0 is the whole day.
+       * </pre>
+       *
+       * <code>int32 start_minute = 2 [json_name = "startMinute"];</code>
+       * @param value The startMinute to set.
+       * @return This builder for chaining.
+       */
+      public Builder setStartMinute(int value) {
+
+        startMinute_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Minutes since midnight, start inclusive, end exclusive. An end at or
+       * before the start runs past midnight into the next day, so 22:00–06:00 is
+       * one window. Both 0 is the whole day.
+       * </pre>
+       *
+       * <code>int32 start_minute = 2 [json_name = "startMinute"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearStartMinute() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        startMinute_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int endMinute_ ;
+      /**
+       * <code>int32 end_minute = 3 [json_name = "endMinute"];</code>
+       * @return The endMinute.
+       */
+      @java.lang.Override
+      public int getEndMinute() {
+        return endMinute_;
+      }
+      /**
+       * <code>int32 end_minute = 3 [json_name = "endMinute"];</code>
+       * @param value The endMinute to set.
+       * @return This builder for chaining.
+       */
+      public Builder setEndMinute(int value) {
+
+        endMinute_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 end_minute = 3 [json_name = "endMinute"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearEndMinute() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        endMinute_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:smsgateway.v1.TimeWindow)
+    }
+
+    // @@protoc_insertion_point(class_scope:smsgateway.v1.TimeWindow)
+    private static final smsgateway.v1.Device.TimeWindow DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new smsgateway.v1.Device.TimeWindow();
+    }
+
+    public static smsgateway.v1.Device.TimeWindow getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<TimeWindow>
+        PARSER = new com.google.protobuf.AbstractParser<TimeWindow>() {
+      @java.lang.Override
+      public TimeWindow parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<TimeWindow> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<TimeWindow> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public smsgateway.v1.Device.TimeWindow getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface AcceptRulesOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:smsgateway.v1.AcceptRules)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * ISO 3166-1 alpha-2 codes, matched on the recipient's country calling
+     * code. Empty: any country. Countries that share a code (+1 for the NANP)
+     * cannot be told apart by the number alone; allowing one allows them all.
+     * </pre>
+     *
+     * <code>repeated string countries = 1 [json_name = "countries"];</code>
+     * @return A list containing the countries.
+     */
+    java.util.List<java.lang.String>
+        getCountriesList();
+    /**
+     * <pre>
+     * ISO 3166-1 alpha-2 codes, matched on the recipient's country calling
+     * code. Empty: any country. Countries that share a code (+1 for the NANP)
+     * cannot be told apart by the number alone; allowing one allows them all.
+     * </pre>
+     *
+     * <code>repeated string countries = 1 [json_name = "countries"];</code>
+     * @return The count of countries.
+     */
+    int getCountriesCount();
+    /**
+     * <pre>
+     * ISO 3166-1 alpha-2 codes, matched on the recipient's country calling
+     * code. Empty: any country. Countries that share a code (+1 for the NANP)
+     * cannot be told apart by the number alone; allowing one allows them all.
+     * </pre>
+     *
+     * <code>repeated string countries = 1 [json_name = "countries"];</code>
+     * @param index The index of the element to return.
+     * @return The countries at the given index.
+     */
+    java.lang.String getCountries(int index);
+    /**
+     * <pre>
+     * ISO 3166-1 alpha-2 codes, matched on the recipient's country calling
+     * code. Empty: any country. Countries that share a code (+1 for the NANP)
+     * cannot be told apart by the number alone; allowing one allows them all.
+     * </pre>
+     *
+     * <code>repeated string countries = 1 [json_name = "countries"];</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the countries at the given index.
+     */
+    com.google.protobuf.ByteString
+        getCountriesBytes(int index);
+
+    /**
+     * <pre>
+     * RE2 regular expression the E.164 recipient must match, e.g. "^&#92;+22670".
+     * Empty: any number.
+     * </pre>
+     *
+     * <code>string recipient_pattern = 2 [json_name = "recipientPattern"];</code>
+     * @return The recipientPattern.
+     */
+    java.lang.String getRecipientPattern();
+    /**
+     * <pre>
+     * RE2 regular expression the E.164 recipient must match, e.g. "^&#92;+22670".
+     * Empty: any number.
+     * </pre>
+     *
+     * <code>string recipient_pattern = 2 [json_name = "recipientPattern"];</code>
+     * @return The bytes for recipientPattern.
+     */
+    com.google.protobuf.ByteString
+        getRecipientPatternBytes();
+  }
+  /**
+   * <pre>
+   * Which recipients a device or SIM accepts. Both conditions must hold.
+   * </pre>
+   *
+   * Protobuf type {@code smsgateway.v1.AcceptRules}
+   */
+  public static final class AcceptRules extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:smsgateway.v1.AcceptRules)
+      AcceptRulesOrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 35,
+        /* patch= */ 1,
+        /* suffix= */ "",
+        "AcceptRules");
+    }
+    // Use AcceptRules.newBuilder() to construct.
+    private AcceptRules(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private AcceptRules() {
+      countries_ =
+          com.google.protobuf.LazyStringArrayList.emptyList();
+      recipientPattern_ = "";
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return smsgateway.v1.Device.internal_static_smsgateway_v1_AcceptRules_descriptor;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+      return smsgateway.v1.Device.internal_static_smsgateway_v1_AcceptRules_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return smsgateway.v1.Device.internal_static_smsgateway_v1_AcceptRules_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              smsgateway.v1.Device.AcceptRules.class, smsgateway.v1.Device.AcceptRules.Builder.class);
+    }
+
+    public static final int COUNTRIES_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
+    private com.google.protobuf.LazyStringArrayList countries_ =
+        com.google.protobuf.LazyStringArrayList.emptyList();
+    /**
+     * <pre>
+     * ISO 3166-1 alpha-2 codes, matched on the recipient's country calling
+     * code. Empty: any country. Countries that share a code (+1 for the NANP)
+     * cannot be told apart by the number alone; allowing one allows them all.
+     * </pre>
+     *
+     * <code>repeated string countries = 1 [json_name = "countries"];</code>
+     * @return A list containing the countries.
+     */
+    public com.google.protobuf.ProtocolStringList
+        getCountriesList() {
+      return countries_;
+    }
+    /**
+     * <pre>
+     * ISO 3166-1 alpha-2 codes, matched on the recipient's country calling
+     * code. Empty: any country. Countries that share a code (+1 for the NANP)
+     * cannot be told apart by the number alone; allowing one allows them all.
+     * </pre>
+     *
+     * <code>repeated string countries = 1 [json_name = "countries"];</code>
+     * @return The count of countries.
+     */
+    public int getCountriesCount() {
+      return countries_.size();
+    }
+    /**
+     * <pre>
+     * ISO 3166-1 alpha-2 codes, matched on the recipient's country calling
+     * code. Empty: any country. Countries that share a code (+1 for the NANP)
+     * cannot be told apart by the number alone; allowing one allows them all.
+     * </pre>
+     *
+     * <code>repeated string countries = 1 [json_name = "countries"];</code>
+     * @param index The index of the element to return.
+     * @return The countries at the given index.
+     */
+    public java.lang.String getCountries(int index) {
+      return countries_.get(index);
+    }
+    /**
+     * <pre>
+     * ISO 3166-1 alpha-2 codes, matched on the recipient's country calling
+     * code. Empty: any country. Countries that share a code (+1 for the NANP)
+     * cannot be told apart by the number alone; allowing one allows them all.
+     * </pre>
+     *
+     * <code>repeated string countries = 1 [json_name = "countries"];</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the countries at the given index.
+     */
+    public com.google.protobuf.ByteString
+        getCountriesBytes(int index) {
+      return countries_.getByteString(index);
+    }
+
+    public static final int RECIPIENT_PATTERN_FIELD_NUMBER = 2;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object recipientPattern_ = "";
+    /**
+     * <pre>
+     * RE2 regular expression the E.164 recipient must match, e.g. "^&#92;+22670".
+     * Empty: any number.
+     * </pre>
+     *
+     * <code>string recipient_pattern = 2 [json_name = "recipientPattern"];</code>
+     * @return The recipientPattern.
+     */
+    @java.lang.Override
+    public java.lang.String getRecipientPattern() {
+      java.lang.Object ref = recipientPattern_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        recipientPattern_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * RE2 regular expression the E.164 recipient must match, e.g. "^&#92;+22670".
+     * Empty: any number.
+     * </pre>
+     *
+     * <code>string recipient_pattern = 2 [json_name = "recipientPattern"];</code>
+     * @return The bytes for recipientPattern.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getRecipientPatternBytes() {
+      java.lang.Object ref = recipientPattern_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        recipientPattern_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      for (int i = 0; i < countries_.size(); i++) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 1, countries_.getRaw(i));
+      }
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(recipientPattern_)) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 2, recipientPattern_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+    private int computeSerializedSize_0() {
+      int size = 0;
+      {
+        int dataSize = 0;
+        for (int i = 0; i < countries_.size(); i++) {
+          dataSize += computeStringSizeNoTag(countries_.getRaw(i));
+        }
+        size += dataSize;
+        size += 1 * getCountriesList().size();
+      }
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(recipientPattern_)) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, recipientPattern_);
+      }
+      return size;
+    }
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += computeSerializedSize_0();
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof smsgateway.v1.Device.AcceptRules)) {
+        return super.equals(obj);
+      }
+      smsgateway.v1.Device.AcceptRules other = (smsgateway.v1.Device.AcceptRules) obj;
+
+      if (!getCountriesList()
+          .equals(other.getCountriesList())) return false;
+      if (!getRecipientPattern()
+          .equals(other.getRecipientPattern())) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (getCountriesCount() > 0) {
+        hash = (37 * hash) + COUNTRIES_FIELD_NUMBER;
+        hash = (53 * hash) + getCountriesList().hashCode();
+      }
+      hash = (37 * hash) + RECIPIENT_PATTERN_FIELD_NUMBER;
+      hash = (53 * hash) + getRecipientPattern().hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static smsgateway.v1.Device.AcceptRules parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static smsgateway.v1.Device.AcceptRules parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static smsgateway.v1.Device.AcceptRules parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static smsgateway.v1.Device.AcceptRules parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static smsgateway.v1.Device.AcceptRules parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static smsgateway.v1.Device.AcceptRules parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static smsgateway.v1.Device.AcceptRules parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static smsgateway.v1.Device.AcceptRules parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static smsgateway.v1.Device.AcceptRules parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static smsgateway.v1.Device.AcceptRules parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static smsgateway.v1.Device.AcceptRules parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static smsgateway.v1.Device.AcceptRules parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(smsgateway.v1.Device.AcceptRules prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * Which recipients a device or SIM accepts. Both conditions must hold.
+     * </pre>
+     *
+     * Protobuf type {@code smsgateway.v1.AcceptRules}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:smsgateway.v1.AcceptRules)
+        smsgateway.v1.Device.AcceptRulesOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return smsgateway.v1.Device.internal_static_smsgateway_v1_AcceptRules_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return smsgateway.v1.Device.internal_static_smsgateway_v1_AcceptRules_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                smsgateway.v1.Device.AcceptRules.class, smsgateway.v1.Device.AcceptRules.Builder.class);
+      }
+
+      // Construct using smsgateway.v1.Device.AcceptRules.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        countries_ =
+            com.google.protobuf.LazyStringArrayList.emptyList();
+        recipientPattern_ = "";
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return smsgateway.v1.Device.internal_static_smsgateway_v1_AcceptRules_descriptor;
+      }
+
+      @java.lang.Override
+      public smsgateway.v1.Device.AcceptRules getDefaultInstanceForType() {
+        return smsgateway.v1.Device.AcceptRules.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public smsgateway.v1.Device.AcceptRules build() {
+        smsgateway.v1.Device.AcceptRules result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public smsgateway.v1.Device.AcceptRules buildPartial() {
+        smsgateway.v1.Device.AcceptRules result = new smsgateway.v1.Device.AcceptRules(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(smsgateway.v1.Device.AcceptRules result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          countries_.makeImmutable();
+          result.countries_ = countries_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.recipientPattern_ = recipientPattern_;
+        }
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof smsgateway.v1.Device.AcceptRules) {
+          return mergeFrom((smsgateway.v1.Device.AcceptRules)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(smsgateway.v1.Device.AcceptRules other) {
+        if (other == smsgateway.v1.Device.AcceptRules.getDefaultInstance()) return this;
+        if (!other.countries_.isEmpty()) {
+          if (countries_.isEmpty()) {
+            countries_ = other.countries_;
+            bitField0_ |= 0x00000001;
+          } else {
+            ensureCountriesIsMutable();
+            countries_.addAll(other.countries_);
+          }
+          onChanged();
+        }
+        if (!other.getRecipientPattern().isEmpty()) {
+          recipientPattern_ = other.recipientPattern_;
+          bitField0_ |= 0x00000002;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                ensureCountriesIsMutable();
+                countries_.add(input.readStringRequireUtf8());
+                break;
+              } // case 10
+              case 18: {
+                recipientPattern_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 18
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private com.google.protobuf.LazyStringArrayList countries_ =
+          com.google.protobuf.LazyStringArrayList.emptyList();
+      private void ensureCountriesIsMutable() {
+        if (!countries_.isModifiable()) {
+          countries_ = new com.google.protobuf.LazyStringArrayList(countries_);
+        }
+        bitField0_ |= 0x00000001;
+      }
+      /**
+       * <pre>
+       * ISO 3166-1 alpha-2 codes, matched on the recipient's country calling
+       * code. Empty: any country. Countries that share a code (+1 for the NANP)
+       * cannot be told apart by the number alone; allowing one allows them all.
+       * </pre>
+       *
+       * <code>repeated string countries = 1 [json_name = "countries"];</code>
+       * @return A list containing the countries.
+       */
+      public com.google.protobuf.ProtocolStringList
+          getCountriesList() {
+        countries_.makeImmutable();
+        return countries_;
+      }
+      /**
+       * <pre>
+       * ISO 3166-1 alpha-2 codes, matched on the recipient's country calling
+       * code. Empty: any country. Countries that share a code (+1 for the NANP)
+       * cannot be told apart by the number alone; allowing one allows them all.
+       * </pre>
+       *
+       * <code>repeated string countries = 1 [json_name = "countries"];</code>
+       * @return The count of countries.
+       */
+      public int getCountriesCount() {
+        return countries_.size();
+      }
+      /**
+       * <pre>
+       * ISO 3166-1 alpha-2 codes, matched on the recipient's country calling
+       * code. Empty: any country. Countries that share a code (+1 for the NANP)
+       * cannot be told apart by the number alone; allowing one allows them all.
+       * </pre>
+       *
+       * <code>repeated string countries = 1 [json_name = "countries"];</code>
+       * @param index The index of the element to return.
+       * @return The countries at the given index.
+       */
+      public java.lang.String getCountries(int index) {
+        return countries_.get(index);
+      }
+      /**
+       * <pre>
+       * ISO 3166-1 alpha-2 codes, matched on the recipient's country calling
+       * code. Empty: any country. Countries that share a code (+1 for the NANP)
+       * cannot be told apart by the number alone; allowing one allows them all.
+       * </pre>
+       *
+       * <code>repeated string countries = 1 [json_name = "countries"];</code>
+       * @param index The index of the value to return.
+       * @return The bytes of the countries at the given index.
+       */
+      public com.google.protobuf.ByteString
+          getCountriesBytes(int index) {
+        return countries_.getByteString(index);
+      }
+      /**
+       * <pre>
+       * ISO 3166-1 alpha-2 codes, matched on the recipient's country calling
+       * code. Empty: any country. Countries that share a code (+1 for the NANP)
+       * cannot be told apart by the number alone; allowing one allows them all.
+       * </pre>
+       *
+       * <code>repeated string countries = 1 [json_name = "countries"];</code>
+       * @param index The index to set the value at.
+       * @param value The countries to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCountries(
+          int index, java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        ensureCountriesIsMutable();
+        countries_.set(index, value);
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * ISO 3166-1 alpha-2 codes, matched on the recipient's country calling
+       * code. Empty: any country. Countries that share a code (+1 for the NANP)
+       * cannot be told apart by the number alone; allowing one allows them all.
+       * </pre>
+       *
+       * <code>repeated string countries = 1 [json_name = "countries"];</code>
+       * @param value The countries to add.
+       * @return This builder for chaining.
+       */
+      public Builder addCountries(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        ensureCountriesIsMutable();
+        countries_.add(value);
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * ISO 3166-1 alpha-2 codes, matched on the recipient's country calling
+       * code. Empty: any country. Countries that share a code (+1 for the NANP)
+       * cannot be told apart by the number alone; allowing one allows them all.
+       * </pre>
+       *
+       * <code>repeated string countries = 1 [json_name = "countries"];</code>
+       * @param values The countries to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllCountries(
+          java.lang.Iterable<java.lang.String> values) {
+        ensureCountriesIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, countries_);
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * ISO 3166-1 alpha-2 codes, matched on the recipient's country calling
+       * code. Empty: any country. Countries that share a code (+1 for the NANP)
+       * cannot be told apart by the number alone; allowing one allows them all.
+       * </pre>
+       *
+       * <code>repeated string countries = 1 [json_name = "countries"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearCountries() {
+        countries_ =
+          com.google.protobuf.LazyStringArrayList.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000001);;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * ISO 3166-1 alpha-2 codes, matched on the recipient's country calling
+       * code. Empty: any country. Countries that share a code (+1 for the NANP)
+       * cannot be told apart by the number alone; allowing one allows them all.
+       * </pre>
+       *
+       * <code>repeated string countries = 1 [json_name = "countries"];</code>
+       * @param value The bytes of the countries to add.
+       * @return This builder for chaining.
+       */
+      public Builder addCountriesBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        ensureCountriesIsMutable();
+        countries_.add(value);
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object recipientPattern_ = "";
+      /**
+       * <pre>
+       * RE2 regular expression the E.164 recipient must match, e.g. "^&#92;+22670".
+       * Empty: any number.
+       * </pre>
+       *
+       * <code>string recipient_pattern = 2 [json_name = "recipientPattern"];</code>
+       * @return The recipientPattern.
+       */
+      public java.lang.String getRecipientPattern() {
+        java.lang.Object ref = recipientPattern_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          recipientPattern_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * RE2 regular expression the E.164 recipient must match, e.g. "^&#92;+22670".
+       * Empty: any number.
+       * </pre>
+       *
+       * <code>string recipient_pattern = 2 [json_name = "recipientPattern"];</code>
+       * @return The bytes for recipientPattern.
+       */
+      public com.google.protobuf.ByteString
+          getRecipientPatternBytes() {
+        java.lang.Object ref = recipientPattern_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          recipientPattern_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * RE2 regular expression the E.164 recipient must match, e.g. "^&#92;+22670".
+       * Empty: any number.
+       * </pre>
+       *
+       * <code>string recipient_pattern = 2 [json_name = "recipientPattern"];</code>
+       * @param value The recipientPattern to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRecipientPattern(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        recipientPattern_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * RE2 regular expression the E.164 recipient must match, e.g. "^&#92;+22670".
+       * Empty: any number.
+       * </pre>
+       *
+       * <code>string recipient_pattern = 2 [json_name = "recipientPattern"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearRecipientPattern() {
+        recipientPattern_ = getDefaultInstance().getRecipientPattern();
+        bitField0_ = (bitField0_ & ~0x00000002);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * RE2 regular expression the E.164 recipient must match, e.g. "^&#92;+22670".
+       * Empty: any number.
+       * </pre>
+       *
+       * <code>string recipient_pattern = 2 [json_name = "recipientPattern"];</code>
+       * @param value The bytes for recipientPattern to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRecipientPatternBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        recipientPattern_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:smsgateway.v1.AcceptRules)
+    }
+
+    // @@protoc_insertion_point(class_scope:smsgateway.v1.AcceptRules)
+    private static final smsgateway.v1.Device.AcceptRules DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new smsgateway.v1.Device.AcceptRules();
+    }
+
+    public static smsgateway.v1.Device.AcceptRules getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<AcceptRules>
+        PARSER = new com.google.protobuf.AbstractParser<AcceptRules>() {
+      @java.lang.Override
+      public AcceptRules parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<AcceptRules> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<AcceptRules> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public smsgateway.v1.Device.AcceptRules getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface SimPolicyOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:smsgateway.v1.SimPolicy)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * SimInfo.subscription_id of the SIM these rules are for.
+     * </pre>
+     *
+     * <code>int32 subscription_id = 1 [json_name = "subscriptionId"];</code>
+     * @return The subscriptionId.
+     */
+    int getSubscriptionId();
+
+    /**
+     * <pre>
+     * Never send from this SIM.
+     * </pre>
+     *
+     * <code>bool disabled = 2 [json_name = "disabled"];</code>
+     * @return The disabled.
+     */
+    boolean getDisabled();
+
+    /**
+     * <code>.smsgateway.v1.AcceptRules accept = 3 [json_name = "accept"];</code>
+     * @return Whether the accept field is set.
+     */
+    boolean hasAccept();
+    /**
+     * <code>.smsgateway.v1.AcceptRules accept = 3 [json_name = "accept"];</code>
+     * @return The accept.
+     */
+    smsgateway.v1.Device.AcceptRules getAccept();
+    /**
+     * <code>.smsgateway.v1.AcceptRules accept = 3 [json_name = "accept"];</code>
+     */
+    smsgateway.v1.Device.AcceptRulesOrBuilder getAcceptOrBuilder();
+
+    /**
+     * <pre>
+     * Narrows the device's availability for this SIM: both must hold.
+     * </pre>
+     *
+     * <code>.smsgateway.v1.Availability availability = 4 [json_name = "availability"];</code>
+     * @return Whether the availability field is set.
+     */
+    boolean hasAvailability();
+    /**
+     * <pre>
+     * Narrows the device's availability for this SIM: both must hold.
+     * </pre>
+     *
+     * <code>.smsgateway.v1.Availability availability = 4 [json_name = "availability"];</code>
+     * @return The availability.
+     */
+    smsgateway.v1.Device.Availability getAvailability();
+    /**
+     * <pre>
+     * Narrows the device's availability for this SIM: both must hold.
+     * </pre>
+     *
+     * <code>.smsgateway.v1.Availability availability = 4 [json_name = "availability"];</code>
+     */
+    smsgateway.v1.Device.AvailabilityOrBuilder getAvailabilityOrBuilder();
+  }
+  /**
+   * <pre>
+   * Rules for one SIM of a multi-SIM phone.
+   * </pre>
+   *
+   * Protobuf type {@code smsgateway.v1.SimPolicy}
+   */
+  public static final class SimPolicy extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:smsgateway.v1.SimPolicy)
+      SimPolicyOrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 35,
+        /* patch= */ 1,
+        /* suffix= */ "",
+        "SimPolicy");
+    }
+    // Use SimPolicy.newBuilder() to construct.
+    private SimPolicy(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private SimPolicy() {
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return smsgateway.v1.Device.internal_static_smsgateway_v1_SimPolicy_descriptor;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+      return smsgateway.v1.Device.internal_static_smsgateway_v1_SimPolicy_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return smsgateway.v1.Device.internal_static_smsgateway_v1_SimPolicy_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              smsgateway.v1.Device.SimPolicy.class, smsgateway.v1.Device.SimPolicy.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int SUBSCRIPTION_ID_FIELD_NUMBER = 1;
+    private int subscriptionId_ = 0;
+    /**
+     * <pre>
+     * SimInfo.subscription_id of the SIM these rules are for.
+     * </pre>
+     *
+     * <code>int32 subscription_id = 1 [json_name = "subscriptionId"];</code>
+     * @return The subscriptionId.
+     */
+    @java.lang.Override
+    public int getSubscriptionId() {
+      return subscriptionId_;
+    }
+
+    public static final int DISABLED_FIELD_NUMBER = 2;
+    private boolean disabled_ = false;
+    /**
+     * <pre>
+     * Never send from this SIM.
+     * </pre>
+     *
+     * <code>bool disabled = 2 [json_name = "disabled"];</code>
+     * @return The disabled.
+     */
+    @java.lang.Override
+    public boolean getDisabled() {
+      return disabled_;
+    }
+
+    public static final int ACCEPT_FIELD_NUMBER = 3;
+    private smsgateway.v1.Device.AcceptRules accept_;
+    /**
+     * <code>.smsgateway.v1.AcceptRules accept = 3 [json_name = "accept"];</code>
+     * @return Whether the accept field is set.
+     */
+    @java.lang.Override
+    public boolean hasAccept() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <code>.smsgateway.v1.AcceptRules accept = 3 [json_name = "accept"];</code>
+     * @return The accept.
+     */
+    @java.lang.Override
+    public smsgateway.v1.Device.AcceptRules getAccept() {
+      return accept_ == null ? smsgateway.v1.Device.AcceptRules.getDefaultInstance() : accept_;
+    }
+    /**
+     * <code>.smsgateway.v1.AcceptRules accept = 3 [json_name = "accept"];</code>
+     */
+    @java.lang.Override
+    public smsgateway.v1.Device.AcceptRulesOrBuilder getAcceptOrBuilder() {
+      return accept_ == null ? smsgateway.v1.Device.AcceptRules.getDefaultInstance() : accept_;
+    }
+
+    public static final int AVAILABILITY_FIELD_NUMBER = 4;
+    private smsgateway.v1.Device.Availability availability_;
+    /**
+     * <pre>
+     * Narrows the device's availability for this SIM: both must hold.
+     * </pre>
+     *
+     * <code>.smsgateway.v1.Availability availability = 4 [json_name = "availability"];</code>
+     * @return Whether the availability field is set.
+     */
+    @java.lang.Override
+    public boolean hasAvailability() {
+      return ((bitField0_ & 0x00000002) != 0);
+    }
+    /**
+     * <pre>
+     * Narrows the device's availability for this SIM: both must hold.
+     * </pre>
+     *
+     * <code>.smsgateway.v1.Availability availability = 4 [json_name = "availability"];</code>
+     * @return The availability.
+     */
+    @java.lang.Override
+    public smsgateway.v1.Device.Availability getAvailability() {
+      return availability_ == null ? smsgateway.v1.Device.Availability.getDefaultInstance() : availability_;
+    }
+    /**
+     * <pre>
+     * Narrows the device's availability for this SIM: both must hold.
+     * </pre>
+     *
+     * <code>.smsgateway.v1.Availability availability = 4 [json_name = "availability"];</code>
+     */
+    @java.lang.Override
+    public smsgateway.v1.Device.AvailabilityOrBuilder getAvailabilityOrBuilder() {
+      return availability_ == null ? smsgateway.v1.Device.Availability.getDefaultInstance() : availability_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (subscriptionId_ != 0) {
+        output.writeInt32(1, subscriptionId_);
+      }
+      if (disabled_ != false) {
+        output.writeBool(2, disabled_);
+      }
+      if (((bitField0_ & 0x00000001) != 0)) {
+        output.writeMessage(3, getAccept());
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        output.writeMessage(4, getAvailability());
+      }
+      getUnknownFields().writeTo(output);
+    }
+    private int computeSerializedSize_0() {
+      int size = 0;
+      if (subscriptionId_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, subscriptionId_);
+      }
+      if (disabled_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(2, disabled_);
+      }
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, getAccept());
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(4, getAvailability());
+      }
+      return size;
+    }
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += computeSerializedSize_0();
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof smsgateway.v1.Device.SimPolicy)) {
+        return super.equals(obj);
+      }
+      smsgateway.v1.Device.SimPolicy other = (smsgateway.v1.Device.SimPolicy) obj;
+
+      if (getSubscriptionId()
+          != other.getSubscriptionId()) return false;
+      if (getDisabled()
+          != other.getDisabled()) return false;
+      if (hasAccept() != other.hasAccept()) return false;
+      if (hasAccept()) {
+        if (!getAccept()
+            .equals(other.getAccept())) return false;
+      }
+      if (hasAvailability() != other.hasAvailability()) return false;
+      if (hasAvailability()) {
+        if (!getAvailability()
+            .equals(other.getAvailability())) return false;
+      }
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + SUBSCRIPTION_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getSubscriptionId();
+      hash = (37 * hash) + DISABLED_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getDisabled());
+      if (hasAccept()) {
+        hash = (37 * hash) + ACCEPT_FIELD_NUMBER;
+        hash = (53 * hash) + getAccept().hashCode();
+      }
+      if (hasAvailability()) {
+        hash = (37 * hash) + AVAILABILITY_FIELD_NUMBER;
+        hash = (53 * hash) + getAvailability().hashCode();
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static smsgateway.v1.Device.SimPolicy parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static smsgateway.v1.Device.SimPolicy parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static smsgateway.v1.Device.SimPolicy parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static smsgateway.v1.Device.SimPolicy parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static smsgateway.v1.Device.SimPolicy parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static smsgateway.v1.Device.SimPolicy parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static smsgateway.v1.Device.SimPolicy parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static smsgateway.v1.Device.SimPolicy parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static smsgateway.v1.Device.SimPolicy parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static smsgateway.v1.Device.SimPolicy parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static smsgateway.v1.Device.SimPolicy parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static smsgateway.v1.Device.SimPolicy parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(smsgateway.v1.Device.SimPolicy prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * Rules for one SIM of a multi-SIM phone.
+     * </pre>
+     *
+     * Protobuf type {@code smsgateway.v1.SimPolicy}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:smsgateway.v1.SimPolicy)
+        smsgateway.v1.Device.SimPolicyOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return smsgateway.v1.Device.internal_static_smsgateway_v1_SimPolicy_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return smsgateway.v1.Device.internal_static_smsgateway_v1_SimPolicy_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                smsgateway.v1.Device.SimPolicy.class, smsgateway.v1.Device.SimPolicy.Builder.class);
+      }
+
+      // Construct using smsgateway.v1.Device.SimPolicy.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage
+                .alwaysUseFieldBuilders) {
+          internalGetAcceptFieldBuilder();
+          internalGetAvailabilityFieldBuilder();
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        subscriptionId_ = 0;
+        disabled_ = false;
+        accept_ = null;
+        if (acceptBuilder_ != null) {
+          acceptBuilder_.dispose();
+          acceptBuilder_ = null;
+        }
+        availability_ = null;
+        if (availabilityBuilder_ != null) {
+          availabilityBuilder_.dispose();
+          availabilityBuilder_ = null;
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return smsgateway.v1.Device.internal_static_smsgateway_v1_SimPolicy_descriptor;
+      }
+
+      @java.lang.Override
+      public smsgateway.v1.Device.SimPolicy getDefaultInstanceForType() {
+        return smsgateway.v1.Device.SimPolicy.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public smsgateway.v1.Device.SimPolicy build() {
+        smsgateway.v1.Device.SimPolicy result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public smsgateway.v1.Device.SimPolicy buildPartial() {
+        smsgateway.v1.Device.SimPolicy result = new smsgateway.v1.Device.SimPolicy(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(smsgateway.v1.Device.SimPolicy result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.subscriptionId_ = subscriptionId_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.disabled_ = disabled_;
+        }
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.accept_ = acceptBuilder_ == null
+              ? accept_
+              : acceptBuilder_.build();
+          to_bitField0_ |= 0x00000001;
+        }
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.availability_ = availabilityBuilder_ == null
+              ? availability_
+              : availabilityBuilder_.build();
+          to_bitField0_ |= 0x00000002;
+        }
+        result.bitField0_ |= to_bitField0_;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof smsgateway.v1.Device.SimPolicy) {
+          return mergeFrom((smsgateway.v1.Device.SimPolicy)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(smsgateway.v1.Device.SimPolicy other) {
+        if (other == smsgateway.v1.Device.SimPolicy.getDefaultInstance()) return this;
+        if (other.getSubscriptionId() != 0) {
+          setSubscriptionId(other.getSubscriptionId());
+        }
+        if (other.getDisabled() != false) {
+          setDisabled(other.getDisabled());
+        }
+        if (other.hasAccept()) {
+          mergeAccept(other.getAccept());
+        }
+        if (other.hasAvailability()) {
+          mergeAvailability(other.getAvailability());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 8: {
+                subscriptionId_ = input.readInt32();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 8
+              case 16: {
+                disabled_ = input.readBool();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 16
+              case 26: {
+                input.readMessage(
+                    internalGetAcceptFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 26
+              case 34: {
+                input.readMessage(
+                    internalGetAvailabilityFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                bitField0_ |= 0x00000008;
+                break;
+              } // case 34
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private int subscriptionId_ ;
+      /**
+       * <pre>
+       * SimInfo.subscription_id of the SIM these rules are for.
+       * </pre>
+       *
+       * <code>int32 subscription_id = 1 [json_name = "subscriptionId"];</code>
+       * @return The subscriptionId.
+       */
+      @java.lang.Override
+      public int getSubscriptionId() {
+        return subscriptionId_;
+      }
+      /**
+       * <pre>
+       * SimInfo.subscription_id of the SIM these rules are for.
+       * </pre>
+       *
+       * <code>int32 subscription_id = 1 [json_name = "subscriptionId"];</code>
+       * @param value The subscriptionId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSubscriptionId(int value) {
+
+        subscriptionId_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * SimInfo.subscription_id of the SIM these rules are for.
+       * </pre>
+       *
+       * <code>int32 subscription_id = 1 [json_name = "subscriptionId"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSubscriptionId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        subscriptionId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private boolean disabled_ ;
+      /**
+       * <pre>
+       * Never send from this SIM.
+       * </pre>
+       *
+       * <code>bool disabled = 2 [json_name = "disabled"];</code>
+       * @return The disabled.
+       */
+      @java.lang.Override
+      public boolean getDisabled() {
+        return disabled_;
+      }
+      /**
+       * <pre>
+       * Never send from this SIM.
+       * </pre>
+       *
+       * <code>bool disabled = 2 [json_name = "disabled"];</code>
+       * @param value The disabled to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDisabled(boolean value) {
+
+        disabled_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Never send from this SIM.
+       * </pre>
+       *
+       * <code>bool disabled = 2 [json_name = "disabled"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearDisabled() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        disabled_ = false;
+        onChanged();
+        return this;
+      }
+
+      private smsgateway.v1.Device.AcceptRules accept_;
+      private com.google.protobuf.SingleFieldBuilder<
+          smsgateway.v1.Device.AcceptRules, smsgateway.v1.Device.AcceptRules.Builder, smsgateway.v1.Device.AcceptRulesOrBuilder> acceptBuilder_;
+      /**
+       * <code>.smsgateway.v1.AcceptRules accept = 3 [json_name = "accept"];</code>
+       * @return Whether the accept field is set.
+       */
+      public boolean hasAccept() {
+        return ((bitField0_ & 0x00000004) != 0);
+      }
+      /**
+       * <code>.smsgateway.v1.AcceptRules accept = 3 [json_name = "accept"];</code>
+       * @return The accept.
+       */
+      public smsgateway.v1.Device.AcceptRules getAccept() {
+        if (acceptBuilder_ == null) {
+          return accept_ == null ? smsgateway.v1.Device.AcceptRules.getDefaultInstance() : accept_;
+        } else {
+          return acceptBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.smsgateway.v1.AcceptRules accept = 3 [json_name = "accept"];</code>
+       */
+      public Builder setAccept(smsgateway.v1.Device.AcceptRules value) {
+        if (acceptBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          accept_ = value;
+        } else {
+          acceptBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.smsgateway.v1.AcceptRules accept = 3 [json_name = "accept"];</code>
+       */
+      public Builder setAccept(
+          smsgateway.v1.Device.AcceptRules.Builder builderForValue) {
+        if (acceptBuilder_ == null) {
+          accept_ = builderForValue.build();
+        } else {
+          acceptBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.smsgateway.v1.AcceptRules accept = 3 [json_name = "accept"];</code>
+       */
+      public Builder mergeAccept(smsgateway.v1.Device.AcceptRules value) {
+        if (acceptBuilder_ == null) {
+          if (((bitField0_ & 0x00000004) != 0) &&
+            accept_ != null &&
+            accept_ != smsgateway.v1.Device.AcceptRules.getDefaultInstance()) {
+            getAcceptBuilder().mergeFrom(value);
+          } else {
+            accept_ = value;
+          }
+        } else {
+          acceptBuilder_.mergeFrom(value);
+        }
+        if (accept_ != null) {
+          bitField0_ |= 0x00000004;
+          onChanged();
+        }
+        return this;
+      }
+      /**
+       * <code>.smsgateway.v1.AcceptRules accept = 3 [json_name = "accept"];</code>
+       */
+      public Builder clearAccept() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        accept_ = null;
+        if (acceptBuilder_ != null) {
+          acceptBuilder_.dispose();
+          acceptBuilder_ = null;
+        }
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.smsgateway.v1.AcceptRules accept = 3 [json_name = "accept"];</code>
+       */
+      public smsgateway.v1.Device.AcceptRules.Builder getAcceptBuilder() {
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return internalGetAcceptFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.smsgateway.v1.AcceptRules accept = 3 [json_name = "accept"];</code>
+       */
+      public smsgateway.v1.Device.AcceptRulesOrBuilder getAcceptOrBuilder() {
+        if (acceptBuilder_ != null) {
+          return acceptBuilder_.getMessageOrBuilder();
+        } else {
+          return accept_ == null ?
+              smsgateway.v1.Device.AcceptRules.getDefaultInstance() : accept_;
+        }
+      }
+      /**
+       * <code>.smsgateway.v1.AcceptRules accept = 3 [json_name = "accept"];</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          smsgateway.v1.Device.AcceptRules, smsgateway.v1.Device.AcceptRules.Builder, smsgateway.v1.Device.AcceptRulesOrBuilder> 
+          internalGetAcceptFieldBuilder() {
+        if (acceptBuilder_ == null) {
+          acceptBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              smsgateway.v1.Device.AcceptRules, smsgateway.v1.Device.AcceptRules.Builder, smsgateway.v1.Device.AcceptRulesOrBuilder>(
+                  getAccept(),
+                  getParentForChildren(),
+                  isClean());
+          accept_ = null;
+        }
+        return acceptBuilder_;
+      }
+
+      private smsgateway.v1.Device.Availability availability_;
+      private com.google.protobuf.SingleFieldBuilder<
+          smsgateway.v1.Device.Availability, smsgateway.v1.Device.Availability.Builder, smsgateway.v1.Device.AvailabilityOrBuilder> availabilityBuilder_;
+      /**
+       * <pre>
+       * Narrows the device's availability for this SIM: both must hold.
+       * </pre>
+       *
+       * <code>.smsgateway.v1.Availability availability = 4 [json_name = "availability"];</code>
+       * @return Whether the availability field is set.
+       */
+      public boolean hasAvailability() {
+        return ((bitField0_ & 0x00000008) != 0);
+      }
+      /**
+       * <pre>
+       * Narrows the device's availability for this SIM: both must hold.
+       * </pre>
+       *
+       * <code>.smsgateway.v1.Availability availability = 4 [json_name = "availability"];</code>
+       * @return The availability.
+       */
+      public smsgateway.v1.Device.Availability getAvailability() {
+        if (availabilityBuilder_ == null) {
+          return availability_ == null ? smsgateway.v1.Device.Availability.getDefaultInstance() : availability_;
+        } else {
+          return availabilityBuilder_.getMessage();
+        }
+      }
+      /**
+       * <pre>
+       * Narrows the device's availability for this SIM: both must hold.
+       * </pre>
+       *
+       * <code>.smsgateway.v1.Availability availability = 4 [json_name = "availability"];</code>
+       */
+      public Builder setAvailability(smsgateway.v1.Device.Availability value) {
+        if (availabilityBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          availability_ = value;
+        } else {
+          availabilityBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Narrows the device's availability for this SIM: both must hold.
+       * </pre>
+       *
+       * <code>.smsgateway.v1.Availability availability = 4 [json_name = "availability"];</code>
+       */
+      public Builder setAvailability(
+          smsgateway.v1.Device.Availability.Builder builderForValue) {
+        if (availabilityBuilder_ == null) {
+          availability_ = builderForValue.build();
+        } else {
+          availabilityBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Narrows the device's availability for this SIM: both must hold.
+       * </pre>
+       *
+       * <code>.smsgateway.v1.Availability availability = 4 [json_name = "availability"];</code>
+       */
+      public Builder mergeAvailability(smsgateway.v1.Device.Availability value) {
+        if (availabilityBuilder_ == null) {
+          if (((bitField0_ & 0x00000008) != 0) &&
+            availability_ != null &&
+            availability_ != smsgateway.v1.Device.Availability.getDefaultInstance()) {
+            getAvailabilityBuilder().mergeFrom(value);
+          } else {
+            availability_ = value;
+          }
+        } else {
+          availabilityBuilder_.mergeFrom(value);
+        }
+        if (availability_ != null) {
+          bitField0_ |= 0x00000008;
+          onChanged();
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Narrows the device's availability for this SIM: both must hold.
+       * </pre>
+       *
+       * <code>.smsgateway.v1.Availability availability = 4 [json_name = "availability"];</code>
+       */
+      public Builder clearAvailability() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        availability_ = null;
+        if (availabilityBuilder_ != null) {
+          availabilityBuilder_.dispose();
+          availabilityBuilder_ = null;
+        }
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Narrows the device's availability for this SIM: both must hold.
+       * </pre>
+       *
+       * <code>.smsgateway.v1.Availability availability = 4 [json_name = "availability"];</code>
+       */
+      public smsgateway.v1.Device.Availability.Builder getAvailabilityBuilder() {
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return internalGetAvailabilityFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       * Narrows the device's availability for this SIM: both must hold.
+       * </pre>
+       *
+       * <code>.smsgateway.v1.Availability availability = 4 [json_name = "availability"];</code>
+       */
+      public smsgateway.v1.Device.AvailabilityOrBuilder getAvailabilityOrBuilder() {
+        if (availabilityBuilder_ != null) {
+          return availabilityBuilder_.getMessageOrBuilder();
+        } else {
+          return availability_ == null ?
+              smsgateway.v1.Device.Availability.getDefaultInstance() : availability_;
+        }
+      }
+      /**
+       * <pre>
+       * Narrows the device's availability for this SIM: both must hold.
+       * </pre>
+       *
+       * <code>.smsgateway.v1.Availability availability = 4 [json_name = "availability"];</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          smsgateway.v1.Device.Availability, smsgateway.v1.Device.Availability.Builder, smsgateway.v1.Device.AvailabilityOrBuilder> 
+          internalGetAvailabilityFieldBuilder() {
+        if (availabilityBuilder_ == null) {
+          availabilityBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              smsgateway.v1.Device.Availability, smsgateway.v1.Device.Availability.Builder, smsgateway.v1.Device.AvailabilityOrBuilder>(
+                  getAvailability(),
+                  getParentForChildren(),
+                  isClean());
+          availability_ = null;
+        }
+        return availabilityBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:smsgateway.v1.SimPolicy)
+    }
+
+    // @@protoc_insertion_point(class_scope:smsgateway.v1.SimPolicy)
+    private static final smsgateway.v1.Device.SimPolicy DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new smsgateway.v1.Device.SimPolicy();
+    }
+
+    public static smsgateway.v1.Device.SimPolicy getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<SimPolicy>
+        PARSER = new com.google.protobuf.AbstractParser<SimPolicy>() {
+      @java.lang.Override
+      public SimPolicy parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<SimPolicy> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<SimPolicy> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public smsgateway.v1.Device.SimPolicy getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface LeaveOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:smsgateway.v1.Leave)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * Free text for the log, e.g. "forgotten on the device".
+     * </pre>
+     *
+     * <code>string reason = 1 [json_name = "reason"];</code>
+     * @return The reason.
+     */
+    java.lang.String getReason();
+    /**
+     * <pre>
+     * Free text for the log, e.g. "forgotten on the device".
+     * </pre>
+     *
+     * <code>string reason = 1 [json_name = "reason"];</code>
+     * @return The bytes for reason.
+     */
+    com.google.protobuf.ByteString
+        getReasonBytes();
+  }
+  /**
+   * Protobuf type {@code smsgateway.v1.Leave}
+   */
+  public static final class Leave extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:smsgateway.v1.Leave)
+      LeaveOrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 35,
+        /* patch= */ 1,
+        /* suffix= */ "",
+        "Leave");
+    }
+    // Use Leave.newBuilder() to construct.
+    private Leave(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private Leave() {
+      reason_ = "";
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return smsgateway.v1.Device.internal_static_smsgateway_v1_Leave_descriptor;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+      return smsgateway.v1.Device.internal_static_smsgateway_v1_Leave_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return smsgateway.v1.Device.internal_static_smsgateway_v1_Leave_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              smsgateway.v1.Device.Leave.class, smsgateway.v1.Device.Leave.Builder.class);
+    }
+
+    public static final int REASON_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object reason_ = "";
+    /**
+     * <pre>
+     * Free text for the log, e.g. "forgotten on the device".
+     * </pre>
+     *
+     * <code>string reason = 1 [json_name = "reason"];</code>
+     * @return The reason.
+     */
+    @java.lang.Override
+    public java.lang.String getReason() {
+      java.lang.Object ref = reason_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        reason_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * Free text for the log, e.g. "forgotten on the device".
+     * </pre>
+     *
+     * <code>string reason = 1 [json_name = "reason"];</code>
+     * @return The bytes for reason.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getReasonBytes() {
+      java.lang.Object ref = reason_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        reason_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(reason_)) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 1, reason_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+    private int computeSerializedSize_0() {
+      int size = 0;
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(reason_)) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, reason_);
+      }
+      return size;
+    }
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += computeSerializedSize_0();
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof smsgateway.v1.Device.Leave)) {
+        return super.equals(obj);
+      }
+      smsgateway.v1.Device.Leave other = (smsgateway.v1.Device.Leave) obj;
+
+      if (!getReason()
+          .equals(other.getReason())) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + REASON_FIELD_NUMBER;
+      hash = (53 * hash) + getReason().hashCode();
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static smsgateway.v1.Device.Leave parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static smsgateway.v1.Device.Leave parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static smsgateway.v1.Device.Leave parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static smsgateway.v1.Device.Leave parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static smsgateway.v1.Device.Leave parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static smsgateway.v1.Device.Leave parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static smsgateway.v1.Device.Leave parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static smsgateway.v1.Device.Leave parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static smsgateway.v1.Device.Leave parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static smsgateway.v1.Device.Leave parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static smsgateway.v1.Device.Leave parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static smsgateway.v1.Device.Leave parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(smsgateway.v1.Device.Leave prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code smsgateway.v1.Leave}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:smsgateway.v1.Leave)
+        smsgateway.v1.Device.LeaveOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return smsgateway.v1.Device.internal_static_smsgateway_v1_Leave_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return smsgateway.v1.Device.internal_static_smsgateway_v1_Leave_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                smsgateway.v1.Device.Leave.class, smsgateway.v1.Device.Leave.Builder.class);
+      }
+
+      // Construct using smsgateway.v1.Device.Leave.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        reason_ = "";
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return smsgateway.v1.Device.internal_static_smsgateway_v1_Leave_descriptor;
+      }
+
+      @java.lang.Override
+      public smsgateway.v1.Device.Leave getDefaultInstanceForType() {
+        return smsgateway.v1.Device.Leave.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public smsgateway.v1.Device.Leave build() {
+        smsgateway.v1.Device.Leave result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public smsgateway.v1.Device.Leave buildPartial() {
+        smsgateway.v1.Device.Leave result = new smsgateway.v1.Device.Leave(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(smsgateway.v1.Device.Leave result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.reason_ = reason_;
+        }
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof smsgateway.v1.Device.Leave) {
+          return mergeFrom((smsgateway.v1.Device.Leave)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(smsgateway.v1.Device.Leave other) {
+        if (other == smsgateway.v1.Device.Leave.getDefaultInstance()) return this;
+        if (!other.getReason().isEmpty()) {
+          reason_ = other.reason_;
+          bitField0_ |= 0x00000001;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                reason_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private java.lang.Object reason_ = "";
+      /**
+       * <pre>
+       * Free text for the log, e.g. "forgotten on the device".
+       * </pre>
+       *
+       * <code>string reason = 1 [json_name = "reason"];</code>
+       * @return The reason.
+       */
+      public java.lang.String getReason() {
+        java.lang.Object ref = reason_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          reason_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * Free text for the log, e.g. "forgotten on the device".
+       * </pre>
+       *
+       * <code>string reason = 1 [json_name = "reason"];</code>
+       * @return The bytes for reason.
+       */
+      public com.google.protobuf.ByteString
+          getReasonBytes() {
+        java.lang.Object ref = reason_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          reason_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * Free text for the log, e.g. "forgotten on the device".
+       * </pre>
+       *
+       * <code>string reason = 1 [json_name = "reason"];</code>
+       * @param value The reason to set.
+       * @return This builder for chaining.
+       */
+      public Builder setReason(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        reason_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Free text for the log, e.g. "forgotten on the device".
+       * </pre>
+       *
+       * <code>string reason = 1 [json_name = "reason"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearReason() {
+        reason_ = getDefaultInstance().getReason();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Free text for the log, e.g. "forgotten on the device".
+       * </pre>
+       *
+       * <code>string reason = 1 [json_name = "reason"];</code>
+       * @param value The bytes for reason to set.
+       * @return This builder for chaining.
+       */
+      public Builder setReasonBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        reason_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:smsgateway.v1.Leave)
+    }
+
+    // @@protoc_insertion_point(class_scope:smsgateway.v1.Leave)
+    private static final smsgateway.v1.Device.Leave DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new smsgateway.v1.Device.Leave();
+    }
+
+    public static smsgateway.v1.Device.Leave getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<Leave>
+        PARSER = new com.google.protobuf.AbstractParser<Leave>() {
+      @java.lang.Override
+      public Leave parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<Leave> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<Leave> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public smsgateway.v1.Device.Leave getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -15762,6 +23491,36 @@ public final class Device extends com.google.protobuf.GeneratedFile {
      */
     com.google.protobuf.ByteString
         getStaleJobIdsBytes(int index);
+
+    /**
+     * <pre>
+     * The device's current rules, so a phone that reconnects shows what the
+     * server enforces, whatever changed while it was away.
+     * </pre>
+     *
+     * <code>.smsgateway.v1.DevicePolicy policy = 5 [json_name = "policy"];</code>
+     * @return Whether the policy field is set.
+     */
+    boolean hasPolicy();
+    /**
+     * <pre>
+     * The device's current rules, so a phone that reconnects shows what the
+     * server enforces, whatever changed while it was away.
+     * </pre>
+     *
+     * <code>.smsgateway.v1.DevicePolicy policy = 5 [json_name = "policy"];</code>
+     * @return The policy.
+     */
+    smsgateway.v1.Device.DevicePolicy getPolicy();
+    /**
+     * <pre>
+     * The device's current rules, so a phone that reconnects shows what the
+     * server enforces, whatever changed while it was away.
+     * </pre>
+     *
+     * <code>.smsgateway.v1.DevicePolicy policy = 5 [json_name = "policy"];</code>
+     */
+    smsgateway.v1.Device.DevicePolicyOrBuilder getPolicyOrBuilder();
   }
   /**
    * Protobuf type {@code smsgateway.v1.RegisterAck}
@@ -15808,6 +23567,7 @@ public final class Device extends com.google.protobuf.GeneratedFile {
               smsgateway.v1.Device.RegisterAck.class, smsgateway.v1.Device.RegisterAck.Builder.class);
     }
 
+    private int bitField0_;
     public static final int ACCEPTED_FIELD_NUMBER = 1;
     private boolean accepted_ = false;
     /**
@@ -15948,6 +23708,47 @@ public final class Device extends com.google.protobuf.GeneratedFile {
       return staleJobIds_.getByteString(index);
     }
 
+    public static final int POLICY_FIELD_NUMBER = 5;
+    private smsgateway.v1.Device.DevicePolicy policy_;
+    /**
+     * <pre>
+     * The device's current rules, so a phone that reconnects shows what the
+     * server enforces, whatever changed while it was away.
+     * </pre>
+     *
+     * <code>.smsgateway.v1.DevicePolicy policy = 5 [json_name = "policy"];</code>
+     * @return Whether the policy field is set.
+     */
+    @java.lang.Override
+    public boolean hasPolicy() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <pre>
+     * The device's current rules, so a phone that reconnects shows what the
+     * server enforces, whatever changed while it was away.
+     * </pre>
+     *
+     * <code>.smsgateway.v1.DevicePolicy policy = 5 [json_name = "policy"];</code>
+     * @return The policy.
+     */
+    @java.lang.Override
+    public smsgateway.v1.Device.DevicePolicy getPolicy() {
+      return policy_ == null ? smsgateway.v1.Device.DevicePolicy.getDefaultInstance() : policy_;
+    }
+    /**
+     * <pre>
+     * The device's current rules, so a phone that reconnects shows what the
+     * server enforces, whatever changed while it was away.
+     * </pre>
+     *
+     * <code>.smsgateway.v1.DevicePolicy policy = 5 [json_name = "policy"];</code>
+     */
+    @java.lang.Override
+    public smsgateway.v1.Device.DevicePolicyOrBuilder getPolicyOrBuilder() {
+      return policy_ == null ? smsgateway.v1.Device.DevicePolicy.getDefaultInstance() : policy_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -15974,6 +23775,9 @@ public final class Device extends com.google.protobuf.GeneratedFile {
       for (int i = 0; i < staleJobIds_.size(); i++) {
         com.google.protobuf.GeneratedMessage.writeString(output, 4, staleJobIds_.getRaw(i));
       }
+      if (((bitField0_ & 0x00000001) != 0)) {
+        output.writeMessage(5, getPolicy());
+      }
       getUnknownFields().writeTo(output);
     }
     private int computeSerializedSize_0() {
@@ -15996,6 +23800,10 @@ public final class Device extends com.google.protobuf.GeneratedFile {
         }
         size += dataSize;
         size += 1 * getStaleJobIdsList().size();
+      }
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(5, getPolicy());
       }
       return size;
     }
@@ -16029,6 +23837,11 @@ public final class Device extends com.google.protobuf.GeneratedFile {
           != other.getHeartbeatIntervalSeconds()) return false;
       if (!getStaleJobIdsList()
           .equals(other.getStaleJobIdsList())) return false;
+      if (hasPolicy() != other.hasPolicy()) return false;
+      if (hasPolicy()) {
+        if (!getPolicy()
+            .equals(other.getPolicy())) return false;
+      }
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -16050,6 +23863,10 @@ public final class Device extends com.google.protobuf.GeneratedFile {
       if (getStaleJobIdsCount() > 0) {
         hash = (37 * hash) + STALE_JOB_IDS_FIELD_NUMBER;
         hash = (53 * hash) + getStaleJobIdsList().hashCode();
+      }
+      if (hasPolicy()) {
+        hash = (37 * hash) + POLICY_FIELD_NUMBER;
+        hash = (53 * hash) + getPolicy().hashCode();
       }
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
@@ -16170,13 +23987,19 @@ public final class Device extends com.google.protobuf.GeneratedFile {
 
       // Construct using smsgateway.v1.Device.RegisterAck.newBuilder()
       private Builder() {
-
+        maybeForceBuilderInitialization();
       }
 
       private Builder(
           com.google.protobuf.GeneratedMessage.BuilderParent parent) {
         super(parent);
-
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage
+                .alwaysUseFieldBuilders) {
+          internalGetPolicyFieldBuilder();
+        }
       }
       @java.lang.Override
       public Builder clear() {
@@ -16187,6 +24010,11 @@ public final class Device extends com.google.protobuf.GeneratedFile {
         heartbeatIntervalSeconds_ = 0;
         staleJobIds_ =
             com.google.protobuf.LazyStringArrayList.emptyList();
+        policy_ = null;
+        if (policyBuilder_ != null) {
+          policyBuilder_.dispose();
+          policyBuilder_ = null;
+        }
         return this;
       }
 
@@ -16233,6 +24061,14 @@ public final class Device extends com.google.protobuf.GeneratedFile {
           staleJobIds_.makeImmutable();
           result.staleJobIds_ = staleJobIds_;
         }
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000010) != 0)) {
+          result.policy_ = policyBuilder_ == null
+              ? policy_
+              : policyBuilder_.build();
+          to_bitField0_ |= 0x00000001;
+        }
+        result.bitField0_ |= to_bitField0_;
       }
 
       @java.lang.Override
@@ -16267,6 +24103,9 @@ public final class Device extends com.google.protobuf.GeneratedFile {
             staleJobIds_.addAll(other.staleJobIds_);
           }
           onChanged();
+        }
+        if (other.hasPolicy()) {
+          mergePolicy(other.getPolicy());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
@@ -16314,6 +24153,13 @@ public final class Device extends com.google.protobuf.GeneratedFile {
                 staleJobIds_.add(input.readStringRequireUtf8());
                 break;
               } // case 34
+              case 42: {
+                input.readMessage(
+                    internalGetPolicyFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                bitField0_ |= 0x00000010;
+                break;
+              } // case 42
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -16680,6 +24526,172 @@ public final class Device extends com.google.protobuf.GeneratedFile {
         bitField0_ |= 0x00000008;
         onChanged();
         return this;
+      }
+
+      private smsgateway.v1.Device.DevicePolicy policy_;
+      private com.google.protobuf.SingleFieldBuilder<
+          smsgateway.v1.Device.DevicePolicy, smsgateway.v1.Device.DevicePolicy.Builder, smsgateway.v1.Device.DevicePolicyOrBuilder> policyBuilder_;
+      /**
+       * <pre>
+       * The device's current rules, so a phone that reconnects shows what the
+       * server enforces, whatever changed while it was away.
+       * </pre>
+       *
+       * <code>.smsgateway.v1.DevicePolicy policy = 5 [json_name = "policy"];</code>
+       * @return Whether the policy field is set.
+       */
+      public boolean hasPolicy() {
+        return ((bitField0_ & 0x00000010) != 0);
+      }
+      /**
+       * <pre>
+       * The device's current rules, so a phone that reconnects shows what the
+       * server enforces, whatever changed while it was away.
+       * </pre>
+       *
+       * <code>.smsgateway.v1.DevicePolicy policy = 5 [json_name = "policy"];</code>
+       * @return The policy.
+       */
+      public smsgateway.v1.Device.DevicePolicy getPolicy() {
+        if (policyBuilder_ == null) {
+          return policy_ == null ? smsgateway.v1.Device.DevicePolicy.getDefaultInstance() : policy_;
+        } else {
+          return policyBuilder_.getMessage();
+        }
+      }
+      /**
+       * <pre>
+       * The device's current rules, so a phone that reconnects shows what the
+       * server enforces, whatever changed while it was away.
+       * </pre>
+       *
+       * <code>.smsgateway.v1.DevicePolicy policy = 5 [json_name = "policy"];</code>
+       */
+      public Builder setPolicy(smsgateway.v1.Device.DevicePolicy value) {
+        if (policyBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          policy_ = value;
+        } else {
+          policyBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * The device's current rules, so a phone that reconnects shows what the
+       * server enforces, whatever changed while it was away.
+       * </pre>
+       *
+       * <code>.smsgateway.v1.DevicePolicy policy = 5 [json_name = "policy"];</code>
+       */
+      public Builder setPolicy(
+          smsgateway.v1.Device.DevicePolicy.Builder builderForValue) {
+        if (policyBuilder_ == null) {
+          policy_ = builderForValue.build();
+        } else {
+          policyBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * The device's current rules, so a phone that reconnects shows what the
+       * server enforces, whatever changed while it was away.
+       * </pre>
+       *
+       * <code>.smsgateway.v1.DevicePolicy policy = 5 [json_name = "policy"];</code>
+       */
+      public Builder mergePolicy(smsgateway.v1.Device.DevicePolicy value) {
+        if (policyBuilder_ == null) {
+          if (((bitField0_ & 0x00000010) != 0) &&
+            policy_ != null &&
+            policy_ != smsgateway.v1.Device.DevicePolicy.getDefaultInstance()) {
+            getPolicyBuilder().mergeFrom(value);
+          } else {
+            policy_ = value;
+          }
+        } else {
+          policyBuilder_.mergeFrom(value);
+        }
+        if (policy_ != null) {
+          bitField0_ |= 0x00000010;
+          onChanged();
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * The device's current rules, so a phone that reconnects shows what the
+       * server enforces, whatever changed while it was away.
+       * </pre>
+       *
+       * <code>.smsgateway.v1.DevicePolicy policy = 5 [json_name = "policy"];</code>
+       */
+      public Builder clearPolicy() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        policy_ = null;
+        if (policyBuilder_ != null) {
+          policyBuilder_.dispose();
+          policyBuilder_ = null;
+        }
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * The device's current rules, so a phone that reconnects shows what the
+       * server enforces, whatever changed while it was away.
+       * </pre>
+       *
+       * <code>.smsgateway.v1.DevicePolicy policy = 5 [json_name = "policy"];</code>
+       */
+      public smsgateway.v1.Device.DevicePolicy.Builder getPolicyBuilder() {
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return internalGetPolicyFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       * The device's current rules, so a phone that reconnects shows what the
+       * server enforces, whatever changed while it was away.
+       * </pre>
+       *
+       * <code>.smsgateway.v1.DevicePolicy policy = 5 [json_name = "policy"];</code>
+       */
+      public smsgateway.v1.Device.DevicePolicyOrBuilder getPolicyOrBuilder() {
+        if (policyBuilder_ != null) {
+          return policyBuilder_.getMessageOrBuilder();
+        } else {
+          return policy_ == null ?
+              smsgateway.v1.Device.DevicePolicy.getDefaultInstance() : policy_;
+        }
+      }
+      /**
+       * <pre>
+       * The device's current rules, so a phone that reconnects shows what the
+       * server enforces, whatever changed while it was away.
+       * </pre>
+       *
+       * <code>.smsgateway.v1.DevicePolicy policy = 5 [json_name = "policy"];</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          smsgateway.v1.Device.DevicePolicy, smsgateway.v1.Device.DevicePolicy.Builder, smsgateway.v1.Device.DevicePolicyOrBuilder> 
+          internalGetPolicyFieldBuilder() {
+        if (policyBuilder_ == null) {
+          policyBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              smsgateway.v1.Device.DevicePolicy, smsgateway.v1.Device.DevicePolicy.Builder, smsgateway.v1.Device.DevicePolicyOrBuilder>(
+                  getPolicy(),
+                  getParentForChildren(),
+                  isClean());
+          policy_ = null;
+        }
+        return policyBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:smsgateway.v1.RegisterAck)
@@ -19141,6 +27153,41 @@ public final class Device extends com.google.protobuf.GeneratedFile {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_smsgateway_v1_Register_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_smsgateway_v1_PolicyUpdate_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_smsgateway_v1_PolicyUpdate_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_smsgateway_v1_DevicePolicy_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_smsgateway_v1_DevicePolicy_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_smsgateway_v1_Availability_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_smsgateway_v1_Availability_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_smsgateway_v1_TimeWindow_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_smsgateway_v1_TimeWindow_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_smsgateway_v1_AcceptRules_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_smsgateway_v1_AcceptRules_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_smsgateway_v1_SimPolicy_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_smsgateway_v1_SimPolicy_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_smsgateway_v1_Leave_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_smsgateway_v1_Leave_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_smsgateway_v1_Heartbeat_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -19200,84 +27247,113 @@ public final class Device extends com.google.protobuf.GeneratedFile {
       "\017enrollmentToken\022:\n\013device_info\030\002 \001(\0132\031." +
       "smsgateway.v1.DeviceInfoR\ndeviceInfo\"P\n\016" +
       "EnrollResponse\022\033\n\tdevice_id\030\001 \001(\tR\010devic" +
-      "eId\022!\n\014device_token\030\002 \001(\tR\013deviceToken\"\211" +
+      "eId\022!\n\014device_token\030\002 \001(\tR\013deviceToken\"\307" +
       "\002\n\nDeviceInfo\022\024\n\005label\030\001 \001(\tR\005label\022!\n\014p" +
       "hone_number\030\002 \001(\tR\013phoneNumber\022\"\n\014manufa" +
       "cturer\030\003 \001(\tR\014manufacturer\022\024\n\005model\030\004 \001(" +
       "\tR\005model\022\035\n\nos_version\030\005 \001(\tR\tosVersion\022" +
       "#\n\ragent_version\030\006 \001(\tR\014agentVersion\022\030\n\007" +
       "carrier\030\007 \001(\tR\007carrier\022*\n\004sims\030\010 \003(\0132\026.s" +
-      "msgateway.v1.SimInfoR\004sims\"\327\001\n\007SimInfo\022\'" +
-      "\n\017subscription_id\030\001 \001(\005R\016subscriptionId\022" +
-      "\035\n\nslot_index\030\002 \001(\005R\tslotIndex\022!\n\014phone_" +
-      "number\030\003 \001(\tR\013phoneNumber\022\030\n\007carrier\030\004 \001" +
-      "(\tR\007carrier\022!\n\014display_name\030\005 \001(\tR\013displ" +
-      "ayName\022$\n\016is_default_sms\030\006 \001(\010R\014isDefaul" +
-      "tSms\"\357\002\n\rDeviceMessage\022\035\n\nmessage_id\030\001 \001" +
-      "(\tR\tmessageId\022!\n\014device_token\030\002 \001(\tR\013dev" +
-      "iceToken\0223\n\007sent_at\030\003 \001(\0132\032.google.proto" +
-      "buf.TimestampR\006sentAt\0225\n\010register\030\n \001(\0132" +
-      "\027.smsgateway.v1.RegisterH\000R\010register\0228\n\t" +
-      "heartbeat\030\013 \001(\0132\030.smsgateway.v1.Heartbea" +
-      "tH\000R\theartbeat\0220\n\007job_ack\030\014 \001(\0132\025.smsgat" +
-      "eway.v1.JobAckH\000R\006jobAck\0229\n\njob_result\030\r" +
-      " \001(\0132\030.smsgateway.v1.JobResultH\000R\tjobRes" +
-      "ultB\t\n\007payload\"\324\002\n\rServerMessage\022\035\n\nmess" +
-      "age_id\030\001 \001(\tR\tmessageId\0223\n\007sent_at\030\002 \001(\013" +
-      "2\032.google.protobuf.TimestampR\006sentAt\022?\n\014" +
-      "register_ack\030\n \001(\0132\032.smsgateway.v1.Regis" +
-      "terAckH\000R\013registerAck\022=\n\014send_sms_job\030\013 " +
-      "\001(\0132\031.smsgateway.v1.SendSmsJobH\000R\nsendSm" +
-      "sJob\0229\n\ncancel_job\030\014 \001(\0132\030.smsgateway.v1" +
-      ".CancelJobH\000R\tcancelJob\022)\n\004ping\030\r \001(\0132\023." +
-      "smsgateway.v1.PingH\000R\004pingB\t\n\007payload\"\243\001" +
-      "\n\010Register\022:\n\013device_info\030\001 \001(\0132\031.smsgat" +
-      "eway.v1.DeviceInfoR\ndeviceInfo\0223\n\006health" +
-      "\030\002 \001(\0132\033.smsgateway.v1.DeviceHealthR\006hea" +
-      "lth\022&\n\017pending_job_ids\030\003 \003(\tR\rpendingJob" +
-      "Ids\"@\n\tHeartbeat\0223\n\006health\030\001 \001(\0132\033.smsga" +
-      "teway.v1.DeviceHealthR\006health\"\270\002\n\014Device" +
-      "Health\022#\n\rbattery_level\030\001 \001(\005R\014batteryLe" +
-      "vel\022\037\n\013is_charging\030\002 \001(\010R\nisCharging\022\'\n\017" +
-      "signal_strength\030\003 \001(\005R\016signalStrength\022!\n" +
-      "\014network_type\030\004 \001(\tR\013networkType\022\033\n\tsim_" +
-      "ready\030\005 \001(\010R\010simReady\022$\n\016sent_last_hour\030" +
-      "\006 \001(\005R\014sentLastHour\022%\n\016permissions_ok\030\007 " +
-      "\001(\010R\rpermissionsOk\022,\n\004sims\030\010 \003(\0132\030.smsga" +
-      "teway.v1.SimHealthR\004sims\"\240\001\n\tSimHealth\022\'" +
-      "\n\017subscription_id\030\001 \001(\005R\016subscriptionId\022" +
-      "\'\n\017signal_strength\030\002 \001(\005R\016signalStrength" +
-      "\022\033\n\tsim_ready\030\003 \001(\010R\010simReady\022$\n\016sent_la" +
-      "st_hour\030\004 \001(\005R\014sentLastHour\"q\n\006JobAck\022\025\n" +
-      "\006job_id\030\001 \001(\tR\005jobId\022\032\n\010accepted\030\002 \001(\010R\010" +
-      "accepted\022\026\n\006reason\030\003 \001(\tR\006reason\022\034\n\tperm" +
-      "anent\030\004 \001(\010R\tpermanent\"\366\001\n\tJobResult\022\025\n\006" +
-      "job_id\030\001 \001(\tR\005jobId\0220\n\006status\030\002 \001(\0162\030.sm" +
-      "sgateway.v1.JobStatusR\006status\022\035\n\nerror_c" +
-      "ode\030\003 \001(\tR\terrorCode\022#\n\rerror_message\030\004 " +
-      "\001(\tR\014errorMessage\022\035\n\nparts_sent\030\005 \001(\005R\tp" +
-      "artsSent\022=\n\014completed_at\030\006 \001(\0132\032.google." +
-      "protobuf.TimestampR\013completedAt\"\243\001\n\013Regi" +
-      "sterAck\022\032\n\010accepted\030\001 \001(\010R\010accepted\022\026\n\006r" +
-      "eason\030\002 \001(\tR\006reason\022<\n\032heartbeat_interva" +
-      "l_seconds\030\003 \001(\005R\030heartbeatIntervalSecond" +
-      "s\022\"\n\rstale_job_ids\030\004 \003(\tR\013staleJobIds\"\325\001" +
-      "\n\nSendSmsJob\022\025\n\006job_id\030\001 \001(\tR\005jobId\022\034\n\tr" +
-      "ecipient\030\002 \001(\tR\trecipient\022\022\n\004body\030\003 \001(\tR" +
-      "\004body\022\032\n\010priority\030\004 \001(\005R\010priority\0229\n\nexp" +
-      "ires_at\030\005 \001(\0132\032.google.protobuf.Timestam" +
-      "pR\texpiresAt\022\'\n\017subscription_id\030\006 \001(\005R\016s" +
-      "ubscriptionId\"\"\n\tCancelJob\022\025\n\006job_id\030\001 \001" +
-      "(\tR\005jobId\"\006\n\004Ping*\207\001\n\tJobStatus\022\032\n\026JOB_S" +
-      "TATUS_UNSPECIFIED\020\000\022\023\n\017JOB_STATUS_SENT\020\001" +
-      "\022\030\n\024JOB_STATUS_DELIVERED\020\002\022\025\n\021JOB_STATUS" +
-      "_FAILED\020\003\022\030\n\024JOB_STATUS_CANCELLED\020\0042\241\001\n\r" +
-      "DeviceGateway\022E\n\006Enroll\022\034.smsgateway.v1." +
-      "EnrollRequest\032\035.smsgateway.v1.EnrollResp" +
-      "onse\022I\n\007Connect\022\034.smsgateway.v1.DeviceMe" +
-      "ssage\032\034.smsgateway.v1.ServerMessage(\0010\001B" +
-      "@Z>github.com/KGMA74/relaix-server/gen/s" +
-      "msgateway/v1;smsgatewayv1b\006proto3"
+      "msgateway.v1.SimInfoR\004sims\022\037\n\013hardware_i" +
+      "d\030\t \001(\tR\nhardwareId\022\033\n\ttime_zone\030\n \001(\tR\010" +
+      "timeZone\"\327\001\n\007SimInfo\022\'\n\017subscription_id\030" +
+      "\001 \001(\005R\016subscriptionId\022\035\n\nslot_index\030\002 \001(" +
+      "\005R\tslotIndex\022!\n\014phone_number\030\003 \001(\tR\013phon" +
+      "eNumber\022\030\n\007carrier\030\004 \001(\tR\007carrier\022!\n\014dis" +
+      "play_name\030\005 \001(\tR\013displayName\022$\n\016is_defau" +
+      "lt_sms\030\006 \001(\010R\014isDefaultSms\"\341\003\n\rDeviceMes" +
+      "sage\022\035\n\nmessage_id\030\001 \001(\tR\tmessageId\022!\n\014d" +
+      "evice_token\030\002 \001(\tR\013deviceToken\0223\n\007sent_a" +
+      "t\030\003 \001(\0132\032.google.protobuf.TimestampR\006sen" +
+      "tAt\0225\n\010register\030\n \001(\0132\027.smsgateway.v1.Re" +
+      "gisterH\000R\010register\0228\n\theartbeat\030\013 \001(\0132\030." +
+      "smsgateway.v1.HeartbeatH\000R\theartbeat\0220\n\007" +
+      "job_ack\030\014 \001(\0132\025.smsgateway.v1.JobAckH\000R\006" +
+      "jobAck\0229\n\njob_result\030\r \001(\0132\030.smsgateway." +
+      "v1.JobResultH\000R\tjobResult\022,\n\005leave\030\016 \001(\013" +
+      "2\024.smsgateway.v1.LeaveH\000R\005leave\022B\n\rpolic" +
+      "y_update\030\017 \001(\0132\033.smsgateway.v1.PolicyUpd" +
+      "ateH\000R\014policyUpdateB\t\n\007payload\"\213\003\n\rServe" +
+      "rMessage\022\035\n\nmessage_id\030\001 \001(\tR\tmessageId\022" +
+      "3\n\007sent_at\030\002 \001(\0132\032.google.protobuf.Times" +
+      "tampR\006sentAt\022?\n\014register_ack\030\n \001(\0132\032.sms" +
+      "gateway.v1.RegisterAckH\000R\013registerAck\022=\n" +
+      "\014send_sms_job\030\013 \001(\0132\031.smsgateway.v1.Send" +
+      "SmsJobH\000R\nsendSmsJob\0229\n\ncancel_job\030\014 \001(\013" +
+      "2\030.smsgateway.v1.CancelJobH\000R\tcancelJob\022" +
+      ")\n\004ping\030\r \001(\0132\023.smsgateway.v1.PingH\000R\004pi" +
+      "ng\0225\n\006policy\030\016 \001(\0132\033.smsgateway.v1.Devic" +
+      "ePolicyH\000R\006policyB\t\n\007payload\"\243\001\n\010Registe" +
+      "r\022:\n\013device_info\030\001 \001(\0132\031.smsgateway.v1.D" +
+      "eviceInfoR\ndeviceInfo\0223\n\006health\030\002 \001(\0132\033." +
+      "smsgateway.v1.DeviceHealthR\006health\022&\n\017pe" +
+      "nding_job_ids\030\003 \003(\tR\rpendingJobIds\"C\n\014Po" +
+      "licyUpdate\0223\n\006policy\030\001 \001(\0132\033.smsgateway." +
+      "v1.DevicePolicyR\006policy\"\206\002\n\014DevicePolicy" +
+      "\022\030\n\007version\030\001 \001(\003R\007version\022?\n\014availabili" +
+      "ty\030\002 \001(\0132\033.smsgateway.v1.AvailabilityR\014a" +
+      "vailability\0222\n\006accept\030\003 \001(\0132\032.smsgateway" +
+      ".v1.AcceptRulesR\006accept\022,\n\004sims\030\004 \003(\0132\030." +
+      "smsgateway.v1.SimPolicyR\004sims\0229\n\nupdated" +
+      "_at\030\005 \001(\0132\032.google.protobuf.TimestampR\tu" +
+      "pdatedAt\"`\n\014Availability\022\033\n\ttime_zone\030\001 " +
+      "\001(\tR\010timeZone\0223\n\007windows\030\002 \003(\0132\031.smsgate" +
+      "way.v1.TimeWindowR\007windows\"b\n\nTimeWindow" +
+      "\022\022\n\004days\030\001 \003(\005R\004days\022!\n\014start_minute\030\002 \001" +
+      "(\005R\013startMinute\022\035\n\nend_minute\030\003 \001(\005R\tend" +
+      "Minute\"X\n\013AcceptRules\022\034\n\tcountries\030\001 \003(\t" +
+      "R\tcountries\022+\n\021recipient_pattern\030\002 \001(\tR\020" +
+      "recipientPattern\"\305\001\n\tSimPolicy\022\'\n\017subscr" +
+      "iption_id\030\001 \001(\005R\016subscriptionId\022\032\n\010disab" +
+      "led\030\002 \001(\010R\010disabled\0222\n\006accept\030\003 \001(\0132\032.sm" +
+      "sgateway.v1.AcceptRulesR\006accept\022?\n\014avail" +
+      "ability\030\004 \001(\0132\033.smsgateway.v1.Availabili" +
+      "tyR\014availability\"\037\n\005Leave\022\026\n\006reason\030\001 \001(" +
+      "\tR\006reason\"@\n\tHeartbeat\0223\n\006health\030\001 \001(\0132\033" +
+      ".smsgateway.v1.DeviceHealthR\006health\"\270\002\n\014" +
+      "DeviceHealth\022#\n\rbattery_level\030\001 \001(\005R\014bat" +
+      "teryLevel\022\037\n\013is_charging\030\002 \001(\010R\nisChargi" +
+      "ng\022\'\n\017signal_strength\030\003 \001(\005R\016signalStren" +
+      "gth\022!\n\014network_type\030\004 \001(\tR\013networkType\022\033" +
+      "\n\tsim_ready\030\005 \001(\010R\010simReady\022$\n\016sent_last" +
+      "_hour\030\006 \001(\005R\014sentLastHour\022%\n\016permissions" +
+      "_ok\030\007 \001(\010R\rpermissionsOk\022,\n\004sims\030\010 \003(\0132\030" +
+      ".smsgateway.v1.SimHealthR\004sims\"\240\001\n\tSimHe" +
+      "alth\022\'\n\017subscription_id\030\001 \001(\005R\016subscript" +
+      "ionId\022\'\n\017signal_strength\030\002 \001(\005R\016signalSt" +
+      "rength\022\033\n\tsim_ready\030\003 \001(\010R\010simReady\022$\n\016s" +
+      "ent_last_hour\030\004 \001(\005R\014sentLastHour\"q\n\006Job" +
+      "Ack\022\025\n\006job_id\030\001 \001(\tR\005jobId\022\032\n\010accepted\030\002" +
+      " \001(\010R\010accepted\022\026\n\006reason\030\003 \001(\tR\006reason\022\034" +
+      "\n\tpermanent\030\004 \001(\010R\tpermanent\"\366\001\n\tJobResu" +
+      "lt\022\025\n\006job_id\030\001 \001(\tR\005jobId\0220\n\006status\030\002 \001(" +
+      "\0162\030.smsgateway.v1.JobStatusR\006status\022\035\n\ne" +
+      "rror_code\030\003 \001(\tR\terrorCode\022#\n\rerror_mess" +
+      "age\030\004 \001(\tR\014errorMessage\022\035\n\nparts_sent\030\005 " +
+      "\001(\005R\tpartsSent\022=\n\014completed_at\030\006 \001(\0132\032.g" +
+      "oogle.protobuf.TimestampR\013completedAt\"\330\001" +
+      "\n\013RegisterAck\022\032\n\010accepted\030\001 \001(\010R\010accepte" +
+      "d\022\026\n\006reason\030\002 \001(\tR\006reason\022<\n\032heartbeat_i" +
+      "nterval_seconds\030\003 \001(\005R\030heartbeatInterval" +
+      "Seconds\022\"\n\rstale_job_ids\030\004 \003(\tR\013staleJob" +
+      "Ids\0223\n\006policy\030\005 \001(\0132\033.smsgateway.v1.Devi" +
+      "cePolicyR\006policy\"\325\001\n\nSendSmsJob\022\025\n\006job_i" +
+      "d\030\001 \001(\tR\005jobId\022\034\n\trecipient\030\002 \001(\tR\trecip" +
+      "ient\022\022\n\004body\030\003 \001(\tR\004body\022\032\n\010priority\030\004 \001" +
+      "(\005R\010priority\0229\n\nexpires_at\030\005 \001(\0132\032.googl" +
+      "e.protobuf.TimestampR\texpiresAt\022\'\n\017subsc" +
+      "ription_id\030\006 \001(\005R\016subscriptionId\"\"\n\tCanc" +
+      "elJob\022\025\n\006job_id\030\001 \001(\tR\005jobId\"\006\n\004Ping*\207\001\n" +
+      "\tJobStatus\022\032\n\026JOB_STATUS_UNSPECIFIED\020\000\022\023" +
+      "\n\017JOB_STATUS_SENT\020\001\022\030\n\024JOB_STATUS_DELIVE" +
+      "RED\020\002\022\025\n\021JOB_STATUS_FAILED\020\003\022\030\n\024JOB_STAT" +
+      "US_CANCELLED\020\0042\241\001\n\rDeviceGateway\022E\n\006Enro" +
+      "ll\022\034.smsgateway.v1.EnrollRequest\032\035.smsga" +
+      "teway.v1.EnrollResponse\022I\n\007Connect\022\034.sms" +
+      "gateway.v1.DeviceMessage\032\034.smsgateway.v1" +
+      ".ServerMessage(\0010\001B@Z>github.com/KGMA74/" +
+      "relaix-server/gen/smsgateway/v1;smsgatew" +
+      "ayv1b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -19301,7 +27377,7 @@ public final class Device extends com.google.protobuf.GeneratedFile {
     internal_static_smsgateway_v1_DeviceInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_smsgateway_v1_DeviceInfo_descriptor,
-        new java.lang.String[] { "Label", "PhoneNumber", "Manufacturer", "Model", "OsVersion", "AgentVersion", "Carrier", "Sims", });
+        new java.lang.String[] { "Label", "PhoneNumber", "Manufacturer", "Model", "OsVersion", "AgentVersion", "Carrier", "Sims", "HardwareId", "TimeZone", });
     internal_static_smsgateway_v1_SimInfo_descriptor =
       getDescriptor().getMessageType(3);
     internal_static_smsgateway_v1_SimInfo_fieldAccessorTable = new
@@ -19313,69 +27389,111 @@ public final class Device extends com.google.protobuf.GeneratedFile {
     internal_static_smsgateway_v1_DeviceMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_smsgateway_v1_DeviceMessage_descriptor,
-        new java.lang.String[] { "MessageId", "DeviceToken", "SentAt", "Register", "Heartbeat", "JobAck", "JobResult", "Payload", });
+        new java.lang.String[] { "MessageId", "DeviceToken", "SentAt", "Register", "Heartbeat", "JobAck", "JobResult", "Leave", "PolicyUpdate", "Payload", });
     internal_static_smsgateway_v1_ServerMessage_descriptor =
       getDescriptor().getMessageType(5);
     internal_static_smsgateway_v1_ServerMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_smsgateway_v1_ServerMessage_descriptor,
-        new java.lang.String[] { "MessageId", "SentAt", "RegisterAck", "SendSmsJob", "CancelJob", "Ping", "Payload", });
+        new java.lang.String[] { "MessageId", "SentAt", "RegisterAck", "SendSmsJob", "CancelJob", "Ping", "Policy", "Payload", });
     internal_static_smsgateway_v1_Register_descriptor =
       getDescriptor().getMessageType(6);
     internal_static_smsgateway_v1_Register_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_smsgateway_v1_Register_descriptor,
         new java.lang.String[] { "DeviceInfo", "Health", "PendingJobIds", });
-    internal_static_smsgateway_v1_Heartbeat_descriptor =
+    internal_static_smsgateway_v1_PolicyUpdate_descriptor =
       getDescriptor().getMessageType(7);
+    internal_static_smsgateway_v1_PolicyUpdate_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_smsgateway_v1_PolicyUpdate_descriptor,
+        new java.lang.String[] { "Policy", });
+    internal_static_smsgateway_v1_DevicePolicy_descriptor =
+      getDescriptor().getMessageType(8);
+    internal_static_smsgateway_v1_DevicePolicy_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_smsgateway_v1_DevicePolicy_descriptor,
+        new java.lang.String[] { "Version", "Availability", "Accept", "Sims", "UpdatedAt", });
+    internal_static_smsgateway_v1_Availability_descriptor =
+      getDescriptor().getMessageType(9);
+    internal_static_smsgateway_v1_Availability_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_smsgateway_v1_Availability_descriptor,
+        new java.lang.String[] { "TimeZone", "Windows", });
+    internal_static_smsgateway_v1_TimeWindow_descriptor =
+      getDescriptor().getMessageType(10);
+    internal_static_smsgateway_v1_TimeWindow_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_smsgateway_v1_TimeWindow_descriptor,
+        new java.lang.String[] { "Days", "StartMinute", "EndMinute", });
+    internal_static_smsgateway_v1_AcceptRules_descriptor =
+      getDescriptor().getMessageType(11);
+    internal_static_smsgateway_v1_AcceptRules_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_smsgateway_v1_AcceptRules_descriptor,
+        new java.lang.String[] { "Countries", "RecipientPattern", });
+    internal_static_smsgateway_v1_SimPolicy_descriptor =
+      getDescriptor().getMessageType(12);
+    internal_static_smsgateway_v1_SimPolicy_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_smsgateway_v1_SimPolicy_descriptor,
+        new java.lang.String[] { "SubscriptionId", "Disabled", "Accept", "Availability", });
+    internal_static_smsgateway_v1_Leave_descriptor =
+      getDescriptor().getMessageType(13);
+    internal_static_smsgateway_v1_Leave_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_smsgateway_v1_Leave_descriptor,
+        new java.lang.String[] { "Reason", });
+    internal_static_smsgateway_v1_Heartbeat_descriptor =
+      getDescriptor().getMessageType(14);
     internal_static_smsgateway_v1_Heartbeat_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_smsgateway_v1_Heartbeat_descriptor,
         new java.lang.String[] { "Health", });
     internal_static_smsgateway_v1_DeviceHealth_descriptor =
-      getDescriptor().getMessageType(8);
+      getDescriptor().getMessageType(15);
     internal_static_smsgateway_v1_DeviceHealth_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_smsgateway_v1_DeviceHealth_descriptor,
         new java.lang.String[] { "BatteryLevel", "IsCharging", "SignalStrength", "NetworkType", "SimReady", "SentLastHour", "PermissionsOk", "Sims", });
     internal_static_smsgateway_v1_SimHealth_descriptor =
-      getDescriptor().getMessageType(9);
+      getDescriptor().getMessageType(16);
     internal_static_smsgateway_v1_SimHealth_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_smsgateway_v1_SimHealth_descriptor,
         new java.lang.String[] { "SubscriptionId", "SignalStrength", "SimReady", "SentLastHour", });
     internal_static_smsgateway_v1_JobAck_descriptor =
-      getDescriptor().getMessageType(10);
+      getDescriptor().getMessageType(17);
     internal_static_smsgateway_v1_JobAck_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_smsgateway_v1_JobAck_descriptor,
         new java.lang.String[] { "JobId", "Accepted", "Reason", "Permanent", });
     internal_static_smsgateway_v1_JobResult_descriptor =
-      getDescriptor().getMessageType(11);
+      getDescriptor().getMessageType(18);
     internal_static_smsgateway_v1_JobResult_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_smsgateway_v1_JobResult_descriptor,
         new java.lang.String[] { "JobId", "Status", "ErrorCode", "ErrorMessage", "PartsSent", "CompletedAt", });
     internal_static_smsgateway_v1_RegisterAck_descriptor =
-      getDescriptor().getMessageType(12);
+      getDescriptor().getMessageType(19);
     internal_static_smsgateway_v1_RegisterAck_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_smsgateway_v1_RegisterAck_descriptor,
-        new java.lang.String[] { "Accepted", "Reason", "HeartbeatIntervalSeconds", "StaleJobIds", });
+        new java.lang.String[] { "Accepted", "Reason", "HeartbeatIntervalSeconds", "StaleJobIds", "Policy", });
     internal_static_smsgateway_v1_SendSmsJob_descriptor =
-      getDescriptor().getMessageType(13);
+      getDescriptor().getMessageType(20);
     internal_static_smsgateway_v1_SendSmsJob_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_smsgateway_v1_SendSmsJob_descriptor,
         new java.lang.String[] { "JobId", "Recipient", "Body", "Priority", "ExpiresAt", "SubscriptionId", });
     internal_static_smsgateway_v1_CancelJob_descriptor =
-      getDescriptor().getMessageType(14);
+      getDescriptor().getMessageType(21);
     internal_static_smsgateway_v1_CancelJob_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_smsgateway_v1_CancelJob_descriptor,
         new java.lang.String[] { "JobId", });
     internal_static_smsgateway_v1_Ping_descriptor =
-      getDescriptor().getMessageType(15);
+      getDescriptor().getMessageType(22);
     internal_static_smsgateway_v1_Ping_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_smsgateway_v1_Ping_descriptor,

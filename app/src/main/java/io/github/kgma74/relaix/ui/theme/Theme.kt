@@ -8,47 +8,56 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.compositeOver
 
+// `surface` is the card colour and `background` the page behind it: kept apart
+// so a card reads as a card without leaning on elevation shadows.
 private val DarkColorScheme = darkColorScheme(
-    primary = RelaixTealLight,
-    onPrimary = Color(0xFF00382F),
-    primaryContainer = RelaixTealDark,
-    onPrimaryContainer = RelaixTealLight,
-    secondary = RelaixSlateLight,
-    onSecondary = Color(0xFF10161A),
+    primary = Indigo400,
+    onPrimary = Color(0xFF11122B),
+    primaryContainer = Indigo900,
+    onPrimaryContainer = Indigo100,
+    secondary = MutedInkDark,
+    onSecondary = BackgroundDark,
     // Drives the pill behind a selected navigation item; left undefined it
     // falls back to Material's purple and undoes the palette.
-    secondaryContainer = Color(0xFF14403A),
-    onSecondaryContainer = RelaixTealLight,
-    tertiary = RelaixAmberLight,
-    background = SurfaceDark,
-    onBackground = Color(0xFFE2E8EB),
-    surface = SurfaceDark,
-    onSurface = Color(0xFFE2E8EB),
-    surfaceVariant = SurfaceDarkElevated,
-    onSurfaceVariant = Color(0xFF9FB0B8),
-    error = RelaixRedLight,
-    outline = Color(0xFF3A464C),
+    secondaryContainer = Color(0xFF272A52),
+    onSecondaryContainer = Color(0xFFC7D2FE),
+    background = BackgroundDark,
+    onBackground = InkDark,
+    surface = CardDark,
+    onSurface = InkDark,
+    surfaceVariant = SubtleDark,
+    onSurfaceVariant = MutedInkDark,
+    surfaceContainer = CardDark,
+    surfaceContainerHigh = CardDark,
+    surfaceContainerHighest = SubtleDark,
+    error = StatusBadDark,
+    outline = BorderDark,
+    outlineVariant = BorderDark,
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = RelaixTealDark,
+    primary = Indigo600,
     onPrimary = Color.White,
-    primaryContainer = RelaixTealLight,
-    onPrimaryContainer = Color(0xFF00201B),
-    secondary = RelaixSlate,
+    primaryContainer = Indigo100,
+    onPrimaryContainer = Indigo900,
+    secondary = MutedInkLight,
     onSecondary = Color.White,
-    secondaryContainer = Color(0xFFCDEFEA),
-    onSecondaryContainer = Color(0xFF00352E),
-    tertiary = RelaixAmber,
-    background = SurfaceLight,
-    onBackground = Color(0xFF141A1C),
-    surface = SurfaceLight,
-    onSurface = Color(0xFF141A1C),
-    surfaceVariant = SurfaceLightElevated,
-    onSurfaceVariant = Color(0xFF4A5960),
-    error = RelaixRed,
-    outline = Color(0xFFC5D0D5),
+    secondaryContainer = Indigo100,
+    onSecondaryContainer = Color(0xFF3730A3),
+    background = BackgroundLight,
+    onBackground = InkLight,
+    surface = CardLight,
+    onSurface = InkLight,
+    surfaceVariant = SubtleLight,
+    onSurfaceVariant = MutedInkLight,
+    surfaceContainer = CardLight,
+    surfaceContainerHigh = CardLight,
+    surfaceContainerHighest = SubtleLight,
+    error = StatusBadLight,
+    outline = BorderLight,
+    outlineVariant = BorderLight,
 )
 
 /**
@@ -67,6 +76,15 @@ data class StatusColors(
 val LocalStatusColors = staticCompositionLocalOf {
     StatusColors(ok = StatusOkLight, waiting = StatusWaitingLight, bad = StatusBadLight)
 }
+
+/**
+ * An opaque tint of [color] over the card: the background of a status chip or
+ * a status banner. Opaque rather than an alpha, so it looks the same whatever
+ * sits behind it.
+ */
+@Composable
+fun soft(color: Color, amount: Float = 0.14f): Color =
+    color.copy(alpha = amount).compositeOver(MaterialTheme.colorScheme.surface)
 
 /**
  * Dynamic colour is deliberately not used. This app is read as an instrument,

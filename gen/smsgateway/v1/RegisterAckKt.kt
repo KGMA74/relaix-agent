@@ -219,9 +219,54 @@ public object RegisterAckKt {
 @kotlin.jvm.JvmName("setStaleJobIds")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, StaleJobIdsProxy>.clear() {
       _builder.clearStaleJobIds()
-    }}
+    }
+    /**
+     * ```
+     * The device's current rules, so a phone that reconnects shows what the
+     * server enforces, whatever changed while it was away.
+     * ```
+     *
+     * `.smsgateway.v1.DevicePolicy policy = 5 [json_name = "policy"];`
+     */
+    public var policy: smsgateway.v1.Device.DevicePolicy
+      @kotlin.jvm.JvmName("getPolicy")
+        get() = _builder.policy
+      @kotlin.jvm.JvmName("setPolicy")
+        set(value) {
+        _builder.policy = value
+      }
+    /**
+     * ```
+     * The device's current rules, so a phone that reconnects shows what the
+     * server enforces, whatever changed while it was away.
+     * ```
+     *
+     * `.smsgateway.v1.DevicePolicy policy = 5 [json_name = "policy"];`
+     */
+    public fun clearPolicy() {
+      _builder.clearPolicy()
+    }
+    /**
+     * ```
+     * The device's current rules, so a phone that reconnects shows what the
+     * server enforces, whatever changed while it was away.
+     * ```
+     *
+     * `.smsgateway.v1.DevicePolicy policy = 5 [json_name = "policy"];`
+     * @return Whether the policy field is set.
+     */
+    public fun hasPolicy(): kotlin.Boolean {
+      return _builder.hasPolicy()
+    }
+
+    public val RegisterAckKt.Dsl.policyOrNull: smsgateway.v1.Device.DevicePolicy?
+      get() = _builder.policyOrNull
+  }
 }
 @kotlin.jvm.JvmSynthetic
 public inline fun smsgateway.v1.Device.RegisterAck.copy(block: `smsgateway.v1`.RegisterAckKt.Dsl.() -> kotlin.Unit): smsgateway.v1.Device.RegisterAck =
   `smsgateway.v1`.RegisterAckKt.Dsl._create(this.toBuilder()).apply { block() }._build()
+
+public val smsgateway.v1.Device.RegisterAckOrBuilder.policyOrNull: smsgateway.v1.Device.DevicePolicy?
+  get() = if (hasPolicy()) getPolicy() else null
 

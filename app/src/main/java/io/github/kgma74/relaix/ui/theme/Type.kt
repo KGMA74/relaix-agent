@@ -32,6 +32,14 @@ val Typography = Typography(
         lineHeight = 28.sp,
         letterSpacing = (-0.2).sp,
     ),
+    // Stat values: the number someone is looking for.
+    titleLarge = TextStyle(
+        fontFamily = FontFamily.Default,
+        fontWeight = FontWeight.SemiBold,
+        fontSize = 20.sp,
+        lineHeight = 26.sp,
+        letterSpacing = (-0.2).sp,
+    ),
     titleMedium = TextStyle(
         fontFamily = FontFamily.Default,
         fontWeight = FontWeight.SemiBold,

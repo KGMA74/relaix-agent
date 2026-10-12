@@ -3,14 +3,19 @@ package io.github.kgma74.relaix.ui
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.ui.draw.drawBehind
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.Message
 import androidx.compose.material.icons.filled.PhoneAndroid
 import androidx.compose.material.icons.filled.Speed
-import androidx.compose.material3.CenterAlignedTopAppBar
+import androidx.compose.material.icons.filled.Tune
+import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -37,23 +42,27 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import io.github.kgma74.relaix.connect.AgentService
 import io.github.kgma74.relaix.connect.ConnectionState
+import io.github.kgma74.relaix.ui.components.BrandMark
 import io.github.kgma74.relaix.ui.components.StatusDot
 import io.github.kgma74.relaix.ui.enroll.EnrollmentScreen
 import io.github.kgma74.relaix.ui.enroll.EnrollmentViewModel
+import io.github.kgma74.relaix.ui.rules.RulesScreen
 import io.github.kgma74.relaix.ui.status.DeviceScreen
 import io.github.kgma74.relaix.ui.status.JobsScreen
 import io.github.kgma74.relaix.ui.status.OverviewScreen
 import io.github.kgma74.relaix.ui.status.StatusViewModel
 import io.github.kgma74.relaix.ui.theme.LocalStatusColors
+import io.github.kgma74.relaix.ui.theme.soft
 
 private enum class Destination(
     val route: String,
     val label: String,
     val icon: ImageVector,
 ) {
-    Overview("overview", "Status", Icons.Default.Speed),
-    Jobs("jobs", "Jobs", Icons.AutoMirrored.Filled.Message),
-    Device("device", "Device", Icons.Default.PhoneAndroid),
+    Overview("overview", "État", Icons.Default.Speed),
+    Jobs("jobs", "Envois", Icons.AutoMirrored.Filled.Message),
+    Rules("rules", "Règles", Icons.Default.Tune),
+    Device("device", "Appareil", Icons.Default.PhoneAndroid),
 }
 
 /**
@@ -102,37 +111,61 @@ private fun EnrolledApp(
     // tab: the question it answers is not specific to one screen.
     val connection by statusViewModel.connection.collectAsStateWithLifecycle()
     val status = LocalStatusColors.current
-    val dotColour = when (connection) {
-        is ConnectionState.Connected -> status.ok
-        ConnectionState.Connecting, is ConnectionState.Reconnecting -> status.waiting
-        is ConnectionState.Refused -> status.bad
-        ConnectionState.Idle -> MaterialTheme.colorScheme.onSurfaceVariant
+    val (dotColour, connectionLabel) = when (connection) {
+        is ConnectionState.Connected -> status.ok to "En ligne"
+        ConnectionState.Connecting -> status.waiting to "Connexion"
+        is ConnectionState.Reconnecting -> status.waiting to "Reconnexion"
+        is ConnectionState.Refused -> status.bad to "Refusé"
+        ConnectionState.Idle -> MaterialTheme.colorScheme.onSurfaceVariant to "Arrêté"
     }
+
+    val outline = MaterialTheme.colorScheme.outline
 
     Scaffold(
         modifier = modifier,
         topBar = {
-            CenterAlignedTopAppBar(
+            TopAppBar(
                 title = {
                     Row(
                         verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.spacedBy(8.dp),
+                        horizontalArrangement = Arrangement.spacedBy(10.dp),
+                    ) {
+                        BrandMark(size = 28.dp)
+                        Text("Relaix", style = MaterialTheme.typography.titleMedium)
+                    }
+                },
+                actions = {
+                    Row(
+                        modifier = Modifier
+                            .padding(end = 12.dp)
+                            .background(soft(dotColour), CircleShape)
+                            .padding(horizontal = 10.dp, vertical = 5.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.spacedBy(6.dp),
                     ) {
                         StatusDot(
                             color = dotColour,
                             pulsing = connection is ConnectionState.Connecting ||
                                 connection is ConnectionState.Reconnecting,
+                            size = 8,
                         )
-                        Text("Relaix", style = MaterialTheme.typography.titleMedium)
+                        Text(connectionLabel, style = MaterialTheme.typography.labelMedium, color = dotColour)
                     }
                 },
-                colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
+                colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = MaterialTheme.colorScheme.background,
                 ),
             )
         },
         bottomBar = {
-            NavigationBar(containerColor = MaterialTheme.colorScheme.surfaceVariant) {
+            NavigationBar(
+                containerColor = MaterialTheme.colorScheme.surface,
+                modifier = Modifier.drawBehind {
+                    // A hairline rather than a tinted slab: the bar sits on the
+                    // page instead of competing with the cards above it.
+                    drawLine(outline, Offset(0f, 0f), Offset(size.width, 0f), 1.dp.toPx())
+                },
+            ) {
                 Destination.entries.forEach { destination ->
                     val selected = currentRoute?.hierarchy?.any {
                         it.route == destination.route
@@ -169,6 +202,7 @@ private fun EnrolledApp(
         ) {
             composable(Destination.Overview.route) { OverviewScreen() }
             composable(Destination.Jobs.route) { JobsScreen() }
+            composable(Destination.Rules.route) { RulesScreen() }
             composable(Destination.Device.route) { DeviceScreen() }
         }
     }
