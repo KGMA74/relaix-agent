@@ -115,6 +115,7 @@ private fun EnrolledApp(
         is ConnectionState.Connected -> status.ok to "En ligne"
         ConnectionState.Connecting -> status.waiting to "Connexion"
         is ConnectionState.Reconnecting -> status.waiting to "Reconnexion"
+        is ConnectionState.Disabled -> status.waiting to "Désactivé"
         is ConnectionState.Refused -> status.bad to "Refusé"
         ConnectionState.Idle -> MaterialTheme.colorScheme.onSurfaceVariant to "Arrêté"
     }

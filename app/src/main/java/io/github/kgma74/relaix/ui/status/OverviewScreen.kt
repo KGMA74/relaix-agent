@@ -234,6 +234,12 @@ private fun ConnectionHero(state: ConnectionState, endpoint: ServerEndpoint?, re
             Triple(status.ok, "Connecté", "Battement toutes les ${state.heartbeatSeconds} s")
         is ConnectionState.Reconnecting ->
             Triple(status.waiting, "Reconnexion", "Nouvel essai dans ${state.retryInSeconds} s · ${state.reason}")
+        is ConnectionState.Disabled ->
+            Triple(
+                status.waiting,
+                "Désactivé",
+                "Mis en pause depuis le dashboard. Le téléphone revient seul dès sa réactivation (vérifié toutes les ${state.retryInSeconds} s).",
+            )
         is ConnectionState.Refused ->
             Triple(status.bad, "Refusé", state.reason)
     }

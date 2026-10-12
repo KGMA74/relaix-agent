@@ -95,6 +95,7 @@ class AgentService : Service() {
         is ConnectionState.Connected -> "En ligne · battement toutes les ${state.heartbeatSeconds} s"
         is ConnectionState.Reconnecting ->
             "Reconnexion dans ${state.retryInSeconds} s (${state.reason})"
+        is ConnectionState.Disabled -> "Désactivé depuis le dashboard · nouvel essai toutes les ${state.retryInSeconds} s"
         is ConnectionState.Refused -> "Refusé : ${state.reason}"
     }
 

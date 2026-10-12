@@ -21,9 +21,16 @@ sealed interface ConnectionState {
     data class Reconnecting(val reason: String, val retryInSeconds: Long) : ConnectionState
 
     /**
-     * The server refused this device — a revoked or unknown token, or a
-     * device an operator disabled. Retrying cannot fix it, so the agent stops
-     * rather than hammering a stream it will never be allowed onto.
+     * An operator disabled this device. The token is still good, so the agent
+     * keeps asking, slowly: re-enabling it from the dashboard must bring the
+     * phone back without anyone touching it.
+     */
+    data class Disabled(val retryInSeconds: Long) : ConnectionState
+
+    /**
+     * The server does not recognise this device's credential — deleted, or
+     * re-enrolled elsewhere. Retrying cannot fix it, so the agent stops rather
+     * than hammering a stream it will never be allowed onto.
      */
     data class Refused(val reason: String) : ConnectionState
 }

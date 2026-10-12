@@ -173,16 +173,24 @@ class ConnectionManager @Inject constructor(
                     return
                 }
             } catch (e: StatusException) {
-                if (e.status.code == Status.Code.PERMISSION_DENIED ||
-                    e.status.code == Status.Code.UNAUTHENTICATED
-                ) {
+                when (e.status.code) {
+                    // Disabled by an operator: the token is fine and the
+                    // device may be re-enabled at any moment, so ask again on
+                    // a slow, fixed cadence instead of giving up.
+                    Status.Code.PERMISSION_DENIED -> {
+                        _state.value = ConnectionState.Disabled(DISABLED_RETRY_MS / 1_000)
+                        Log.i(TAG, "device disabled; asking again in ${DISABLED_RETRY_MS}ms")
+                        delay(DISABLED_RETRY_MS)
+                    }
                     // The credential is not going to become valid by waiting.
-                    _state.value = ConnectionState.Refused(
-                        e.status.description ?: e.status.code.name,
-                    )
-                    return
+                    Status.Code.UNAUTHENTICATED -> {
+                        _state.value = ConnectionState.Refused(
+                            e.status.description ?: e.status.code.name,
+                        )
+                        return
+                    }
+                    else -> scheduleRetry(backoff, e.status.code.name)
                 }
-                scheduleRetry(backoff, e.status.code.name)
             } catch (e: CancellationException) {
                 // Being stopped is not a failure to retry. Without rethrowing,
                 // a normal shutdown logs a lost stream and schedules a
@@ -215,77 +223,90 @@ class ConnectionManager @Inject constructor(
         var lateResultsJob: Job? = null
         try {
             withContext(ioDispatcher) {
-                stub.connect(outgoing.consumeAsFlow()).collect { message ->
-                    when {
-                        message.hasRegisterAck() -> {
-                            val ack = message.registerAck
-                            if (!ack.accepted) {
-                                throw StatusException(
-                                    Status.PERMISSION_DENIED.withDescription(
-                                        ack.reason.ifBlank { "registration refused" },
-                                    ),
-                                )
-                            }
-                            backoff.reset()
-                            if (ack.hasPolicy()) policyStore.save(ack.policy)
-                            // Jobs the server has given up on: drop them
-                            // rather than send a message it may have already
-                            // re-dispatched to another handset.
-                            jobProcessor.dropStale(ack.staleJobIdsList)
-
-                            val interval = ack.heartbeatIntervalSeconds
-                                .takeIf { it > 0 } ?: DEFAULT_HEARTBEAT_S
-                            _state.value = ConnectionState.Connected(interval)
-                            liveOutgoing = outgoing
-                            liveToken = token
-
-                            heartbeatJob?.cancel()
-                            heartbeatJob = launch {
-                                heartbeatLoop(outgoing, token, interval)
-                            }
-
-                            // Delivery reports land minutes later, on their own
-                            // schedule. Draining the channel only once
-                            // registered means anything that arrived while
-                            // disconnected goes out now rather than being lost.
-                            lateResultsJob?.cancel()
-                            lateResultsJob = launch {
-                                for (result in jobProcessor.lateResults) {
-                                    outgoing.send(envelope(token).setJobResult(result).build())
-                                }
-                            }
-                        }
-
-                        message.hasSendSmsJob() -> {
-                            // Each job gets its own coroutine: sending blocks
-                            // on the radio's receipt, and a slow one must not
-                            // stop the stream from reading the next message or
-                            // the heartbeat from going out.
-                            launch { handleJob(message.sendSmsJob, outgoing, token) }
-                        }
-
-                        // New rules: from the dashboard, or the echo of an
-                        // edit made on this phone.
-                        message.hasPolicy() -> policyStore.save(message.policy)
-
-                        message.hasCancelJob() -> {
-                            launch {
-                                jobProcessor.cancel(message.cancelJob.jobId)?.let { result ->
-                                    outgoing.send(
-                                        envelope(token).setJobResult(result).build(),
+                // The heartbeat and late-result loops below are children of
+                // this block, and withContext waits for its children. When the
+                // server ends the stream cleanly — a device disabled from the
+                // dashboard, a server shutdown — collect returns, but those
+                // loops never do: the session hung there for good, silently,
+                // and the agent never reconnected. Stop them as soon as
+                // reading stops, however it stops.
+                try {
+                    stub.connect(outgoing.consumeAsFlow()).collect { message ->
+                        when {
+                            message.hasRegisterAck() -> {
+                                val ack = message.registerAck
+                                if (!ack.accepted) {
+                                    throw StatusException(
+                                        Status.PERMISSION_DENIED.withDescription(
+                                            ack.reason.ifBlank { "registration refused" },
+                                        ),
                                     )
                                 }
+                                backoff.reset()
+                                if (ack.hasPolicy()) policyStore.save(ack.policy)
+                                // Jobs the server has given up on: drop them
+                                // rather than send a message it may have already
+                                // re-dispatched to another handset.
+                                jobProcessor.dropStale(ack.staleJobIdsList)
+
+                                val interval = ack.heartbeatIntervalSeconds
+                                    .takeIf { it > 0 } ?: DEFAULT_HEARTBEAT_S
+                                _state.value = ConnectionState.Connected(interval)
+                                liveOutgoing = outgoing
+                                liveToken = token
+
+                                heartbeatJob?.cancel()
+                                heartbeatJob = launch {
+                                    heartbeatLoop(outgoing, token, interval)
+                                }
+
+                                // Delivery reports land minutes later, on their own
+                                // schedule. Draining the channel only once
+                                // registered means anything that arrived while
+                                // disconnected goes out now rather than being lost.
+                                lateResultsJob?.cancel()
+                                lateResultsJob = launch {
+                                    for (result in jobProcessor.lateResults) {
+                                        outgoing.send(envelope(token).setJobResult(result).build())
+                                    }
+                                }
                             }
+
+                            message.hasSendSmsJob() -> {
+                                // Each job gets its own coroutine: sending blocks
+                                // on the radio's receipt, and a slow one must not
+                                // stop the stream from reading the next message or
+                                // the heartbeat from going out.
+                                launch { handleJob(message.sendSmsJob, outgoing, token) }
+                            }
+
+                            // New rules: from the dashboard, or the echo of an
+                            // edit made on this phone.
+                            message.hasPolicy() -> policyStore.save(message.policy)
+
+                            message.hasCancelJob() -> {
+                                launch {
+                                    jobProcessor.cancel(message.cancelJob.jobId)?.let { result ->
+                                        outgoing.send(
+                                            envelope(token).setJobResult(result).build(),
+                                        )
+                                    }
+                                }
+                            }
+
+                            // Ping is answered by the next heartbeat rather than a
+                            // dedicated reply: the contract says so, and it keeps
+                            // one message type doing liveness.
+                            message.hasPing() -> Log.d(TAG, "ping")
+
+                            else -> Log.d(TAG, "unhandled server message: ${message.payloadCase}")
                         }
-
-                        // Ping is answered by the next heartbeat rather than a
-                        // dedicated reply: the contract says so, and it keeps
-                        // one message type doing liveness.
-                        message.hasPing() -> Log.d(TAG, "ping")
-
-                        else -> Log.d(TAG, "unhandled server message: ${message.payloadCase}")
                     }
+                } finally {
+                    heartbeatJob?.cancel()
+                    lateResultsJob?.cancel()
                 }
+                Log.i(TAG, "stream ended by the server")
             }
         } finally {
             liveOutgoing = null
@@ -374,6 +395,7 @@ class ConnectionManager @Inject constructor(
         const val TAG = "RelaixConnect"
         const val DEFAULT_HEARTBEAT_S = 30
         const val LEAVE_TIMEOUT_MS = 3_000L
+        const val DISABLED_RETRY_MS = 30_000L
         const val SHUTDOWN_TIMEOUT_S = 5L
     }
 }
