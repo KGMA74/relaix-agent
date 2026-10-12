@@ -9,12 +9,10 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.Message
 import androidx.compose.material.icons.filled.ErrorOutline
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.FilterChip
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -32,9 +30,14 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import io.github.kgma74.relaix.jobs.JobRecord
 import io.github.kgma74.relaix.jobs.JobState
 import io.github.kgma74.relaix.ui.components.EmptyState
+import io.github.kgma74.relaix.ui.components.ListCard
+import io.github.kgma74.relaix.ui.components.PageHeader
+import io.github.kgma74.relaix.ui.components.RowDivider
+import io.github.kgma74.relaix.ui.components.SegmentedControl
 import io.github.kgma74.relaix.ui.components.SectionCard
 import io.github.kgma74.relaix.ui.components.StatTile
 import io.github.kgma74.relaix.ui.components.StatusChip
+import io.github.kgma74.relaix.ui.theme.GeistMono
 import io.github.kgma74.relaix.ui.theme.LocalStatusColors
 import io.github.kgma74.relaix.ui.theme.soft
 import java.text.SimpleDateFormat
@@ -69,57 +72,69 @@ fun JobsScreen(
     val jobs by viewModel.recentJobs.collectAsStateWithLifecycle()
     var filter by remember { mutableStateOf(JobFilter.All) }
 
-    if (jobs.isEmpty()) {
-        EmptyState(
-            icon = Icons.AutoMirrored.Filled.Message,
-            title = "Aucun envoi",
-            detail = "Les messages confiés à ce téléphone apparaîtront ici.",
-            modifier = modifier.fillMaxSize(),
-        )
-        return
-    }
-
     val shown = jobs.filter { filter.accepts(it.status) }
     val failed = jobs.count { it.status == JobState.FAILED }
 
-    Column(modifier = modifier.fillMaxSize()) {
-        Summary(total = jobs.size, failed = failed)
+    LazyColumn(
+        modifier = modifier
+            .fillMaxSize()
+            .padding(horizontal = 16.dp),
+        verticalArrangement = Arrangement.spacedBy(12.dp),
+        contentPadding = PaddingValues(vertical = 16.dp),
+    ) {
+        item { PageHeader("Envois", "Les messages que la passerelle a confiés à ce téléphone.") }
+
+        if (jobs.isEmpty()) {
+            item {
+                SectionCard {
+                    EmptyState(
+                        icon = Icons.AutoMirrored.Filled.Message,
+                        title = "Aucun envoi",
+                        detail = "Les messages confiés à ce téléphone apparaîtront ici.",
+                    )
+                }
+            }
+            return@LazyColumn
+        }
+
+        item { Summary(total = jobs.size, failed = failed) }
 
         // Failures are what an operator opens this screen for, so the filter
         // sits above the list rather than behind a menu.
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 16.dp, vertical = 8.dp),
-            horizontalArrangement = Arrangement.spacedBy(8.dp),
-        ) {
-            JobFilter.entries.forEach { option ->
-                FilterChip(
-                    selected = filter == option,
-                    onClick = { filter = option },
-                    label = { Text(option.label) },
-                )
-            }
-        }
-
-        if (shown.isEmpty()) {
-            EmptyState(
-                icon = Icons.AutoMirrored.Filled.Message,
-                title = "Rien ici",
-                detail = "Aucun envoi ne correspond à ce filtre.",
-                modifier = Modifier.fillMaxWidth(),
+        item {
+            SegmentedControl(
+                options = JobFilter.entries.map { it to it.label },
+                selected = filter,
+                onSelect = { filter = it },
             )
-            return
         }
 
-        LazyColumn(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(horizontal = 16.dp),
-            verticalArrangement = Arrangement.spacedBy(8.dp),
-            contentPadding = PaddingValues(bottom = 16.dp),
-        ) {
-            items(shown, key = { it.jobId }) { job -> JobCard(job) }
+        item {
+            ListCard(
+                title = "Derniers messages",
+                trailing = {
+                    Text(
+                        "${shown.size}",
+                        style = MaterialTheme.typography.labelMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    )
+                },
+            ) {
+                if (shown.isEmpty()) {
+                    EmptyState(
+                        icon = Icons.AutoMirrored.Filled.Message,
+                        title = "Rien ici",
+                        detail = "Aucun envoi ne correspond à ce filtre.",
+                    )
+                } else {
+                    Column {
+                        shown.forEachIndexed { i, job ->
+                            if (i > 0) RowDivider()
+                            JobRow(job)
+                        }
+                    }
+                }
+            }
         }
     }
 }
@@ -131,16 +146,12 @@ fun JobsScreen(
 @Composable
 private fun Summary(total: Int, failed: Int) {
     val status = LocalStatusColors.current
-    Row(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(start = 16.dp, end = 16.dp, top = 16.dp, bottom = 4.dp),
-        horizontalArrangement = Arrangement.spacedBy(12.dp),
-    ) {
+    Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
         StatTile(
             label = "Envois récents",
             value = "$total",
             icon = Icons.AutoMirrored.Filled.Message,
+            hint = "les 50 derniers",
             modifier = Modifier.weight(1f),
         )
         StatTile(
@@ -154,13 +165,13 @@ private fun Summary(total: Int, failed: Int) {
 }
 
 @Composable
-private fun JobCard(job: JobRecord) {
+private fun JobRow(job: JobRecord) {
     val status = LocalStatusColors.current
     val colour = colourFor(job.status, status.ok, status.waiting, status.bad)
 
-    SectionCard {
+    run {
         Column(
-            modifier = Modifier.padding(14.dp),
+            modifier = Modifier.padding(horizontal = 16.dp, vertical = 12.dp),
             verticalArrangement = Arrangement.spacedBy(6.dp),
         ) {
             Row(
@@ -171,7 +182,7 @@ private fun JobCard(job: JobRecord) {
                 Text(
                     job.recipient,
                     style = MaterialTheme.typography.titleSmall,
-                    fontFamily = FontFamily.Monospace,
+                    fontFamily = GeistMono,
                 )
                 StatusChip(labelFor(job.status), colour)
             }
@@ -213,7 +224,7 @@ private fun JobCard(job: JobRecord) {
                             job.errorCode,
                             style = MaterialTheme.typography.labelMedium,
                             color = status.bad,
-                            fontFamily = FontFamily.Monospace,
+                            fontFamily = GeistMono,
                         )
                     }
                     if (job.errorMessage.isNotBlank()) {

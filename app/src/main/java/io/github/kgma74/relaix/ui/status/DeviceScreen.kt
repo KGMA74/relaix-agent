@@ -41,9 +41,12 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import io.github.kgma74.relaix.ui.components.ListCard
+import io.github.kgma74.relaix.ui.components.PageHeader
 import io.github.kgma74.relaix.ui.components.RowDivider
 import io.github.kgma74.relaix.ui.components.SectionCard
 import io.github.kgma74.relaix.ui.components.SectionLabel
+import io.github.kgma74.relaix.ui.theme.GeistMono
 import io.github.kgma74.relaix.ui.theme.LocalStatusColors
 import io.github.kgma74.relaix.ui.theme.soft
 
@@ -70,6 +73,7 @@ fun DeviceScreen(
         verticalArrangement = Arrangement.spacedBy(12.dp),
         contentPadding = PaddingValues(vertical = 16.dp),
     ) {
+        item { PageHeader("Appareil", "L'identité de ce téléphone dans la flotte.") }
         item {
             SectionCard {
                 Row(
@@ -104,9 +108,8 @@ fun DeviceScreen(
             }
         }
 
-        item { SectionLabel("Identité") }
         item {
-            SectionCard {
+            ListCard(title = "Identité") {
                 Column {
                     // The device id is what an operator passes as deviceId on
                     // POST /send, so copying it is the action, not reading it.
@@ -214,7 +217,7 @@ private fun DetailRow(
             Text(
                 value,
                 style = MaterialTheme.typography.bodyMedium,
-                fontFamily = if (monospace) FontFamily.Monospace else FontFamily.Default,
+                fontFamily = if (monospace) GeistMono else FontFamily.Default,
             )
         }
         if (onCopy != null) {

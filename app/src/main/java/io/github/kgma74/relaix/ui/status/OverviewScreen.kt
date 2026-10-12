@@ -44,6 +44,8 @@ import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import io.github.kgma74.relaix.config.ServerEndpoint
 import io.github.kgma74.relaix.connect.ConnectionState
+import io.github.kgma74.relaix.ui.components.ListCard
+import io.github.kgma74.relaix.ui.components.PageHeader
 import io.github.kgma74.relaix.ui.components.RowDivider
 import io.github.kgma74.relaix.ui.components.SectionCard
 import io.github.kgma74.relaix.ui.components.SectionLabel
@@ -51,6 +53,7 @@ import io.github.kgma74.relaix.ui.components.SignalBars
 import io.github.kgma74.relaix.ui.components.StatTile
 import io.github.kgma74.relaix.ui.components.StatusChip
 import io.github.kgma74.relaix.ui.components.StatusDot
+import io.github.kgma74.relaix.ui.theme.GeistMono
 import io.github.kgma74.relaix.ui.theme.LocalStatusColors
 import io.github.kgma74.relaix.ui.theme.soft
 import smsgateway.v1.Device
@@ -149,9 +152,8 @@ fun OverviewScreen(
         verticalArrangement = Arrangement.spacedBy(12.dp),
         contentPadding = PaddingValues(vertical = 16.dp),
     ) {
+        item { PageHeader("État", "Ce que la passerelle voit de ce téléphone, à l'instant.") }
         item { ConnectionHero(connection, endpoint, ready) }
-
-        item { SectionLabel("Prêt à envoyer") }
         item { Checklist(checks) }
 
         if (h != null) {
@@ -187,9 +189,10 @@ fun OverviewScreen(
             item {
                 Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                     StatTile(
-                        label = "Parts envoyées · 1 h",
+                        label = "Parts envoyées",
                         value = "${h.sentLastHour}",
                         icon = Icons.Default.Sms,
+                        hint = "sur la dernière heure",
                         modifier = Modifier.weight(1f),
                     )
                     StatTile(
@@ -207,7 +210,6 @@ fun OverviewScreen(
             }
 
             if (sims.isNotEmpty()) {
-                item { SectionLabel("Cartes SIM") }
                 item { SimList(sims, h.simsList) }
             }
         }
@@ -292,7 +294,7 @@ private fun ConnectionHero(state: ConnectionState, endpoint: ServerEndpoint?, re
                     Text(
                         "${endpoint.host}:${endpoint.port}",
                         style = MaterialTheme.typography.bodySmall,
-                        fontFamily = FontFamily.Monospace,
+                        fontFamily = GeistMono,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                     )
                 }
@@ -304,7 +306,16 @@ private fun ConnectionHero(state: ConnectionState, endpoint: ServerEndpoint?, re
 @Composable
 private fun Checklist(checks: List<Check>) {
     val status = LocalStatusColors.current
-    SectionCard {
+    val done = checks.count { it.ok }
+    ListCard(
+        title = "Prêt à envoyer",
+        trailing = {
+            StatusChip(
+                "$done / ${checks.size}",
+                if (done == checks.size) status.ok else status.waiting,
+            )
+        },
+    ) {
         Column {
             checks.forEachIndexed { index, check ->
                 if (index > 0) RowDivider(Modifier.padding(start = 56.dp))
@@ -347,7 +358,7 @@ private fun Checklist(checks: List<Check>) {
 @Composable
 private fun SimList(sims: List<Device.SimInfo>, health: List<Device.SimHealth>) {
     val status = LocalStatusColors.current
-    SectionCard {
+    ListCard(title = if (sims.size > 1) "Cartes SIM" else "Carte SIM") {
         Column {
             sims.sortedBy { it.slotIndex }.forEachIndexed { index, sim ->
                 val h = health.firstOrNull { it.subscriptionId == sim.subscriptionId }

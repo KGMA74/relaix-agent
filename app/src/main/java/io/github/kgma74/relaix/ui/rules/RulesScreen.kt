@@ -59,9 +59,11 @@ import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import io.github.kgma74.relaix.connect.ConnectionState
 import io.github.kgma74.relaix.policy.CALLING_CODES
+import io.github.kgma74.relaix.ui.components.PageHeader
 import io.github.kgma74.relaix.ui.components.SectionCard
 import io.github.kgma74.relaix.ui.components.SectionLabel
 import io.github.kgma74.relaix.ui.components.StatusChip
+import io.github.kgma74.relaix.ui.theme.GeistMono
 import io.github.kgma74.relaix.ui.theme.LocalStatusColors
 import io.github.kgma74.relaix.ui.theme.soft
 import java.util.Locale
@@ -102,6 +104,7 @@ fun RulesScreen(
             verticalArrangement = Arrangement.spacedBy(12.dp),
             contentPadding = PaddingValues(vertical = 16.dp),
         ) {
+            item { PageHeader("Règles d'envoi", "Quand ce téléphone reçoit des messages, et lesquels.") }
             item {
                 Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     StatusChip(
@@ -334,7 +337,7 @@ private fun TimeChip(text: String, onClick: () -> Unit) {
             text,
             modifier = Modifier.padding(horizontal = 14.dp, vertical = 8.dp),
             style = MaterialTheme.typography.titleSmall,
-            fontFamily = FontFamily.Monospace,
+            fontFamily = GeistMono,
         )
     }
 }
@@ -377,7 +380,7 @@ private fun AcceptCard(value: AcceptDraft, onChange: (AcceptDraft) -> Unit) {
                 isError = error != null,
                 supportingText = { Text(error ?: "Vide : tout numéro.") },
                 singleLine = true,
-                textStyle = MaterialTheme.typography.bodyMedium.copy(fontFamily = FontFamily.Monospace),
+                textStyle = MaterialTheme.typography.bodyMedium.copy(fontFamily = GeistMono),
                 modifier = Modifier.fillMaxWidth(),
             )
 
@@ -458,7 +461,7 @@ private fun CountryPicker(exclude: List<String>, onPick: (String) -> Unit, onDis
                                 Text(
                                     "+" + CALLING_CODES[code].orEmpty().joinToString(", +"),
                                     style = MaterialTheme.typography.labelMedium,
-                                    fontFamily = FontFamily.Monospace,
+                                    fontFamily = GeistMono,
                                 )
                             }
                         }

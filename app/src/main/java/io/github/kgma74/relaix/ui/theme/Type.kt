@@ -2,92 +2,118 @@ package io.github.kgma74.relaix.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
+import io.github.kgma74.relaix.R
 
 /**
- * Typography for an instrument panel rather than a reading app.
+ * Geist, bundled — the typeface of the web dashboard, so the phone and the
+ * console read as one product. Bundled rather than left to the system: on a
+ * phone set to a decorative system font (Samsung ships a handwritten one) an
+ * instrument panel stops looking like one.
+ */
+val Geist = FontFamily(
+    Font(R.font.geist_regular, FontWeight.Normal),
+    Font(R.font.geist_medium, FontWeight.Medium),
+    Font(R.font.geist_semibold, FontWeight.SemiBold),
+    Font(R.font.geist_bold, FontWeight.Bold),
+)
+
+/** For identifiers, numbers and patterns: digits line up and 0/O stay apart. */
+val GeistMono = FontFamily(
+    Font(R.font.geist_mono_regular, FontWeight.Normal),
+    Font(R.font.geist_mono_medium, FontWeight.Medium),
+)
+
+/**
+ * Typography for an instrument panel rather than a reading app, on the
+ * dashboard's scale.
  *
- * Two deliberate choices run through it. Values are heavier than their labels,
- * because the number is what someone is looking for and the label only says
- * which number it is. And labels carry wide letter spacing at small sizes: at
- * 10-11sp, tracking is what keeps an uppercase caption legible instead of a
- * grey smear.
+ * Values are heavier than their labels, because the number is what someone is
+ * looking for and the label only says which number it is. Small uppercase
+ * captions carry wide tracking, which is what keeps them legible.
  */
 val Typography = Typography(
     headlineMedium = TextStyle(
-        fontFamily = FontFamily.Default,
+        fontFamily = Geist,
         fontWeight = FontWeight.SemiBold,
-        fontSize = 28.sp,
-        lineHeight = 34.sp,
-        letterSpacing = (-0.4).sp,
+        fontSize = 26.sp,
+        lineHeight = 32.sp,
+        letterSpacing = (-0.5).sp,
     ),
-    // The connection headline. Slightly tightened, as display sizes always
-    // need: default tracking looks loose once the size goes up.
+    // Page titles and the connection headline.
     headlineSmall = TextStyle(
-        fontFamily = FontFamily.Default,
+        fontFamily = Geist,
         fontWeight = FontWeight.SemiBold,
         fontSize = 22.sp,
         lineHeight = 28.sp,
-        letterSpacing = (-0.2).sp,
+        letterSpacing = (-0.4).sp,
     ),
     // Stat values: the number someone is looking for.
     titleLarge = TextStyle(
-        fontFamily = FontFamily.Default,
+        fontFamily = Geist,
         fontWeight = FontWeight.SemiBold,
-        fontSize = 20.sp,
-        lineHeight = 26.sp,
-        letterSpacing = (-0.2).sp,
+        fontSize = 22.sp,
+        lineHeight = 28.sp,
+        letterSpacing = (-0.4).sp,
     ),
     titleMedium = TextStyle(
-        fontFamily = FontFamily.Default,
+        fontFamily = Geist,
         fontWeight = FontWeight.SemiBold,
-        fontSize = 17.sp,
+        fontSize = 16.sp,
+        lineHeight = 22.sp,
+        letterSpacing = (-0.1).sp,
+    ),
+    titleSmall = TextStyle(
+        fontFamily = Geist,
+        fontWeight = FontWeight.Medium,
+        fontSize = 14.sp,
+        lineHeight = 20.sp,
+        letterSpacing = 0.sp,
+    ),
+    bodyLarge = TextStyle(
+        fontFamily = Geist,
+        fontWeight = FontWeight.Normal,
+        fontSize = 15.sp,
         lineHeight = 22.sp,
         letterSpacing = 0.sp,
     ),
-    titleSmall = TextStyle(
-        fontFamily = FontFamily.Default,
+    bodyMedium = TextStyle(
+        fontFamily = Geist,
+        fontWeight = FontWeight.Normal,
+        fontSize = 14.sp,
+        lineHeight = 20.sp,
+        letterSpacing = 0.sp,
+    ),
+    bodySmall = TextStyle(
+        fontFamily = Geist,
+        fontWeight = FontWeight.Normal,
+        fontSize = 12.5.sp,
+        lineHeight = 17.sp,
+        letterSpacing = 0.sp,
+    ),
+    labelLarge = TextStyle(
+        fontFamily = Geist,
         fontWeight = FontWeight.Medium,
         fontSize = 14.sp,
         lineHeight = 20.sp,
-        letterSpacing = 0.1.sp,
-    ),
-    bodyLarge = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.Normal,
-        fontSize = 16.sp,
-        lineHeight = 24.sp,
-        letterSpacing = 0.15.sp,
-    ),
-    bodyMedium = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.Normal,
-        fontSize = 14.sp,
-        lineHeight = 20.sp,
-        letterSpacing = 0.15.sp,
-    ),
-    bodySmall = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.Normal,
-        fontSize = 12.sp,
-        lineHeight = 17.sp,
-        letterSpacing = 0.2.sp,
+        letterSpacing = 0.sp,
     ),
     labelMedium = TextStyle(
-        fontFamily = FontFamily.Default,
+        fontFamily = Geist,
         fontWeight = FontWeight.Medium,
         fontSize = 12.sp,
         lineHeight = 16.sp,
-        letterSpacing = 0.5.sp,
+        letterSpacing = 0.1.sp,
     ),
-    // Uppercase captions on the stat tiles and status chips live here.
+    // Uppercase section captions, as on the dashboard's table headers.
     labelSmall = TextStyle(
-        fontFamily = FontFamily.Default,
+        fontFamily = Geist,
         fontWeight = FontWeight.Medium,
         fontSize = 11.sp,
         lineHeight = 14.sp,
-        letterSpacing = 0.9.sp,
+        letterSpacing = 0.8.sp,
     ),
 )

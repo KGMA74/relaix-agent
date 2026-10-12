@@ -9,6 +9,8 @@ import androidx.compose.animation.core.tween
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -120,7 +122,7 @@ fun SectionCard(
 ) {
     Surface(
         modifier = modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(16.dp),
+        shape = RoundedCornerShape(12.dp),
         color = color,
         border = BorderStroke(1.dp, borderColor),
     ) {
@@ -140,7 +142,9 @@ fun SectionLabel(text: String, modifier: Modifier = Modifier) {
 }
 
 /**
- * One measurement: a label, a value, and an icon in a tinted tile.
+ * One measurement, laid out like the dashboard's KPI tiles: the label on top
+ * with a quiet icon at its right, the value large below it, an optional hint
+ * under that.
  *
  * The value is the loud element and the label the quiet one — reversing that
  * is the usual way a dashboard becomes unreadable at arm's length.
@@ -151,36 +155,127 @@ fun StatTile(
     value: String,
     modifier: Modifier = Modifier,
     icon: ImageVector? = null,
-    accent: Color = MaterialTheme.colorScheme.primary,
+    accent: Color = MaterialTheme.colorScheme.onSurface,
+    hint: String? = null,
     supporting: (@Composable () -> Unit)? = null,
 ) {
     SectionCard(modifier = modifier) {
         Column(
             modifier = Modifier.padding(14.dp),
-            verticalArrangement = Arrangement.spacedBy(10.dp),
+            verticalArrangement = Arrangement.spacedBy(6.dp),
         ) {
-            if (icon != null) {
-                Box(
-                    modifier = Modifier
-                        .size(32.dp)
-                        .background(soft(accent), RoundedCornerShape(9.dp)),
-                    contentAlignment = Alignment.Center,
-                ) {
-                    Icon(icon, contentDescription = null, tint = accent, modifier = Modifier.size(18.dp))
-                }
-            }
-            Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.spacedBy(8.dp),
-                ) {
-                    Text(value, style = MaterialTheme.typography.titleLarge)
-                    supporting?.invoke()
-                }
+            Row(verticalAlignment = Alignment.CenterVertically) {
                 Text(
                     label,
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    modifier = Modifier.weight(1f),
+                    maxLines = 1,
+                )
+                if (icon != null) {
+                    Icon(
+                        icon,
+                        contentDescription = null,
+                        tint = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.7f),
+                        modifier = Modifier.size(16.dp),
+                    )
+                }
+            }
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
+            ) {
+                Text(value, style = MaterialTheme.typography.titleLarge, color = accent)
+                supporting?.invoke()
+            }
+            if (hint != null) {
+                Text(
+                    hint,
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    maxLines = 1,
+                )
+            }
+        }
+    }
+}
+
+/** A page's title and what it is for — the dashboard's PageHeader. */
+@Composable
+fun PageHeader(title: String, subtitle: String? = null, modifier: Modifier = Modifier) {
+    Column(modifier = modifier.padding(top = 4.dp, bottom = 4.dp), verticalArrangement = Arrangement.spacedBy(2.dp)) {
+        Text(title, style = MaterialTheme.typography.headlineSmall)
+        if (subtitle != null) {
+            Text(
+                subtitle,
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+        }
+    }
+}
+
+/**
+ * A card holding a list, as on the dashboard: a header row with a title and
+ * an optional trailing element, then rows separated by hairlines.
+ */
+@Composable
+fun ListCard(
+    title: String,
+    modifier: Modifier = Modifier,
+    trailing: (@Composable () -> Unit)? = null,
+    content: @Composable () -> Unit,
+) {
+    SectionCard(modifier = modifier) {
+        Column {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp, vertical = 12.dp),
+                verticalAlignment = Alignment.CenterVertically,
+            ) {
+                Text(title, style = MaterialTheme.typography.titleSmall, modifier = Modifier.weight(1f))
+                trailing?.invoke()
+            }
+            RowDivider()
+            content()
+        }
+    }
+}
+
+/**
+ * A row of mutually exclusive options in one bordered pill — the dashboard's
+ * period switch. For filters: every option visible, one tap away.
+ */
+@Composable
+fun <T> SegmentedControl(
+    options: List<Pair<T, String>>,
+    selected: T,
+    onSelect: (T) -> Unit,
+    modifier: Modifier = Modifier,
+) {
+    Row(
+        modifier = modifier
+            .border(1.dp, MaterialTheme.colorScheme.outline, RoundedCornerShape(10.dp))
+            .background(MaterialTheme.colorScheme.surface, RoundedCornerShape(10.dp))
+            .padding(3.dp),
+        horizontalArrangement = Arrangement.spacedBy(2.dp),
+    ) {
+        options.forEach { (value, label) ->
+            val on = value == selected
+            Box(
+                modifier = Modifier
+                    .background(
+                        if (on) MaterialTheme.colorScheme.primary else Color.Transparent,
+                        RoundedCornerShape(7.dp),
+                    )
+                    .clickable { onSelect(value) }
+                    .padding(horizontal = 14.dp, vertical = 6.dp),
+            ) {
+                Text(
+                    label,
+                    style = MaterialTheme.typography.labelLarge,
+                    color = if (on) MaterialTheme.colorScheme.onPrimary else MaterialTheme.colorScheme.onSurfaceVariant,
                 )
             }
         }
