@@ -25,13 +25,30 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            // R8 and resource shrinking. Unshrunk, the release APK carried
+            // every Material icon, all of protobuf-java and gRPC: ~56 MB for an
+            // app whose own code is a few hundred KB. Keep rules for what is
+            // reached by reflection are in proguard-rules.pro.
+            isMinifyEnabled = true
+            isShrinkResources = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
         }
     }
+    // One APK per CPU architecture: ML Kit's barcode model ships native
+    // libraries for each, and a phone only ever runs one. The universal APK is
+    // kept for sideloading when the architecture is not known in advance.
+    splits {
+        abi {
+            isEnable = true
+            reset()
+            include("arm64-v8a", "armeabi-v7a", "x86_64")
+            isUniversalApk = true
+        }
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
