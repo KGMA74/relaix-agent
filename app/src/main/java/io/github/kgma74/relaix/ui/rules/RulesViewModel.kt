@@ -25,6 +25,12 @@ import javax.inject.Inject
 /** A daily slot being edited. Minutes since midnight; end exclusive. */
 data class WindowDraft(val days: Set<Int>, val start: Int, val end: Int)
 
+/** Send caps; 0 is no cap. */
+data class LimitsDraft(val perHour: Int = 0, val perDay: Int = 0) {
+    /** A daily cap below the hourly one can never be reached as written. */
+    val inverted: Boolean get() = perHour > 0 && perDay > 0 && perDay < perHour
+}
+
 data class AcceptDraft(val countries: List<String> = emptyList(), val pattern: String = "")
 
 data class SimDraft(
@@ -33,6 +39,7 @@ data class SimDraft(
     val accept: AcceptDraft = AcceptDraft(),
     val windows: List<WindowDraft> = emptyList(),
     val timeZone: String = "",
+    val limits: LimitsDraft = LimitsDraft(),
 )
 
 data class PolicyDraft(
@@ -40,6 +47,7 @@ data class PolicyDraft(
     val windows: List<WindowDraft> = emptyList(),
     val accept: AcceptDraft = AcceptDraft(),
     val sims: Map<Int, SimDraft> = emptyMap(),
+    val limits: LimitsDraft = LimitsDraft(),
 )
 
 sealed interface SaveState {
@@ -171,6 +179,7 @@ private fun Device.DevicePolicy.toDraft() = PolicyDraft(
     timeZone = availability.timeZone,
     windows = availability.windowsList.map { it.toDraft() },
     accept = accept.toDraft(),
+    limits = LimitsDraft(limits.perHour, limits.perDay),
     sims = simsList.associate { s ->
         s.subscriptionId to SimDraft(
             subscriptionId = s.subscriptionId,
@@ -178,6 +187,7 @@ private fun Device.DevicePolicy.toDraft() = PolicyDraft(
             accept = s.accept.toDraft(),
             windows = s.availability.windowsList.map { it.toDraft() },
             timeZone = s.availability.timeZone,
+            limits = LimitsDraft(s.limits.perHour, s.limits.perDay),
         )
     },
 )
@@ -189,10 +199,14 @@ private fun Device.AcceptRules.toDraft() = AcceptDraft(countriesList, recipientP
 private fun PolicyDraft.toProto(): Device.DevicePolicy = Device.DevicePolicy.newBuilder()
     .setAvailability(availability(timeZone, windows))
     .setAccept(accept.toProto())
+    .setLimits(limits.toProto())
     .addAllSims(
         sims.values
             // A SIM entry that restricts nothing is not worth sending.
-            .filter { it.disabled || it.accept.countries.isNotEmpty() || it.accept.pattern.isNotBlank() || it.windows.isNotEmpty() }
+            .filter {
+                it.disabled || it.accept.countries.isNotEmpty() || it.accept.pattern.isNotBlank() ||
+                    it.windows.isNotEmpty() || it.limits.perHour > 0 || it.limits.perDay > 0
+            }
             .sortedBy { it.subscriptionId }
             .map { s ->
                 Device.SimPolicy.newBuilder()
@@ -200,6 +214,7 @@ private fun PolicyDraft.toProto(): Device.DevicePolicy = Device.DevicePolicy.new
                     .setDisabled(s.disabled)
                     .setAccept(s.accept.toProto())
                     .setAvailability(availability(s.timeZone, s.windows))
+                    .setLimits(s.limits.toProto())
                     .build()
             },
     )
@@ -222,4 +237,9 @@ private fun availability(zone: String, windows: List<WindowDraft>) = Device.Avai
 private fun AcceptDraft.toProto() = Device.AcceptRules.newBuilder()
     .addAllCountries(countries)
     .setRecipientPattern(pattern.trim())
+    .build()
+
+private fun LimitsDraft.toProto() = Device.SendLimits.newBuilder()
+    .setPerHour(perHour)
+    .setPerDay(perDay)
     .build()

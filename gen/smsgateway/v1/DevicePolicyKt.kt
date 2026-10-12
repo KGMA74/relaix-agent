@@ -246,6 +246,45 @@ public object DevicePolicyKt {
 
     public val DevicePolicyKt.Dsl.updatedAtOrNull: com.google.protobuf.Timestamp?
       get() = _builder.updatedAtOrNull
+
+    /**
+     * ```
+     * How much the device may send, all SIMs together.
+     * ```
+     *
+     * `.smsgateway.v1.SendLimits limits = 6 [json_name = "limits"];`
+     */
+    public var limits: smsgateway.v1.Device.SendLimits
+      @kotlin.jvm.JvmName("getLimits")
+        get() = _builder.limits
+      @kotlin.jvm.JvmName("setLimits")
+        set(value) {
+        _builder.limits = value
+      }
+    /**
+     * ```
+     * How much the device may send, all SIMs together.
+     * ```
+     *
+     * `.smsgateway.v1.SendLimits limits = 6 [json_name = "limits"];`
+     */
+    public fun clearLimits() {
+      _builder.clearLimits()
+    }
+    /**
+     * ```
+     * How much the device may send, all SIMs together.
+     * ```
+     *
+     * `.smsgateway.v1.SendLimits limits = 6 [json_name = "limits"];`
+     * @return Whether the limits field is set.
+     */
+    public fun hasLimits(): kotlin.Boolean {
+      return _builder.hasLimits()
+    }
+
+    public val DevicePolicyKt.Dsl.limitsOrNull: smsgateway.v1.Device.SendLimits?
+      get() = _builder.limitsOrNull
   }
 }
 @kotlin.jvm.JvmSynthetic
@@ -260,4 +299,7 @@ public val smsgateway.v1.Device.DevicePolicyOrBuilder.acceptOrNull: smsgateway.v
 
 public val smsgateway.v1.Device.DevicePolicyOrBuilder.updatedAtOrNull: com.google.protobuf.Timestamp?
   get() = if (hasUpdatedAt()) getUpdatedAt() else null
+
+public val smsgateway.v1.Device.DevicePolicyOrBuilder.limitsOrNull: smsgateway.v1.Device.SendLimits?
+  get() = if (hasLimits()) getLimits() else null
 

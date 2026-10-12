@@ -26,6 +26,7 @@ import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Public
 import androidx.compose.material.icons.filled.Schedule
+import androidx.compose.material.icons.filled.Speed
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.SimCard
 import androidx.compose.material3.AlertDialog
@@ -50,7 +51,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -88,8 +91,8 @@ fun RulesScreen(
     val status = LocalStatusColors.current
     val connected = connection is ConnectionState.Connected
 
-    val invalid = patternError(draft.accept.pattern) != null ||
-        draft.sims.values.any { patternError(it.accept.pattern) != null }
+    val invalid = patternError(draft.accept.pattern) != null || draft.limits.inverted ||
+        draft.sims.values.any { patternError(it.accept.pattern) != null || it.limits.inverted }
 
     Column(modifier = modifier.fillMaxSize()) {
         LazyColumn(
@@ -126,6 +129,13 @@ fun RulesScreen(
                 AcceptCard(
                     value = draft.accept,
                     onChange = { a -> viewModel.edit { it.copy(accept = a) } },
+                )
+            }
+            item {
+                LimitsCard(
+                    value = draft.limits,
+                    onChange = { l -> viewModel.edit { it.copy(limits = l) } },
+                    detail = "Toutes SIM confondues. Au plafond, plus d'envoi jusqu'à ce que la fenêtre glisse.",
                 )
             }
 
@@ -167,6 +177,11 @@ fun RulesScreen(
                         AcceptCard(
                             value = sd.accept,
                             onChange = { a -> viewModel.editSim(sim.subscriptionId) { it.copy(accept = a) } },
+                        )
+                        LimitsCard(
+                            value = sd.limits,
+                            onChange = { l -> viewModel.editSim(sim.subscriptionId) { it.copy(limits = l) } },
+                            detail = "Plafond de cette SIM : au-delà, l'autre SIM prend le relais si ses règles le permettent.",
                         )
                     }
                 }
@@ -452,5 +467,38 @@ private fun CountryPicker(exclude: List<String>, onPick: (String) -> Unit, onDis
             }
         },
         confirmButton = { TextButton(onClick = onDismiss) { Text("Fermer") } },
+    )
+}
+
+@Composable
+private fun LimitsCard(value: LimitsDraft, onChange: (LimitsDraft) -> Unit, detail: String) {
+    SectionCard {
+        Column(Modifier.padding(16.dp), verticalArrangement = Arrangement.spacedBy(12.dp)) {
+            CardHeader(Icons.Default.Speed, "Plafonds d'envoi", detail)
+            Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                CapField("Par heure", value.perHour, Modifier.weight(1f)) { onChange(value.copy(perHour = it)) }
+                CapField("Par jour (24 h)", value.perDay, Modifier.weight(1f)) { onChange(value.copy(perDay = it)) }
+            }
+            if (value.inverted) {
+                Text(
+                    "Le plafond par jour ne peut pas être sous le plafond par heure.",
+                    style = MaterialTheme.typography.bodySmall,
+                    color = LocalStatusColors.current.bad,
+                )
+            }
+        }
+    }
+}
+
+@Composable
+private fun CapField(label: String, value: Int, modifier: Modifier, onChange: (Int) -> Unit) {
+    OutlinedTextField(
+        value = if (value == 0) "" else value.toString(),
+        onValueChange = { text -> onChange(text.filter(Char::isDigit).take(7).toIntOrNull() ?: 0) },
+        label = { Text(label) },
+        placeholder = { Text("Illimité") },
+        singleLine = true,
+        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+        modifier = modifier,
     )
 }

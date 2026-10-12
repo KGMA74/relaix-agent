@@ -148,6 +148,45 @@ public object SimPolicyKt {
 
     public val SimPolicyKt.Dsl.availabilityOrNull: smsgateway.v1.Device.Availability?
       get() = _builder.availabilityOrNull
+
+    /**
+     * ```
+     * Caps for this SIM alone, on top of the device's.
+     * ```
+     *
+     * `.smsgateway.v1.SendLimits limits = 5 [json_name = "limits"];`
+     */
+    public var limits: smsgateway.v1.Device.SendLimits
+      @kotlin.jvm.JvmName("getLimits")
+        get() = _builder.limits
+      @kotlin.jvm.JvmName("setLimits")
+        set(value) {
+        _builder.limits = value
+      }
+    /**
+     * ```
+     * Caps for this SIM alone, on top of the device's.
+     * ```
+     *
+     * `.smsgateway.v1.SendLimits limits = 5 [json_name = "limits"];`
+     */
+    public fun clearLimits() {
+      _builder.clearLimits()
+    }
+    /**
+     * ```
+     * Caps for this SIM alone, on top of the device's.
+     * ```
+     *
+     * `.smsgateway.v1.SendLimits limits = 5 [json_name = "limits"];`
+     * @return Whether the limits field is set.
+     */
+    public fun hasLimits(): kotlin.Boolean {
+      return _builder.hasLimits()
+    }
+
+    public val SimPolicyKt.Dsl.limitsOrNull: smsgateway.v1.Device.SendLimits?
+      get() = _builder.limitsOrNull
   }
 }
 @kotlin.jvm.JvmSynthetic
@@ -159,4 +198,7 @@ public val smsgateway.v1.Device.SimPolicyOrBuilder.acceptOrNull: smsgateway.v1.D
 
 public val smsgateway.v1.Device.SimPolicyOrBuilder.availabilityOrNull: smsgateway.v1.Device.Availability?
   get() = if (hasAvailability()) getAvailability() else null
+
+public val smsgateway.v1.Device.SimPolicyOrBuilder.limitsOrNull: smsgateway.v1.Device.SendLimits?
+  get() = if (hasLimits()) getLimits() else null
 

@@ -12113,6 +12113,33 @@ public final class Device extends com.google.protobuf.GeneratedFile {
      * <code>.google.protobuf.Timestamp updated_at = 5 [json_name = "updatedAt"];</code>
      */
     com.google.protobuf.TimestampOrBuilder getUpdatedAtOrBuilder();
+
+    /**
+     * <pre>
+     * How much the device may send, all SIMs together.
+     * </pre>
+     *
+     * <code>.smsgateway.v1.SendLimits limits = 6 [json_name = "limits"];</code>
+     * @return Whether the limits field is set.
+     */
+    boolean hasLimits();
+    /**
+     * <pre>
+     * How much the device may send, all SIMs together.
+     * </pre>
+     *
+     * <code>.smsgateway.v1.SendLimits limits = 6 [json_name = "limits"];</code>
+     * @return The limits.
+     */
+    smsgateway.v1.Device.SendLimits getLimits();
+    /**
+     * <pre>
+     * How much the device may send, all SIMs together.
+     * </pre>
+     *
+     * <code>.smsgateway.v1.SendLimits limits = 6 [json_name = "limits"];</code>
+     */
+    smsgateway.v1.Device.SendLimitsOrBuilder getLimitsOrBuilder();
   }
   /**
    * <pre>
@@ -12324,6 +12351,44 @@ public final class Device extends com.google.protobuf.GeneratedFile {
       return updatedAt_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : updatedAt_;
     }
 
+    public static final int LIMITS_FIELD_NUMBER = 6;
+    private smsgateway.v1.Device.SendLimits limits_;
+    /**
+     * <pre>
+     * How much the device may send, all SIMs together.
+     * </pre>
+     *
+     * <code>.smsgateway.v1.SendLimits limits = 6 [json_name = "limits"];</code>
+     * @return Whether the limits field is set.
+     */
+    @java.lang.Override
+    public boolean hasLimits() {
+      return ((bitField0_ & 0x00000008) != 0);
+    }
+    /**
+     * <pre>
+     * How much the device may send, all SIMs together.
+     * </pre>
+     *
+     * <code>.smsgateway.v1.SendLimits limits = 6 [json_name = "limits"];</code>
+     * @return The limits.
+     */
+    @java.lang.Override
+    public smsgateway.v1.Device.SendLimits getLimits() {
+      return limits_ == null ? smsgateway.v1.Device.SendLimits.getDefaultInstance() : limits_;
+    }
+    /**
+     * <pre>
+     * How much the device may send, all SIMs together.
+     * </pre>
+     *
+     * <code>.smsgateway.v1.SendLimits limits = 6 [json_name = "limits"];</code>
+     */
+    @java.lang.Override
+    public smsgateway.v1.Device.SendLimitsOrBuilder getLimitsOrBuilder() {
+      return limits_ == null ? smsgateway.v1.Device.SendLimits.getDefaultInstance() : limits_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -12353,6 +12418,9 @@ public final class Device extends com.google.protobuf.GeneratedFile {
       if (((bitField0_ & 0x00000004) != 0)) {
         output.writeMessage(5, getUpdatedAt());
       }
+      if (((bitField0_ & 0x00000008) != 0)) {
+        output.writeMessage(6, getLimits());
+      }
       getUnknownFields().writeTo(output);
     }
     private int computeSerializedSize_0() {
@@ -12381,6 +12449,10 @@ public final class Device extends com.google.protobuf.GeneratedFile {
       if (((bitField0_ & 0x00000004) != 0)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(5, getUpdatedAt());
+      }
+      if (((bitField0_ & 0x00000008) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(6, getLimits());
       }
       return size;
     }
@@ -12425,6 +12497,11 @@ public final class Device extends com.google.protobuf.GeneratedFile {
         if (!getUpdatedAt()
             .equals(other.getUpdatedAt())) return false;
       }
+      if (hasLimits() != other.hasLimits()) return false;
+      if (hasLimits()) {
+        if (!getLimits()
+            .equals(other.getLimits())) return false;
+      }
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -12454,6 +12531,10 @@ public final class Device extends com.google.protobuf.GeneratedFile {
       if (hasUpdatedAt()) {
         hash = (37 * hash) + UPDATED_AT_FIELD_NUMBER;
         hash = (53 * hash) + getUpdatedAt().hashCode();
+      }
+      if (hasLimits()) {
+        hash = (37 * hash) + LIMITS_FIELD_NUMBER;
+        hash = (53 * hash) + getLimits().hashCode();
       }
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
@@ -12600,6 +12681,7 @@ public final class Device extends com.google.protobuf.GeneratedFile {
           internalGetAcceptFieldBuilder();
           internalGetSimsFieldBuilder();
           internalGetUpdatedAtFieldBuilder();
+          internalGetLimitsFieldBuilder();
         }
       }
       @java.lang.Override
@@ -12628,6 +12710,11 @@ public final class Device extends com.google.protobuf.GeneratedFile {
         if (updatedAtBuilder_ != null) {
           updatedAtBuilder_.dispose();
           updatedAtBuilder_ = null;
+        }
+        limits_ = null;
+        if (limitsBuilder_ != null) {
+          limitsBuilder_.dispose();
+          limitsBuilder_ = null;
         }
         return this;
       }
@@ -12697,6 +12784,12 @@ public final class Device extends com.google.protobuf.GeneratedFile {
               : updatedAtBuilder_.build();
           to_bitField0_ |= 0x00000004;
         }
+        if (((from_bitField0_ & 0x00000020) != 0)) {
+          result.limits_ = limitsBuilder_ == null
+              ? limits_
+              : limitsBuilder_.build();
+          to_bitField0_ |= 0x00000008;
+        }
         result.bitField0_ |= to_bitField0_;
       }
 
@@ -12749,6 +12842,9 @@ public final class Device extends com.google.protobuf.GeneratedFile {
         }
         if (other.hasUpdatedAt()) {
           mergeUpdatedAt(other.getUpdatedAt());
+        }
+        if (other.hasLimits()) {
+          mergeLimits(other.getLimits());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
@@ -12815,6 +12911,13 @@ public final class Device extends com.google.protobuf.GeneratedFile {
                 bitField0_ |= 0x00000010;
                 break;
               } // case 42
+              case 50: {
+                input.readMessage(
+                    internalGetLimitsFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                bitField0_ |= 0x00000020;
+                break;
+              } // case 50
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -13554,6 +13657,163 @@ public final class Device extends com.google.protobuf.GeneratedFile {
         return updatedAtBuilder_;
       }
 
+      private smsgateway.v1.Device.SendLimits limits_;
+      private com.google.protobuf.SingleFieldBuilder<
+          smsgateway.v1.Device.SendLimits, smsgateway.v1.Device.SendLimits.Builder, smsgateway.v1.Device.SendLimitsOrBuilder> limitsBuilder_;
+      /**
+       * <pre>
+       * How much the device may send, all SIMs together.
+       * </pre>
+       *
+       * <code>.smsgateway.v1.SendLimits limits = 6 [json_name = "limits"];</code>
+       * @return Whether the limits field is set.
+       */
+      public boolean hasLimits() {
+        return ((bitField0_ & 0x00000020) != 0);
+      }
+      /**
+       * <pre>
+       * How much the device may send, all SIMs together.
+       * </pre>
+       *
+       * <code>.smsgateway.v1.SendLimits limits = 6 [json_name = "limits"];</code>
+       * @return The limits.
+       */
+      public smsgateway.v1.Device.SendLimits getLimits() {
+        if (limitsBuilder_ == null) {
+          return limits_ == null ? smsgateway.v1.Device.SendLimits.getDefaultInstance() : limits_;
+        } else {
+          return limitsBuilder_.getMessage();
+        }
+      }
+      /**
+       * <pre>
+       * How much the device may send, all SIMs together.
+       * </pre>
+       *
+       * <code>.smsgateway.v1.SendLimits limits = 6 [json_name = "limits"];</code>
+       */
+      public Builder setLimits(smsgateway.v1.Device.SendLimits value) {
+        if (limitsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          limits_ = value;
+        } else {
+          limitsBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000020;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * How much the device may send, all SIMs together.
+       * </pre>
+       *
+       * <code>.smsgateway.v1.SendLimits limits = 6 [json_name = "limits"];</code>
+       */
+      public Builder setLimits(
+          smsgateway.v1.Device.SendLimits.Builder builderForValue) {
+        if (limitsBuilder_ == null) {
+          limits_ = builderForValue.build();
+        } else {
+          limitsBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000020;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * How much the device may send, all SIMs together.
+       * </pre>
+       *
+       * <code>.smsgateway.v1.SendLimits limits = 6 [json_name = "limits"];</code>
+       */
+      public Builder mergeLimits(smsgateway.v1.Device.SendLimits value) {
+        if (limitsBuilder_ == null) {
+          if (((bitField0_ & 0x00000020) != 0) &&
+            limits_ != null &&
+            limits_ != smsgateway.v1.Device.SendLimits.getDefaultInstance()) {
+            getLimitsBuilder().mergeFrom(value);
+          } else {
+            limits_ = value;
+          }
+        } else {
+          limitsBuilder_.mergeFrom(value);
+        }
+        if (limits_ != null) {
+          bitField0_ |= 0x00000020;
+          onChanged();
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * How much the device may send, all SIMs together.
+       * </pre>
+       *
+       * <code>.smsgateway.v1.SendLimits limits = 6 [json_name = "limits"];</code>
+       */
+      public Builder clearLimits() {
+        bitField0_ = (bitField0_ & ~0x00000020);
+        limits_ = null;
+        if (limitsBuilder_ != null) {
+          limitsBuilder_.dispose();
+          limitsBuilder_ = null;
+        }
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * How much the device may send, all SIMs together.
+       * </pre>
+       *
+       * <code>.smsgateway.v1.SendLimits limits = 6 [json_name = "limits"];</code>
+       */
+      public smsgateway.v1.Device.SendLimits.Builder getLimitsBuilder() {
+        bitField0_ |= 0x00000020;
+        onChanged();
+        return internalGetLimitsFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       * How much the device may send, all SIMs together.
+       * </pre>
+       *
+       * <code>.smsgateway.v1.SendLimits limits = 6 [json_name = "limits"];</code>
+       */
+      public smsgateway.v1.Device.SendLimitsOrBuilder getLimitsOrBuilder() {
+        if (limitsBuilder_ != null) {
+          return limitsBuilder_.getMessageOrBuilder();
+        } else {
+          return limits_ == null ?
+              smsgateway.v1.Device.SendLimits.getDefaultInstance() : limits_;
+        }
+      }
+      /**
+       * <pre>
+       * How much the device may send, all SIMs together.
+       * </pre>
+       *
+       * <code>.smsgateway.v1.SendLimits limits = 6 [json_name = "limits"];</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          smsgateway.v1.Device.SendLimits, smsgateway.v1.Device.SendLimits.Builder, smsgateway.v1.Device.SendLimitsOrBuilder> 
+          internalGetLimitsFieldBuilder() {
+        if (limitsBuilder_ == null) {
+          limitsBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              smsgateway.v1.Device.SendLimits, smsgateway.v1.Device.SendLimits.Builder, smsgateway.v1.Device.SendLimitsOrBuilder>(
+                  getLimits(),
+                  getParentForChildren(),
+                  isClean());
+          limits_ = null;
+        }
+        return limitsBuilder_;
+      }
+
       // @@protoc_insertion_point(builder_scope:smsgateway.v1.DevicePolicy)
     }
 
@@ -13600,6 +13860,577 @@ public final class Device extends com.google.protobuf.GeneratedFile {
 
     @java.lang.Override
     public smsgateway.v1.Device.DevicePolicy getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface SendLimitsOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:smsgateway.v1.SendLimits)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * Messages in the last 60 minutes. 0: no cap.
+     * </pre>
+     *
+     * <code>int32 per_hour = 1 [json_name = "perHour"];</code>
+     * @return The perHour.
+     */
+    int getPerHour();
+
+    /**
+     * <pre>
+     * Messages in the last 24 hours. 0: no cap.
+     * </pre>
+     *
+     * <code>int32 per_day = 2 [json_name = "perDay"];</code>
+     * @return The perDay.
+     */
+    int getPerDay();
+  }
+  /**
+   * <pre>
+   * Caps on what a device or a SIM is handed. Carriers throttle or block a SIM
+   * that sends too much, so a phone should stop being chosen before that, not
+   * after. Counted by the server over sliding windows, in messages handed to the
+   * device — a multipart message counts once — including those still in flight.
+   * A device or SIM at its cap is "not now": queued jobs wait or go elsewhere.
+   * </pre>
+   *
+   * Protobuf type {@code smsgateway.v1.SendLimits}
+   */
+  public static final class SendLimits extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:smsgateway.v1.SendLimits)
+      SendLimitsOrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 35,
+        /* patch= */ 1,
+        /* suffix= */ "",
+        "SendLimits");
+    }
+    // Use SendLimits.newBuilder() to construct.
+    private SendLimits(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private SendLimits() {
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return smsgateway.v1.Device.internal_static_smsgateway_v1_SendLimits_descriptor;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+      return smsgateway.v1.Device.internal_static_smsgateway_v1_SendLimits_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return smsgateway.v1.Device.internal_static_smsgateway_v1_SendLimits_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              smsgateway.v1.Device.SendLimits.class, smsgateway.v1.Device.SendLimits.Builder.class);
+    }
+
+    public static final int PER_HOUR_FIELD_NUMBER = 1;
+    private int perHour_ = 0;
+    /**
+     * <pre>
+     * Messages in the last 60 minutes. 0: no cap.
+     * </pre>
+     *
+     * <code>int32 per_hour = 1 [json_name = "perHour"];</code>
+     * @return The perHour.
+     */
+    @java.lang.Override
+    public int getPerHour() {
+      return perHour_;
+    }
+
+    public static final int PER_DAY_FIELD_NUMBER = 2;
+    private int perDay_ = 0;
+    /**
+     * <pre>
+     * Messages in the last 24 hours. 0: no cap.
+     * </pre>
+     *
+     * <code>int32 per_day = 2 [json_name = "perDay"];</code>
+     * @return The perDay.
+     */
+    @java.lang.Override
+    public int getPerDay() {
+      return perDay_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (perHour_ != 0) {
+        output.writeInt32(1, perHour_);
+      }
+      if (perDay_ != 0) {
+        output.writeInt32(2, perDay_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+    private int computeSerializedSize_0() {
+      int size = 0;
+      if (perHour_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, perHour_);
+      }
+      if (perDay_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, perDay_);
+      }
+      return size;
+    }
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += computeSerializedSize_0();
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof smsgateway.v1.Device.SendLimits)) {
+        return super.equals(obj);
+      }
+      smsgateway.v1.Device.SendLimits other = (smsgateway.v1.Device.SendLimits) obj;
+
+      if (getPerHour()
+          != other.getPerHour()) return false;
+      if (getPerDay()
+          != other.getPerDay()) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + PER_HOUR_FIELD_NUMBER;
+      hash = (53 * hash) + getPerHour();
+      hash = (37 * hash) + PER_DAY_FIELD_NUMBER;
+      hash = (53 * hash) + getPerDay();
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static smsgateway.v1.Device.SendLimits parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static smsgateway.v1.Device.SendLimits parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static smsgateway.v1.Device.SendLimits parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static smsgateway.v1.Device.SendLimits parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static smsgateway.v1.Device.SendLimits parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static smsgateway.v1.Device.SendLimits parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static smsgateway.v1.Device.SendLimits parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static smsgateway.v1.Device.SendLimits parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static smsgateway.v1.Device.SendLimits parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static smsgateway.v1.Device.SendLimits parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static smsgateway.v1.Device.SendLimits parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static smsgateway.v1.Device.SendLimits parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(smsgateway.v1.Device.SendLimits prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * Caps on what a device or a SIM is handed. Carriers throttle or block a SIM
+     * that sends too much, so a phone should stop being chosen before that, not
+     * after. Counted by the server over sliding windows, in messages handed to the
+     * device — a multipart message counts once — including those still in flight.
+     * A device or SIM at its cap is "not now": queued jobs wait or go elsewhere.
+     * </pre>
+     *
+     * Protobuf type {@code smsgateway.v1.SendLimits}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:smsgateway.v1.SendLimits)
+        smsgateway.v1.Device.SendLimitsOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return smsgateway.v1.Device.internal_static_smsgateway_v1_SendLimits_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return smsgateway.v1.Device.internal_static_smsgateway_v1_SendLimits_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                smsgateway.v1.Device.SendLimits.class, smsgateway.v1.Device.SendLimits.Builder.class);
+      }
+
+      // Construct using smsgateway.v1.Device.SendLimits.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        perHour_ = 0;
+        perDay_ = 0;
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return smsgateway.v1.Device.internal_static_smsgateway_v1_SendLimits_descriptor;
+      }
+
+      @java.lang.Override
+      public smsgateway.v1.Device.SendLimits getDefaultInstanceForType() {
+        return smsgateway.v1.Device.SendLimits.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public smsgateway.v1.Device.SendLimits build() {
+        smsgateway.v1.Device.SendLimits result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public smsgateway.v1.Device.SendLimits buildPartial() {
+        smsgateway.v1.Device.SendLimits result = new smsgateway.v1.Device.SendLimits(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(smsgateway.v1.Device.SendLimits result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.perHour_ = perHour_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.perDay_ = perDay_;
+        }
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof smsgateway.v1.Device.SendLimits) {
+          return mergeFrom((smsgateway.v1.Device.SendLimits)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(smsgateway.v1.Device.SendLimits other) {
+        if (other == smsgateway.v1.Device.SendLimits.getDefaultInstance()) return this;
+        if (other.getPerHour() != 0) {
+          setPerHour(other.getPerHour());
+        }
+        if (other.getPerDay() != 0) {
+          setPerDay(other.getPerDay());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 8: {
+                perHour_ = input.readInt32();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 8
+              case 16: {
+                perDay_ = input.readInt32();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 16
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private int perHour_ ;
+      /**
+       * <pre>
+       * Messages in the last 60 minutes. 0: no cap.
+       * </pre>
+       *
+       * <code>int32 per_hour = 1 [json_name = "perHour"];</code>
+       * @return The perHour.
+       */
+      @java.lang.Override
+      public int getPerHour() {
+        return perHour_;
+      }
+      /**
+       * <pre>
+       * Messages in the last 60 minutes. 0: no cap.
+       * </pre>
+       *
+       * <code>int32 per_hour = 1 [json_name = "perHour"];</code>
+       * @param value The perHour to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPerHour(int value) {
+
+        perHour_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Messages in the last 60 minutes. 0: no cap.
+       * </pre>
+       *
+       * <code>int32 per_hour = 1 [json_name = "perHour"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearPerHour() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        perHour_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int perDay_ ;
+      /**
+       * <pre>
+       * Messages in the last 24 hours. 0: no cap.
+       * </pre>
+       *
+       * <code>int32 per_day = 2 [json_name = "perDay"];</code>
+       * @return The perDay.
+       */
+      @java.lang.Override
+      public int getPerDay() {
+        return perDay_;
+      }
+      /**
+       * <pre>
+       * Messages in the last 24 hours. 0: no cap.
+       * </pre>
+       *
+       * <code>int32 per_day = 2 [json_name = "perDay"];</code>
+       * @param value The perDay to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPerDay(int value) {
+
+        perDay_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Messages in the last 24 hours. 0: no cap.
+       * </pre>
+       *
+       * <code>int32 per_day = 2 [json_name = "perDay"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearPerDay() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        perDay_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:smsgateway.v1.SendLimits)
+    }
+
+    // @@protoc_insertion_point(class_scope:smsgateway.v1.SendLimits)
+    private static final smsgateway.v1.Device.SendLimits DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new smsgateway.v1.Device.SendLimits();
+    }
+
+    public static smsgateway.v1.Device.SendLimits getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<SendLimits>
+        PARSER = new com.google.protobuf.AbstractParser<SendLimits>() {
+      @java.lang.Override
+      public SendLimits parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<SendLimits> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<SendLimits> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public smsgateway.v1.Device.SendLimits getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -16421,6 +17252,33 @@ public final class Device extends com.google.protobuf.GeneratedFile {
      * <code>.smsgateway.v1.Availability availability = 4 [json_name = "availability"];</code>
      */
     smsgateway.v1.Device.AvailabilityOrBuilder getAvailabilityOrBuilder();
+
+    /**
+     * <pre>
+     * Caps for this SIM alone, on top of the device's.
+     * </pre>
+     *
+     * <code>.smsgateway.v1.SendLimits limits = 5 [json_name = "limits"];</code>
+     * @return Whether the limits field is set.
+     */
+    boolean hasLimits();
+    /**
+     * <pre>
+     * Caps for this SIM alone, on top of the device's.
+     * </pre>
+     *
+     * <code>.smsgateway.v1.SendLimits limits = 5 [json_name = "limits"];</code>
+     * @return The limits.
+     */
+    smsgateway.v1.Device.SendLimits getLimits();
+    /**
+     * <pre>
+     * Caps for this SIM alone, on top of the device's.
+     * </pre>
+     *
+     * <code>.smsgateway.v1.SendLimits limits = 5 [json_name = "limits"];</code>
+     */
+    smsgateway.v1.Device.SendLimitsOrBuilder getLimitsOrBuilder();
   }
   /**
    * <pre>
@@ -16563,6 +17421,44 @@ public final class Device extends com.google.protobuf.GeneratedFile {
       return availability_ == null ? smsgateway.v1.Device.Availability.getDefaultInstance() : availability_;
     }
 
+    public static final int LIMITS_FIELD_NUMBER = 5;
+    private smsgateway.v1.Device.SendLimits limits_;
+    /**
+     * <pre>
+     * Caps for this SIM alone, on top of the device's.
+     * </pre>
+     *
+     * <code>.smsgateway.v1.SendLimits limits = 5 [json_name = "limits"];</code>
+     * @return Whether the limits field is set.
+     */
+    @java.lang.Override
+    public boolean hasLimits() {
+      return ((bitField0_ & 0x00000004) != 0);
+    }
+    /**
+     * <pre>
+     * Caps for this SIM alone, on top of the device's.
+     * </pre>
+     *
+     * <code>.smsgateway.v1.SendLimits limits = 5 [json_name = "limits"];</code>
+     * @return The limits.
+     */
+    @java.lang.Override
+    public smsgateway.v1.Device.SendLimits getLimits() {
+      return limits_ == null ? smsgateway.v1.Device.SendLimits.getDefaultInstance() : limits_;
+    }
+    /**
+     * <pre>
+     * Caps for this SIM alone, on top of the device's.
+     * </pre>
+     *
+     * <code>.smsgateway.v1.SendLimits limits = 5 [json_name = "limits"];</code>
+     */
+    @java.lang.Override
+    public smsgateway.v1.Device.SendLimitsOrBuilder getLimitsOrBuilder() {
+      return limits_ == null ? smsgateway.v1.Device.SendLimits.getDefaultInstance() : limits_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -16589,6 +17485,9 @@ public final class Device extends com.google.protobuf.GeneratedFile {
       if (((bitField0_ & 0x00000002) != 0)) {
         output.writeMessage(4, getAvailability());
       }
+      if (((bitField0_ & 0x00000004) != 0)) {
+        output.writeMessage(5, getLimits());
+      }
       getUnknownFields().writeTo(output);
     }
     private int computeSerializedSize_0() {
@@ -16608,6 +17507,10 @@ public final class Device extends com.google.protobuf.GeneratedFile {
       if (((bitField0_ & 0x00000002) != 0)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(4, getAvailability());
+      }
+      if (((bitField0_ & 0x00000004) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(5, getLimits());
       }
       return size;
     }
@@ -16647,6 +17550,11 @@ public final class Device extends com.google.protobuf.GeneratedFile {
         if (!getAvailability()
             .equals(other.getAvailability())) return false;
       }
+      if (hasLimits() != other.hasLimits()) return false;
+      if (hasLimits()) {
+        if (!getLimits()
+            .equals(other.getLimits())) return false;
+      }
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -16670,6 +17578,10 @@ public final class Device extends com.google.protobuf.GeneratedFile {
       if (hasAvailability()) {
         hash = (37 * hash) + AVAILABILITY_FIELD_NUMBER;
         hash = (53 * hash) + getAvailability().hashCode();
+      }
+      if (hasLimits()) {
+        hash = (37 * hash) + LIMITS_FIELD_NUMBER;
+        hash = (53 * hash) + getLimits().hashCode();
       }
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
@@ -16807,6 +17719,7 @@ public final class Device extends com.google.protobuf.GeneratedFile {
                 .alwaysUseFieldBuilders) {
           internalGetAcceptFieldBuilder();
           internalGetAvailabilityFieldBuilder();
+          internalGetLimitsFieldBuilder();
         }
       }
       @java.lang.Override
@@ -16824,6 +17737,11 @@ public final class Device extends com.google.protobuf.GeneratedFile {
         if (availabilityBuilder_ != null) {
           availabilityBuilder_.dispose();
           availabilityBuilder_ = null;
+        }
+        limits_ = null;
+        if (limitsBuilder_ != null) {
+          limitsBuilder_.dispose();
+          limitsBuilder_ = null;
         }
         return this;
       }
@@ -16877,6 +17795,12 @@ public final class Device extends com.google.protobuf.GeneratedFile {
               : availabilityBuilder_.build();
           to_bitField0_ |= 0x00000002;
         }
+        if (((from_bitField0_ & 0x00000010) != 0)) {
+          result.limits_ = limitsBuilder_ == null
+              ? limits_
+              : limitsBuilder_.build();
+          to_bitField0_ |= 0x00000004;
+        }
         result.bitField0_ |= to_bitField0_;
       }
 
@@ -16903,6 +17827,9 @@ public final class Device extends com.google.protobuf.GeneratedFile {
         }
         if (other.hasAvailability()) {
           mergeAvailability(other.getAvailability());
+        }
+        if (other.hasLimits()) {
+          mergeLimits(other.getLimits());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
@@ -16954,6 +17881,13 @@ public final class Device extends com.google.protobuf.GeneratedFile {
                 bitField0_ |= 0x00000008;
                 break;
               } // case 34
+              case 42: {
+                input.readMessage(
+                    internalGetLimitsFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                bitField0_ |= 0x00000010;
+                break;
+              } // case 42
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -17335,6 +18269,163 @@ public final class Device extends com.google.protobuf.GeneratedFile {
           availability_ = null;
         }
         return availabilityBuilder_;
+      }
+
+      private smsgateway.v1.Device.SendLimits limits_;
+      private com.google.protobuf.SingleFieldBuilder<
+          smsgateway.v1.Device.SendLimits, smsgateway.v1.Device.SendLimits.Builder, smsgateway.v1.Device.SendLimitsOrBuilder> limitsBuilder_;
+      /**
+       * <pre>
+       * Caps for this SIM alone, on top of the device's.
+       * </pre>
+       *
+       * <code>.smsgateway.v1.SendLimits limits = 5 [json_name = "limits"];</code>
+       * @return Whether the limits field is set.
+       */
+      public boolean hasLimits() {
+        return ((bitField0_ & 0x00000010) != 0);
+      }
+      /**
+       * <pre>
+       * Caps for this SIM alone, on top of the device's.
+       * </pre>
+       *
+       * <code>.smsgateway.v1.SendLimits limits = 5 [json_name = "limits"];</code>
+       * @return The limits.
+       */
+      public smsgateway.v1.Device.SendLimits getLimits() {
+        if (limitsBuilder_ == null) {
+          return limits_ == null ? smsgateway.v1.Device.SendLimits.getDefaultInstance() : limits_;
+        } else {
+          return limitsBuilder_.getMessage();
+        }
+      }
+      /**
+       * <pre>
+       * Caps for this SIM alone, on top of the device's.
+       * </pre>
+       *
+       * <code>.smsgateway.v1.SendLimits limits = 5 [json_name = "limits"];</code>
+       */
+      public Builder setLimits(smsgateway.v1.Device.SendLimits value) {
+        if (limitsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          limits_ = value;
+        } else {
+          limitsBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Caps for this SIM alone, on top of the device's.
+       * </pre>
+       *
+       * <code>.smsgateway.v1.SendLimits limits = 5 [json_name = "limits"];</code>
+       */
+      public Builder setLimits(
+          smsgateway.v1.Device.SendLimits.Builder builderForValue) {
+        if (limitsBuilder_ == null) {
+          limits_ = builderForValue.build();
+        } else {
+          limitsBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Caps for this SIM alone, on top of the device's.
+       * </pre>
+       *
+       * <code>.smsgateway.v1.SendLimits limits = 5 [json_name = "limits"];</code>
+       */
+      public Builder mergeLimits(smsgateway.v1.Device.SendLimits value) {
+        if (limitsBuilder_ == null) {
+          if (((bitField0_ & 0x00000010) != 0) &&
+            limits_ != null &&
+            limits_ != smsgateway.v1.Device.SendLimits.getDefaultInstance()) {
+            getLimitsBuilder().mergeFrom(value);
+          } else {
+            limits_ = value;
+          }
+        } else {
+          limitsBuilder_.mergeFrom(value);
+        }
+        if (limits_ != null) {
+          bitField0_ |= 0x00000010;
+          onChanged();
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Caps for this SIM alone, on top of the device's.
+       * </pre>
+       *
+       * <code>.smsgateway.v1.SendLimits limits = 5 [json_name = "limits"];</code>
+       */
+      public Builder clearLimits() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        limits_ = null;
+        if (limitsBuilder_ != null) {
+          limitsBuilder_.dispose();
+          limitsBuilder_ = null;
+        }
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Caps for this SIM alone, on top of the device's.
+       * </pre>
+       *
+       * <code>.smsgateway.v1.SendLimits limits = 5 [json_name = "limits"];</code>
+       */
+      public smsgateway.v1.Device.SendLimits.Builder getLimitsBuilder() {
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return internalGetLimitsFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       * Caps for this SIM alone, on top of the device's.
+       * </pre>
+       *
+       * <code>.smsgateway.v1.SendLimits limits = 5 [json_name = "limits"];</code>
+       */
+      public smsgateway.v1.Device.SendLimitsOrBuilder getLimitsOrBuilder() {
+        if (limitsBuilder_ != null) {
+          return limitsBuilder_.getMessageOrBuilder();
+        } else {
+          return limits_ == null ?
+              smsgateway.v1.Device.SendLimits.getDefaultInstance() : limits_;
+        }
+      }
+      /**
+       * <pre>
+       * Caps for this SIM alone, on top of the device's.
+       * </pre>
+       *
+       * <code>.smsgateway.v1.SendLimits limits = 5 [json_name = "limits"];</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          smsgateway.v1.Device.SendLimits, smsgateway.v1.Device.SendLimits.Builder, smsgateway.v1.Device.SendLimitsOrBuilder> 
+          internalGetLimitsFieldBuilder() {
+        if (limitsBuilder_ == null) {
+          limitsBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              smsgateway.v1.Device.SendLimits, smsgateway.v1.Device.SendLimits.Builder, smsgateway.v1.Device.SendLimitsOrBuilder>(
+                  getLimits(),
+                  getParentForChildren(),
+                  isClean());
+          limits_ = null;
+        }
+        return limitsBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:smsgateway.v1.SimPolicy)
@@ -27163,6 +28254,11 @@ public final class Device extends com.google.protobuf.GeneratedFile {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_smsgateway_v1_DevicePolicy_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_smsgateway_v1_SendLimits_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_smsgateway_v1_SendLimits_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_smsgateway_v1_Availability_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -27289,71 +28385,75 @@ public final class Device extends com.google.protobuf.GeneratedFile {
       "smsgateway.v1.DeviceHealthR\006health\022&\n\017pe" +
       "nding_job_ids\030\003 \003(\tR\rpendingJobIds\"C\n\014Po" +
       "licyUpdate\0223\n\006policy\030\001 \001(\0132\033.smsgateway." +
-      "v1.DevicePolicyR\006policy\"\206\002\n\014DevicePolicy" +
+      "v1.DevicePolicyR\006policy\"\271\002\n\014DevicePolicy" +
       "\022\030\n\007version\030\001 \001(\003R\007version\022?\n\014availabili" +
       "ty\030\002 \001(\0132\033.smsgateway.v1.AvailabilityR\014a" +
       "vailability\0222\n\006accept\030\003 \001(\0132\032.smsgateway" +
       ".v1.AcceptRulesR\006accept\022,\n\004sims\030\004 \003(\0132\030." +
       "smsgateway.v1.SimPolicyR\004sims\0229\n\nupdated" +
       "_at\030\005 \001(\0132\032.google.protobuf.TimestampR\tu" +
-      "pdatedAt\"`\n\014Availability\022\033\n\ttime_zone\030\001 " +
-      "\001(\tR\010timeZone\0223\n\007windows\030\002 \003(\0132\031.smsgate" +
-      "way.v1.TimeWindowR\007windows\"b\n\nTimeWindow" +
-      "\022\022\n\004days\030\001 \003(\005R\004days\022!\n\014start_minute\030\002 \001" +
-      "(\005R\013startMinute\022\035\n\nend_minute\030\003 \001(\005R\tend" +
-      "Minute\"X\n\013AcceptRules\022\034\n\tcountries\030\001 \003(\t" +
-      "R\tcountries\022+\n\021recipient_pattern\030\002 \001(\tR\020" +
-      "recipientPattern\"\305\001\n\tSimPolicy\022\'\n\017subscr" +
-      "iption_id\030\001 \001(\005R\016subscriptionId\022\032\n\010disab" +
-      "led\030\002 \001(\010R\010disabled\0222\n\006accept\030\003 \001(\0132\032.sm" +
-      "sgateway.v1.AcceptRulesR\006accept\022?\n\014avail" +
-      "ability\030\004 \001(\0132\033.smsgateway.v1.Availabili" +
-      "tyR\014availability\"\037\n\005Leave\022\026\n\006reason\030\001 \001(" +
-      "\tR\006reason\"@\n\tHeartbeat\0223\n\006health\030\001 \001(\0132\033" +
-      ".smsgateway.v1.DeviceHealthR\006health\"\270\002\n\014" +
-      "DeviceHealth\022#\n\rbattery_level\030\001 \001(\005R\014bat" +
-      "teryLevel\022\037\n\013is_charging\030\002 \001(\010R\nisChargi" +
-      "ng\022\'\n\017signal_strength\030\003 \001(\005R\016signalStren" +
-      "gth\022!\n\014network_type\030\004 \001(\tR\013networkType\022\033" +
-      "\n\tsim_ready\030\005 \001(\010R\010simReady\022$\n\016sent_last" +
-      "_hour\030\006 \001(\005R\014sentLastHour\022%\n\016permissions" +
-      "_ok\030\007 \001(\010R\rpermissionsOk\022,\n\004sims\030\010 \003(\0132\030" +
-      ".smsgateway.v1.SimHealthR\004sims\"\240\001\n\tSimHe" +
-      "alth\022\'\n\017subscription_id\030\001 \001(\005R\016subscript" +
-      "ionId\022\'\n\017signal_strength\030\002 \001(\005R\016signalSt" +
-      "rength\022\033\n\tsim_ready\030\003 \001(\010R\010simReady\022$\n\016s" +
-      "ent_last_hour\030\004 \001(\005R\014sentLastHour\"q\n\006Job" +
-      "Ack\022\025\n\006job_id\030\001 \001(\tR\005jobId\022\032\n\010accepted\030\002" +
-      " \001(\010R\010accepted\022\026\n\006reason\030\003 \001(\tR\006reason\022\034" +
-      "\n\tpermanent\030\004 \001(\010R\tpermanent\"\366\001\n\tJobResu" +
-      "lt\022\025\n\006job_id\030\001 \001(\tR\005jobId\0220\n\006status\030\002 \001(" +
-      "\0162\030.smsgateway.v1.JobStatusR\006status\022\035\n\ne" +
-      "rror_code\030\003 \001(\tR\terrorCode\022#\n\rerror_mess" +
-      "age\030\004 \001(\tR\014errorMessage\022\035\n\nparts_sent\030\005 " +
-      "\001(\005R\tpartsSent\022=\n\014completed_at\030\006 \001(\0132\032.g" +
-      "oogle.protobuf.TimestampR\013completedAt\"\330\001" +
-      "\n\013RegisterAck\022\032\n\010accepted\030\001 \001(\010R\010accepte" +
-      "d\022\026\n\006reason\030\002 \001(\tR\006reason\022<\n\032heartbeat_i" +
-      "nterval_seconds\030\003 \001(\005R\030heartbeatInterval" +
-      "Seconds\022\"\n\rstale_job_ids\030\004 \003(\tR\013staleJob" +
-      "Ids\0223\n\006policy\030\005 \001(\0132\033.smsgateway.v1.Devi" +
-      "cePolicyR\006policy\"\325\001\n\nSendSmsJob\022\025\n\006job_i" +
-      "d\030\001 \001(\tR\005jobId\022\034\n\trecipient\030\002 \001(\tR\trecip" +
-      "ient\022\022\n\004body\030\003 \001(\tR\004body\022\032\n\010priority\030\004 \001" +
-      "(\005R\010priority\0229\n\nexpires_at\030\005 \001(\0132\032.googl" +
-      "e.protobuf.TimestampR\texpiresAt\022\'\n\017subsc" +
-      "ription_id\030\006 \001(\005R\016subscriptionId\"\"\n\tCanc" +
-      "elJob\022\025\n\006job_id\030\001 \001(\tR\005jobId\"\006\n\004Ping*\207\001\n" +
-      "\tJobStatus\022\032\n\026JOB_STATUS_UNSPECIFIED\020\000\022\023" +
-      "\n\017JOB_STATUS_SENT\020\001\022\030\n\024JOB_STATUS_DELIVE" +
-      "RED\020\002\022\025\n\021JOB_STATUS_FAILED\020\003\022\030\n\024JOB_STAT" +
-      "US_CANCELLED\020\0042\241\001\n\rDeviceGateway\022E\n\006Enro" +
-      "ll\022\034.smsgateway.v1.EnrollRequest\032\035.smsga" +
-      "teway.v1.EnrollResponse\022I\n\007Connect\022\034.sms" +
-      "gateway.v1.DeviceMessage\032\034.smsgateway.v1" +
-      ".ServerMessage(\0010\001B@Z>github.com/KGMA74/" +
-      "relaix-server/gen/smsgateway/v1;smsgatew" +
-      "ayv1b\006proto3"
+      "pdatedAt\0221\n\006limits\030\006 \001(\0132\031.smsgateway.v1" +
+      ".SendLimitsR\006limits\"@\n\nSendLimits\022\031\n\010per" +
+      "_hour\030\001 \001(\005R\007perHour\022\027\n\007per_day\030\002 \001(\005R\006p" +
+      "erDay\"`\n\014Availability\022\033\n\ttime_zone\030\001 \001(\t" +
+      "R\010timeZone\0223\n\007windows\030\002 \003(\0132\031.smsgateway" +
+      ".v1.TimeWindowR\007windows\"b\n\nTimeWindow\022\022\n" +
+      "\004days\030\001 \003(\005R\004days\022!\n\014start_minute\030\002 \001(\005R" +
+      "\013startMinute\022\035\n\nend_minute\030\003 \001(\005R\tendMin" +
+      "ute\"X\n\013AcceptRules\022\034\n\tcountries\030\001 \003(\tR\tc" +
+      "ountries\022+\n\021recipient_pattern\030\002 \001(\tR\020rec" +
+      "ipientPattern\"\370\001\n\tSimPolicy\022\'\n\017subscript" +
+      "ion_id\030\001 \001(\005R\016subscriptionId\022\032\n\010disabled" +
+      "\030\002 \001(\010R\010disabled\0222\n\006accept\030\003 \001(\0132\032.smsga" +
+      "teway.v1.AcceptRulesR\006accept\022?\n\014availabi" +
+      "lity\030\004 \001(\0132\033.smsgateway.v1.AvailabilityR" +
+      "\014availability\0221\n\006limits\030\005 \001(\0132\031.smsgatew" +
+      "ay.v1.SendLimitsR\006limits\"\037\n\005Leave\022\026\n\006rea" +
+      "son\030\001 \001(\tR\006reason\"@\n\tHeartbeat\0223\n\006health" +
+      "\030\001 \001(\0132\033.smsgateway.v1.DeviceHealthR\006hea" +
+      "lth\"\270\002\n\014DeviceHealth\022#\n\rbattery_level\030\001 " +
+      "\001(\005R\014batteryLevel\022\037\n\013is_charging\030\002 \001(\010R\n" +
+      "isCharging\022\'\n\017signal_strength\030\003 \001(\005R\016sig" +
+      "nalStrength\022!\n\014network_type\030\004 \001(\tR\013netwo" +
+      "rkType\022\033\n\tsim_ready\030\005 \001(\010R\010simReady\022$\n\016s" +
+      "ent_last_hour\030\006 \001(\005R\014sentLastHour\022%\n\016per" +
+      "missions_ok\030\007 \001(\010R\rpermissionsOk\022,\n\004sims" +
+      "\030\010 \003(\0132\030.smsgateway.v1.SimHealthR\004sims\"\240" +
+      "\001\n\tSimHealth\022\'\n\017subscription_id\030\001 \001(\005R\016s" +
+      "ubscriptionId\022\'\n\017signal_strength\030\002 \001(\005R\016" +
+      "signalStrength\022\033\n\tsim_ready\030\003 \001(\010R\010simRe" +
+      "ady\022$\n\016sent_last_hour\030\004 \001(\005R\014sentLastHou" +
+      "r\"q\n\006JobAck\022\025\n\006job_id\030\001 \001(\tR\005jobId\022\032\n\010ac" +
+      "cepted\030\002 \001(\010R\010accepted\022\026\n\006reason\030\003 \001(\tR\006" +
+      "reason\022\034\n\tpermanent\030\004 \001(\010R\tpermanent\"\366\001\n" +
+      "\tJobResult\022\025\n\006job_id\030\001 \001(\tR\005jobId\0220\n\006sta" +
+      "tus\030\002 \001(\0162\030.smsgateway.v1.JobStatusR\006sta" +
+      "tus\022\035\n\nerror_code\030\003 \001(\tR\terrorCode\022#\n\rer" +
+      "ror_message\030\004 \001(\tR\014errorMessage\022\035\n\nparts" +
+      "_sent\030\005 \001(\005R\tpartsSent\022=\n\014completed_at\030\006" +
+      " \001(\0132\032.google.protobuf.TimestampR\013comple" +
+      "tedAt\"\330\001\n\013RegisterAck\022\032\n\010accepted\030\001 \001(\010R" +
+      "\010accepted\022\026\n\006reason\030\002 \001(\tR\006reason\022<\n\032hea" +
+      "rtbeat_interval_seconds\030\003 \001(\005R\030heartbeat" +
+      "IntervalSeconds\022\"\n\rstale_job_ids\030\004 \003(\tR\013" +
+      "staleJobIds\0223\n\006policy\030\005 \001(\0132\033.smsgateway" +
+      ".v1.DevicePolicyR\006policy\"\325\001\n\nSendSmsJob\022" +
+      "\025\n\006job_id\030\001 \001(\tR\005jobId\022\034\n\trecipient\030\002 \001(" +
+      "\tR\trecipient\022\022\n\004body\030\003 \001(\tR\004body\022\032\n\010prio" +
+      "rity\030\004 \001(\005R\010priority\0229\n\nexpires_at\030\005 \001(\013" +
+      "2\032.google.protobuf.TimestampR\texpiresAt\022" +
+      "\'\n\017subscription_id\030\006 \001(\005R\016subscriptionId" +
+      "\"\"\n\tCancelJob\022\025\n\006job_id\030\001 \001(\tR\005jobId\"\006\n\004" +
+      "Ping*\207\001\n\tJobStatus\022\032\n\026JOB_STATUS_UNSPECI" +
+      "FIED\020\000\022\023\n\017JOB_STATUS_SENT\020\001\022\030\n\024JOB_STATU" +
+      "S_DELIVERED\020\002\022\025\n\021JOB_STATUS_FAILED\020\003\022\030\n\024" +
+      "JOB_STATUS_CANCELLED\020\0042\241\001\n\rDeviceGateway" +
+      "\022E\n\006Enroll\022\034.smsgateway.v1.EnrollRequest" +
+      "\032\035.smsgateway.v1.EnrollResponse\022I\n\007Conne" +
+      "ct\022\034.smsgateway.v1.DeviceMessage\032\034.smsga" +
+      "teway.v1.ServerMessage(\0010\001B@Z>github.com" +
+      "/KGMA74/relaix-server/gen/smsgateway/v1;" +
+      "smsgatewayv1b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -27413,87 +28513,93 @@ public final class Device extends com.google.protobuf.GeneratedFile {
     internal_static_smsgateway_v1_DevicePolicy_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_smsgateway_v1_DevicePolicy_descriptor,
-        new java.lang.String[] { "Version", "Availability", "Accept", "Sims", "UpdatedAt", });
-    internal_static_smsgateway_v1_Availability_descriptor =
+        new java.lang.String[] { "Version", "Availability", "Accept", "Sims", "UpdatedAt", "Limits", });
+    internal_static_smsgateway_v1_SendLimits_descriptor =
       getDescriptor().getMessageType(9);
+    internal_static_smsgateway_v1_SendLimits_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_smsgateway_v1_SendLimits_descriptor,
+        new java.lang.String[] { "PerHour", "PerDay", });
+    internal_static_smsgateway_v1_Availability_descriptor =
+      getDescriptor().getMessageType(10);
     internal_static_smsgateway_v1_Availability_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_smsgateway_v1_Availability_descriptor,
         new java.lang.String[] { "TimeZone", "Windows", });
     internal_static_smsgateway_v1_TimeWindow_descriptor =
-      getDescriptor().getMessageType(10);
+      getDescriptor().getMessageType(11);
     internal_static_smsgateway_v1_TimeWindow_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_smsgateway_v1_TimeWindow_descriptor,
         new java.lang.String[] { "Days", "StartMinute", "EndMinute", });
     internal_static_smsgateway_v1_AcceptRules_descriptor =
-      getDescriptor().getMessageType(11);
+      getDescriptor().getMessageType(12);
     internal_static_smsgateway_v1_AcceptRules_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_smsgateway_v1_AcceptRules_descriptor,
         new java.lang.String[] { "Countries", "RecipientPattern", });
     internal_static_smsgateway_v1_SimPolicy_descriptor =
-      getDescriptor().getMessageType(12);
+      getDescriptor().getMessageType(13);
     internal_static_smsgateway_v1_SimPolicy_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_smsgateway_v1_SimPolicy_descriptor,
-        new java.lang.String[] { "SubscriptionId", "Disabled", "Accept", "Availability", });
+        new java.lang.String[] { "SubscriptionId", "Disabled", "Accept", "Availability", "Limits", });
     internal_static_smsgateway_v1_Leave_descriptor =
-      getDescriptor().getMessageType(13);
+      getDescriptor().getMessageType(14);
     internal_static_smsgateway_v1_Leave_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_smsgateway_v1_Leave_descriptor,
         new java.lang.String[] { "Reason", });
     internal_static_smsgateway_v1_Heartbeat_descriptor =
-      getDescriptor().getMessageType(14);
+      getDescriptor().getMessageType(15);
     internal_static_smsgateway_v1_Heartbeat_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_smsgateway_v1_Heartbeat_descriptor,
         new java.lang.String[] { "Health", });
     internal_static_smsgateway_v1_DeviceHealth_descriptor =
-      getDescriptor().getMessageType(15);
+      getDescriptor().getMessageType(16);
     internal_static_smsgateway_v1_DeviceHealth_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_smsgateway_v1_DeviceHealth_descriptor,
         new java.lang.String[] { "BatteryLevel", "IsCharging", "SignalStrength", "NetworkType", "SimReady", "SentLastHour", "PermissionsOk", "Sims", });
     internal_static_smsgateway_v1_SimHealth_descriptor =
-      getDescriptor().getMessageType(16);
+      getDescriptor().getMessageType(17);
     internal_static_smsgateway_v1_SimHealth_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_smsgateway_v1_SimHealth_descriptor,
         new java.lang.String[] { "SubscriptionId", "SignalStrength", "SimReady", "SentLastHour", });
     internal_static_smsgateway_v1_JobAck_descriptor =
-      getDescriptor().getMessageType(17);
+      getDescriptor().getMessageType(18);
     internal_static_smsgateway_v1_JobAck_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_smsgateway_v1_JobAck_descriptor,
         new java.lang.String[] { "JobId", "Accepted", "Reason", "Permanent", });
     internal_static_smsgateway_v1_JobResult_descriptor =
-      getDescriptor().getMessageType(18);
+      getDescriptor().getMessageType(19);
     internal_static_smsgateway_v1_JobResult_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_smsgateway_v1_JobResult_descriptor,
         new java.lang.String[] { "JobId", "Status", "ErrorCode", "ErrorMessage", "PartsSent", "CompletedAt", });
     internal_static_smsgateway_v1_RegisterAck_descriptor =
-      getDescriptor().getMessageType(19);
+      getDescriptor().getMessageType(20);
     internal_static_smsgateway_v1_RegisterAck_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_smsgateway_v1_RegisterAck_descriptor,
         new java.lang.String[] { "Accepted", "Reason", "HeartbeatIntervalSeconds", "StaleJobIds", "Policy", });
     internal_static_smsgateway_v1_SendSmsJob_descriptor =
-      getDescriptor().getMessageType(20);
+      getDescriptor().getMessageType(21);
     internal_static_smsgateway_v1_SendSmsJob_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_smsgateway_v1_SendSmsJob_descriptor,
         new java.lang.String[] { "JobId", "Recipient", "Body", "Priority", "ExpiresAt", "SubscriptionId", });
     internal_static_smsgateway_v1_CancelJob_descriptor =
-      getDescriptor().getMessageType(21);
+      getDescriptor().getMessageType(22);
     internal_static_smsgateway_v1_CancelJob_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_smsgateway_v1_CancelJob_descriptor,
         new java.lang.String[] { "JobId", });
     internal_static_smsgateway_v1_Ping_descriptor =
-      getDescriptor().getMessageType(22);
+      getDescriptor().getMessageType(23);
     internal_static_smsgateway_v1_Ping_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_smsgateway_v1_Ping_descriptor,
