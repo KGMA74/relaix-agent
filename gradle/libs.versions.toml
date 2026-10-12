@@ -7,7 +7,7 @@ espressoCore = "3.5.1"
 lifecycleRuntimeKtx = "2.6.1"
 activityCompose = "1.8.0"
 kotlin = "2.2.10"
-composeBom = "2024.09.00"
+composeBom = "2025.08.00"
 # Pinned to the exact protoc-gen-java gencode version stamped in android/gen/
 # (see the "Protobuf Java Version:" header in the generated files) — the
 # runtime must be at least that version.
