@@ -43,7 +43,12 @@ class DeviceInfoProvider @Inject constructor(
             .setTimeZone(java.time.ZoneId.systemDefault().id)
             // What this agent can do beyond SMS, so the server sends it
             // nothing it would drop. No "ussd_menu": codes run whole.
-            .addAllCapabilities(listOf("ussd", "inbound_sms"))
+            .addAllCapabilities(
+                listOf(
+                    "ussd", "ussd_pin", "inbound_sms",
+                    "automations", "automation_reply_sms", "automation_webhook", "automation_ussd",
+                ),
+            )
             .build()
 
     /**

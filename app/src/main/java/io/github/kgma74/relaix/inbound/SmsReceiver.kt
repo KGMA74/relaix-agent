@@ -23,6 +23,8 @@ class SmsReceiver : BroadcastReceiver() {
 
     @Inject lateinit var forwarder: InboundForwarder
 
+    @Inject lateinit var automations: io.github.kgma74.relaix.automation.AutomationEngine
+
     override fun onReceive(context: Context, intent: Intent) {
         if (intent.action != Telephony.Sms.Intents.SMS_RECEIVED_ACTION) return
         val parts = Telephony.Sms.Intents.getMessagesFromIntent(intent) ?: return
@@ -39,7 +41,10 @@ class SmsReceiver : BroadcastReceiver() {
                     if (sender.isBlank()) continue
                     val body = pdus.joinToString("") { it.displayMessageBody.orEmpty() }
                     val at = pdus.minOf { it.timestampMillis }.takeIf { it > 0 } ?: System.currentTimeMillis()
-                    forwarder.received(sender, body, at, subscriptionId)
+                    // Automations first: one that forwards the SMS sends it with
+                    // its fields, and the plain rules need not send it again.
+                    val forwarded = automations.onSms(io.github.kgma74.relaix.automation.IncomingSms(sender, body, at, subscriptionId))
+                    if (!forwarded) forwarder.received(sender, body, at, subscriptionId)
                 }
             } catch (e: Exception) {
                 Log.w(TAG, "could not keep a received SMS", e)

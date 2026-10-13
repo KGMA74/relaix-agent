@@ -6,14 +6,51 @@ import androidx.room.TypeConverter
 import androidx.room.TypeConverters
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
+import io.github.kgma74.relaix.automation.OutboxDao
+import io.github.kgma74.relaix.automation.OutboxRecord
+import io.github.kgma74.relaix.automation.PinUseDao
+import io.github.kgma74.relaix.automation.PinUseRecord
+import io.github.kgma74.relaix.automation.RunDao
+import io.github.kgma74.relaix.automation.RunRecord
 import io.github.kgma74.relaix.inbound.InboundDao
 import io.github.kgma74.relaix.inbound.InboundRecord
 
-@Database(entities = [JobRecord::class, InboundRecord::class], version = 3, exportSchema = false)
+@Database(
+    entities = [JobRecord::class, InboundRecord::class, RunRecord::class, OutboxRecord::class, PinUseRecord::class],
+    version = 4,
+    exportSchema = false,
+)
 @TypeConverters(JobStateConverter::class)
 abstract class RelaixDatabase : RoomDatabase() {
     abstract fun jobDao(): JobDao
     abstract fun inboundDao(): InboundDao
+    abstract fun runDao(): RunDao
+    abstract fun outboxDao(): OutboxDao
+    abstract fun pinUseDao(): PinUseDao
+}
+
+/** Automations: forwarded fields, runs, the phone's webhook outbox, PIN uses. */
+val MIGRATION_3_4 = object : Migration(3, 4) {
+    override fun migrate(db: SupportSQLiteDatabase) {
+        db.execSQL("ALTER TABLE inbound ADD COLUMN automationId TEXT NOT NULL DEFAULT ''")
+        db.execSQL("ALTER TABLE inbound ADD COLUMN fieldsJson TEXT NOT NULL DEFAULT '{}'")
+        db.execSQL(
+            "CREATE TABLE IF NOT EXISTS automation_runs (" +
+                "id TEXT NOT NULL PRIMARY KEY, automationId TEXT NOT NULL, smsKey TEXT NOT NULL, sender TEXT NOT NULL, " +
+                "startedAtMillis INTEGER NOT NULL, finishedAtMillis INTEGER, ok INTEGER NOT NULL, error TEXT NOT NULL, " +
+                "stepsBase64 TEXT NOT NULL, reported INTEGER NOT NULL, skipped INTEGER NOT NULL)",
+        )
+        db.execSQL(
+            "CREATE TABLE IF NOT EXISTS webhook_outbox (" +
+                "id TEXT NOT NULL PRIMARY KEY, url TEXT NOT NULL, body TEXT NOT NULL, secret TEXT NOT NULL, " +
+                "attempts INTEGER NOT NULL, nextAttemptAtMillis INTEGER NOT NULL, lastError TEXT NOT NULL)",
+        )
+        db.execSQL(
+            "CREATE TABLE IF NOT EXISTS pin_uses (" +
+                "id TEXT NOT NULL PRIMARY KEY, subscriptionId INTEGER NOT NULL, template TEXT NOT NULL, " +
+                "amount REAL NOT NULL, atMillis INTEGER NOT NULL)",
+        )
+    }
 }
 
 /** Adds the queue of received SMS waiting for the server. */

@@ -260,6 +260,30 @@ public object ServerMessageKt {
     public fun hasSmsReceivedAck(): kotlin.Boolean {
       return _builder.hasSmsReceivedAck()
     }
+
+    /**
+     * `.smsgateway.v1.AutomationRunAck automation_run_ack = 17 [json_name = "automationRunAck"];`
+     */
+    public var automationRunAck: smsgateway.v1.Device.AutomationRunAck
+      @kotlin.jvm.JvmName("getAutomationRunAck")
+        get() = _builder.automationRunAck
+      @kotlin.jvm.JvmName("setAutomationRunAck")
+        set(value) {
+        _builder.automationRunAck = value
+      }
+    /**
+     * `.smsgateway.v1.AutomationRunAck automation_run_ack = 17 [json_name = "automationRunAck"];`
+     */
+    public fun clearAutomationRunAck() {
+      _builder.clearAutomationRunAck()
+    }
+    /**
+     * `.smsgateway.v1.AutomationRunAck automation_run_ack = 17 [json_name = "automationRunAck"];`
+     * @return Whether the automationRunAck field is set.
+     */
+    public fun hasAutomationRunAck(): kotlin.Boolean {
+      return _builder.hasAutomationRunAck()
+    }
     public val payloadCase: smsgateway.v1.Device.ServerMessage.PayloadCase
     @kotlin.jvm.JvmName("getPayloadCase")
       get() = _builder.getPayloadCase()
@@ -296,4 +320,7 @@ public val smsgateway.v1.Device.ServerMessageOrBuilder.ussdJobOrNull: smsgateway
 
 public val smsgateway.v1.Device.ServerMessageOrBuilder.smsReceivedAckOrNull: smsgateway.v1.Device.SmsReceivedAck?
   get() = if (hasSmsReceivedAck()) getSmsReceivedAck() else null
+
+public val smsgateway.v1.Device.ServerMessageOrBuilder.automationRunAckOrNull: smsgateway.v1.Device.AutomationRunAck?
+  get() = if (hasAutomationRunAck()) getAutomationRunAck() else null
 

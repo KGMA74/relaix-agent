@@ -44,6 +44,8 @@ class AgentService : Service() {
 
     @Inject lateinit var jobProcessor: JobProcessor
 
+    @Inject lateinit var webhookOutbox: io.github.kgma74.relaix.automation.WebhookOutbox
+
     private val scope = CoroutineScope(SupervisorJob())
     private var deliveryReceiver: DeliveryReportReceiver? = null
 
@@ -70,6 +72,9 @@ class AgentService : Service() {
             }
         }
         connectionManager.start(scope)
+        // Webhooks the automations queued: posted by the phone itself,
+        // whether or not the gateway is reachable.
+        scope.launch { webhookOutbox.run() }
     }
 
     /**

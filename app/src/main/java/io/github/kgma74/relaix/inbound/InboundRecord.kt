@@ -24,6 +24,9 @@ data class InboundRecord(
     val receivedAtMillis: Long,
     /** The SIM it arrived on; 0 when the platform did not say. */
     val subscriptionId: Int = 0,
+    /** The automation that forwarded it, if one did, and the fields it extracted (JSON). */
+    val automationId: String = "",
+    val fieldsJson: String = "{}",
 )
 
 @Dao

@@ -1,6 +1,5 @@
 package io.github.kgma74.relaix.policy
 
-import android.util.Base64
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
@@ -9,6 +8,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import smsgateway.v1.Device
 import javax.inject.Inject
+import java.util.Base64
 import javax.inject.Singleton
 
 /**
@@ -25,12 +25,14 @@ class PolicyStore @Inject constructor(
     /** Null until the server has sent rules once. */
     val policy: Flow<Device.DevicePolicy?> = dataStore.data.map { prefs ->
         prefs[KEY]?.let { encoded ->
-            runCatching { Device.DevicePolicy.parseFrom(Base64.decode(encoded, Base64.NO_WRAP)) }.getOrNull()
+            runCatching { Device.DevicePolicy.parseFrom(Base64.getDecoder().decode(encoded)) }.getOrNull()
         }
     }
 
     suspend fun save(policy: Device.DevicePolicy) {
-        dataStore.edit { it[KEY] = Base64.encodeToString(policy.toByteArray(), Base64.NO_WRAP) }
+        // java.util.Base64, not android.util: the same encoding as before
+        // (standard alphabet, padded, unwrapped), and usable in JVM tests.
+        dataStore.edit { it[KEY] = Base64.getEncoder().encodeToString(policy.toByteArray()) }
     }
 
     suspend fun clear() {

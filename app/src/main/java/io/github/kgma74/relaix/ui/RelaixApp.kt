@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.Message
+import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.PhoneAndroid
 import androidx.compose.material.icons.filled.Speed
 import androidx.compose.material.icons.filled.Tune
@@ -46,6 +47,7 @@ import io.github.kgma74.relaix.ui.components.BrandMark
 import io.github.kgma74.relaix.ui.components.StatusDot
 import io.github.kgma74.relaix.ui.enroll.EnrollmentScreen
 import io.github.kgma74.relaix.ui.enroll.EnrollmentViewModel
+import io.github.kgma74.relaix.ui.pin.PinScreen
 import io.github.kgma74.relaix.ui.rules.RulesScreen
 import io.github.kgma74.relaix.ui.status.DeviceScreen
 import io.github.kgma74.relaix.ui.status.JobsScreen
@@ -62,6 +64,7 @@ private enum class Destination(
     Overview("overview", "État", Icons.Default.Speed),
     Jobs("jobs", "Envois", Icons.AutoMirrored.Filled.Message),
     Rules("rules", "Règles", Icons.Default.Tune),
+    Vault("vault", "Coffre", Icons.Default.Lock),
     Device("device", "Appareil", Icons.Default.PhoneAndroid),
 }
 
@@ -204,6 +207,7 @@ private fun EnrolledApp(
             composable(Destination.Overview.route) { OverviewScreen() }
             composable(Destination.Jobs.route) { JobsScreen() }
             composable(Destination.Rules.route) { RulesScreen() }
+            composable(Destination.Vault.route) { PinScreen() }
             composable(Destination.Device.route) { DeviceScreen() }
         }
     }

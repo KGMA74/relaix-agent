@@ -50,6 +50,7 @@ data class PolicyDraft(
     val limits: LimitsDraft = LimitsDraft(),
     /** Not edited on this screen, but carried through: rules are replaced whole. */
     val inbound: Device.InboundRules = Device.InboundRules.getDefaultInstance(),
+    val automations: List<Device.Automation> = emptyList(),
 )
 
 sealed interface SaveState {
@@ -183,6 +184,7 @@ private fun Device.DevicePolicy.toDraft() = PolicyDraft(
     accept = accept.toDraft(),
     limits = LimitsDraft(limits.perHour, limits.perDay),
     inbound = inbound,
+    automations = automationsList,
     sims = simsList.associate { s ->
         s.subscriptionId to SimDraft(
             subscriptionId = s.subscriptionId,
@@ -204,6 +206,7 @@ private fun PolicyDraft.toProto(): Device.DevicePolicy = Device.DevicePolicy.new
     .setAccept(accept.toProto())
     .setLimits(limits.toProto())
     .setInbound(inbound)
+    .addAllAutomations(automations)
     .addAllSims(
         sims.values
             // A SIM entry that restricts nothing is not worth sending.

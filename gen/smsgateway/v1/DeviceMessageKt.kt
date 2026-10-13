@@ -299,6 +299,30 @@ public object DeviceMessageKt {
     public fun hasSmsReceived(): kotlin.Boolean {
       return _builder.hasSmsReceived()
     }
+
+    /**
+     * `.smsgateway.v1.AutomationRun automation_run = 17 [json_name = "automationRun"];`
+     */
+    public var automationRun: smsgateway.v1.Device.AutomationRun
+      @kotlin.jvm.JvmName("getAutomationRun")
+        get() = _builder.automationRun
+      @kotlin.jvm.JvmName("setAutomationRun")
+        set(value) {
+        _builder.automationRun = value
+      }
+    /**
+     * `.smsgateway.v1.AutomationRun automation_run = 17 [json_name = "automationRun"];`
+     */
+    public fun clearAutomationRun() {
+      _builder.clearAutomationRun()
+    }
+    /**
+     * `.smsgateway.v1.AutomationRun automation_run = 17 [json_name = "automationRun"];`
+     * @return Whether the automationRun field is set.
+     */
+    public fun hasAutomationRun(): kotlin.Boolean {
+      return _builder.hasAutomationRun()
+    }
     public val payloadCase: smsgateway.v1.Device.DeviceMessage.PayloadCase
     @kotlin.jvm.JvmName("getPayloadCase")
       get() = _builder.getPayloadCase()
@@ -335,4 +359,7 @@ public val smsgateway.v1.Device.DeviceMessageOrBuilder.policyUpdateOrNull: smsga
 
 public val smsgateway.v1.Device.DeviceMessageOrBuilder.smsReceivedOrNull: smsgateway.v1.Device.SmsReceived?
   get() = if (hasSmsReceived()) getSmsReceived() else null
+
+public val smsgateway.v1.Device.DeviceMessageOrBuilder.automationRunOrNull: smsgateway.v1.Device.AutomationRun?
+  get() = if (hasAutomationRun()) getAutomationRun() else null
 

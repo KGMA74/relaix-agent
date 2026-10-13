@@ -8,6 +8,8 @@ import android.util.Log
 import dagger.hilt.android.qualifiers.ApplicationContext
 import io.github.kgma74.relaix.health.SimProvider
 import io.github.kgma74.relaix.sms.SmsSender
+import io.github.kgma74.relaix.pin.PinDecision
+import io.github.kgma74.relaix.pin.PinGuard
 import io.github.kgma74.relaix.ussd.UssdRunner
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.channels.ReceiveChannel
@@ -36,6 +38,7 @@ class JobProcessor @Inject constructor(
     private val smsSender: SmsSender,
     private val simProvider: SimProvider,
     private val ussdRunner: UssdRunner,
+    private val pinGuard: PinGuard,
 ) {
     /**
      * Decides whether to run a USSD job, like [accept] does for an SMS.
@@ -74,8 +77,16 @@ class JobProcessor @Inject constructor(
             jobDao.updateOutcome(job.jobId, JobState.FAILED, 0, "EXPIRED", "job expired before it could run", System.currentTimeMillis())
             return result(job.jobId, Device.JobStatus.JOB_STATUS_FAILED, 0, "EXPIRED", "job expired")
         }
+        // {pin}: filled in from the phone's vault, for an approved code only.
+        val code = when (val decision = pinGuard.authorize(job.subscriptionId, null, job.code)) {
+            is PinDecision.Granted -> decision.code
+            is PinDecision.Denied -> {
+                jobDao.updateOutcome(job.jobId, JobState.FAILED, 0, "PIN_REFUSED", decision.reason, System.currentTimeMillis())
+                return result(job.jobId, Device.JobStatus.JOB_STATUS_FAILED, 0, "PIN_REFUSED", decision.reason)
+            }
+        }
         jobDao.updateStatus(job.jobId, JobState.SENDING)
-        val outcome = ussdRunner.run(job.code, job.subscriptionId)
+        val outcome = ussdRunner.run(code, job.subscriptionId)
         val completedAt = System.currentTimeMillis()
         val state = if (outcome.success) JobState.SENT else JobState.FAILED
         jobDao.updateOutcome(job.jobId, state, 0, outcome.errorCode, outcome.errorMessage, completedAt)

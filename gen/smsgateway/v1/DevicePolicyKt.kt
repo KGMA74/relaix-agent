@@ -324,6 +324,112 @@ public object DevicePolicyKt {
 
     public val DevicePolicyKt.Dsl.inboundOrNull: smsgateway.v1.Device.InboundRules?
       get() = _builder.inboundOrNull
+
+    /**
+     * An uninstantiable, behaviorless type to represent the field in
+     * generics.
+     */
+    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
+    public class AutomationsProxy private constructor() : com.google.protobuf.kotlin.DslProxy()
+    /**
+     * ```
+     * What the phone does by itself when an SMS arrives. Run on the phone,
+     * offline included, by an agent listing "automations" in its capabilities.
+     * ```
+     *
+     * `repeated .smsgateway.v1.Automation automations = 8 [json_name = "automations"];`
+     */
+     public val automations: com.google.protobuf.kotlin.DslList<smsgateway.v1.Device.Automation, AutomationsProxy>
+      @kotlin.jvm.JvmSynthetic
+  get() = com.google.protobuf.kotlin.DslList(
+        _builder.automationsList
+      )
+    /**
+     * ```
+     * What the phone does by itself when an SMS arrives. Run on the phone,
+     * offline included, by an agent listing "automations" in its capabilities.
+     * ```
+     *
+     * `repeated .smsgateway.v1.Automation automations = 8 [json_name = "automations"];`
+     * @param value The automations to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+@kotlin.jvm.JvmName("addAutomations")
+    public fun com.google.protobuf.kotlin.DslList<smsgateway.v1.Device.Automation, AutomationsProxy>.add(value: smsgateway.v1.Device.Automation) {
+      _builder.addAutomations(value)
+    }
+    /**
+     * ```
+     * What the phone does by itself when an SMS arrives. Run on the phone,
+     * offline included, by an agent listing "automations" in its capabilities.
+     * ```
+     *
+     * `repeated .smsgateway.v1.Automation automations = 8 [json_name = "automations"];`
+     * @param value The automations to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+@kotlin.jvm.JvmName("plusAssignAutomations")
+    @Suppress("NOTHING_TO_INLINE")
+    public inline operator fun com.google.protobuf.kotlin.DslList<smsgateway.v1.Device.Automation, AutomationsProxy>.plusAssign(value: smsgateway.v1.Device.Automation) {
+      add(value)
+    }
+    /**
+     * ```
+     * What the phone does by itself when an SMS arrives. Run on the phone,
+     * offline included, by an agent listing "automations" in its capabilities.
+     * ```
+     *
+     * `repeated .smsgateway.v1.Automation automations = 8 [json_name = "automations"];`
+     * @param values The automations to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+@kotlin.jvm.JvmName("addAllAutomations")
+    public fun com.google.protobuf.kotlin.DslList<smsgateway.v1.Device.Automation, AutomationsProxy>.addAll(values: kotlin.collections.Iterable<smsgateway.v1.Device.Automation>) {
+      _builder.addAllAutomations(values)
+    }
+    /**
+     * ```
+     * What the phone does by itself when an SMS arrives. Run on the phone,
+     * offline included, by an agent listing "automations" in its capabilities.
+     * ```
+     *
+     * `repeated .smsgateway.v1.Automation automations = 8 [json_name = "automations"];`
+     * @param values The automations to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+@kotlin.jvm.JvmName("plusAssignAllAutomations")
+    @Suppress("NOTHING_TO_INLINE")
+    public inline operator fun com.google.protobuf.kotlin.DslList<smsgateway.v1.Device.Automation, AutomationsProxy>.plusAssign(values: kotlin.collections.Iterable<smsgateway.v1.Device.Automation>) {
+      addAll(values)
+    }
+    /**
+     * ```
+     * What the phone does by itself when an SMS arrives. Run on the phone,
+     * offline included, by an agent listing "automations" in its capabilities.
+     * ```
+     *
+     * `repeated .smsgateway.v1.Automation automations = 8 [json_name = "automations"];`
+     * @param index The index to set the value at.
+     * @param value The automations to set.
+     */
+    @kotlin.jvm.JvmSynthetic
+@kotlin.jvm.JvmName("setAutomations")
+    public operator fun com.google.protobuf.kotlin.DslList<smsgateway.v1.Device.Automation, AutomationsProxy>.set(index: kotlin.Int, value: smsgateway.v1.Device.Automation) {
+      _builder.setAutomations(index, value)
+    }
+    /**
+     * ```
+     * What the phone does by itself when an SMS arrives. Run on the phone,
+     * offline included, by an agent listing "automations" in its capabilities.
+     * ```
+     *
+     * `repeated .smsgateway.v1.Automation automations = 8 [json_name = "automations"];`
+     */
+    @kotlin.jvm.JvmSynthetic
+@kotlin.jvm.JvmName("clearAutomations")
+    public fun com.google.protobuf.kotlin.DslList<smsgateway.v1.Device.Automation, AutomationsProxy>.clear() {
+      _builder.clearAutomations()
+    }
   }
 }
 @kotlin.jvm.JvmSynthetic

@@ -175,6 +175,94 @@ public object SmsReceivedKt {
     public fun clearSubscriptionId() {
       _builder.clearSubscriptionId()
     }
+
+    /**
+     * ```
+     * Set when an automation's forward action sent it: the automation, and the
+     * fields its pattern extracted.
+     * ```
+     *
+     * `string automation_id = 6 [json_name = "automationId"];`
+     */
+    public var automationId: kotlin.String
+      @kotlin.jvm.JvmName("getAutomationId")
+        get() = _builder.automationId
+      @kotlin.jvm.JvmName("setAutomationId")
+        set(value) {
+        _builder.automationId = value
+      }
+    /**
+     * ```
+     * Set when an automation's forward action sent it: the automation, and the
+     * fields its pattern extracted.
+     * ```
+     *
+     * `string automation_id = 6 [json_name = "automationId"];`
+     */
+    public fun clearAutomationId() {
+      _builder.clearAutomationId()
+    }
+
+    /**
+     * An uninstantiable, behaviorless type to represent the field in
+     * generics.
+     */
+    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
+    public class FieldsProxy private constructor() : com.google.protobuf.kotlin.DslProxy()
+    /**
+     * `map<string, string> fields = 7 [json_name = "fields"];`
+     */
+     public val fields: com.google.protobuf.kotlin.DslMap<kotlin.String, kotlin.String, FieldsProxy>
+      @kotlin.jvm.JvmSynthetic
+@kotlin.jvm.JvmName("getFieldsMap")
+      get() = com.google.protobuf.kotlin.DslMap(
+        _builder.fieldsMap
+      )
+    /**
+     * `map<string, string> fields = 7 [json_name = "fields"];`
+     */
+    @kotlin.jvm.JvmName("putFields")
+    public fun com.google.protobuf.kotlin.DslMap<kotlin.String, kotlin.String, FieldsProxy>
+      .put(key: kotlin.String, value: kotlin.String) {
+         _builder.putFields(key, value)
+       }
+    /**
+     * `map<string, string> fields = 7 [json_name = "fields"];`
+     */
+    @kotlin.jvm.JvmSynthetic
+@kotlin.jvm.JvmName("setFields")
+    @Suppress("NOTHING_TO_INLINE")
+    public inline operator fun com.google.protobuf.kotlin.DslMap<kotlin.String, kotlin.String, FieldsProxy>
+      .set(key: kotlin.String, value: kotlin.String) {
+         put(key, value)
+       }
+    /**
+     * `map<string, string> fields = 7 [json_name = "fields"];`
+     */
+    @kotlin.jvm.JvmSynthetic
+@kotlin.jvm.JvmName("removeFields")
+    public fun com.google.protobuf.kotlin.DslMap<kotlin.String, kotlin.String, FieldsProxy>
+      .remove(key: kotlin.String) {
+         _builder.removeFields(key)
+       }
+    /**
+     * `map<string, string> fields = 7 [json_name = "fields"];`
+     */
+    @kotlin.jvm.JvmSynthetic
+@kotlin.jvm.JvmName("putAllFields")
+    public fun com.google.protobuf.kotlin.DslMap<kotlin.String, kotlin.String, FieldsProxy>
+      .putAll(map: kotlin.collections.Map<kotlin.String, kotlin.String>) {
+         _builder.putAllFields(map)
+       }
+    /**
+     * `map<string, string> fields = 7 [json_name = "fields"];`
+     */
+    @kotlin.jvm.JvmSynthetic
+@kotlin.jvm.JvmName("clearFields")
+    public fun com.google.protobuf.kotlin.DslMap<kotlin.String, kotlin.String, FieldsProxy>
+      .clear() {
+         _builder.clearFields()
+       }
   }
 }
 @kotlin.jvm.JvmSynthetic

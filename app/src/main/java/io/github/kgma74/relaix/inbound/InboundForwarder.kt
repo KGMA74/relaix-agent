@@ -33,6 +33,13 @@ class InboundForwarder @Inject constructor(
         arrivals.trySend(Unit)
     }
 
+    /** Keeps an SMS an automation forwards, with what it extracted; its rules already decided. */
+    suspend fun enqueue(sender: String, body: String, receivedAtMillis: Long, subscriptionId: Int, automationId: String, fields: Map<String, String>) {
+        val json = org.json.JSONObject(fields.filterKeys { it !in io.github.kgma74.relaix.automation.AutomationRules.BUILTINS }).toString()
+        dao.insert(InboundRecord(UUID.randomUUID().toString(), sender, body, receivedAtMillis, subscriptionId, automationId, json))
+        arrivals.trySend(Unit)
+    }
+
     /**
      * Sends what is pending for as long as the session lasts: everything at
      * once, then again on each arrival — and every few minutes, for messages
@@ -57,7 +64,14 @@ class InboundForwarder @Inject constructor(
         .setBody(body)
         .setReceivedAt(Timestamp.newBuilder().setSeconds(receivedAtMillis / 1_000).setNanos(((receivedAtMillis % 1_000) * 1_000_000).toInt()))
         .setSubscriptionId(subscriptionId)
+        .setAutomationId(automationId)
+        .putAllFields(fields())
         .build()
+
+    private fun InboundRecord.fields(): Map<String, String> = runCatching {
+        val o = org.json.JSONObject(fieldsJson)
+        o.keys().asSequence().associateWith { o.getString(it) }
+    }.getOrDefault(emptyMap())
 
     companion object {
         private const val TAG = "RelaixInbound"

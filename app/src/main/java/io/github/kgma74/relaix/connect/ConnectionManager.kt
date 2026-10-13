@@ -7,6 +7,7 @@ import io.github.kgma74.relaix.di.IoDispatcher
 import io.github.kgma74.relaix.enroll.DeviceInfoProvider
 import io.github.kgma74.relaix.grpc.ChannelFactory
 import io.github.kgma74.relaix.health.HealthProvider
+import io.github.kgma74.relaix.automation.AutomationEngine
 import io.github.kgma74.relaix.inbound.InboundForwarder
 import io.github.kgma74.relaix.jobs.JobProcessor
 import io.github.kgma74.relaix.policy.PolicyStore
@@ -58,6 +59,7 @@ class ConnectionManager @Inject constructor(
     private val jobProcessor: JobProcessor,
     private val policyStore: PolicyStore,
     private val inboundForwarder: InboundForwarder,
+    private val automationEngine: AutomationEngine,
     @param:IoDispatcher private val ioDispatcher: kotlinx.coroutines.CoroutineDispatcher,
 ) {
     private val _state = MutableStateFlow<ConnectionState>(ConnectionState.Idle)
@@ -224,6 +226,7 @@ class ConnectionManager @Inject constructor(
         var heartbeatJob: Job? = null
         var lateResultsJob: Job? = null
         var inboundJob: Job? = null
+        var runsJob: Job? = null
         try {
             withContext(ioDispatcher) {
                 // The heartbeat and late-result loops below are children of
@@ -282,12 +285,24 @@ class ConnectionManager @Inject constructor(
                                         outgoing.send(envelope(token).setSmsReceived(sms).build())
                                     }
                                 }
+
+                                // What the automations did, reported once over.
+                                runsJob?.cancel()
+                                runsJob = launch {
+                                    automationEngine.report { run ->
+                                        outgoing.send(envelope(token).setAutomationRun(run).build())
+                                    }
+                                }
                             }
 
                             message.hasUssdJob() -> launch { handleUssd(message.ussdJob, outgoing, token) }
 
                             message.hasSmsReceivedAck() -> launch {
                                 inboundForwarder.acknowledged(message.smsReceivedAck.idsList)
+                            }
+
+                            message.hasAutomationRunAck() -> launch {
+                                automationEngine.acknowledged(message.automationRunAck.idsList)
                             }
 
                             message.hasSendSmsJob() -> {
@@ -324,6 +339,7 @@ class ConnectionManager @Inject constructor(
                     heartbeatJob?.cancel()
                     lateResultsJob?.cancel()
                     inboundJob?.cancel()
+                    runsJob?.cancel()
                 }
                 Log.i(TAG, "stream ended by the server")
             }
@@ -333,6 +349,7 @@ class ConnectionManager @Inject constructor(
             heartbeatJob?.cancel()
             lateResultsJob?.cancel()
             inboundJob?.cancel()
+            runsJob?.cancel()
             outgoing.close()
         }
     }
