@@ -41,6 +41,9 @@ class DeviceInfoProvider @Inject constructor(
             // The default zone for the availability windows: "08:00" in the
             // rules means eight o'clock where the phone is.
             .setTimeZone(java.time.ZoneId.systemDefault().id)
+            // What this agent can do beyond SMS, so the server sends it
+            // nothing it would drop. No "ussd_menu": codes run whole.
+            .addAllCapabilities(listOf("ussd", "inbound_sms"))
             .build()
 
     /**

@@ -6,11 +6,25 @@ import androidx.room.TypeConverter
 import androidx.room.TypeConverters
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
+import io.github.kgma74.relaix.inbound.InboundDao
+import io.github.kgma74.relaix.inbound.InboundRecord
 
-@Database(entities = [JobRecord::class], version = 2, exportSchema = false)
+@Database(entities = [JobRecord::class, InboundRecord::class], version = 3, exportSchema = false)
 @TypeConverters(JobStateConverter::class)
 abstract class RelaixDatabase : RoomDatabase() {
     abstract fun jobDao(): JobDao
+    abstract fun inboundDao(): InboundDao
+}
+
+/** Adds the queue of received SMS waiting for the server. */
+val MIGRATION_2_3 = object : Migration(2, 3) {
+    override fun migrate(db: SupportSQLiteDatabase) {
+        db.execSQL(
+            "CREATE TABLE IF NOT EXISTS inbound (" +
+                "id TEXT NOT NULL PRIMARY KEY, sender TEXT NOT NULL, body TEXT NOT NULL, " +
+                "receivedAtMillis INTEGER NOT NULL, subscriptionId INTEGER NOT NULL)",
+        )
+    }
 }
 
 /**

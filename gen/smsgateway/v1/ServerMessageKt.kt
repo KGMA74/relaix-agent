@@ -212,6 +212,54 @@ public object ServerMessageKt {
     public fun hasPolicy(): kotlin.Boolean {
       return _builder.hasPolicy()
     }
+
+    /**
+     * `.smsgateway.v1.UssdJob ussd_job = 15 [json_name = "ussdJob"];`
+     */
+    public var ussdJob: smsgateway.v1.Device.UssdJob
+      @kotlin.jvm.JvmName("getUssdJob")
+        get() = _builder.ussdJob
+      @kotlin.jvm.JvmName("setUssdJob")
+        set(value) {
+        _builder.ussdJob = value
+      }
+    /**
+     * `.smsgateway.v1.UssdJob ussd_job = 15 [json_name = "ussdJob"];`
+     */
+    public fun clearUssdJob() {
+      _builder.clearUssdJob()
+    }
+    /**
+     * `.smsgateway.v1.UssdJob ussd_job = 15 [json_name = "ussdJob"];`
+     * @return Whether the ussdJob field is set.
+     */
+    public fun hasUssdJob(): kotlin.Boolean {
+      return _builder.hasUssdJob()
+    }
+
+    /**
+     * `.smsgateway.v1.SmsReceivedAck sms_received_ack = 16 [json_name = "smsReceivedAck"];`
+     */
+    public var smsReceivedAck: smsgateway.v1.Device.SmsReceivedAck
+      @kotlin.jvm.JvmName("getSmsReceivedAck")
+        get() = _builder.smsReceivedAck
+      @kotlin.jvm.JvmName("setSmsReceivedAck")
+        set(value) {
+        _builder.smsReceivedAck = value
+      }
+    /**
+     * `.smsgateway.v1.SmsReceivedAck sms_received_ack = 16 [json_name = "smsReceivedAck"];`
+     */
+    public fun clearSmsReceivedAck() {
+      _builder.clearSmsReceivedAck()
+    }
+    /**
+     * `.smsgateway.v1.SmsReceivedAck sms_received_ack = 16 [json_name = "smsReceivedAck"];`
+     * @return Whether the smsReceivedAck field is set.
+     */
+    public fun hasSmsReceivedAck(): kotlin.Boolean {
+      return _builder.hasSmsReceivedAck()
+    }
     public val payloadCase: smsgateway.v1.Device.ServerMessage.PayloadCase
     @kotlin.jvm.JvmName("getPayloadCase")
       get() = _builder.getPayloadCase()
@@ -242,4 +290,10 @@ public val smsgateway.v1.Device.ServerMessageOrBuilder.pingOrNull: smsgateway.v1
 
 public val smsgateway.v1.Device.ServerMessageOrBuilder.policyOrNull: smsgateway.v1.Device.DevicePolicy?
   get() = if (hasPolicy()) getPolicy() else null
+
+public val smsgateway.v1.Device.ServerMessageOrBuilder.ussdJobOrNull: smsgateway.v1.Device.UssdJob?
+  get() = if (hasUssdJob()) getUssdJob() else null
+
+public val smsgateway.v1.Device.ServerMessageOrBuilder.smsReceivedAckOrNull: smsgateway.v1.Device.SmsReceivedAck?
+  get() = if (hasSmsReceivedAck()) getSmsReceivedAck() else null
 

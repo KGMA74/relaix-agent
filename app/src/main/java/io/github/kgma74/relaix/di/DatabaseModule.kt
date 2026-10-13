@@ -8,7 +8,9 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import io.github.kgma74.relaix.jobs.JobDao
+import io.github.kgma74.relaix.inbound.InboundDao
 import io.github.kgma74.relaix.jobs.MIGRATION_1_2
+import io.github.kgma74.relaix.jobs.MIGRATION_2_3
 import io.github.kgma74.relaix.jobs.RelaixDatabase
 import javax.inject.Singleton
 
@@ -23,9 +25,12 @@ object DatabaseModule {
             // No fallbackToDestructiveMigration: the job ledger is what stops
             // a redelivered job from being sent twice, so wiping it on a
             // schema change would trade a migration chore for duplicate SMS.
-            .addMigrations(MIGRATION_1_2)
+            .addMigrations(MIGRATION_1_2, MIGRATION_2_3)
             .build()
 
     @Provides
     fun provideJobDao(database: RelaixDatabase): JobDao = database.jobDao()
+
+    @Provides
+    fun provideInboundDao(database: RelaixDatabase): InboundDao = database.inboundDao()
 }

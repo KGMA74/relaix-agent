@@ -1993,6 +1993,75 @@ public final class Device extends com.google.protobuf.GeneratedFile {
      */
     com.google.protobuf.ByteString
         getTimeZoneBytes();
+
+    /**
+     * <pre>
+     * What this agent can do beyond sending SMS, so the server never hands a
+     * job to an agent that would not understand it: an unknown ServerMessage
+     * payload is silently dropped by an older agent, and the job would sit
+     * assigned to a phone that never saw it. Values:
+     * "ussd"         runs a UssdJob with no replies (one request, one answer)
+     * "ussd_menu"    also runs one with replies (a menu, step by step)
+     * "inbound_sms"  forwards received SMS (SmsReceived) when its rules say so
+     * Empty from agents that predate the field: SMS only.
+     * </pre>
+     *
+     * <code>repeated string capabilities = 11 [json_name = "capabilities"];</code>
+     * @return A list containing the capabilities.
+     */
+    java.util.List<java.lang.String>
+        getCapabilitiesList();
+    /**
+     * <pre>
+     * What this agent can do beyond sending SMS, so the server never hands a
+     * job to an agent that would not understand it: an unknown ServerMessage
+     * payload is silently dropped by an older agent, and the job would sit
+     * assigned to a phone that never saw it. Values:
+     * "ussd"         runs a UssdJob with no replies (one request, one answer)
+     * "ussd_menu"    also runs one with replies (a menu, step by step)
+     * "inbound_sms"  forwards received SMS (SmsReceived) when its rules say so
+     * Empty from agents that predate the field: SMS only.
+     * </pre>
+     *
+     * <code>repeated string capabilities = 11 [json_name = "capabilities"];</code>
+     * @return The count of capabilities.
+     */
+    int getCapabilitiesCount();
+    /**
+     * <pre>
+     * What this agent can do beyond sending SMS, so the server never hands a
+     * job to an agent that would not understand it: an unknown ServerMessage
+     * payload is silently dropped by an older agent, and the job would sit
+     * assigned to a phone that never saw it. Values:
+     * "ussd"         runs a UssdJob with no replies (one request, one answer)
+     * "ussd_menu"    also runs one with replies (a menu, step by step)
+     * "inbound_sms"  forwards received SMS (SmsReceived) when its rules say so
+     * Empty from agents that predate the field: SMS only.
+     * </pre>
+     *
+     * <code>repeated string capabilities = 11 [json_name = "capabilities"];</code>
+     * @param index The index of the element to return.
+     * @return The capabilities at the given index.
+     */
+    java.lang.String getCapabilities(int index);
+    /**
+     * <pre>
+     * What this agent can do beyond sending SMS, so the server never hands a
+     * job to an agent that would not understand it: an unknown ServerMessage
+     * payload is silently dropped by an older agent, and the job would sit
+     * assigned to a phone that never saw it. Values:
+     * "ussd"         runs a UssdJob with no replies (one request, one answer)
+     * "ussd_menu"    also runs one with replies (a menu, step by step)
+     * "inbound_sms"  forwards received SMS (SmsReceived) when its rules say so
+     * Empty from agents that predate the field: SMS only.
+     * </pre>
+     *
+     * <code>repeated string capabilities = 11 [json_name = "capabilities"];</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the capabilities at the given index.
+     */
+    com.google.protobuf.ByteString
+        getCapabilitiesBytes(int index);
   }
   /**
    * <pre>
@@ -2031,6 +2100,8 @@ public final class Device extends com.google.protobuf.GeneratedFile {
       sims_ = java.util.Collections.emptyList();
       hardwareId_ = "";
       timeZone_ = "";
+      capabilities_ =
+          com.google.protobuf.LazyStringArrayList.emptyList();
     }
 
     public static final com.google.protobuf.Descriptors.Descriptor
@@ -2591,6 +2662,87 @@ public final class Device extends com.google.protobuf.GeneratedFile {
       }
     }
 
+    public static final int CAPABILITIES_FIELD_NUMBER = 11;
+    @SuppressWarnings("serial")
+    private com.google.protobuf.LazyStringArrayList capabilities_ =
+        com.google.protobuf.LazyStringArrayList.emptyList();
+    /**
+     * <pre>
+     * What this agent can do beyond sending SMS, so the server never hands a
+     * job to an agent that would not understand it: an unknown ServerMessage
+     * payload is silently dropped by an older agent, and the job would sit
+     * assigned to a phone that never saw it. Values:
+     * "ussd"         runs a UssdJob with no replies (one request, one answer)
+     * "ussd_menu"    also runs one with replies (a menu, step by step)
+     * "inbound_sms"  forwards received SMS (SmsReceived) when its rules say so
+     * Empty from agents that predate the field: SMS only.
+     * </pre>
+     *
+     * <code>repeated string capabilities = 11 [json_name = "capabilities"];</code>
+     * @return A list containing the capabilities.
+     */
+    public com.google.protobuf.ProtocolStringList
+        getCapabilitiesList() {
+      return capabilities_;
+    }
+    /**
+     * <pre>
+     * What this agent can do beyond sending SMS, so the server never hands a
+     * job to an agent that would not understand it: an unknown ServerMessage
+     * payload is silently dropped by an older agent, and the job would sit
+     * assigned to a phone that never saw it. Values:
+     * "ussd"         runs a UssdJob with no replies (one request, one answer)
+     * "ussd_menu"    also runs one with replies (a menu, step by step)
+     * "inbound_sms"  forwards received SMS (SmsReceived) when its rules say so
+     * Empty from agents that predate the field: SMS only.
+     * </pre>
+     *
+     * <code>repeated string capabilities = 11 [json_name = "capabilities"];</code>
+     * @return The count of capabilities.
+     */
+    public int getCapabilitiesCount() {
+      return capabilities_.size();
+    }
+    /**
+     * <pre>
+     * What this agent can do beyond sending SMS, so the server never hands a
+     * job to an agent that would not understand it: an unknown ServerMessage
+     * payload is silently dropped by an older agent, and the job would sit
+     * assigned to a phone that never saw it. Values:
+     * "ussd"         runs a UssdJob with no replies (one request, one answer)
+     * "ussd_menu"    also runs one with replies (a menu, step by step)
+     * "inbound_sms"  forwards received SMS (SmsReceived) when its rules say so
+     * Empty from agents that predate the field: SMS only.
+     * </pre>
+     *
+     * <code>repeated string capabilities = 11 [json_name = "capabilities"];</code>
+     * @param index The index of the element to return.
+     * @return The capabilities at the given index.
+     */
+    public java.lang.String getCapabilities(int index) {
+      return capabilities_.get(index);
+    }
+    /**
+     * <pre>
+     * What this agent can do beyond sending SMS, so the server never hands a
+     * job to an agent that would not understand it: an unknown ServerMessage
+     * payload is silently dropped by an older agent, and the job would sit
+     * assigned to a phone that never saw it. Values:
+     * "ussd"         runs a UssdJob with no replies (one request, one answer)
+     * "ussd_menu"    also runs one with replies (a menu, step by step)
+     * "inbound_sms"  forwards received SMS (SmsReceived) when its rules say so
+     * Empty from agents that predate the field: SMS only.
+     * </pre>
+     *
+     * <code>repeated string capabilities = 11 [json_name = "capabilities"];</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the capabilities at the given index.
+     */
+    public com.google.protobuf.ByteString
+        getCapabilitiesBytes(int index) {
+      return capabilities_.getByteString(index);
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -2635,6 +2787,9 @@ public final class Device extends com.google.protobuf.GeneratedFile {
       if (!com.google.protobuf.GeneratedMessage.isStringEmpty(timeZone_)) {
         com.google.protobuf.GeneratedMessage.writeString(output, 10, timeZone_);
       }
+      for (int i = 0; i < capabilities_.size(); i++) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 11, capabilities_.getRaw(i));
+      }
       getUnknownFields().writeTo(output);
     }
     private int computeSerializedSize_0() {
@@ -2674,6 +2829,14 @@ public final class Device extends com.google.protobuf.GeneratedFile {
       }
       if (!com.google.protobuf.GeneratedMessage.isStringEmpty(timeZone_)) {
         size += com.google.protobuf.GeneratedMessage.computeStringSize(10, timeZone_);
+      }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < capabilities_.size(); i++) {
+          dataSize += computeStringSizeNoTag(capabilities_.getRaw(i));
+        }
+        size += dataSize;
+        size += 1 * getCapabilitiesList().size();
       }
       return size;
     }
@@ -2719,6 +2882,8 @@ public final class Device extends com.google.protobuf.GeneratedFile {
           .equals(other.getHardwareId())) return false;
       if (!getTimeZone()
           .equals(other.getTimeZone())) return false;
+      if (!getCapabilitiesList()
+          .equals(other.getCapabilitiesList())) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -2752,6 +2917,10 @@ public final class Device extends com.google.protobuf.GeneratedFile {
       hash = (53 * hash) + getHardwareId().hashCode();
       hash = (37 * hash) + TIME_ZONE_FIELD_NUMBER;
       hash = (53 * hash) + getTimeZone().hashCode();
+      if (getCapabilitiesCount() > 0) {
+        hash = (37 * hash) + CAPABILITIES_FIELD_NUMBER;
+        hash = (53 * hash) + getCapabilitiesList().hashCode();
+      }
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -2904,6 +3073,8 @@ public final class Device extends com.google.protobuf.GeneratedFile {
         bitField0_ = (bitField0_ & ~0x00000080);
         hardwareId_ = "";
         timeZone_ = "";
+        capabilities_ =
+            com.google.protobuf.LazyStringArrayList.emptyList();
         return this;
       }
 
@@ -2976,6 +3147,10 @@ public final class Device extends com.google.protobuf.GeneratedFile {
         }
         if (((from_bitField0_ & 0x00000200) != 0)) {
           result.timeZone_ = timeZone_;
+        }
+        if (((from_bitField0_ & 0x00000400) != 0)) {
+          capabilities_.makeImmutable();
+          result.capabilities_ = capabilities_;
         }
       }
 
@@ -3062,6 +3237,16 @@ public final class Device extends com.google.protobuf.GeneratedFile {
           bitField0_ |= 0x00000200;
           onChanged();
         }
+        if (!other.capabilities_.isEmpty()) {
+          if (capabilities_.isEmpty()) {
+            capabilities_ = other.capabilities_;
+            bitField0_ |= 0x00000400;
+          } else {
+            ensureCapabilitiesIsMutable();
+            capabilities_.addAll(other.capabilities_);
+          }
+          onChanged();
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
@@ -3146,6 +3331,11 @@ public final class Device extends com.google.protobuf.GeneratedFile {
                 bitField0_ |= 0x00000200;
                 break;
               } // case 82
+              case 90: {
+                ensureCapabilitiesIsMutable();
+                capabilities_.add(input.readStringRequireUtf8());
+                break;
+              } // case 90
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -4494,6 +4684,216 @@ public final class Device extends com.google.protobuf.GeneratedFile {
         checkByteStringIsUtf8(value);
         timeZone_ = value;
         bitField0_ |= 0x00000200;
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.LazyStringArrayList capabilities_ =
+          com.google.protobuf.LazyStringArrayList.emptyList();
+      private void ensureCapabilitiesIsMutable() {
+        if (!capabilities_.isModifiable()) {
+          capabilities_ = new com.google.protobuf.LazyStringArrayList(capabilities_);
+        }
+        bitField0_ |= 0x00000400;
+      }
+      /**
+       * <pre>
+       * What this agent can do beyond sending SMS, so the server never hands a
+       * job to an agent that would not understand it: an unknown ServerMessage
+       * payload is silently dropped by an older agent, and the job would sit
+       * assigned to a phone that never saw it. Values:
+       * "ussd"         runs a UssdJob with no replies (one request, one answer)
+       * "ussd_menu"    also runs one with replies (a menu, step by step)
+       * "inbound_sms"  forwards received SMS (SmsReceived) when its rules say so
+       * Empty from agents that predate the field: SMS only.
+       * </pre>
+       *
+       * <code>repeated string capabilities = 11 [json_name = "capabilities"];</code>
+       * @return A list containing the capabilities.
+       */
+      public com.google.protobuf.ProtocolStringList
+          getCapabilitiesList() {
+        capabilities_.makeImmutable();
+        return capabilities_;
+      }
+      /**
+       * <pre>
+       * What this agent can do beyond sending SMS, so the server never hands a
+       * job to an agent that would not understand it: an unknown ServerMessage
+       * payload is silently dropped by an older agent, and the job would sit
+       * assigned to a phone that never saw it. Values:
+       * "ussd"         runs a UssdJob with no replies (one request, one answer)
+       * "ussd_menu"    also runs one with replies (a menu, step by step)
+       * "inbound_sms"  forwards received SMS (SmsReceived) when its rules say so
+       * Empty from agents that predate the field: SMS only.
+       * </pre>
+       *
+       * <code>repeated string capabilities = 11 [json_name = "capabilities"];</code>
+       * @return The count of capabilities.
+       */
+      public int getCapabilitiesCount() {
+        return capabilities_.size();
+      }
+      /**
+       * <pre>
+       * What this agent can do beyond sending SMS, so the server never hands a
+       * job to an agent that would not understand it: an unknown ServerMessage
+       * payload is silently dropped by an older agent, and the job would sit
+       * assigned to a phone that never saw it. Values:
+       * "ussd"         runs a UssdJob with no replies (one request, one answer)
+       * "ussd_menu"    also runs one with replies (a menu, step by step)
+       * "inbound_sms"  forwards received SMS (SmsReceived) when its rules say so
+       * Empty from agents that predate the field: SMS only.
+       * </pre>
+       *
+       * <code>repeated string capabilities = 11 [json_name = "capabilities"];</code>
+       * @param index The index of the element to return.
+       * @return The capabilities at the given index.
+       */
+      public java.lang.String getCapabilities(int index) {
+        return capabilities_.get(index);
+      }
+      /**
+       * <pre>
+       * What this agent can do beyond sending SMS, so the server never hands a
+       * job to an agent that would not understand it: an unknown ServerMessage
+       * payload is silently dropped by an older agent, and the job would sit
+       * assigned to a phone that never saw it. Values:
+       * "ussd"         runs a UssdJob with no replies (one request, one answer)
+       * "ussd_menu"    also runs one with replies (a menu, step by step)
+       * "inbound_sms"  forwards received SMS (SmsReceived) when its rules say so
+       * Empty from agents that predate the field: SMS only.
+       * </pre>
+       *
+       * <code>repeated string capabilities = 11 [json_name = "capabilities"];</code>
+       * @param index The index of the value to return.
+       * @return The bytes of the capabilities at the given index.
+       */
+      public com.google.protobuf.ByteString
+          getCapabilitiesBytes(int index) {
+        return capabilities_.getByteString(index);
+      }
+      /**
+       * <pre>
+       * What this agent can do beyond sending SMS, so the server never hands a
+       * job to an agent that would not understand it: an unknown ServerMessage
+       * payload is silently dropped by an older agent, and the job would sit
+       * assigned to a phone that never saw it. Values:
+       * "ussd"         runs a UssdJob with no replies (one request, one answer)
+       * "ussd_menu"    also runs one with replies (a menu, step by step)
+       * "inbound_sms"  forwards received SMS (SmsReceived) when its rules say so
+       * Empty from agents that predate the field: SMS only.
+       * </pre>
+       *
+       * <code>repeated string capabilities = 11 [json_name = "capabilities"];</code>
+       * @param index The index to set the value at.
+       * @param value The capabilities to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCapabilities(
+          int index, java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        ensureCapabilitiesIsMutable();
+        capabilities_.set(index, value);
+        bitField0_ |= 0x00000400;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * What this agent can do beyond sending SMS, so the server never hands a
+       * job to an agent that would not understand it: an unknown ServerMessage
+       * payload is silently dropped by an older agent, and the job would sit
+       * assigned to a phone that never saw it. Values:
+       * "ussd"         runs a UssdJob with no replies (one request, one answer)
+       * "ussd_menu"    also runs one with replies (a menu, step by step)
+       * "inbound_sms"  forwards received SMS (SmsReceived) when its rules say so
+       * Empty from agents that predate the field: SMS only.
+       * </pre>
+       *
+       * <code>repeated string capabilities = 11 [json_name = "capabilities"];</code>
+       * @param value The capabilities to add.
+       * @return This builder for chaining.
+       */
+      public Builder addCapabilities(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        ensureCapabilitiesIsMutable();
+        capabilities_.add(value);
+        bitField0_ |= 0x00000400;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * What this agent can do beyond sending SMS, so the server never hands a
+       * job to an agent that would not understand it: an unknown ServerMessage
+       * payload is silently dropped by an older agent, and the job would sit
+       * assigned to a phone that never saw it. Values:
+       * "ussd"         runs a UssdJob with no replies (one request, one answer)
+       * "ussd_menu"    also runs one with replies (a menu, step by step)
+       * "inbound_sms"  forwards received SMS (SmsReceived) when its rules say so
+       * Empty from agents that predate the field: SMS only.
+       * </pre>
+       *
+       * <code>repeated string capabilities = 11 [json_name = "capabilities"];</code>
+       * @param values The capabilities to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllCapabilities(
+          java.lang.Iterable<java.lang.String> values) {
+        ensureCapabilitiesIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, capabilities_);
+        bitField0_ |= 0x00000400;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * What this agent can do beyond sending SMS, so the server never hands a
+       * job to an agent that would not understand it: an unknown ServerMessage
+       * payload is silently dropped by an older agent, and the job would sit
+       * assigned to a phone that never saw it. Values:
+       * "ussd"         runs a UssdJob with no replies (one request, one answer)
+       * "ussd_menu"    also runs one with replies (a menu, step by step)
+       * "inbound_sms"  forwards received SMS (SmsReceived) when its rules say so
+       * Empty from agents that predate the field: SMS only.
+       * </pre>
+       *
+       * <code>repeated string capabilities = 11 [json_name = "capabilities"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearCapabilities() {
+        capabilities_ =
+          com.google.protobuf.LazyStringArrayList.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000400);;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * What this agent can do beyond sending SMS, so the server never hands a
+       * job to an agent that would not understand it: an unknown ServerMessage
+       * payload is silently dropped by an older agent, and the job would sit
+       * assigned to a phone that never saw it. Values:
+       * "ussd"         runs a UssdJob with no replies (one request, one answer)
+       * "ussd_menu"    also runs one with replies (a menu, step by step)
+       * "inbound_sms"  forwards received SMS (SmsReceived) when its rules say so
+       * Empty from agents that predate the field: SMS only.
+       * </pre>
+       *
+       * <code>repeated string capabilities = 11 [json_name = "capabilities"];</code>
+       * @param value The bytes of the capabilities to add.
+       * @return This builder for chaining.
+       */
+      public Builder addCapabilitiesBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        ensureCapabilitiesIsMutable();
+        capabilities_.add(value);
+        bitField0_ |= 0x00000400;
         onChanged();
         return this;
       }
@@ -5920,6 +6320,21 @@ public final class Device extends com.google.protobuf.GeneratedFile {
      */
     smsgateway.v1.Device.PolicyUpdateOrBuilder getPolicyUpdateOrBuilder();
 
+    /**
+     * <code>.smsgateway.v1.SmsReceived sms_received = 16 [json_name = "smsReceived"];</code>
+     * @return Whether the smsReceived field is set.
+     */
+    boolean hasSmsReceived();
+    /**
+     * <code>.smsgateway.v1.SmsReceived sms_received = 16 [json_name = "smsReceived"];</code>
+     * @return The smsReceived.
+     */
+    smsgateway.v1.Device.SmsReceived getSmsReceived();
+    /**
+     * <code>.smsgateway.v1.SmsReceived sms_received = 16 [json_name = "smsReceived"];</code>
+     */
+    smsgateway.v1.Device.SmsReceivedOrBuilder getSmsReceivedOrBuilder();
+
     smsgateway.v1.Device.DeviceMessage.PayloadCase getPayloadCase();
   }
   /**
@@ -5984,6 +6399,7 @@ public final class Device extends com.google.protobuf.GeneratedFile {
       JOB_RESULT(13),
       LEAVE(14),
       POLICY_UPDATE(15),
+      SMS_RECEIVED(16),
       PAYLOAD_NOT_SET(0);
       private final int value;
       private PayloadCase(int value) {
@@ -6007,6 +6423,7 @@ public final class Device extends com.google.protobuf.GeneratedFile {
           case 13: return JOB_RESULT;
           case 14: return LEAVE;
           case 15: return POLICY_UPDATE;
+          case 16: return SMS_RECEIVED;
           case 0: return PAYLOAD_NOT_SET;
           default: return null;
         }
@@ -6349,6 +6766,37 @@ public final class Device extends com.google.protobuf.GeneratedFile {
       return smsgateway.v1.Device.PolicyUpdate.getDefaultInstance();
     }
 
+    public static final int SMS_RECEIVED_FIELD_NUMBER = 16;
+    /**
+     * <code>.smsgateway.v1.SmsReceived sms_received = 16 [json_name = "smsReceived"];</code>
+     * @return Whether the smsReceived field is set.
+     */
+    @java.lang.Override
+    public boolean hasSmsReceived() {
+      return payloadCase_ == 16;
+    }
+    /**
+     * <code>.smsgateway.v1.SmsReceived sms_received = 16 [json_name = "smsReceived"];</code>
+     * @return The smsReceived.
+     */
+    @java.lang.Override
+    public smsgateway.v1.Device.SmsReceived getSmsReceived() {
+      if (payloadCase_ == 16) {
+         return (smsgateway.v1.Device.SmsReceived) payload_;
+      }
+      return smsgateway.v1.Device.SmsReceived.getDefaultInstance();
+    }
+    /**
+     * <code>.smsgateway.v1.SmsReceived sms_received = 16 [json_name = "smsReceived"];</code>
+     */
+    @java.lang.Override
+    public smsgateway.v1.Device.SmsReceivedOrBuilder getSmsReceivedOrBuilder() {
+      if (payloadCase_ == 16) {
+         return (smsgateway.v1.Device.SmsReceived) payload_;
+      }
+      return smsgateway.v1.Device.SmsReceived.getDefaultInstance();
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -6390,6 +6838,9 @@ public final class Device extends com.google.protobuf.GeneratedFile {
       if (payloadCase_ == 15) {
         output.writeMessage(15, (smsgateway.v1.Device.PolicyUpdate) payload_);
       }
+      if (payloadCase_ == 16) {
+        output.writeMessage(16, (smsgateway.v1.Device.SmsReceived) payload_);
+      }
       getUnknownFields().writeTo(output);
     }
     private int computeSerializedSize_0() {
@@ -6427,6 +6878,10 @@ public final class Device extends com.google.protobuf.GeneratedFile {
       if (payloadCase_ == 15) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(15, (smsgateway.v1.Device.PolicyUpdate) payload_);
+      }
+      if (payloadCase_ == 16) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(16, (smsgateway.v1.Device.SmsReceived) payload_);
       }
       return size;
     }
@@ -6487,6 +6942,10 @@ public final class Device extends com.google.protobuf.GeneratedFile {
           if (!getPolicyUpdate()
               .equals(other.getPolicyUpdate())) return false;
           break;
+        case 16:
+          if (!getSmsReceived()
+              .equals(other.getSmsReceived())) return false;
+          break;
         case 0:
         default:
       }
@@ -6533,6 +6992,10 @@ public final class Device extends com.google.protobuf.GeneratedFile {
         case 15:
           hash = (37 * hash) + POLICY_UPDATE_FIELD_NUMBER;
           hash = (53 * hash) + getPolicyUpdate().hashCode();
+          break;
+        case 16:
+          hash = (37 * hash) + SMS_RECEIVED_FIELD_NUMBER;
+          hash = (53 * hash) + getSmsReceived().hashCode();
           break;
         case 0:
         default:
@@ -6704,6 +7167,9 @@ public final class Device extends com.google.protobuf.GeneratedFile {
         if (policyUpdateBuilder_ != null) {
           policyUpdateBuilder_.clear();
         }
+        if (smsReceivedBuilder_ != null) {
+          smsReceivedBuilder_.clear();
+        }
         payloadCase_ = 0;
         payload_ = null;
         return this;
@@ -6783,6 +7249,10 @@ public final class Device extends com.google.protobuf.GeneratedFile {
             policyUpdateBuilder_ != null) {
           result.payload_ = policyUpdateBuilder_.build();
         }
+        if (payloadCase_ == 16 &&
+            smsReceivedBuilder_ != null) {
+          result.payload_ = smsReceivedBuilder_.build();
+        }
       }
 
       @java.lang.Override
@@ -6833,6 +7303,10 @@ public final class Device extends com.google.protobuf.GeneratedFile {
           }
           case POLICY_UPDATE: {
             mergePolicyUpdate(other.getPolicyUpdate());
+            break;
+          }
+          case SMS_RECEIVED: {
+            mergeSmsReceived(other.getSmsReceived());
             break;
           }
           case PAYLOAD_NOT_SET: {
@@ -6924,6 +7398,13 @@ public final class Device extends com.google.protobuf.GeneratedFile {
                 payloadCase_ = 15;
                 break;
               } // case 122
+              case 130: {
+                input.readMessage(
+                    internalGetSmsReceivedFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                payloadCase_ = 16;
+                break;
+              } // case 130
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -8173,6 +8654,148 @@ public final class Device extends com.google.protobuf.GeneratedFile {
         return policyUpdateBuilder_;
       }
 
+      private com.google.protobuf.SingleFieldBuilder<
+          smsgateway.v1.Device.SmsReceived, smsgateway.v1.Device.SmsReceived.Builder, smsgateway.v1.Device.SmsReceivedOrBuilder> smsReceivedBuilder_;
+      /**
+       * <code>.smsgateway.v1.SmsReceived sms_received = 16 [json_name = "smsReceived"];</code>
+       * @return Whether the smsReceived field is set.
+       */
+      @java.lang.Override
+      public boolean hasSmsReceived() {
+        return payloadCase_ == 16;
+      }
+      /**
+       * <code>.smsgateway.v1.SmsReceived sms_received = 16 [json_name = "smsReceived"];</code>
+       * @return The smsReceived.
+       */
+      @java.lang.Override
+      public smsgateway.v1.Device.SmsReceived getSmsReceived() {
+        if (smsReceivedBuilder_ == null) {
+          if (payloadCase_ == 16) {
+            return (smsgateway.v1.Device.SmsReceived) payload_;
+          }
+          return smsgateway.v1.Device.SmsReceived.getDefaultInstance();
+        } else {
+          if (payloadCase_ == 16) {
+            return smsReceivedBuilder_.getMessage();
+          }
+          return smsgateway.v1.Device.SmsReceived.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.smsgateway.v1.SmsReceived sms_received = 16 [json_name = "smsReceived"];</code>
+       */
+      public Builder setSmsReceived(smsgateway.v1.Device.SmsReceived value) {
+        if (smsReceivedBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          payload_ = value;
+          onChanged();
+        } else {
+          smsReceivedBuilder_.setMessage(value);
+        }
+        payloadCase_ = 16;
+        return this;
+      }
+      /**
+       * <code>.smsgateway.v1.SmsReceived sms_received = 16 [json_name = "smsReceived"];</code>
+       */
+      public Builder setSmsReceived(
+          smsgateway.v1.Device.SmsReceived.Builder builderForValue) {
+        if (smsReceivedBuilder_ == null) {
+          payload_ = builderForValue.build();
+          onChanged();
+        } else {
+          smsReceivedBuilder_.setMessage(builderForValue.build());
+        }
+        payloadCase_ = 16;
+        return this;
+      }
+      /**
+       * <code>.smsgateway.v1.SmsReceived sms_received = 16 [json_name = "smsReceived"];</code>
+       */
+      public Builder mergeSmsReceived(smsgateway.v1.Device.SmsReceived value) {
+        if (smsReceivedBuilder_ == null) {
+          if (payloadCase_ == 16 &&
+              payload_ != smsgateway.v1.Device.SmsReceived.getDefaultInstance()) {
+            payload_ = smsgateway.v1.Device.SmsReceived.newBuilder((smsgateway.v1.Device.SmsReceived) payload_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            payload_ = value;
+          }
+          onChanged();
+        } else {
+          if (payloadCase_ == 16) {
+            smsReceivedBuilder_.mergeFrom(value);
+          } else {
+            smsReceivedBuilder_.setMessage(value);
+          }
+        }
+        payloadCase_ = 16;
+        return this;
+      }
+      /**
+       * <code>.smsgateway.v1.SmsReceived sms_received = 16 [json_name = "smsReceived"];</code>
+       */
+      public Builder clearSmsReceived() {
+        if (smsReceivedBuilder_ == null) {
+          if (payloadCase_ == 16) {
+            payloadCase_ = 0;
+            payload_ = null;
+            onChanged();
+          }
+        } else {
+          if (payloadCase_ == 16) {
+            payloadCase_ = 0;
+            payload_ = null;
+          }
+          smsReceivedBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.smsgateway.v1.SmsReceived sms_received = 16 [json_name = "smsReceived"];</code>
+       */
+      public smsgateway.v1.Device.SmsReceived.Builder getSmsReceivedBuilder() {
+        return internalGetSmsReceivedFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.smsgateway.v1.SmsReceived sms_received = 16 [json_name = "smsReceived"];</code>
+       */
+      @java.lang.Override
+      public smsgateway.v1.Device.SmsReceivedOrBuilder getSmsReceivedOrBuilder() {
+        if ((payloadCase_ == 16) && (smsReceivedBuilder_ != null)) {
+          return smsReceivedBuilder_.getMessageOrBuilder();
+        } else {
+          if (payloadCase_ == 16) {
+            return (smsgateway.v1.Device.SmsReceived) payload_;
+          }
+          return smsgateway.v1.Device.SmsReceived.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.smsgateway.v1.SmsReceived sms_received = 16 [json_name = "smsReceived"];</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          smsgateway.v1.Device.SmsReceived, smsgateway.v1.Device.SmsReceived.Builder, smsgateway.v1.Device.SmsReceivedOrBuilder> 
+          internalGetSmsReceivedFieldBuilder() {
+        if (smsReceivedBuilder_ == null) {
+          if (!(payloadCase_ == 16)) {
+            payload_ = smsgateway.v1.Device.SmsReceived.getDefaultInstance();
+          }
+          smsReceivedBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              smsgateway.v1.Device.SmsReceived, smsgateway.v1.Device.SmsReceived.Builder, smsgateway.v1.Device.SmsReceivedOrBuilder>(
+                  (smsgateway.v1.Device.SmsReceived) payload_,
+                  getParentForChildren(),
+                  isClean());
+          payload_ = null;
+        }
+        payloadCase_ = 16;
+        onChanged();
+        return smsReceivedBuilder_;
+      }
+
       // @@protoc_insertion_point(builder_scope:smsgateway.v1.DeviceMessage)
     }
 
@@ -8345,6 +8968,36 @@ public final class Device extends com.google.protobuf.GeneratedFile {
      */
     smsgateway.v1.Device.DevicePolicyOrBuilder getPolicyOrBuilder();
 
+    /**
+     * <code>.smsgateway.v1.UssdJob ussd_job = 15 [json_name = "ussdJob"];</code>
+     * @return Whether the ussdJob field is set.
+     */
+    boolean hasUssdJob();
+    /**
+     * <code>.smsgateway.v1.UssdJob ussd_job = 15 [json_name = "ussdJob"];</code>
+     * @return The ussdJob.
+     */
+    smsgateway.v1.Device.UssdJob getUssdJob();
+    /**
+     * <code>.smsgateway.v1.UssdJob ussd_job = 15 [json_name = "ussdJob"];</code>
+     */
+    smsgateway.v1.Device.UssdJobOrBuilder getUssdJobOrBuilder();
+
+    /**
+     * <code>.smsgateway.v1.SmsReceivedAck sms_received_ack = 16 [json_name = "smsReceivedAck"];</code>
+     * @return Whether the smsReceivedAck field is set.
+     */
+    boolean hasSmsReceivedAck();
+    /**
+     * <code>.smsgateway.v1.SmsReceivedAck sms_received_ack = 16 [json_name = "smsReceivedAck"];</code>
+     * @return The smsReceivedAck.
+     */
+    smsgateway.v1.Device.SmsReceivedAck getSmsReceivedAck();
+    /**
+     * <code>.smsgateway.v1.SmsReceivedAck sms_received_ack = 16 [json_name = "smsReceivedAck"];</code>
+     */
+    smsgateway.v1.Device.SmsReceivedAckOrBuilder getSmsReceivedAckOrBuilder();
+
     smsgateway.v1.Device.ServerMessage.PayloadCase getPayloadCase();
   }
   /**
@@ -8407,6 +9060,8 @@ public final class Device extends com.google.protobuf.GeneratedFile {
       CANCEL_JOB(12),
       PING(13),
       POLICY(14),
+      USSD_JOB(15),
+      SMS_RECEIVED_ACK(16),
       PAYLOAD_NOT_SET(0);
       private final int value;
       private PayloadCase(int value) {
@@ -8429,6 +9084,8 @@ public final class Device extends com.google.protobuf.GeneratedFile {
           case 12: return CANCEL_JOB;
           case 13: return PING;
           case 14: return POLICY;
+          case 15: return USSD_JOB;
+          case 16: return SMS_RECEIVED_ACK;
           case 0: return PAYLOAD_NOT_SET;
           default: return null;
         }
@@ -8679,6 +9336,68 @@ public final class Device extends com.google.protobuf.GeneratedFile {
       return smsgateway.v1.Device.DevicePolicy.getDefaultInstance();
     }
 
+    public static final int USSD_JOB_FIELD_NUMBER = 15;
+    /**
+     * <code>.smsgateway.v1.UssdJob ussd_job = 15 [json_name = "ussdJob"];</code>
+     * @return Whether the ussdJob field is set.
+     */
+    @java.lang.Override
+    public boolean hasUssdJob() {
+      return payloadCase_ == 15;
+    }
+    /**
+     * <code>.smsgateway.v1.UssdJob ussd_job = 15 [json_name = "ussdJob"];</code>
+     * @return The ussdJob.
+     */
+    @java.lang.Override
+    public smsgateway.v1.Device.UssdJob getUssdJob() {
+      if (payloadCase_ == 15) {
+         return (smsgateway.v1.Device.UssdJob) payload_;
+      }
+      return smsgateway.v1.Device.UssdJob.getDefaultInstance();
+    }
+    /**
+     * <code>.smsgateway.v1.UssdJob ussd_job = 15 [json_name = "ussdJob"];</code>
+     */
+    @java.lang.Override
+    public smsgateway.v1.Device.UssdJobOrBuilder getUssdJobOrBuilder() {
+      if (payloadCase_ == 15) {
+         return (smsgateway.v1.Device.UssdJob) payload_;
+      }
+      return smsgateway.v1.Device.UssdJob.getDefaultInstance();
+    }
+
+    public static final int SMS_RECEIVED_ACK_FIELD_NUMBER = 16;
+    /**
+     * <code>.smsgateway.v1.SmsReceivedAck sms_received_ack = 16 [json_name = "smsReceivedAck"];</code>
+     * @return Whether the smsReceivedAck field is set.
+     */
+    @java.lang.Override
+    public boolean hasSmsReceivedAck() {
+      return payloadCase_ == 16;
+    }
+    /**
+     * <code>.smsgateway.v1.SmsReceivedAck sms_received_ack = 16 [json_name = "smsReceivedAck"];</code>
+     * @return The smsReceivedAck.
+     */
+    @java.lang.Override
+    public smsgateway.v1.Device.SmsReceivedAck getSmsReceivedAck() {
+      if (payloadCase_ == 16) {
+         return (smsgateway.v1.Device.SmsReceivedAck) payload_;
+      }
+      return smsgateway.v1.Device.SmsReceivedAck.getDefaultInstance();
+    }
+    /**
+     * <code>.smsgateway.v1.SmsReceivedAck sms_received_ack = 16 [json_name = "smsReceivedAck"];</code>
+     */
+    @java.lang.Override
+    public smsgateway.v1.Device.SmsReceivedAckOrBuilder getSmsReceivedAckOrBuilder() {
+      if (payloadCase_ == 16) {
+         return (smsgateway.v1.Device.SmsReceivedAck) payload_;
+      }
+      return smsgateway.v1.Device.SmsReceivedAck.getDefaultInstance();
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -8714,6 +9433,12 @@ public final class Device extends com.google.protobuf.GeneratedFile {
       if (payloadCase_ == 14) {
         output.writeMessage(14, (smsgateway.v1.Device.DevicePolicy) payload_);
       }
+      if (payloadCase_ == 15) {
+        output.writeMessage(15, (smsgateway.v1.Device.UssdJob) payload_);
+      }
+      if (payloadCase_ == 16) {
+        output.writeMessage(16, (smsgateway.v1.Device.SmsReceivedAck) payload_);
+      }
       getUnknownFields().writeTo(output);
     }
     private int computeSerializedSize_0() {
@@ -8744,6 +9469,14 @@ public final class Device extends com.google.protobuf.GeneratedFile {
       if (payloadCase_ == 14) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(14, (smsgateway.v1.Device.DevicePolicy) payload_);
+      }
+      if (payloadCase_ == 15) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(15, (smsgateway.v1.Device.UssdJob) payload_);
+      }
+      if (payloadCase_ == 16) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(16, (smsgateway.v1.Device.SmsReceivedAck) payload_);
       }
       return size;
     }
@@ -8798,6 +9531,14 @@ public final class Device extends com.google.protobuf.GeneratedFile {
           if (!getPolicy()
               .equals(other.getPolicy())) return false;
           break;
+        case 15:
+          if (!getUssdJob()
+              .equals(other.getUssdJob())) return false;
+          break;
+        case 16:
+          if (!getSmsReceivedAck()
+              .equals(other.getSmsReceivedAck())) return false;
+          break;
         case 0:
         default:
       }
@@ -8838,6 +9579,14 @@ public final class Device extends com.google.protobuf.GeneratedFile {
         case 14:
           hash = (37 * hash) + POLICY_FIELD_NUMBER;
           hash = (53 * hash) + getPolicy().hashCode();
+          break;
+        case 15:
+          hash = (37 * hash) + USSD_JOB_FIELD_NUMBER;
+          hash = (53 * hash) + getUssdJob().hashCode();
+          break;
+        case 16:
+          hash = (37 * hash) + SMS_RECEIVED_ACK_FIELD_NUMBER;
+          hash = (53 * hash) + getSmsReceivedAck().hashCode();
           break;
         case 0:
         default:
@@ -9005,6 +9754,12 @@ public final class Device extends com.google.protobuf.GeneratedFile {
         if (policyBuilder_ != null) {
           policyBuilder_.clear();
         }
+        if (ussdJobBuilder_ != null) {
+          ussdJobBuilder_.clear();
+        }
+        if (smsReceivedAckBuilder_ != null) {
+          smsReceivedAckBuilder_.clear();
+        }
         payloadCase_ = 0;
         payload_ = null;
         return this;
@@ -9077,6 +9832,14 @@ public final class Device extends com.google.protobuf.GeneratedFile {
             policyBuilder_ != null) {
           result.payload_ = policyBuilder_.build();
         }
+        if (payloadCase_ == 15 &&
+            ussdJobBuilder_ != null) {
+          result.payload_ = ussdJobBuilder_.build();
+        }
+        if (payloadCase_ == 16 &&
+            smsReceivedAckBuilder_ != null) {
+          result.payload_ = smsReceivedAckBuilder_.build();
+        }
       }
 
       @java.lang.Override
@@ -9118,6 +9881,14 @@ public final class Device extends com.google.protobuf.GeneratedFile {
           }
           case POLICY: {
             mergePolicy(other.getPolicy());
+            break;
+          }
+          case USSD_JOB: {
+            mergeUssdJob(other.getUssdJob());
+            break;
+          }
+          case SMS_RECEIVED_ACK: {
+            mergeSmsReceivedAck(other.getSmsReceivedAck());
             break;
           }
           case PAYLOAD_NOT_SET: {
@@ -9197,6 +9968,20 @@ public final class Device extends com.google.protobuf.GeneratedFile {
                 payloadCase_ = 14;
                 break;
               } // case 114
+              case 122: {
+                input.readMessage(
+                    internalGetUssdJobFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                payloadCase_ = 15;
+                break;
+              } // case 122
+              case 130: {
+                input.readMessage(
+                    internalGetSmsReceivedAckFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                payloadCase_ = 16;
+                break;
+              } // case 130
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -10175,6 +10960,290 @@ public final class Device extends com.google.protobuf.GeneratedFile {
         payloadCase_ = 14;
         onChanged();
         return policyBuilder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilder<
+          smsgateway.v1.Device.UssdJob, smsgateway.v1.Device.UssdJob.Builder, smsgateway.v1.Device.UssdJobOrBuilder> ussdJobBuilder_;
+      /**
+       * <code>.smsgateway.v1.UssdJob ussd_job = 15 [json_name = "ussdJob"];</code>
+       * @return Whether the ussdJob field is set.
+       */
+      @java.lang.Override
+      public boolean hasUssdJob() {
+        return payloadCase_ == 15;
+      }
+      /**
+       * <code>.smsgateway.v1.UssdJob ussd_job = 15 [json_name = "ussdJob"];</code>
+       * @return The ussdJob.
+       */
+      @java.lang.Override
+      public smsgateway.v1.Device.UssdJob getUssdJob() {
+        if (ussdJobBuilder_ == null) {
+          if (payloadCase_ == 15) {
+            return (smsgateway.v1.Device.UssdJob) payload_;
+          }
+          return smsgateway.v1.Device.UssdJob.getDefaultInstance();
+        } else {
+          if (payloadCase_ == 15) {
+            return ussdJobBuilder_.getMessage();
+          }
+          return smsgateway.v1.Device.UssdJob.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.smsgateway.v1.UssdJob ussd_job = 15 [json_name = "ussdJob"];</code>
+       */
+      public Builder setUssdJob(smsgateway.v1.Device.UssdJob value) {
+        if (ussdJobBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          payload_ = value;
+          onChanged();
+        } else {
+          ussdJobBuilder_.setMessage(value);
+        }
+        payloadCase_ = 15;
+        return this;
+      }
+      /**
+       * <code>.smsgateway.v1.UssdJob ussd_job = 15 [json_name = "ussdJob"];</code>
+       */
+      public Builder setUssdJob(
+          smsgateway.v1.Device.UssdJob.Builder builderForValue) {
+        if (ussdJobBuilder_ == null) {
+          payload_ = builderForValue.build();
+          onChanged();
+        } else {
+          ussdJobBuilder_.setMessage(builderForValue.build());
+        }
+        payloadCase_ = 15;
+        return this;
+      }
+      /**
+       * <code>.smsgateway.v1.UssdJob ussd_job = 15 [json_name = "ussdJob"];</code>
+       */
+      public Builder mergeUssdJob(smsgateway.v1.Device.UssdJob value) {
+        if (ussdJobBuilder_ == null) {
+          if (payloadCase_ == 15 &&
+              payload_ != smsgateway.v1.Device.UssdJob.getDefaultInstance()) {
+            payload_ = smsgateway.v1.Device.UssdJob.newBuilder((smsgateway.v1.Device.UssdJob) payload_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            payload_ = value;
+          }
+          onChanged();
+        } else {
+          if (payloadCase_ == 15) {
+            ussdJobBuilder_.mergeFrom(value);
+          } else {
+            ussdJobBuilder_.setMessage(value);
+          }
+        }
+        payloadCase_ = 15;
+        return this;
+      }
+      /**
+       * <code>.smsgateway.v1.UssdJob ussd_job = 15 [json_name = "ussdJob"];</code>
+       */
+      public Builder clearUssdJob() {
+        if (ussdJobBuilder_ == null) {
+          if (payloadCase_ == 15) {
+            payloadCase_ = 0;
+            payload_ = null;
+            onChanged();
+          }
+        } else {
+          if (payloadCase_ == 15) {
+            payloadCase_ = 0;
+            payload_ = null;
+          }
+          ussdJobBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.smsgateway.v1.UssdJob ussd_job = 15 [json_name = "ussdJob"];</code>
+       */
+      public smsgateway.v1.Device.UssdJob.Builder getUssdJobBuilder() {
+        return internalGetUssdJobFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.smsgateway.v1.UssdJob ussd_job = 15 [json_name = "ussdJob"];</code>
+       */
+      @java.lang.Override
+      public smsgateway.v1.Device.UssdJobOrBuilder getUssdJobOrBuilder() {
+        if ((payloadCase_ == 15) && (ussdJobBuilder_ != null)) {
+          return ussdJobBuilder_.getMessageOrBuilder();
+        } else {
+          if (payloadCase_ == 15) {
+            return (smsgateway.v1.Device.UssdJob) payload_;
+          }
+          return smsgateway.v1.Device.UssdJob.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.smsgateway.v1.UssdJob ussd_job = 15 [json_name = "ussdJob"];</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          smsgateway.v1.Device.UssdJob, smsgateway.v1.Device.UssdJob.Builder, smsgateway.v1.Device.UssdJobOrBuilder> 
+          internalGetUssdJobFieldBuilder() {
+        if (ussdJobBuilder_ == null) {
+          if (!(payloadCase_ == 15)) {
+            payload_ = smsgateway.v1.Device.UssdJob.getDefaultInstance();
+          }
+          ussdJobBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              smsgateway.v1.Device.UssdJob, smsgateway.v1.Device.UssdJob.Builder, smsgateway.v1.Device.UssdJobOrBuilder>(
+                  (smsgateway.v1.Device.UssdJob) payload_,
+                  getParentForChildren(),
+                  isClean());
+          payload_ = null;
+        }
+        payloadCase_ = 15;
+        onChanged();
+        return ussdJobBuilder_;
+      }
+
+      private com.google.protobuf.SingleFieldBuilder<
+          smsgateway.v1.Device.SmsReceivedAck, smsgateway.v1.Device.SmsReceivedAck.Builder, smsgateway.v1.Device.SmsReceivedAckOrBuilder> smsReceivedAckBuilder_;
+      /**
+       * <code>.smsgateway.v1.SmsReceivedAck sms_received_ack = 16 [json_name = "smsReceivedAck"];</code>
+       * @return Whether the smsReceivedAck field is set.
+       */
+      @java.lang.Override
+      public boolean hasSmsReceivedAck() {
+        return payloadCase_ == 16;
+      }
+      /**
+       * <code>.smsgateway.v1.SmsReceivedAck sms_received_ack = 16 [json_name = "smsReceivedAck"];</code>
+       * @return The smsReceivedAck.
+       */
+      @java.lang.Override
+      public smsgateway.v1.Device.SmsReceivedAck getSmsReceivedAck() {
+        if (smsReceivedAckBuilder_ == null) {
+          if (payloadCase_ == 16) {
+            return (smsgateway.v1.Device.SmsReceivedAck) payload_;
+          }
+          return smsgateway.v1.Device.SmsReceivedAck.getDefaultInstance();
+        } else {
+          if (payloadCase_ == 16) {
+            return smsReceivedAckBuilder_.getMessage();
+          }
+          return smsgateway.v1.Device.SmsReceivedAck.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.smsgateway.v1.SmsReceivedAck sms_received_ack = 16 [json_name = "smsReceivedAck"];</code>
+       */
+      public Builder setSmsReceivedAck(smsgateway.v1.Device.SmsReceivedAck value) {
+        if (smsReceivedAckBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          payload_ = value;
+          onChanged();
+        } else {
+          smsReceivedAckBuilder_.setMessage(value);
+        }
+        payloadCase_ = 16;
+        return this;
+      }
+      /**
+       * <code>.smsgateway.v1.SmsReceivedAck sms_received_ack = 16 [json_name = "smsReceivedAck"];</code>
+       */
+      public Builder setSmsReceivedAck(
+          smsgateway.v1.Device.SmsReceivedAck.Builder builderForValue) {
+        if (smsReceivedAckBuilder_ == null) {
+          payload_ = builderForValue.build();
+          onChanged();
+        } else {
+          smsReceivedAckBuilder_.setMessage(builderForValue.build());
+        }
+        payloadCase_ = 16;
+        return this;
+      }
+      /**
+       * <code>.smsgateway.v1.SmsReceivedAck sms_received_ack = 16 [json_name = "smsReceivedAck"];</code>
+       */
+      public Builder mergeSmsReceivedAck(smsgateway.v1.Device.SmsReceivedAck value) {
+        if (smsReceivedAckBuilder_ == null) {
+          if (payloadCase_ == 16 &&
+              payload_ != smsgateway.v1.Device.SmsReceivedAck.getDefaultInstance()) {
+            payload_ = smsgateway.v1.Device.SmsReceivedAck.newBuilder((smsgateway.v1.Device.SmsReceivedAck) payload_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            payload_ = value;
+          }
+          onChanged();
+        } else {
+          if (payloadCase_ == 16) {
+            smsReceivedAckBuilder_.mergeFrom(value);
+          } else {
+            smsReceivedAckBuilder_.setMessage(value);
+          }
+        }
+        payloadCase_ = 16;
+        return this;
+      }
+      /**
+       * <code>.smsgateway.v1.SmsReceivedAck sms_received_ack = 16 [json_name = "smsReceivedAck"];</code>
+       */
+      public Builder clearSmsReceivedAck() {
+        if (smsReceivedAckBuilder_ == null) {
+          if (payloadCase_ == 16) {
+            payloadCase_ = 0;
+            payload_ = null;
+            onChanged();
+          }
+        } else {
+          if (payloadCase_ == 16) {
+            payloadCase_ = 0;
+            payload_ = null;
+          }
+          smsReceivedAckBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.smsgateway.v1.SmsReceivedAck sms_received_ack = 16 [json_name = "smsReceivedAck"];</code>
+       */
+      public smsgateway.v1.Device.SmsReceivedAck.Builder getSmsReceivedAckBuilder() {
+        return internalGetSmsReceivedAckFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.smsgateway.v1.SmsReceivedAck sms_received_ack = 16 [json_name = "smsReceivedAck"];</code>
+       */
+      @java.lang.Override
+      public smsgateway.v1.Device.SmsReceivedAckOrBuilder getSmsReceivedAckOrBuilder() {
+        if ((payloadCase_ == 16) && (smsReceivedAckBuilder_ != null)) {
+          return smsReceivedAckBuilder_.getMessageOrBuilder();
+        } else {
+          if (payloadCase_ == 16) {
+            return (smsgateway.v1.Device.SmsReceivedAck) payload_;
+          }
+          return smsgateway.v1.Device.SmsReceivedAck.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.smsgateway.v1.SmsReceivedAck sms_received_ack = 16 [json_name = "smsReceivedAck"];</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          smsgateway.v1.Device.SmsReceivedAck, smsgateway.v1.Device.SmsReceivedAck.Builder, smsgateway.v1.Device.SmsReceivedAckOrBuilder> 
+          internalGetSmsReceivedAckFieldBuilder() {
+        if (smsReceivedAckBuilder_ == null) {
+          if (!(payloadCase_ == 16)) {
+            payload_ = smsgateway.v1.Device.SmsReceivedAck.getDefaultInstance();
+          }
+          smsReceivedAckBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              smsgateway.v1.Device.SmsReceivedAck, smsgateway.v1.Device.SmsReceivedAck.Builder, smsgateway.v1.Device.SmsReceivedAckOrBuilder>(
+                  (smsgateway.v1.Device.SmsReceivedAck) payload_,
+                  getParentForChildren(),
+                  isClean());
+          payload_ = null;
+        }
+        payloadCase_ = 16;
+        onChanged();
+        return smsReceivedAckBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:smsgateway.v1.ServerMessage)
@@ -12140,6 +13209,33 @@ public final class Device extends com.google.protobuf.GeneratedFile {
      * <code>.smsgateway.v1.SendLimits limits = 6 [json_name = "limits"];</code>
      */
     smsgateway.v1.Device.SendLimitsOrBuilder getLimitsOrBuilder();
+
+    /**
+     * <pre>
+     * Which received SMS the phone forwards. Off unless turned on.
+     * </pre>
+     *
+     * <code>.smsgateway.v1.InboundRules inbound = 7 [json_name = "inbound"];</code>
+     * @return Whether the inbound field is set.
+     */
+    boolean hasInbound();
+    /**
+     * <pre>
+     * Which received SMS the phone forwards. Off unless turned on.
+     * </pre>
+     *
+     * <code>.smsgateway.v1.InboundRules inbound = 7 [json_name = "inbound"];</code>
+     * @return The inbound.
+     */
+    smsgateway.v1.Device.InboundRules getInbound();
+    /**
+     * <pre>
+     * Which received SMS the phone forwards. Off unless turned on.
+     * </pre>
+     *
+     * <code>.smsgateway.v1.InboundRules inbound = 7 [json_name = "inbound"];</code>
+     */
+    smsgateway.v1.Device.InboundRulesOrBuilder getInboundOrBuilder();
   }
   /**
    * <pre>
@@ -12389,6 +13485,44 @@ public final class Device extends com.google.protobuf.GeneratedFile {
       return limits_ == null ? smsgateway.v1.Device.SendLimits.getDefaultInstance() : limits_;
     }
 
+    public static final int INBOUND_FIELD_NUMBER = 7;
+    private smsgateway.v1.Device.InboundRules inbound_;
+    /**
+     * <pre>
+     * Which received SMS the phone forwards. Off unless turned on.
+     * </pre>
+     *
+     * <code>.smsgateway.v1.InboundRules inbound = 7 [json_name = "inbound"];</code>
+     * @return Whether the inbound field is set.
+     */
+    @java.lang.Override
+    public boolean hasInbound() {
+      return ((bitField0_ & 0x00000010) != 0);
+    }
+    /**
+     * <pre>
+     * Which received SMS the phone forwards. Off unless turned on.
+     * </pre>
+     *
+     * <code>.smsgateway.v1.InboundRules inbound = 7 [json_name = "inbound"];</code>
+     * @return The inbound.
+     */
+    @java.lang.Override
+    public smsgateway.v1.Device.InboundRules getInbound() {
+      return inbound_ == null ? smsgateway.v1.Device.InboundRules.getDefaultInstance() : inbound_;
+    }
+    /**
+     * <pre>
+     * Which received SMS the phone forwards. Off unless turned on.
+     * </pre>
+     *
+     * <code>.smsgateway.v1.InboundRules inbound = 7 [json_name = "inbound"];</code>
+     */
+    @java.lang.Override
+    public smsgateway.v1.Device.InboundRulesOrBuilder getInboundOrBuilder() {
+      return inbound_ == null ? smsgateway.v1.Device.InboundRules.getDefaultInstance() : inbound_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -12420,6 +13554,9 @@ public final class Device extends com.google.protobuf.GeneratedFile {
       }
       if (((bitField0_ & 0x00000008) != 0)) {
         output.writeMessage(6, getLimits());
+      }
+      if (((bitField0_ & 0x00000010) != 0)) {
+        output.writeMessage(7, getInbound());
       }
       getUnknownFields().writeTo(output);
     }
@@ -12453,6 +13590,10 @@ public final class Device extends com.google.protobuf.GeneratedFile {
       if (((bitField0_ & 0x00000008) != 0)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(6, getLimits());
+      }
+      if (((bitField0_ & 0x00000010) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(7, getInbound());
       }
       return size;
     }
@@ -12502,6 +13643,11 @@ public final class Device extends com.google.protobuf.GeneratedFile {
         if (!getLimits()
             .equals(other.getLimits())) return false;
       }
+      if (hasInbound() != other.hasInbound()) return false;
+      if (hasInbound()) {
+        if (!getInbound()
+            .equals(other.getInbound())) return false;
+      }
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -12535,6 +13681,10 @@ public final class Device extends com.google.protobuf.GeneratedFile {
       if (hasLimits()) {
         hash = (37 * hash) + LIMITS_FIELD_NUMBER;
         hash = (53 * hash) + getLimits().hashCode();
+      }
+      if (hasInbound()) {
+        hash = (37 * hash) + INBOUND_FIELD_NUMBER;
+        hash = (53 * hash) + getInbound().hashCode();
       }
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
@@ -12682,6 +13832,7 @@ public final class Device extends com.google.protobuf.GeneratedFile {
           internalGetSimsFieldBuilder();
           internalGetUpdatedAtFieldBuilder();
           internalGetLimitsFieldBuilder();
+          internalGetInboundFieldBuilder();
         }
       }
       @java.lang.Override
@@ -12715,6 +13866,11 @@ public final class Device extends com.google.protobuf.GeneratedFile {
         if (limitsBuilder_ != null) {
           limitsBuilder_.dispose();
           limitsBuilder_ = null;
+        }
+        inbound_ = null;
+        if (inboundBuilder_ != null) {
+          inboundBuilder_.dispose();
+          inboundBuilder_ = null;
         }
         return this;
       }
@@ -12790,6 +13946,12 @@ public final class Device extends com.google.protobuf.GeneratedFile {
               : limitsBuilder_.build();
           to_bitField0_ |= 0x00000008;
         }
+        if (((from_bitField0_ & 0x00000040) != 0)) {
+          result.inbound_ = inboundBuilder_ == null
+              ? inbound_
+              : inboundBuilder_.build();
+          to_bitField0_ |= 0x00000010;
+        }
         result.bitField0_ |= to_bitField0_;
       }
 
@@ -12845,6 +14007,9 @@ public final class Device extends com.google.protobuf.GeneratedFile {
         }
         if (other.hasLimits()) {
           mergeLimits(other.getLimits());
+        }
+        if (other.hasInbound()) {
+          mergeInbound(other.getInbound());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
@@ -12918,6 +14083,13 @@ public final class Device extends com.google.protobuf.GeneratedFile {
                 bitField0_ |= 0x00000020;
                 break;
               } // case 50
+              case 58: {
+                input.readMessage(
+                    internalGetInboundFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                bitField0_ |= 0x00000040;
+                break;
+              } // case 58
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -13814,6 +14986,163 @@ public final class Device extends com.google.protobuf.GeneratedFile {
         return limitsBuilder_;
       }
 
+      private smsgateway.v1.Device.InboundRules inbound_;
+      private com.google.protobuf.SingleFieldBuilder<
+          smsgateway.v1.Device.InboundRules, smsgateway.v1.Device.InboundRules.Builder, smsgateway.v1.Device.InboundRulesOrBuilder> inboundBuilder_;
+      /**
+       * <pre>
+       * Which received SMS the phone forwards. Off unless turned on.
+       * </pre>
+       *
+       * <code>.smsgateway.v1.InboundRules inbound = 7 [json_name = "inbound"];</code>
+       * @return Whether the inbound field is set.
+       */
+      public boolean hasInbound() {
+        return ((bitField0_ & 0x00000040) != 0);
+      }
+      /**
+       * <pre>
+       * Which received SMS the phone forwards. Off unless turned on.
+       * </pre>
+       *
+       * <code>.smsgateway.v1.InboundRules inbound = 7 [json_name = "inbound"];</code>
+       * @return The inbound.
+       */
+      public smsgateway.v1.Device.InboundRules getInbound() {
+        if (inboundBuilder_ == null) {
+          return inbound_ == null ? smsgateway.v1.Device.InboundRules.getDefaultInstance() : inbound_;
+        } else {
+          return inboundBuilder_.getMessage();
+        }
+      }
+      /**
+       * <pre>
+       * Which received SMS the phone forwards. Off unless turned on.
+       * </pre>
+       *
+       * <code>.smsgateway.v1.InboundRules inbound = 7 [json_name = "inbound"];</code>
+       */
+      public Builder setInbound(smsgateway.v1.Device.InboundRules value) {
+        if (inboundBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          inbound_ = value;
+        } else {
+          inboundBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000040;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Which received SMS the phone forwards. Off unless turned on.
+       * </pre>
+       *
+       * <code>.smsgateway.v1.InboundRules inbound = 7 [json_name = "inbound"];</code>
+       */
+      public Builder setInbound(
+          smsgateway.v1.Device.InboundRules.Builder builderForValue) {
+        if (inboundBuilder_ == null) {
+          inbound_ = builderForValue.build();
+        } else {
+          inboundBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000040;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Which received SMS the phone forwards. Off unless turned on.
+       * </pre>
+       *
+       * <code>.smsgateway.v1.InboundRules inbound = 7 [json_name = "inbound"];</code>
+       */
+      public Builder mergeInbound(smsgateway.v1.Device.InboundRules value) {
+        if (inboundBuilder_ == null) {
+          if (((bitField0_ & 0x00000040) != 0) &&
+            inbound_ != null &&
+            inbound_ != smsgateway.v1.Device.InboundRules.getDefaultInstance()) {
+            getInboundBuilder().mergeFrom(value);
+          } else {
+            inbound_ = value;
+          }
+        } else {
+          inboundBuilder_.mergeFrom(value);
+        }
+        if (inbound_ != null) {
+          bitField0_ |= 0x00000040;
+          onChanged();
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * Which received SMS the phone forwards. Off unless turned on.
+       * </pre>
+       *
+       * <code>.smsgateway.v1.InboundRules inbound = 7 [json_name = "inbound"];</code>
+       */
+      public Builder clearInbound() {
+        bitField0_ = (bitField0_ & ~0x00000040);
+        inbound_ = null;
+        if (inboundBuilder_ != null) {
+          inboundBuilder_.dispose();
+          inboundBuilder_ = null;
+        }
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Which received SMS the phone forwards. Off unless turned on.
+       * </pre>
+       *
+       * <code>.smsgateway.v1.InboundRules inbound = 7 [json_name = "inbound"];</code>
+       */
+      public smsgateway.v1.Device.InboundRules.Builder getInboundBuilder() {
+        bitField0_ |= 0x00000040;
+        onChanged();
+        return internalGetInboundFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       * Which received SMS the phone forwards. Off unless turned on.
+       * </pre>
+       *
+       * <code>.smsgateway.v1.InboundRules inbound = 7 [json_name = "inbound"];</code>
+       */
+      public smsgateway.v1.Device.InboundRulesOrBuilder getInboundOrBuilder() {
+        if (inboundBuilder_ != null) {
+          return inboundBuilder_.getMessageOrBuilder();
+        } else {
+          return inbound_ == null ?
+              smsgateway.v1.Device.InboundRules.getDefaultInstance() : inbound_;
+        }
+      }
+      /**
+       * <pre>
+       * Which received SMS the phone forwards. Off unless turned on.
+       * </pre>
+       *
+       * <code>.smsgateway.v1.InboundRules inbound = 7 [json_name = "inbound"];</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          smsgateway.v1.Device.InboundRules, smsgateway.v1.Device.InboundRules.Builder, smsgateway.v1.Device.InboundRulesOrBuilder> 
+          internalGetInboundFieldBuilder() {
+        if (inboundBuilder_ == null) {
+          inboundBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              smsgateway.v1.Device.InboundRules, smsgateway.v1.Device.InboundRules.Builder, smsgateway.v1.Device.InboundRulesOrBuilder>(
+                  getInbound(),
+                  getParentForChildren(),
+                  isClean());
+          inbound_ = null;
+        }
+        return inboundBuilder_;
+      }
+
       // @@protoc_insertion_point(builder_scope:smsgateway.v1.DevicePolicy)
     }
 
@@ -13860,6 +15189,799 @@ public final class Device extends com.google.protobuf.GeneratedFile {
 
     @java.lang.Override
     public smsgateway.v1.Device.DevicePolicy getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface InboundRulesOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:smsgateway.v1.InboundRules)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * Forward at all. False, the default, forwards nothing.
+     * </pre>
+     *
+     * <code>bool enabled = 1 [json_name = "enabled"];</code>
+     * @return The enabled.
+     */
+    boolean getEnabled();
+
+    /**
+     * <pre>
+     * Senders to forward, compared case-insensitively and whole: an
+     * alphanumeric sender id ("OrangeMoney") or a number in E.164. Empty, with
+     * enabled set: every sender.
+     * </pre>
+     *
+     * <code>repeated string senders = 2 [json_name = "senders"];</code>
+     * @return A list containing the senders.
+     */
+    java.util.List<java.lang.String>
+        getSendersList();
+    /**
+     * <pre>
+     * Senders to forward, compared case-insensitively and whole: an
+     * alphanumeric sender id ("OrangeMoney") or a number in E.164. Empty, with
+     * enabled set: every sender.
+     * </pre>
+     *
+     * <code>repeated string senders = 2 [json_name = "senders"];</code>
+     * @return The count of senders.
+     */
+    int getSendersCount();
+    /**
+     * <pre>
+     * Senders to forward, compared case-insensitively and whole: an
+     * alphanumeric sender id ("OrangeMoney") or a number in E.164. Empty, with
+     * enabled set: every sender.
+     * </pre>
+     *
+     * <code>repeated string senders = 2 [json_name = "senders"];</code>
+     * @param index The index of the element to return.
+     * @return The senders at the given index.
+     */
+    java.lang.String getSenders(int index);
+    /**
+     * <pre>
+     * Senders to forward, compared case-insensitively and whole: an
+     * alphanumeric sender id ("OrangeMoney") or a number in E.164. Empty, with
+     * enabled set: every sender.
+     * </pre>
+     *
+     * <code>repeated string senders = 2 [json_name = "senders"];</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the senders at the given index.
+     */
+    com.google.protobuf.ByteString
+        getSendersBytes(int index);
+  }
+  /**
+   * <pre>
+   * Which received SMS a phone forwards to the server. Applied on the phone,
+   * before anything leaves it: a message these rules do not cover is never
+   * sent, so turning forwarding on for "OrangeMoney" does not hand the server
+   * the owner's personal conversations.
+   * </pre>
+   *
+   * Protobuf type {@code smsgateway.v1.InboundRules}
+   */
+  public static final class InboundRules extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:smsgateway.v1.InboundRules)
+      InboundRulesOrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 35,
+        /* patch= */ 1,
+        /* suffix= */ "",
+        "InboundRules");
+    }
+    // Use InboundRules.newBuilder() to construct.
+    private InboundRules(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private InboundRules() {
+      senders_ =
+          com.google.protobuf.LazyStringArrayList.emptyList();
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return smsgateway.v1.Device.internal_static_smsgateway_v1_InboundRules_descriptor;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+      return smsgateway.v1.Device.internal_static_smsgateway_v1_InboundRules_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return smsgateway.v1.Device.internal_static_smsgateway_v1_InboundRules_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              smsgateway.v1.Device.InboundRules.class, smsgateway.v1.Device.InboundRules.Builder.class);
+    }
+
+    public static final int ENABLED_FIELD_NUMBER = 1;
+    private boolean enabled_ = false;
+    /**
+     * <pre>
+     * Forward at all. False, the default, forwards nothing.
+     * </pre>
+     *
+     * <code>bool enabled = 1 [json_name = "enabled"];</code>
+     * @return The enabled.
+     */
+    @java.lang.Override
+    public boolean getEnabled() {
+      return enabled_;
+    }
+
+    public static final int SENDERS_FIELD_NUMBER = 2;
+    @SuppressWarnings("serial")
+    private com.google.protobuf.LazyStringArrayList senders_ =
+        com.google.protobuf.LazyStringArrayList.emptyList();
+    /**
+     * <pre>
+     * Senders to forward, compared case-insensitively and whole: an
+     * alphanumeric sender id ("OrangeMoney") or a number in E.164. Empty, with
+     * enabled set: every sender.
+     * </pre>
+     *
+     * <code>repeated string senders = 2 [json_name = "senders"];</code>
+     * @return A list containing the senders.
+     */
+    public com.google.protobuf.ProtocolStringList
+        getSendersList() {
+      return senders_;
+    }
+    /**
+     * <pre>
+     * Senders to forward, compared case-insensitively and whole: an
+     * alphanumeric sender id ("OrangeMoney") or a number in E.164. Empty, with
+     * enabled set: every sender.
+     * </pre>
+     *
+     * <code>repeated string senders = 2 [json_name = "senders"];</code>
+     * @return The count of senders.
+     */
+    public int getSendersCount() {
+      return senders_.size();
+    }
+    /**
+     * <pre>
+     * Senders to forward, compared case-insensitively and whole: an
+     * alphanumeric sender id ("OrangeMoney") or a number in E.164. Empty, with
+     * enabled set: every sender.
+     * </pre>
+     *
+     * <code>repeated string senders = 2 [json_name = "senders"];</code>
+     * @param index The index of the element to return.
+     * @return The senders at the given index.
+     */
+    public java.lang.String getSenders(int index) {
+      return senders_.get(index);
+    }
+    /**
+     * <pre>
+     * Senders to forward, compared case-insensitively and whole: an
+     * alphanumeric sender id ("OrangeMoney") or a number in E.164. Empty, with
+     * enabled set: every sender.
+     * </pre>
+     *
+     * <code>repeated string senders = 2 [json_name = "senders"];</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the senders at the given index.
+     */
+    public com.google.protobuf.ByteString
+        getSendersBytes(int index) {
+      return senders_.getByteString(index);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (enabled_ != false) {
+        output.writeBool(1, enabled_);
+      }
+      for (int i = 0; i < senders_.size(); i++) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 2, senders_.getRaw(i));
+      }
+      getUnknownFields().writeTo(output);
+    }
+    private int computeSerializedSize_0() {
+      int size = 0;
+      if (enabled_ != false) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(1, enabled_);
+      }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < senders_.size(); i++) {
+          dataSize += computeStringSizeNoTag(senders_.getRaw(i));
+        }
+        size += dataSize;
+        size += 1 * getSendersList().size();
+      }
+      return size;
+    }
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += computeSerializedSize_0();
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof smsgateway.v1.Device.InboundRules)) {
+        return super.equals(obj);
+      }
+      smsgateway.v1.Device.InboundRules other = (smsgateway.v1.Device.InboundRules) obj;
+
+      if (getEnabled()
+          != other.getEnabled()) return false;
+      if (!getSendersList()
+          .equals(other.getSendersList())) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + ENABLED_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+          getEnabled());
+      if (getSendersCount() > 0) {
+        hash = (37 * hash) + SENDERS_FIELD_NUMBER;
+        hash = (53 * hash) + getSendersList().hashCode();
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static smsgateway.v1.Device.InboundRules parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static smsgateway.v1.Device.InboundRules parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static smsgateway.v1.Device.InboundRules parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static smsgateway.v1.Device.InboundRules parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static smsgateway.v1.Device.InboundRules parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static smsgateway.v1.Device.InboundRules parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static smsgateway.v1.Device.InboundRules parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static smsgateway.v1.Device.InboundRules parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static smsgateway.v1.Device.InboundRules parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static smsgateway.v1.Device.InboundRules parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static smsgateway.v1.Device.InboundRules parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static smsgateway.v1.Device.InboundRules parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(smsgateway.v1.Device.InboundRules prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * Which received SMS a phone forwards to the server. Applied on the phone,
+     * before anything leaves it: a message these rules do not cover is never
+     * sent, so turning forwarding on for "OrangeMoney" does not hand the server
+     * the owner's personal conversations.
+     * </pre>
+     *
+     * Protobuf type {@code smsgateway.v1.InboundRules}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:smsgateway.v1.InboundRules)
+        smsgateway.v1.Device.InboundRulesOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return smsgateway.v1.Device.internal_static_smsgateway_v1_InboundRules_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return smsgateway.v1.Device.internal_static_smsgateway_v1_InboundRules_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                smsgateway.v1.Device.InboundRules.class, smsgateway.v1.Device.InboundRules.Builder.class);
+      }
+
+      // Construct using smsgateway.v1.Device.InboundRules.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        enabled_ = false;
+        senders_ =
+            com.google.protobuf.LazyStringArrayList.emptyList();
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return smsgateway.v1.Device.internal_static_smsgateway_v1_InboundRules_descriptor;
+      }
+
+      @java.lang.Override
+      public smsgateway.v1.Device.InboundRules getDefaultInstanceForType() {
+        return smsgateway.v1.Device.InboundRules.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public smsgateway.v1.Device.InboundRules build() {
+        smsgateway.v1.Device.InboundRules result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public smsgateway.v1.Device.InboundRules buildPartial() {
+        smsgateway.v1.Device.InboundRules result = new smsgateway.v1.Device.InboundRules(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(smsgateway.v1.Device.InboundRules result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.enabled_ = enabled_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          senders_.makeImmutable();
+          result.senders_ = senders_;
+        }
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof smsgateway.v1.Device.InboundRules) {
+          return mergeFrom((smsgateway.v1.Device.InboundRules)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(smsgateway.v1.Device.InboundRules other) {
+        if (other == smsgateway.v1.Device.InboundRules.getDefaultInstance()) return this;
+        if (other.getEnabled() != false) {
+          setEnabled(other.getEnabled());
+        }
+        if (!other.senders_.isEmpty()) {
+          if (senders_.isEmpty()) {
+            senders_ = other.senders_;
+            bitField0_ |= 0x00000002;
+          } else {
+            ensureSendersIsMutable();
+            senders_.addAll(other.senders_);
+          }
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 8: {
+                enabled_ = input.readBool();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 8
+              case 18: {
+                ensureSendersIsMutable();
+                senders_.add(input.readStringRequireUtf8());
+                break;
+              } // case 18
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private boolean enabled_ ;
+      /**
+       * <pre>
+       * Forward at all. False, the default, forwards nothing.
+       * </pre>
+       *
+       * <code>bool enabled = 1 [json_name = "enabled"];</code>
+       * @return The enabled.
+       */
+      @java.lang.Override
+      public boolean getEnabled() {
+        return enabled_;
+      }
+      /**
+       * <pre>
+       * Forward at all. False, the default, forwards nothing.
+       * </pre>
+       *
+       * <code>bool enabled = 1 [json_name = "enabled"];</code>
+       * @param value The enabled to set.
+       * @return This builder for chaining.
+       */
+      public Builder setEnabled(boolean value) {
+
+        enabled_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Forward at all. False, the default, forwards nothing.
+       * </pre>
+       *
+       * <code>bool enabled = 1 [json_name = "enabled"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearEnabled() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        enabled_ = false;
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.LazyStringArrayList senders_ =
+          com.google.protobuf.LazyStringArrayList.emptyList();
+      private void ensureSendersIsMutable() {
+        if (!senders_.isModifiable()) {
+          senders_ = new com.google.protobuf.LazyStringArrayList(senders_);
+        }
+        bitField0_ |= 0x00000002;
+      }
+      /**
+       * <pre>
+       * Senders to forward, compared case-insensitively and whole: an
+       * alphanumeric sender id ("OrangeMoney") or a number in E.164. Empty, with
+       * enabled set: every sender.
+       * </pre>
+       *
+       * <code>repeated string senders = 2 [json_name = "senders"];</code>
+       * @return A list containing the senders.
+       */
+      public com.google.protobuf.ProtocolStringList
+          getSendersList() {
+        senders_.makeImmutable();
+        return senders_;
+      }
+      /**
+       * <pre>
+       * Senders to forward, compared case-insensitively and whole: an
+       * alphanumeric sender id ("OrangeMoney") or a number in E.164. Empty, with
+       * enabled set: every sender.
+       * </pre>
+       *
+       * <code>repeated string senders = 2 [json_name = "senders"];</code>
+       * @return The count of senders.
+       */
+      public int getSendersCount() {
+        return senders_.size();
+      }
+      /**
+       * <pre>
+       * Senders to forward, compared case-insensitively and whole: an
+       * alphanumeric sender id ("OrangeMoney") or a number in E.164. Empty, with
+       * enabled set: every sender.
+       * </pre>
+       *
+       * <code>repeated string senders = 2 [json_name = "senders"];</code>
+       * @param index The index of the element to return.
+       * @return The senders at the given index.
+       */
+      public java.lang.String getSenders(int index) {
+        return senders_.get(index);
+      }
+      /**
+       * <pre>
+       * Senders to forward, compared case-insensitively and whole: an
+       * alphanumeric sender id ("OrangeMoney") or a number in E.164. Empty, with
+       * enabled set: every sender.
+       * </pre>
+       *
+       * <code>repeated string senders = 2 [json_name = "senders"];</code>
+       * @param index The index of the value to return.
+       * @return The bytes of the senders at the given index.
+       */
+      public com.google.protobuf.ByteString
+          getSendersBytes(int index) {
+        return senders_.getByteString(index);
+      }
+      /**
+       * <pre>
+       * Senders to forward, compared case-insensitively and whole: an
+       * alphanumeric sender id ("OrangeMoney") or a number in E.164. Empty, with
+       * enabled set: every sender.
+       * </pre>
+       *
+       * <code>repeated string senders = 2 [json_name = "senders"];</code>
+       * @param index The index to set the value at.
+       * @param value The senders to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSenders(
+          int index, java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        ensureSendersIsMutable();
+        senders_.set(index, value);
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Senders to forward, compared case-insensitively and whole: an
+       * alphanumeric sender id ("OrangeMoney") or a number in E.164. Empty, with
+       * enabled set: every sender.
+       * </pre>
+       *
+       * <code>repeated string senders = 2 [json_name = "senders"];</code>
+       * @param value The senders to add.
+       * @return This builder for chaining.
+       */
+      public Builder addSenders(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        ensureSendersIsMutable();
+        senders_.add(value);
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Senders to forward, compared case-insensitively and whole: an
+       * alphanumeric sender id ("OrangeMoney") or a number in E.164. Empty, with
+       * enabled set: every sender.
+       * </pre>
+       *
+       * <code>repeated string senders = 2 [json_name = "senders"];</code>
+       * @param values The senders to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllSenders(
+          java.lang.Iterable<java.lang.String> values) {
+        ensureSendersIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, senders_);
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Senders to forward, compared case-insensitively and whole: an
+       * alphanumeric sender id ("OrangeMoney") or a number in E.164. Empty, with
+       * enabled set: every sender.
+       * </pre>
+       *
+       * <code>repeated string senders = 2 [json_name = "senders"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSenders() {
+        senders_ =
+          com.google.protobuf.LazyStringArrayList.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000002);;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Senders to forward, compared case-insensitively and whole: an
+       * alphanumeric sender id ("OrangeMoney") or a number in E.164. Empty, with
+       * enabled set: every sender.
+       * </pre>
+       *
+       * <code>repeated string senders = 2 [json_name = "senders"];</code>
+       * @param value The bytes of the senders to add.
+       * @return This builder for chaining.
+       */
+      public Builder addSendersBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        ensureSendersIsMutable();
+        senders_.add(value);
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:smsgateway.v1.InboundRules)
+    }
+
+    // @@protoc_insertion_point(class_scope:smsgateway.v1.InboundRules)
+    private static final smsgateway.v1.Device.InboundRules DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new smsgateway.v1.Device.InboundRules();
+    }
+
+    public static smsgateway.v1.Device.InboundRules getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<InboundRules>
+        PARSER = new com.google.protobuf.AbstractParser<InboundRules>() {
+      @java.lang.Override
+      public InboundRules parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<InboundRules> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<InboundRules> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public smsgateway.v1.Device.InboundRules getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -19034,6 +21156,1310 @@ public final class Device extends com.google.protobuf.GeneratedFile {
 
   }
 
+  public interface SmsReceivedOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:smsgateway.v1.SmsReceived)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * Agent-generated, stable across resends: the server records one message
+     * per id and device, however often it arrives.
+     * </pre>
+     *
+     * <code>string id = 1 [json_name = "id"];</code>
+     * @return The id.
+     */
+    java.lang.String getId();
+    /**
+     * <pre>
+     * Agent-generated, stable across resends: the server records one message
+     * per id and device, however often it arrives.
+     * </pre>
+     *
+     * <code>string id = 1 [json_name = "id"];</code>
+     * @return The bytes for id.
+     */
+    com.google.protobuf.ByteString
+        getIdBytes();
+
+    /**
+     * <pre>
+     * As the network presented it: an alphanumeric sender id or a number.
+     * </pre>
+     *
+     * <code>string sender = 2 [json_name = "sender"];</code>
+     * @return The sender.
+     */
+    java.lang.String getSender();
+    /**
+     * <pre>
+     * As the network presented it: an alphanumeric sender id or a number.
+     * </pre>
+     *
+     * <code>string sender = 2 [json_name = "sender"];</code>
+     * @return The bytes for sender.
+     */
+    com.google.protobuf.ByteString
+        getSenderBytes();
+
+    /**
+     * <pre>
+     * The whole text, multipart messages joined.
+     * </pre>
+     *
+     * <code>string body = 3 [json_name = "body"];</code>
+     * @return The body.
+     */
+    java.lang.String getBody();
+    /**
+     * <pre>
+     * The whole text, multipart messages joined.
+     * </pre>
+     *
+     * <code>string body = 3 [json_name = "body"];</code>
+     * @return The bytes for body.
+     */
+    com.google.protobuf.ByteString
+        getBodyBytes();
+
+    /**
+     * <pre>
+     * When the network delivered it to the phone.
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp received_at = 4 [json_name = "receivedAt"];</code>
+     * @return Whether the receivedAt field is set.
+     */
+    boolean hasReceivedAt();
+    /**
+     * <pre>
+     * When the network delivered it to the phone.
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp received_at = 4 [json_name = "receivedAt"];</code>
+     * @return The receivedAt.
+     */
+    com.google.protobuf.Timestamp getReceivedAt();
+    /**
+     * <pre>
+     * When the network delivered it to the phone.
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp received_at = 4 [json_name = "receivedAt"];</code>
+     */
+    com.google.protobuf.TimestampOrBuilder getReceivedAtOrBuilder();
+
+    /**
+     * <pre>
+     * The SIM it arrived on (SimInfo.subscription_id); 0 when unknown.
+     * </pre>
+     *
+     * <code>int32 subscription_id = 5 [json_name = "subscriptionId"];</code>
+     * @return The subscriptionId.
+     */
+    int getSubscriptionId();
+  }
+  /**
+   * <pre>
+   * An SMS the phone received and its InboundRules forward. The agent keeps it
+   * until the server acknowledges it (SmsReceivedAck), and sends it again on
+   * every reconnect until then: a message received while offline still arrives.
+   * </pre>
+   *
+   * Protobuf type {@code smsgateway.v1.SmsReceived}
+   */
+  public static final class SmsReceived extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:smsgateway.v1.SmsReceived)
+      SmsReceivedOrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 35,
+        /* patch= */ 1,
+        /* suffix= */ "",
+        "SmsReceived");
+    }
+    // Use SmsReceived.newBuilder() to construct.
+    private SmsReceived(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private SmsReceived() {
+      id_ = "";
+      sender_ = "";
+      body_ = "";
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return smsgateway.v1.Device.internal_static_smsgateway_v1_SmsReceived_descriptor;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+      return smsgateway.v1.Device.internal_static_smsgateway_v1_SmsReceived_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return smsgateway.v1.Device.internal_static_smsgateway_v1_SmsReceived_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              smsgateway.v1.Device.SmsReceived.class, smsgateway.v1.Device.SmsReceived.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int ID_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object id_ = "";
+    /**
+     * <pre>
+     * Agent-generated, stable across resends: the server records one message
+     * per id and device, however often it arrives.
+     * </pre>
+     *
+     * <code>string id = 1 [json_name = "id"];</code>
+     * @return The id.
+     */
+    @java.lang.Override
+    public java.lang.String getId() {
+      java.lang.Object ref = id_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        id_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * Agent-generated, stable across resends: the server records one message
+     * per id and device, however often it arrives.
+     * </pre>
+     *
+     * <code>string id = 1 [json_name = "id"];</code>
+     * @return The bytes for id.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getIdBytes() {
+      java.lang.Object ref = id_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        id_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int SENDER_FIELD_NUMBER = 2;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object sender_ = "";
+    /**
+     * <pre>
+     * As the network presented it: an alphanumeric sender id or a number.
+     * </pre>
+     *
+     * <code>string sender = 2 [json_name = "sender"];</code>
+     * @return The sender.
+     */
+    @java.lang.Override
+    public java.lang.String getSender() {
+      java.lang.Object ref = sender_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        sender_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * As the network presented it: an alphanumeric sender id or a number.
+     * </pre>
+     *
+     * <code>string sender = 2 [json_name = "sender"];</code>
+     * @return The bytes for sender.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getSenderBytes() {
+      java.lang.Object ref = sender_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        sender_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int BODY_FIELD_NUMBER = 3;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object body_ = "";
+    /**
+     * <pre>
+     * The whole text, multipart messages joined.
+     * </pre>
+     *
+     * <code>string body = 3 [json_name = "body"];</code>
+     * @return The body.
+     */
+    @java.lang.Override
+    public java.lang.String getBody() {
+      java.lang.Object ref = body_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        body_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * The whole text, multipart messages joined.
+     * </pre>
+     *
+     * <code>string body = 3 [json_name = "body"];</code>
+     * @return The bytes for body.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getBodyBytes() {
+      java.lang.Object ref = body_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        body_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int RECEIVED_AT_FIELD_NUMBER = 4;
+    private com.google.protobuf.Timestamp receivedAt_;
+    /**
+     * <pre>
+     * When the network delivered it to the phone.
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp received_at = 4 [json_name = "receivedAt"];</code>
+     * @return Whether the receivedAt field is set.
+     */
+    @java.lang.Override
+    public boolean hasReceivedAt() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <pre>
+     * When the network delivered it to the phone.
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp received_at = 4 [json_name = "receivedAt"];</code>
+     * @return The receivedAt.
+     */
+    @java.lang.Override
+    public com.google.protobuf.Timestamp getReceivedAt() {
+      return receivedAt_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : receivedAt_;
+    }
+    /**
+     * <pre>
+     * When the network delivered it to the phone.
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp received_at = 4 [json_name = "receivedAt"];</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.TimestampOrBuilder getReceivedAtOrBuilder() {
+      return receivedAt_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : receivedAt_;
+    }
+
+    public static final int SUBSCRIPTION_ID_FIELD_NUMBER = 5;
+    private int subscriptionId_ = 0;
+    /**
+     * <pre>
+     * The SIM it arrived on (SimInfo.subscription_id); 0 when unknown.
+     * </pre>
+     *
+     * <code>int32 subscription_id = 5 [json_name = "subscriptionId"];</code>
+     * @return The subscriptionId.
+     */
+    @java.lang.Override
+    public int getSubscriptionId() {
+      return subscriptionId_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(id_)) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 1, id_);
+      }
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(sender_)) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 2, sender_);
+      }
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(body_)) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 3, body_);
+      }
+      if (((bitField0_ & 0x00000001) != 0)) {
+        output.writeMessage(4, getReceivedAt());
+      }
+      if (subscriptionId_ != 0) {
+        output.writeInt32(5, subscriptionId_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+    private int computeSerializedSize_0() {
+      int size = 0;
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(id_)) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, id_);
+      }
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(sender_)) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, sender_);
+      }
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(body_)) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(3, body_);
+      }
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(4, getReceivedAt());
+      }
+      if (subscriptionId_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(5, subscriptionId_);
+      }
+      return size;
+    }
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += computeSerializedSize_0();
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof smsgateway.v1.Device.SmsReceived)) {
+        return super.equals(obj);
+      }
+      smsgateway.v1.Device.SmsReceived other = (smsgateway.v1.Device.SmsReceived) obj;
+
+      if (!getId()
+          .equals(other.getId())) return false;
+      if (!getSender()
+          .equals(other.getSender())) return false;
+      if (!getBody()
+          .equals(other.getBody())) return false;
+      if (hasReceivedAt() != other.hasReceivedAt()) return false;
+      if (hasReceivedAt()) {
+        if (!getReceivedAt()
+            .equals(other.getReceivedAt())) return false;
+      }
+      if (getSubscriptionId()
+          != other.getSubscriptionId()) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + ID_FIELD_NUMBER;
+      hash = (53 * hash) + getId().hashCode();
+      hash = (37 * hash) + SENDER_FIELD_NUMBER;
+      hash = (53 * hash) + getSender().hashCode();
+      hash = (37 * hash) + BODY_FIELD_NUMBER;
+      hash = (53 * hash) + getBody().hashCode();
+      if (hasReceivedAt()) {
+        hash = (37 * hash) + RECEIVED_AT_FIELD_NUMBER;
+        hash = (53 * hash) + getReceivedAt().hashCode();
+      }
+      hash = (37 * hash) + SUBSCRIPTION_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getSubscriptionId();
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static smsgateway.v1.Device.SmsReceived parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static smsgateway.v1.Device.SmsReceived parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static smsgateway.v1.Device.SmsReceived parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static smsgateway.v1.Device.SmsReceived parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static smsgateway.v1.Device.SmsReceived parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static smsgateway.v1.Device.SmsReceived parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static smsgateway.v1.Device.SmsReceived parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static smsgateway.v1.Device.SmsReceived parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static smsgateway.v1.Device.SmsReceived parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static smsgateway.v1.Device.SmsReceived parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static smsgateway.v1.Device.SmsReceived parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static smsgateway.v1.Device.SmsReceived parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(smsgateway.v1.Device.SmsReceived prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * An SMS the phone received and its InboundRules forward. The agent keeps it
+     * until the server acknowledges it (SmsReceivedAck), and sends it again on
+     * every reconnect until then: a message received while offline still arrives.
+     * </pre>
+     *
+     * Protobuf type {@code smsgateway.v1.SmsReceived}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:smsgateway.v1.SmsReceived)
+        smsgateway.v1.Device.SmsReceivedOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return smsgateway.v1.Device.internal_static_smsgateway_v1_SmsReceived_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return smsgateway.v1.Device.internal_static_smsgateway_v1_SmsReceived_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                smsgateway.v1.Device.SmsReceived.class, smsgateway.v1.Device.SmsReceived.Builder.class);
+      }
+
+      // Construct using smsgateway.v1.Device.SmsReceived.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage
+                .alwaysUseFieldBuilders) {
+          internalGetReceivedAtFieldBuilder();
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        id_ = "";
+        sender_ = "";
+        body_ = "";
+        receivedAt_ = null;
+        if (receivedAtBuilder_ != null) {
+          receivedAtBuilder_.dispose();
+          receivedAtBuilder_ = null;
+        }
+        subscriptionId_ = 0;
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return smsgateway.v1.Device.internal_static_smsgateway_v1_SmsReceived_descriptor;
+      }
+
+      @java.lang.Override
+      public smsgateway.v1.Device.SmsReceived getDefaultInstanceForType() {
+        return smsgateway.v1.Device.SmsReceived.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public smsgateway.v1.Device.SmsReceived build() {
+        smsgateway.v1.Device.SmsReceived result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public smsgateway.v1.Device.SmsReceived buildPartial() {
+        smsgateway.v1.Device.SmsReceived result = new smsgateway.v1.Device.SmsReceived(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(smsgateway.v1.Device.SmsReceived result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.id_ = id_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.sender_ = sender_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.body_ = body_;
+        }
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.receivedAt_ = receivedAtBuilder_ == null
+              ? receivedAt_
+              : receivedAtBuilder_.build();
+          to_bitField0_ |= 0x00000001;
+        }
+        if (((from_bitField0_ & 0x00000010) != 0)) {
+          result.subscriptionId_ = subscriptionId_;
+        }
+        result.bitField0_ |= to_bitField0_;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof smsgateway.v1.Device.SmsReceived) {
+          return mergeFrom((smsgateway.v1.Device.SmsReceived)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(smsgateway.v1.Device.SmsReceived other) {
+        if (other == smsgateway.v1.Device.SmsReceived.getDefaultInstance()) return this;
+        if (!other.getId().isEmpty()) {
+          id_ = other.id_;
+          bitField0_ |= 0x00000001;
+          onChanged();
+        }
+        if (!other.getSender().isEmpty()) {
+          sender_ = other.sender_;
+          bitField0_ |= 0x00000002;
+          onChanged();
+        }
+        if (!other.getBody().isEmpty()) {
+          body_ = other.body_;
+          bitField0_ |= 0x00000004;
+          onChanged();
+        }
+        if (other.hasReceivedAt()) {
+          mergeReceivedAt(other.getReceivedAt());
+        }
+        if (other.getSubscriptionId() != 0) {
+          setSubscriptionId(other.getSubscriptionId());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                id_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              case 18: {
+                sender_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 18
+              case 26: {
+                body_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 26
+              case 34: {
+                input.readMessage(
+                    internalGetReceivedAtFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                bitField0_ |= 0x00000008;
+                break;
+              } // case 34
+              case 40: {
+                subscriptionId_ = input.readInt32();
+                bitField0_ |= 0x00000010;
+                break;
+              } // case 40
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private java.lang.Object id_ = "";
+      /**
+       * <pre>
+       * Agent-generated, stable across resends: the server records one message
+       * per id and device, however often it arrives.
+       * </pre>
+       *
+       * <code>string id = 1 [json_name = "id"];</code>
+       * @return The id.
+       */
+      public java.lang.String getId() {
+        java.lang.Object ref = id_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          id_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * Agent-generated, stable across resends: the server records one message
+       * per id and device, however often it arrives.
+       * </pre>
+       *
+       * <code>string id = 1 [json_name = "id"];</code>
+       * @return The bytes for id.
+       */
+      public com.google.protobuf.ByteString
+          getIdBytes() {
+        java.lang.Object ref = id_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          id_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * Agent-generated, stable across resends: the server records one message
+       * per id and device, however often it arrives.
+       * </pre>
+       *
+       * <code>string id = 1 [json_name = "id"];</code>
+       * @param value The id to set.
+       * @return This builder for chaining.
+       */
+      public Builder setId(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        id_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Agent-generated, stable across resends: the server records one message
+       * per id and device, however often it arrives.
+       * </pre>
+       *
+       * <code>string id = 1 [json_name = "id"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearId() {
+        id_ = getDefaultInstance().getId();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Agent-generated, stable across resends: the server records one message
+       * per id and device, however often it arrives.
+       * </pre>
+       *
+       * <code>string id = 1 [json_name = "id"];</code>
+       * @param value The bytes for id to set.
+       * @return This builder for chaining.
+       */
+      public Builder setIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        id_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object sender_ = "";
+      /**
+       * <pre>
+       * As the network presented it: an alphanumeric sender id or a number.
+       * </pre>
+       *
+       * <code>string sender = 2 [json_name = "sender"];</code>
+       * @return The sender.
+       */
+      public java.lang.String getSender() {
+        java.lang.Object ref = sender_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          sender_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * As the network presented it: an alphanumeric sender id or a number.
+       * </pre>
+       *
+       * <code>string sender = 2 [json_name = "sender"];</code>
+       * @return The bytes for sender.
+       */
+      public com.google.protobuf.ByteString
+          getSenderBytes() {
+        java.lang.Object ref = sender_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          sender_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * As the network presented it: an alphanumeric sender id or a number.
+       * </pre>
+       *
+       * <code>string sender = 2 [json_name = "sender"];</code>
+       * @param value The sender to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSender(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        sender_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * As the network presented it: an alphanumeric sender id or a number.
+       * </pre>
+       *
+       * <code>string sender = 2 [json_name = "sender"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSender() {
+        sender_ = getDefaultInstance().getSender();
+        bitField0_ = (bitField0_ & ~0x00000002);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * As the network presented it: an alphanumeric sender id or a number.
+       * </pre>
+       *
+       * <code>string sender = 2 [json_name = "sender"];</code>
+       * @param value The bytes for sender to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSenderBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        sender_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object body_ = "";
+      /**
+       * <pre>
+       * The whole text, multipart messages joined.
+       * </pre>
+       *
+       * <code>string body = 3 [json_name = "body"];</code>
+       * @return The body.
+       */
+      public java.lang.String getBody() {
+        java.lang.Object ref = body_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          body_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * The whole text, multipart messages joined.
+       * </pre>
+       *
+       * <code>string body = 3 [json_name = "body"];</code>
+       * @return The bytes for body.
+       */
+      public com.google.protobuf.ByteString
+          getBodyBytes() {
+        java.lang.Object ref = body_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          body_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * The whole text, multipart messages joined.
+       * </pre>
+       *
+       * <code>string body = 3 [json_name = "body"];</code>
+       * @param value The body to set.
+       * @return This builder for chaining.
+       */
+      public Builder setBody(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        body_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * The whole text, multipart messages joined.
+       * </pre>
+       *
+       * <code>string body = 3 [json_name = "body"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearBody() {
+        body_ = getDefaultInstance().getBody();
+        bitField0_ = (bitField0_ & ~0x00000004);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * The whole text, multipart messages joined.
+       * </pre>
+       *
+       * <code>string body = 3 [json_name = "body"];</code>
+       * @param value The bytes for body to set.
+       * @return This builder for chaining.
+       */
+      public Builder setBodyBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        body_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.Timestamp receivedAt_;
+      private com.google.protobuf.SingleFieldBuilder<
+          com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> receivedAtBuilder_;
+      /**
+       * <pre>
+       * When the network delivered it to the phone.
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp received_at = 4 [json_name = "receivedAt"];</code>
+       * @return Whether the receivedAt field is set.
+       */
+      public boolean hasReceivedAt() {
+        return ((bitField0_ & 0x00000008) != 0);
+      }
+      /**
+       * <pre>
+       * When the network delivered it to the phone.
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp received_at = 4 [json_name = "receivedAt"];</code>
+       * @return The receivedAt.
+       */
+      public com.google.protobuf.Timestamp getReceivedAt() {
+        if (receivedAtBuilder_ == null) {
+          return receivedAt_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : receivedAt_;
+        } else {
+          return receivedAtBuilder_.getMessage();
+        }
+      }
+      /**
+       * <pre>
+       * When the network delivered it to the phone.
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp received_at = 4 [json_name = "receivedAt"];</code>
+       */
+      public Builder setReceivedAt(com.google.protobuf.Timestamp value) {
+        if (receivedAtBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          receivedAt_ = value;
+        } else {
+          receivedAtBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * When the network delivered it to the phone.
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp received_at = 4 [json_name = "receivedAt"];</code>
+       */
+      public Builder setReceivedAt(
+          com.google.protobuf.Timestamp.Builder builderForValue) {
+        if (receivedAtBuilder_ == null) {
+          receivedAt_ = builderForValue.build();
+        } else {
+          receivedAtBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * When the network delivered it to the phone.
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp received_at = 4 [json_name = "receivedAt"];</code>
+       */
+      public Builder mergeReceivedAt(com.google.protobuf.Timestamp value) {
+        if (receivedAtBuilder_ == null) {
+          if (((bitField0_ & 0x00000008) != 0) &&
+            receivedAt_ != null &&
+            receivedAt_ != com.google.protobuf.Timestamp.getDefaultInstance()) {
+            getReceivedAtBuilder().mergeFrom(value);
+          } else {
+            receivedAt_ = value;
+          }
+        } else {
+          receivedAtBuilder_.mergeFrom(value);
+        }
+        if (receivedAt_ != null) {
+          bitField0_ |= 0x00000008;
+          onChanged();
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * When the network delivered it to the phone.
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp received_at = 4 [json_name = "receivedAt"];</code>
+       */
+      public Builder clearReceivedAt() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        receivedAt_ = null;
+        if (receivedAtBuilder_ != null) {
+          receivedAtBuilder_.dispose();
+          receivedAtBuilder_ = null;
+        }
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * When the network delivered it to the phone.
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp received_at = 4 [json_name = "receivedAt"];</code>
+       */
+      public com.google.protobuf.Timestamp.Builder getReceivedAtBuilder() {
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return internalGetReceivedAtFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       * When the network delivered it to the phone.
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp received_at = 4 [json_name = "receivedAt"];</code>
+       */
+      public com.google.protobuf.TimestampOrBuilder getReceivedAtOrBuilder() {
+        if (receivedAtBuilder_ != null) {
+          return receivedAtBuilder_.getMessageOrBuilder();
+        } else {
+          return receivedAt_ == null ?
+              com.google.protobuf.Timestamp.getDefaultInstance() : receivedAt_;
+        }
+      }
+      /**
+       * <pre>
+       * When the network delivered it to the phone.
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp received_at = 4 [json_name = "receivedAt"];</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> 
+          internalGetReceivedAtFieldBuilder() {
+        if (receivedAtBuilder_ == null) {
+          receivedAtBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder>(
+                  getReceivedAt(),
+                  getParentForChildren(),
+                  isClean());
+          receivedAt_ = null;
+        }
+        return receivedAtBuilder_;
+      }
+
+      private int subscriptionId_ ;
+      /**
+       * <pre>
+       * The SIM it arrived on (SimInfo.subscription_id); 0 when unknown.
+       * </pre>
+       *
+       * <code>int32 subscription_id = 5 [json_name = "subscriptionId"];</code>
+       * @return The subscriptionId.
+       */
+      @java.lang.Override
+      public int getSubscriptionId() {
+        return subscriptionId_;
+      }
+      /**
+       * <pre>
+       * The SIM it arrived on (SimInfo.subscription_id); 0 when unknown.
+       * </pre>
+       *
+       * <code>int32 subscription_id = 5 [json_name = "subscriptionId"];</code>
+       * @param value The subscriptionId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSubscriptionId(int value) {
+
+        subscriptionId_ = value;
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * The SIM it arrived on (SimInfo.subscription_id); 0 when unknown.
+       * </pre>
+       *
+       * <code>int32 subscription_id = 5 [json_name = "subscriptionId"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSubscriptionId() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        subscriptionId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:smsgateway.v1.SmsReceived)
+    }
+
+    // @@protoc_insertion_point(class_scope:smsgateway.v1.SmsReceived)
+    private static final smsgateway.v1.Device.SmsReceived DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new smsgateway.v1.Device.SmsReceived();
+    }
+
+    public static smsgateway.v1.Device.SmsReceived getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<SmsReceived>
+        PARSER = new com.google.protobuf.AbstractParser<SmsReceived>() {
+      @java.lang.Override
+      public SmsReceived parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<SmsReceived> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<SmsReceived> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public smsgateway.v1.Device.SmsReceived getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   public interface HeartbeatOrBuilder extends
       // @@protoc_insertion_point(interface_extends:smsgateway.v1.Heartbeat)
       com.google.protobuf.MessageOrBuilder {
@@ -23219,6 +26645,55 @@ public final class Device extends com.google.protobuf.GeneratedFile {
      * <code>.google.protobuf.Timestamp completed_at = 6 [json_name = "completedAt"];</code>
      */
     com.google.protobuf.TimestampOrBuilder getCompletedAtOrBuilder();
+
+    /**
+     * <pre>
+     * For a UssdJob: what the network displayed, one entry per screen, in
+     * order — the answer to the code, then to each reply. Also on a failure,
+     * up to the screen where it stopped.
+     * </pre>
+     *
+     * <code>repeated string responses = 7 [json_name = "responses"];</code>
+     * @return A list containing the responses.
+     */
+    java.util.List<java.lang.String>
+        getResponsesList();
+    /**
+     * <pre>
+     * For a UssdJob: what the network displayed, one entry per screen, in
+     * order — the answer to the code, then to each reply. Also on a failure,
+     * up to the screen where it stopped.
+     * </pre>
+     *
+     * <code>repeated string responses = 7 [json_name = "responses"];</code>
+     * @return The count of responses.
+     */
+    int getResponsesCount();
+    /**
+     * <pre>
+     * For a UssdJob: what the network displayed, one entry per screen, in
+     * order — the answer to the code, then to each reply. Also on a failure,
+     * up to the screen where it stopped.
+     * </pre>
+     *
+     * <code>repeated string responses = 7 [json_name = "responses"];</code>
+     * @param index The index of the element to return.
+     * @return The responses at the given index.
+     */
+    java.lang.String getResponses(int index);
+    /**
+     * <pre>
+     * For a UssdJob: what the network displayed, one entry per screen, in
+     * order — the answer to the code, then to each reply. Also on a failure,
+     * up to the screen where it stopped.
+     * </pre>
+     *
+     * <code>repeated string responses = 7 [json_name = "responses"];</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the responses at the given index.
+     */
+    com.google.protobuf.ByteString
+        getResponsesBytes(int index);
   }
   /**
    * <pre>
@@ -23251,6 +26726,8 @@ public final class Device extends com.google.protobuf.GeneratedFile {
       status_ = 0;
       errorCode_ = "";
       errorMessage_ = "";
+      responses_ =
+          com.google.protobuf.LazyStringArrayList.emptyList();
     }
 
     public static final com.google.protobuf.Descriptors.Descriptor
@@ -23479,6 +26956,67 @@ public final class Device extends com.google.protobuf.GeneratedFile {
       return completedAt_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : completedAt_;
     }
 
+    public static final int RESPONSES_FIELD_NUMBER = 7;
+    @SuppressWarnings("serial")
+    private com.google.protobuf.LazyStringArrayList responses_ =
+        com.google.protobuf.LazyStringArrayList.emptyList();
+    /**
+     * <pre>
+     * For a UssdJob: what the network displayed, one entry per screen, in
+     * order — the answer to the code, then to each reply. Also on a failure,
+     * up to the screen where it stopped.
+     * </pre>
+     *
+     * <code>repeated string responses = 7 [json_name = "responses"];</code>
+     * @return A list containing the responses.
+     */
+    public com.google.protobuf.ProtocolStringList
+        getResponsesList() {
+      return responses_;
+    }
+    /**
+     * <pre>
+     * For a UssdJob: what the network displayed, one entry per screen, in
+     * order — the answer to the code, then to each reply. Also on a failure,
+     * up to the screen where it stopped.
+     * </pre>
+     *
+     * <code>repeated string responses = 7 [json_name = "responses"];</code>
+     * @return The count of responses.
+     */
+    public int getResponsesCount() {
+      return responses_.size();
+    }
+    /**
+     * <pre>
+     * For a UssdJob: what the network displayed, one entry per screen, in
+     * order — the answer to the code, then to each reply. Also on a failure,
+     * up to the screen where it stopped.
+     * </pre>
+     *
+     * <code>repeated string responses = 7 [json_name = "responses"];</code>
+     * @param index The index of the element to return.
+     * @return The responses at the given index.
+     */
+    public java.lang.String getResponses(int index) {
+      return responses_.get(index);
+    }
+    /**
+     * <pre>
+     * For a UssdJob: what the network displayed, one entry per screen, in
+     * order — the answer to the code, then to each reply. Also on a failure,
+     * up to the screen where it stopped.
+     * </pre>
+     *
+     * <code>repeated string responses = 7 [json_name = "responses"];</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the responses at the given index.
+     */
+    public com.google.protobuf.ByteString
+        getResponsesBytes(int index) {
+      return responses_.getByteString(index);
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -23511,6 +27049,9 @@ public final class Device extends com.google.protobuf.GeneratedFile {
       if (((bitField0_ & 0x00000001) != 0)) {
         output.writeMessage(6, getCompletedAt());
       }
+      for (int i = 0; i < responses_.size(); i++) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 7, responses_.getRaw(i));
+      }
       getUnknownFields().writeTo(output);
     }
     private int computeSerializedSize_0() {
@@ -23535,6 +27076,14 @@ public final class Device extends com.google.protobuf.GeneratedFile {
       if (((bitField0_ & 0x00000001) != 0)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(6, getCompletedAt());
+      }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < responses_.size(); i++) {
+          dataSize += computeStringSizeNoTag(responses_.getRaw(i));
+        }
+        size += dataSize;
+        size += 1 * getResponsesList().size();
       }
       return size;
     }
@@ -23574,6 +27123,8 @@ public final class Device extends com.google.protobuf.GeneratedFile {
         if (!getCompletedAt()
             .equals(other.getCompletedAt())) return false;
       }
+      if (!getResponsesList()
+          .equals(other.getResponsesList())) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -23598,6 +27149,10 @@ public final class Device extends com.google.protobuf.GeneratedFile {
       if (hasCompletedAt()) {
         hash = (37 * hash) + COMPLETED_AT_FIELD_NUMBER;
         hash = (53 * hash) + getCompletedAt().hashCode();
+      }
+      if (getResponsesCount() > 0) {
+        hash = (37 * hash) + RESPONSES_FIELD_NUMBER;
+        hash = (53 * hash) + getResponsesList().hashCode();
       }
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
@@ -23751,6 +27306,8 @@ public final class Device extends com.google.protobuf.GeneratedFile {
           completedAtBuilder_.dispose();
           completedAtBuilder_ = null;
         }
+        responses_ =
+            com.google.protobuf.LazyStringArrayList.emptyList();
         return this;
       }
 
@@ -23806,6 +27363,10 @@ public final class Device extends com.google.protobuf.GeneratedFile {
               : completedAtBuilder_.build();
           to_bitField0_ |= 0x00000001;
         }
+        if (((from_bitField0_ & 0x00000040) != 0)) {
+          responses_.makeImmutable();
+          result.responses_ = responses_;
+        }
         result.bitField0_ |= to_bitField0_;
       }
 
@@ -23844,6 +27405,16 @@ public final class Device extends com.google.protobuf.GeneratedFile {
         }
         if (other.hasCompletedAt()) {
           mergeCompletedAt(other.getCompletedAt());
+        }
+        if (!other.responses_.isEmpty()) {
+          if (responses_.isEmpty()) {
+            responses_ = other.responses_;
+            bitField0_ |= 0x00000040;
+          } else {
+            ensureResponsesIsMutable();
+            responses_.addAll(other.responses_);
+          }
+          onChanged();
         }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
@@ -23903,6 +27474,11 @@ public final class Device extends com.google.protobuf.GeneratedFile {
                 bitField0_ |= 0x00000020;
                 break;
               } // case 50
+              case 58: {
+                ensureResponsesIsMutable();
+                responses_.add(input.readStringRequireUtf8());
+                break;
+              } // case 58
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -24435,6 +28011,171 @@ public final class Device extends com.google.protobuf.GeneratedFile {
           completedAt_ = null;
         }
         return completedAtBuilder_;
+      }
+
+      private com.google.protobuf.LazyStringArrayList responses_ =
+          com.google.protobuf.LazyStringArrayList.emptyList();
+      private void ensureResponsesIsMutable() {
+        if (!responses_.isModifiable()) {
+          responses_ = new com.google.protobuf.LazyStringArrayList(responses_);
+        }
+        bitField0_ |= 0x00000040;
+      }
+      /**
+       * <pre>
+       * For a UssdJob: what the network displayed, one entry per screen, in
+       * order — the answer to the code, then to each reply. Also on a failure,
+       * up to the screen where it stopped.
+       * </pre>
+       *
+       * <code>repeated string responses = 7 [json_name = "responses"];</code>
+       * @return A list containing the responses.
+       */
+      public com.google.protobuf.ProtocolStringList
+          getResponsesList() {
+        responses_.makeImmutable();
+        return responses_;
+      }
+      /**
+       * <pre>
+       * For a UssdJob: what the network displayed, one entry per screen, in
+       * order — the answer to the code, then to each reply. Also on a failure,
+       * up to the screen where it stopped.
+       * </pre>
+       *
+       * <code>repeated string responses = 7 [json_name = "responses"];</code>
+       * @return The count of responses.
+       */
+      public int getResponsesCount() {
+        return responses_.size();
+      }
+      /**
+       * <pre>
+       * For a UssdJob: what the network displayed, one entry per screen, in
+       * order — the answer to the code, then to each reply. Also on a failure,
+       * up to the screen where it stopped.
+       * </pre>
+       *
+       * <code>repeated string responses = 7 [json_name = "responses"];</code>
+       * @param index The index of the element to return.
+       * @return The responses at the given index.
+       */
+      public java.lang.String getResponses(int index) {
+        return responses_.get(index);
+      }
+      /**
+       * <pre>
+       * For a UssdJob: what the network displayed, one entry per screen, in
+       * order — the answer to the code, then to each reply. Also on a failure,
+       * up to the screen where it stopped.
+       * </pre>
+       *
+       * <code>repeated string responses = 7 [json_name = "responses"];</code>
+       * @param index The index of the value to return.
+       * @return The bytes of the responses at the given index.
+       */
+      public com.google.protobuf.ByteString
+          getResponsesBytes(int index) {
+        return responses_.getByteString(index);
+      }
+      /**
+       * <pre>
+       * For a UssdJob: what the network displayed, one entry per screen, in
+       * order — the answer to the code, then to each reply. Also on a failure,
+       * up to the screen where it stopped.
+       * </pre>
+       *
+       * <code>repeated string responses = 7 [json_name = "responses"];</code>
+       * @param index The index to set the value at.
+       * @param value The responses to set.
+       * @return This builder for chaining.
+       */
+      public Builder setResponses(
+          int index, java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        ensureResponsesIsMutable();
+        responses_.set(index, value);
+        bitField0_ |= 0x00000040;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * For a UssdJob: what the network displayed, one entry per screen, in
+       * order — the answer to the code, then to each reply. Also on a failure,
+       * up to the screen where it stopped.
+       * </pre>
+       *
+       * <code>repeated string responses = 7 [json_name = "responses"];</code>
+       * @param value The responses to add.
+       * @return This builder for chaining.
+       */
+      public Builder addResponses(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        ensureResponsesIsMutable();
+        responses_.add(value);
+        bitField0_ |= 0x00000040;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * For a UssdJob: what the network displayed, one entry per screen, in
+       * order — the answer to the code, then to each reply. Also on a failure,
+       * up to the screen where it stopped.
+       * </pre>
+       *
+       * <code>repeated string responses = 7 [json_name = "responses"];</code>
+       * @param values The responses to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllResponses(
+          java.lang.Iterable<java.lang.String> values) {
+        ensureResponsesIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, responses_);
+        bitField0_ |= 0x00000040;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * For a UssdJob: what the network displayed, one entry per screen, in
+       * order — the answer to the code, then to each reply. Also on a failure,
+       * up to the screen where it stopped.
+       * </pre>
+       *
+       * <code>repeated string responses = 7 [json_name = "responses"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearResponses() {
+        responses_ =
+          com.google.protobuf.LazyStringArrayList.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000040);;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * For a UssdJob: what the network displayed, one entry per screen, in
+       * order — the answer to the code, then to each reply. Also on a failure,
+       * up to the screen where it stopped.
+       * </pre>
+       *
+       * <code>repeated string responses = 7 [json_name = "responses"];</code>
+       * @param value The bytes of the responses to add.
+       * @return This builder for chaining.
+       */
+      public Builder addResponsesBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        ensureResponsesIsMutable();
+        responses_.add(value);
+        bitField0_ |= 0x00000040;
+        onChanged();
+        return this;
       }
 
       // @@protoc_insertion_point(builder_scope:smsgateway.v1.JobResult)
@@ -27304,6 +31045,2042 @@ public final class Device extends com.google.protobuf.GeneratedFile {
 
   }
 
+  public interface UssdJobOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:smsgateway.v1.UssdJob)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * Server-assigned; the idempotency key, as for SendSmsJob. A USSD session
+     * can move money: an agent that has seen this id must never run it again.
+     * </pre>
+     *
+     * <code>string job_id = 1 [json_name = "jobId"];</code>
+     * @return The jobId.
+     */
+    java.lang.String getJobId();
+    /**
+     * <pre>
+     * Server-assigned; the idempotency key, as for SendSmsJob. A USSD session
+     * can move money: an agent that has seen this id must never run it again.
+     * </pre>
+     *
+     * <code>string job_id = 1 [json_name = "jobId"];</code>
+     * @return The bytes for jobId.
+     */
+    com.google.protobuf.ByteString
+        getJobIdBytes();
+
+    /**
+     * <pre>
+     * What is dialed, e.g. "*144#" or "*144*2*1*70000000*5000#".
+     * </pre>
+     *
+     * <code>string code = 2 [json_name = "code"];</code>
+     * @return The code.
+     */
+    java.lang.String getCode();
+    /**
+     * <pre>
+     * What is dialed, e.g. "*144#" or "*144*2*1*70000000*5000#".
+     * </pre>
+     *
+     * <code>string code = 2 [json_name = "code"];</code>
+     * @return The bytes for code.
+     */
+    com.google.protobuf.ByteString
+        getCodeBytes();
+
+    /**
+     * <pre>
+     * The SIM to dial from (SimInfo.subscription_id); 0 is the handset's
+     * default. A subscription the device does not have is refused in JobAck.
+     * </pre>
+     *
+     * <code>int32 subscription_id = 3 [json_name = "subscriptionId"];</code>
+     * @return The subscriptionId.
+     */
+    int getSubscriptionId();
+
+    /**
+     * <pre>
+     * After this the agent must not dial, and reports the job failed.
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp expires_at = 4 [json_name = "expiresAt"];</code>
+     * @return Whether the expiresAt field is set.
+     */
+    boolean hasExpiresAt();
+    /**
+     * <pre>
+     * After this the agent must not dial, and reports the job failed.
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp expires_at = 4 [json_name = "expiresAt"];</code>
+     * @return The expiresAt.
+     */
+    com.google.protobuf.Timestamp getExpiresAt();
+    /**
+     * <pre>
+     * After this the agent must not dial, and reports the job failed.
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp expires_at = 4 [json_name = "expiresAt"];</code>
+     */
+    com.google.protobuf.TimestampOrBuilder getExpiresAtOrBuilder();
+
+    /**
+     * <pre>
+     * Answers to the menus the code opens, in order: each is typed into the
+     * screen the network shows, the way a person would. Empty: the code alone,
+     * one request and one answer.
+     * </pre>
+     *
+     * <code>repeated string replies = 5 [json_name = "replies"];</code>
+     * @return A list containing the replies.
+     */
+    java.util.List<java.lang.String>
+        getRepliesList();
+    /**
+     * <pre>
+     * Answers to the menus the code opens, in order: each is typed into the
+     * screen the network shows, the way a person would. Empty: the code alone,
+     * one request and one answer.
+     * </pre>
+     *
+     * <code>repeated string replies = 5 [json_name = "replies"];</code>
+     * @return The count of replies.
+     */
+    int getRepliesCount();
+    /**
+     * <pre>
+     * Answers to the menus the code opens, in order: each is typed into the
+     * screen the network shows, the way a person would. Empty: the code alone,
+     * one request and one answer.
+     * </pre>
+     *
+     * <code>repeated string replies = 5 [json_name = "replies"];</code>
+     * @param index The index of the element to return.
+     * @return The replies at the given index.
+     */
+    java.lang.String getReplies(int index);
+    /**
+     * <pre>
+     * Answers to the menus the code opens, in order: each is typed into the
+     * screen the network shows, the way a person would. Empty: the code alone,
+     * one request and one answer.
+     * </pre>
+     *
+     * <code>repeated string replies = 5 [json_name = "replies"];</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the replies at the given index.
+     */
+    com.google.protobuf.ByteString
+        getRepliesBytes(int index);
+  }
+  /**
+   * <pre>
+   * Run a USSD code on one SIM and report what the network answers, in a
+   * JobResult: SENT with the screens in responses when the network answered,
+   * FAILED otherwise. Acknowledged with JobAck like a SendSmsJob, and only sent
+   * to an agent that lists "ussd" in its capabilities ("ussd_menu" when replies
+   * is not empty).
+   * </pre>
+   *
+   * Protobuf type {@code smsgateway.v1.UssdJob}
+   */
+  public static final class UssdJob extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:smsgateway.v1.UssdJob)
+      UssdJobOrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 35,
+        /* patch= */ 1,
+        /* suffix= */ "",
+        "UssdJob");
+    }
+    // Use UssdJob.newBuilder() to construct.
+    private UssdJob(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private UssdJob() {
+      jobId_ = "";
+      code_ = "";
+      replies_ =
+          com.google.protobuf.LazyStringArrayList.emptyList();
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return smsgateway.v1.Device.internal_static_smsgateway_v1_UssdJob_descriptor;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+      return smsgateway.v1.Device.internal_static_smsgateway_v1_UssdJob_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return smsgateway.v1.Device.internal_static_smsgateway_v1_UssdJob_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              smsgateway.v1.Device.UssdJob.class, smsgateway.v1.Device.UssdJob.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int JOB_ID_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object jobId_ = "";
+    /**
+     * <pre>
+     * Server-assigned; the idempotency key, as for SendSmsJob. A USSD session
+     * can move money: an agent that has seen this id must never run it again.
+     * </pre>
+     *
+     * <code>string job_id = 1 [json_name = "jobId"];</code>
+     * @return The jobId.
+     */
+    @java.lang.Override
+    public java.lang.String getJobId() {
+      java.lang.Object ref = jobId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        jobId_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * Server-assigned; the idempotency key, as for SendSmsJob. A USSD session
+     * can move money: an agent that has seen this id must never run it again.
+     * </pre>
+     *
+     * <code>string job_id = 1 [json_name = "jobId"];</code>
+     * @return The bytes for jobId.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getJobIdBytes() {
+      java.lang.Object ref = jobId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        jobId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int CODE_FIELD_NUMBER = 2;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object code_ = "";
+    /**
+     * <pre>
+     * What is dialed, e.g. "*144#" or "*144*2*1*70000000*5000#".
+     * </pre>
+     *
+     * <code>string code = 2 [json_name = "code"];</code>
+     * @return The code.
+     */
+    @java.lang.Override
+    public java.lang.String getCode() {
+      java.lang.Object ref = code_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        code_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * What is dialed, e.g. "*144#" or "*144*2*1*70000000*5000#".
+     * </pre>
+     *
+     * <code>string code = 2 [json_name = "code"];</code>
+     * @return The bytes for code.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getCodeBytes() {
+      java.lang.Object ref = code_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        code_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int SUBSCRIPTION_ID_FIELD_NUMBER = 3;
+    private int subscriptionId_ = 0;
+    /**
+     * <pre>
+     * The SIM to dial from (SimInfo.subscription_id); 0 is the handset's
+     * default. A subscription the device does not have is refused in JobAck.
+     * </pre>
+     *
+     * <code>int32 subscription_id = 3 [json_name = "subscriptionId"];</code>
+     * @return The subscriptionId.
+     */
+    @java.lang.Override
+    public int getSubscriptionId() {
+      return subscriptionId_;
+    }
+
+    public static final int EXPIRES_AT_FIELD_NUMBER = 4;
+    private com.google.protobuf.Timestamp expiresAt_;
+    /**
+     * <pre>
+     * After this the agent must not dial, and reports the job failed.
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp expires_at = 4 [json_name = "expiresAt"];</code>
+     * @return Whether the expiresAt field is set.
+     */
+    @java.lang.Override
+    public boolean hasExpiresAt() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <pre>
+     * After this the agent must not dial, and reports the job failed.
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp expires_at = 4 [json_name = "expiresAt"];</code>
+     * @return The expiresAt.
+     */
+    @java.lang.Override
+    public com.google.protobuf.Timestamp getExpiresAt() {
+      return expiresAt_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : expiresAt_;
+    }
+    /**
+     * <pre>
+     * After this the agent must not dial, and reports the job failed.
+     * </pre>
+     *
+     * <code>.google.protobuf.Timestamp expires_at = 4 [json_name = "expiresAt"];</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.TimestampOrBuilder getExpiresAtOrBuilder() {
+      return expiresAt_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : expiresAt_;
+    }
+
+    public static final int REPLIES_FIELD_NUMBER = 5;
+    @SuppressWarnings("serial")
+    private com.google.protobuf.LazyStringArrayList replies_ =
+        com.google.protobuf.LazyStringArrayList.emptyList();
+    /**
+     * <pre>
+     * Answers to the menus the code opens, in order: each is typed into the
+     * screen the network shows, the way a person would. Empty: the code alone,
+     * one request and one answer.
+     * </pre>
+     *
+     * <code>repeated string replies = 5 [json_name = "replies"];</code>
+     * @return A list containing the replies.
+     */
+    public com.google.protobuf.ProtocolStringList
+        getRepliesList() {
+      return replies_;
+    }
+    /**
+     * <pre>
+     * Answers to the menus the code opens, in order: each is typed into the
+     * screen the network shows, the way a person would. Empty: the code alone,
+     * one request and one answer.
+     * </pre>
+     *
+     * <code>repeated string replies = 5 [json_name = "replies"];</code>
+     * @return The count of replies.
+     */
+    public int getRepliesCount() {
+      return replies_.size();
+    }
+    /**
+     * <pre>
+     * Answers to the menus the code opens, in order: each is typed into the
+     * screen the network shows, the way a person would. Empty: the code alone,
+     * one request and one answer.
+     * </pre>
+     *
+     * <code>repeated string replies = 5 [json_name = "replies"];</code>
+     * @param index The index of the element to return.
+     * @return The replies at the given index.
+     */
+    public java.lang.String getReplies(int index) {
+      return replies_.get(index);
+    }
+    /**
+     * <pre>
+     * Answers to the menus the code opens, in order: each is typed into the
+     * screen the network shows, the way a person would. Empty: the code alone,
+     * one request and one answer.
+     * </pre>
+     *
+     * <code>repeated string replies = 5 [json_name = "replies"];</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the replies at the given index.
+     */
+    public com.google.protobuf.ByteString
+        getRepliesBytes(int index) {
+      return replies_.getByteString(index);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(jobId_)) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 1, jobId_);
+      }
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(code_)) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 2, code_);
+      }
+      if (subscriptionId_ != 0) {
+        output.writeInt32(3, subscriptionId_);
+      }
+      if (((bitField0_ & 0x00000001) != 0)) {
+        output.writeMessage(4, getExpiresAt());
+      }
+      for (int i = 0; i < replies_.size(); i++) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 5, replies_.getRaw(i));
+      }
+      getUnknownFields().writeTo(output);
+    }
+    private int computeSerializedSize_0() {
+      int size = 0;
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(jobId_)) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, jobId_);
+      }
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(code_)) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, code_);
+      }
+      if (subscriptionId_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, subscriptionId_);
+      }
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(4, getExpiresAt());
+      }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < replies_.size(); i++) {
+          dataSize += computeStringSizeNoTag(replies_.getRaw(i));
+        }
+        size += dataSize;
+        size += 1 * getRepliesList().size();
+      }
+      return size;
+    }
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += computeSerializedSize_0();
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof smsgateway.v1.Device.UssdJob)) {
+        return super.equals(obj);
+      }
+      smsgateway.v1.Device.UssdJob other = (smsgateway.v1.Device.UssdJob) obj;
+
+      if (!getJobId()
+          .equals(other.getJobId())) return false;
+      if (!getCode()
+          .equals(other.getCode())) return false;
+      if (getSubscriptionId()
+          != other.getSubscriptionId()) return false;
+      if (hasExpiresAt() != other.hasExpiresAt()) return false;
+      if (hasExpiresAt()) {
+        if (!getExpiresAt()
+            .equals(other.getExpiresAt())) return false;
+      }
+      if (!getRepliesList()
+          .equals(other.getRepliesList())) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + JOB_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getJobId().hashCode();
+      hash = (37 * hash) + CODE_FIELD_NUMBER;
+      hash = (53 * hash) + getCode().hashCode();
+      hash = (37 * hash) + SUBSCRIPTION_ID_FIELD_NUMBER;
+      hash = (53 * hash) + getSubscriptionId();
+      if (hasExpiresAt()) {
+        hash = (37 * hash) + EXPIRES_AT_FIELD_NUMBER;
+        hash = (53 * hash) + getExpiresAt().hashCode();
+      }
+      if (getRepliesCount() > 0) {
+        hash = (37 * hash) + REPLIES_FIELD_NUMBER;
+        hash = (53 * hash) + getRepliesList().hashCode();
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static smsgateway.v1.Device.UssdJob parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static smsgateway.v1.Device.UssdJob parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static smsgateway.v1.Device.UssdJob parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static smsgateway.v1.Device.UssdJob parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static smsgateway.v1.Device.UssdJob parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static smsgateway.v1.Device.UssdJob parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static smsgateway.v1.Device.UssdJob parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static smsgateway.v1.Device.UssdJob parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static smsgateway.v1.Device.UssdJob parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static smsgateway.v1.Device.UssdJob parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static smsgateway.v1.Device.UssdJob parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static smsgateway.v1.Device.UssdJob parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(smsgateway.v1.Device.UssdJob prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * Run a USSD code on one SIM and report what the network answers, in a
+     * JobResult: SENT with the screens in responses when the network answered,
+     * FAILED otherwise. Acknowledged with JobAck like a SendSmsJob, and only sent
+     * to an agent that lists "ussd" in its capabilities ("ussd_menu" when replies
+     * is not empty).
+     * </pre>
+     *
+     * Protobuf type {@code smsgateway.v1.UssdJob}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:smsgateway.v1.UssdJob)
+        smsgateway.v1.Device.UssdJobOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return smsgateway.v1.Device.internal_static_smsgateway_v1_UssdJob_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return smsgateway.v1.Device.internal_static_smsgateway_v1_UssdJob_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                smsgateway.v1.Device.UssdJob.class, smsgateway.v1.Device.UssdJob.Builder.class);
+      }
+
+      // Construct using smsgateway.v1.Device.UssdJob.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage
+                .alwaysUseFieldBuilders) {
+          internalGetExpiresAtFieldBuilder();
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        jobId_ = "";
+        code_ = "";
+        subscriptionId_ = 0;
+        expiresAt_ = null;
+        if (expiresAtBuilder_ != null) {
+          expiresAtBuilder_.dispose();
+          expiresAtBuilder_ = null;
+        }
+        replies_ =
+            com.google.protobuf.LazyStringArrayList.emptyList();
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return smsgateway.v1.Device.internal_static_smsgateway_v1_UssdJob_descriptor;
+      }
+
+      @java.lang.Override
+      public smsgateway.v1.Device.UssdJob getDefaultInstanceForType() {
+        return smsgateway.v1.Device.UssdJob.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public smsgateway.v1.Device.UssdJob build() {
+        smsgateway.v1.Device.UssdJob result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public smsgateway.v1.Device.UssdJob buildPartial() {
+        smsgateway.v1.Device.UssdJob result = new smsgateway.v1.Device.UssdJob(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(smsgateway.v1.Device.UssdJob result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.jobId_ = jobId_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.code_ = code_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.subscriptionId_ = subscriptionId_;
+        }
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.expiresAt_ = expiresAtBuilder_ == null
+              ? expiresAt_
+              : expiresAtBuilder_.build();
+          to_bitField0_ |= 0x00000001;
+        }
+        if (((from_bitField0_ & 0x00000010) != 0)) {
+          replies_.makeImmutable();
+          result.replies_ = replies_;
+        }
+        result.bitField0_ |= to_bitField0_;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof smsgateway.v1.Device.UssdJob) {
+          return mergeFrom((smsgateway.v1.Device.UssdJob)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(smsgateway.v1.Device.UssdJob other) {
+        if (other == smsgateway.v1.Device.UssdJob.getDefaultInstance()) return this;
+        if (!other.getJobId().isEmpty()) {
+          jobId_ = other.jobId_;
+          bitField0_ |= 0x00000001;
+          onChanged();
+        }
+        if (!other.getCode().isEmpty()) {
+          code_ = other.code_;
+          bitField0_ |= 0x00000002;
+          onChanged();
+        }
+        if (other.getSubscriptionId() != 0) {
+          setSubscriptionId(other.getSubscriptionId());
+        }
+        if (other.hasExpiresAt()) {
+          mergeExpiresAt(other.getExpiresAt());
+        }
+        if (!other.replies_.isEmpty()) {
+          if (replies_.isEmpty()) {
+            replies_ = other.replies_;
+            bitField0_ |= 0x00000010;
+          } else {
+            ensureRepliesIsMutable();
+            replies_.addAll(other.replies_);
+          }
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                jobId_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              case 18: {
+                code_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 18
+              case 24: {
+                subscriptionId_ = input.readInt32();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 24
+              case 34: {
+                input.readMessage(
+                    internalGetExpiresAtFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                bitField0_ |= 0x00000008;
+                break;
+              } // case 34
+              case 42: {
+                ensureRepliesIsMutable();
+                replies_.add(input.readStringRequireUtf8());
+                break;
+              } // case 42
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private java.lang.Object jobId_ = "";
+      /**
+       * <pre>
+       * Server-assigned; the idempotency key, as for SendSmsJob. A USSD session
+       * can move money: an agent that has seen this id must never run it again.
+       * </pre>
+       *
+       * <code>string job_id = 1 [json_name = "jobId"];</code>
+       * @return The jobId.
+       */
+      public java.lang.String getJobId() {
+        java.lang.Object ref = jobId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          jobId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * Server-assigned; the idempotency key, as for SendSmsJob. A USSD session
+       * can move money: an agent that has seen this id must never run it again.
+       * </pre>
+       *
+       * <code>string job_id = 1 [json_name = "jobId"];</code>
+       * @return The bytes for jobId.
+       */
+      public com.google.protobuf.ByteString
+          getJobIdBytes() {
+        java.lang.Object ref = jobId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          jobId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * Server-assigned; the idempotency key, as for SendSmsJob. A USSD session
+       * can move money: an agent that has seen this id must never run it again.
+       * </pre>
+       *
+       * <code>string job_id = 1 [json_name = "jobId"];</code>
+       * @param value The jobId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setJobId(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        jobId_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Server-assigned; the idempotency key, as for SendSmsJob. A USSD session
+       * can move money: an agent that has seen this id must never run it again.
+       * </pre>
+       *
+       * <code>string job_id = 1 [json_name = "jobId"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearJobId() {
+        jobId_ = getDefaultInstance().getJobId();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Server-assigned; the idempotency key, as for SendSmsJob. A USSD session
+       * can move money: an agent that has seen this id must never run it again.
+       * </pre>
+       *
+       * <code>string job_id = 1 [json_name = "jobId"];</code>
+       * @param value The bytes for jobId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setJobIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        jobId_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object code_ = "";
+      /**
+       * <pre>
+       * What is dialed, e.g. "*144#" or "*144*2*1*70000000*5000#".
+       * </pre>
+       *
+       * <code>string code = 2 [json_name = "code"];</code>
+       * @return The code.
+       */
+      public java.lang.String getCode() {
+        java.lang.Object ref = code_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          code_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * What is dialed, e.g. "*144#" or "*144*2*1*70000000*5000#".
+       * </pre>
+       *
+       * <code>string code = 2 [json_name = "code"];</code>
+       * @return The bytes for code.
+       */
+      public com.google.protobuf.ByteString
+          getCodeBytes() {
+        java.lang.Object ref = code_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          code_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * What is dialed, e.g. "*144#" or "*144*2*1*70000000*5000#".
+       * </pre>
+       *
+       * <code>string code = 2 [json_name = "code"];</code>
+       * @param value The code to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCode(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        code_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * What is dialed, e.g. "*144#" or "*144*2*1*70000000*5000#".
+       * </pre>
+       *
+       * <code>string code = 2 [json_name = "code"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearCode() {
+        code_ = getDefaultInstance().getCode();
+        bitField0_ = (bitField0_ & ~0x00000002);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * What is dialed, e.g. "*144#" or "*144*2*1*70000000*5000#".
+       * </pre>
+       *
+       * <code>string code = 2 [json_name = "code"];</code>
+       * @param value The bytes for code to set.
+       * @return This builder for chaining.
+       */
+      public Builder setCodeBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        code_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+
+      private int subscriptionId_ ;
+      /**
+       * <pre>
+       * The SIM to dial from (SimInfo.subscription_id); 0 is the handset's
+       * default. A subscription the device does not have is refused in JobAck.
+       * </pre>
+       *
+       * <code>int32 subscription_id = 3 [json_name = "subscriptionId"];</code>
+       * @return The subscriptionId.
+       */
+      @java.lang.Override
+      public int getSubscriptionId() {
+        return subscriptionId_;
+      }
+      /**
+       * <pre>
+       * The SIM to dial from (SimInfo.subscription_id); 0 is the handset's
+       * default. A subscription the device does not have is refused in JobAck.
+       * </pre>
+       *
+       * <code>int32 subscription_id = 3 [json_name = "subscriptionId"];</code>
+       * @param value The subscriptionId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSubscriptionId(int value) {
+
+        subscriptionId_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * The SIM to dial from (SimInfo.subscription_id); 0 is the handset's
+       * default. A subscription the device does not have is refused in JobAck.
+       * </pre>
+       *
+       * <code>int32 subscription_id = 3 [json_name = "subscriptionId"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSubscriptionId() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        subscriptionId_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.Timestamp expiresAt_;
+      private com.google.protobuf.SingleFieldBuilder<
+          com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> expiresAtBuilder_;
+      /**
+       * <pre>
+       * After this the agent must not dial, and reports the job failed.
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp expires_at = 4 [json_name = "expiresAt"];</code>
+       * @return Whether the expiresAt field is set.
+       */
+      public boolean hasExpiresAt() {
+        return ((bitField0_ & 0x00000008) != 0);
+      }
+      /**
+       * <pre>
+       * After this the agent must not dial, and reports the job failed.
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp expires_at = 4 [json_name = "expiresAt"];</code>
+       * @return The expiresAt.
+       */
+      public com.google.protobuf.Timestamp getExpiresAt() {
+        if (expiresAtBuilder_ == null) {
+          return expiresAt_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : expiresAt_;
+        } else {
+          return expiresAtBuilder_.getMessage();
+        }
+      }
+      /**
+       * <pre>
+       * After this the agent must not dial, and reports the job failed.
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp expires_at = 4 [json_name = "expiresAt"];</code>
+       */
+      public Builder setExpiresAt(com.google.protobuf.Timestamp value) {
+        if (expiresAtBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          expiresAt_ = value;
+        } else {
+          expiresAtBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * After this the agent must not dial, and reports the job failed.
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp expires_at = 4 [json_name = "expiresAt"];</code>
+       */
+      public Builder setExpiresAt(
+          com.google.protobuf.Timestamp.Builder builderForValue) {
+        if (expiresAtBuilder_ == null) {
+          expiresAt_ = builderForValue.build();
+        } else {
+          expiresAtBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * After this the agent must not dial, and reports the job failed.
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp expires_at = 4 [json_name = "expiresAt"];</code>
+       */
+      public Builder mergeExpiresAt(com.google.protobuf.Timestamp value) {
+        if (expiresAtBuilder_ == null) {
+          if (((bitField0_ & 0x00000008) != 0) &&
+            expiresAt_ != null &&
+            expiresAt_ != com.google.protobuf.Timestamp.getDefaultInstance()) {
+            getExpiresAtBuilder().mergeFrom(value);
+          } else {
+            expiresAt_ = value;
+          }
+        } else {
+          expiresAtBuilder_.mergeFrom(value);
+        }
+        if (expiresAt_ != null) {
+          bitField0_ |= 0x00000008;
+          onChanged();
+        }
+        return this;
+      }
+      /**
+       * <pre>
+       * After this the agent must not dial, and reports the job failed.
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp expires_at = 4 [json_name = "expiresAt"];</code>
+       */
+      public Builder clearExpiresAt() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        expiresAt_ = null;
+        if (expiresAtBuilder_ != null) {
+          expiresAtBuilder_.dispose();
+          expiresAtBuilder_ = null;
+        }
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * After this the agent must not dial, and reports the job failed.
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp expires_at = 4 [json_name = "expiresAt"];</code>
+       */
+      public com.google.protobuf.Timestamp.Builder getExpiresAtBuilder() {
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return internalGetExpiresAtFieldBuilder().getBuilder();
+      }
+      /**
+       * <pre>
+       * After this the agent must not dial, and reports the job failed.
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp expires_at = 4 [json_name = "expiresAt"];</code>
+       */
+      public com.google.protobuf.TimestampOrBuilder getExpiresAtOrBuilder() {
+        if (expiresAtBuilder_ != null) {
+          return expiresAtBuilder_.getMessageOrBuilder();
+        } else {
+          return expiresAt_ == null ?
+              com.google.protobuf.Timestamp.getDefaultInstance() : expiresAt_;
+        }
+      }
+      /**
+       * <pre>
+       * After this the agent must not dial, and reports the job failed.
+       * </pre>
+       *
+       * <code>.google.protobuf.Timestamp expires_at = 4 [json_name = "expiresAt"];</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> 
+          internalGetExpiresAtFieldBuilder() {
+        if (expiresAtBuilder_ == null) {
+          expiresAtBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder>(
+                  getExpiresAt(),
+                  getParentForChildren(),
+                  isClean());
+          expiresAt_ = null;
+        }
+        return expiresAtBuilder_;
+      }
+
+      private com.google.protobuf.LazyStringArrayList replies_ =
+          com.google.protobuf.LazyStringArrayList.emptyList();
+      private void ensureRepliesIsMutable() {
+        if (!replies_.isModifiable()) {
+          replies_ = new com.google.protobuf.LazyStringArrayList(replies_);
+        }
+        bitField0_ |= 0x00000010;
+      }
+      /**
+       * <pre>
+       * Answers to the menus the code opens, in order: each is typed into the
+       * screen the network shows, the way a person would. Empty: the code alone,
+       * one request and one answer.
+       * </pre>
+       *
+       * <code>repeated string replies = 5 [json_name = "replies"];</code>
+       * @return A list containing the replies.
+       */
+      public com.google.protobuf.ProtocolStringList
+          getRepliesList() {
+        replies_.makeImmutable();
+        return replies_;
+      }
+      /**
+       * <pre>
+       * Answers to the menus the code opens, in order: each is typed into the
+       * screen the network shows, the way a person would. Empty: the code alone,
+       * one request and one answer.
+       * </pre>
+       *
+       * <code>repeated string replies = 5 [json_name = "replies"];</code>
+       * @return The count of replies.
+       */
+      public int getRepliesCount() {
+        return replies_.size();
+      }
+      /**
+       * <pre>
+       * Answers to the menus the code opens, in order: each is typed into the
+       * screen the network shows, the way a person would. Empty: the code alone,
+       * one request and one answer.
+       * </pre>
+       *
+       * <code>repeated string replies = 5 [json_name = "replies"];</code>
+       * @param index The index of the element to return.
+       * @return The replies at the given index.
+       */
+      public java.lang.String getReplies(int index) {
+        return replies_.get(index);
+      }
+      /**
+       * <pre>
+       * Answers to the menus the code opens, in order: each is typed into the
+       * screen the network shows, the way a person would. Empty: the code alone,
+       * one request and one answer.
+       * </pre>
+       *
+       * <code>repeated string replies = 5 [json_name = "replies"];</code>
+       * @param index The index of the value to return.
+       * @return The bytes of the replies at the given index.
+       */
+      public com.google.protobuf.ByteString
+          getRepliesBytes(int index) {
+        return replies_.getByteString(index);
+      }
+      /**
+       * <pre>
+       * Answers to the menus the code opens, in order: each is typed into the
+       * screen the network shows, the way a person would. Empty: the code alone,
+       * one request and one answer.
+       * </pre>
+       *
+       * <code>repeated string replies = 5 [json_name = "replies"];</code>
+       * @param index The index to set the value at.
+       * @param value The replies to set.
+       * @return This builder for chaining.
+       */
+      public Builder setReplies(
+          int index, java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        ensureRepliesIsMutable();
+        replies_.set(index, value);
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Answers to the menus the code opens, in order: each is typed into the
+       * screen the network shows, the way a person would. Empty: the code alone,
+       * one request and one answer.
+       * </pre>
+       *
+       * <code>repeated string replies = 5 [json_name = "replies"];</code>
+       * @param value The replies to add.
+       * @return This builder for chaining.
+       */
+      public Builder addReplies(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        ensureRepliesIsMutable();
+        replies_.add(value);
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Answers to the menus the code opens, in order: each is typed into the
+       * screen the network shows, the way a person would. Empty: the code alone,
+       * one request and one answer.
+       * </pre>
+       *
+       * <code>repeated string replies = 5 [json_name = "replies"];</code>
+       * @param values The replies to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllReplies(
+          java.lang.Iterable<java.lang.String> values) {
+        ensureRepliesIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, replies_);
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Answers to the menus the code opens, in order: each is typed into the
+       * screen the network shows, the way a person would. Empty: the code alone,
+       * one request and one answer.
+       * </pre>
+       *
+       * <code>repeated string replies = 5 [json_name = "replies"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearReplies() {
+        replies_ =
+          com.google.protobuf.LazyStringArrayList.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000010);;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Answers to the menus the code opens, in order: each is typed into the
+       * screen the network shows, the way a person would. Empty: the code alone,
+       * one request and one answer.
+       * </pre>
+       *
+       * <code>repeated string replies = 5 [json_name = "replies"];</code>
+       * @param value The bytes of the replies to add.
+       * @return This builder for chaining.
+       */
+      public Builder addRepliesBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        ensureRepliesIsMutable();
+        replies_.add(value);
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:smsgateway.v1.UssdJob)
+    }
+
+    // @@protoc_insertion_point(class_scope:smsgateway.v1.UssdJob)
+    private static final smsgateway.v1.Device.UssdJob DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new smsgateway.v1.Device.UssdJob();
+    }
+
+    public static smsgateway.v1.Device.UssdJob getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<UssdJob>
+        PARSER = new com.google.protobuf.AbstractParser<UssdJob>() {
+      @java.lang.Override
+      public UssdJob parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<UssdJob> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<UssdJob> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public smsgateway.v1.Device.UssdJob getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface SmsReceivedAckOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:smsgateway.v1.SmsReceivedAck)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>repeated string ids = 1 [json_name = "ids"];</code>
+     * @return A list containing the ids.
+     */
+    java.util.List<java.lang.String>
+        getIdsList();
+    /**
+     * <code>repeated string ids = 1 [json_name = "ids"];</code>
+     * @return The count of ids.
+     */
+    int getIdsCount();
+    /**
+     * <code>repeated string ids = 1 [json_name = "ids"];</code>
+     * @param index The index of the element to return.
+     * @return The ids at the given index.
+     */
+    java.lang.String getIds(int index);
+    /**
+     * <code>repeated string ids = 1 [json_name = "ids"];</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the ids at the given index.
+     */
+    com.google.protobuf.ByteString
+        getIdsBytes(int index);
+  }
+  /**
+   * <pre>
+   * The server has recorded these SmsReceived ids: the agent may forget them.
+   * </pre>
+   *
+   * Protobuf type {@code smsgateway.v1.SmsReceivedAck}
+   */
+  public static final class SmsReceivedAck extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:smsgateway.v1.SmsReceivedAck)
+      SmsReceivedAckOrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 35,
+        /* patch= */ 1,
+        /* suffix= */ "",
+        "SmsReceivedAck");
+    }
+    // Use SmsReceivedAck.newBuilder() to construct.
+    private SmsReceivedAck(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private SmsReceivedAck() {
+      ids_ =
+          com.google.protobuf.LazyStringArrayList.emptyList();
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return smsgateway.v1.Device.internal_static_smsgateway_v1_SmsReceivedAck_descriptor;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Descriptors.Descriptor getDescriptorForType() {
+      return smsgateway.v1.Device.internal_static_smsgateway_v1_SmsReceivedAck_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return smsgateway.v1.Device.internal_static_smsgateway_v1_SmsReceivedAck_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              smsgateway.v1.Device.SmsReceivedAck.class, smsgateway.v1.Device.SmsReceivedAck.Builder.class);
+    }
+
+    public static final int IDS_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
+    private com.google.protobuf.LazyStringArrayList ids_ =
+        com.google.protobuf.LazyStringArrayList.emptyList();
+    /**
+     * <code>repeated string ids = 1 [json_name = "ids"];</code>
+     * @return A list containing the ids.
+     */
+    public com.google.protobuf.ProtocolStringList
+        getIdsList() {
+      return ids_;
+    }
+    /**
+     * <code>repeated string ids = 1 [json_name = "ids"];</code>
+     * @return The count of ids.
+     */
+    public int getIdsCount() {
+      return ids_.size();
+    }
+    /**
+     * <code>repeated string ids = 1 [json_name = "ids"];</code>
+     * @param index The index of the element to return.
+     * @return The ids at the given index.
+     */
+    public java.lang.String getIds(int index) {
+      return ids_.get(index);
+    }
+    /**
+     * <code>repeated string ids = 1 [json_name = "ids"];</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the ids at the given index.
+     */
+    public com.google.protobuf.ByteString
+        getIdsBytes(int index) {
+      return ids_.getByteString(index);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      for (int i = 0; i < ids_.size(); i++) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 1, ids_.getRaw(i));
+      }
+      getUnknownFields().writeTo(output);
+    }
+    private int computeSerializedSize_0() {
+      int size = 0;
+      {
+        int dataSize = 0;
+        for (int i = 0; i < ids_.size(); i++) {
+          dataSize += computeStringSizeNoTag(ids_.getRaw(i));
+        }
+        size += dataSize;
+        size += 1 * getIdsList().size();
+      }
+      return size;
+    }
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      size += computeSerializedSize_0();
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof smsgateway.v1.Device.SmsReceivedAck)) {
+        return super.equals(obj);
+      }
+      smsgateway.v1.Device.SmsReceivedAck other = (smsgateway.v1.Device.SmsReceivedAck) obj;
+
+      if (!getIdsList()
+          .equals(other.getIdsList())) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (getIdsCount() > 0) {
+        hash = (37 * hash) + IDS_FIELD_NUMBER;
+        hash = (53 * hash) + getIdsList().hashCode();
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static smsgateway.v1.Device.SmsReceivedAck parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static smsgateway.v1.Device.SmsReceivedAck parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static smsgateway.v1.Device.SmsReceivedAck parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static smsgateway.v1.Device.SmsReceivedAck parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static smsgateway.v1.Device.SmsReceivedAck parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static smsgateway.v1.Device.SmsReceivedAck parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static smsgateway.v1.Device.SmsReceivedAck parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static smsgateway.v1.Device.SmsReceivedAck parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static smsgateway.v1.Device.SmsReceivedAck parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static smsgateway.v1.Device.SmsReceivedAck parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static smsgateway.v1.Device.SmsReceivedAck parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static smsgateway.v1.Device.SmsReceivedAck parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(smsgateway.v1.Device.SmsReceivedAck prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * The server has recorded these SmsReceived ids: the agent may forget them.
+     * </pre>
+     *
+     * Protobuf type {@code smsgateway.v1.SmsReceivedAck}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:smsgateway.v1.SmsReceivedAck)
+        smsgateway.v1.Device.SmsReceivedAckOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return smsgateway.v1.Device.internal_static_smsgateway_v1_SmsReceivedAck_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return smsgateway.v1.Device.internal_static_smsgateway_v1_SmsReceivedAck_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                smsgateway.v1.Device.SmsReceivedAck.class, smsgateway.v1.Device.SmsReceivedAck.Builder.class);
+      }
+
+      // Construct using smsgateway.v1.Device.SmsReceivedAck.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        ids_ =
+            com.google.protobuf.LazyStringArrayList.emptyList();
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return smsgateway.v1.Device.internal_static_smsgateway_v1_SmsReceivedAck_descriptor;
+      }
+
+      @java.lang.Override
+      public smsgateway.v1.Device.SmsReceivedAck getDefaultInstanceForType() {
+        return smsgateway.v1.Device.SmsReceivedAck.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public smsgateway.v1.Device.SmsReceivedAck build() {
+        smsgateway.v1.Device.SmsReceivedAck result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public smsgateway.v1.Device.SmsReceivedAck buildPartial() {
+        smsgateway.v1.Device.SmsReceivedAck result = new smsgateway.v1.Device.SmsReceivedAck(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(smsgateway.v1.Device.SmsReceivedAck result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          ids_.makeImmutable();
+          result.ids_ = ids_;
+        }
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof smsgateway.v1.Device.SmsReceivedAck) {
+          return mergeFrom((smsgateway.v1.Device.SmsReceivedAck)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(smsgateway.v1.Device.SmsReceivedAck other) {
+        if (other == smsgateway.v1.Device.SmsReceivedAck.getDefaultInstance()) return this;
+        if (!other.ids_.isEmpty()) {
+          if (ids_.isEmpty()) {
+            ids_ = other.ids_;
+            bitField0_ |= 0x00000001;
+          } else {
+            ensureIdsIsMutable();
+            ids_.addAll(other.ids_);
+          }
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                ensureIdsIsMutable();
+                ids_.add(input.readStringRequireUtf8());
+                break;
+              } // case 10
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private com.google.protobuf.LazyStringArrayList ids_ =
+          com.google.protobuf.LazyStringArrayList.emptyList();
+      private void ensureIdsIsMutable() {
+        if (!ids_.isModifiable()) {
+          ids_ = new com.google.protobuf.LazyStringArrayList(ids_);
+        }
+        bitField0_ |= 0x00000001;
+      }
+      /**
+       * <code>repeated string ids = 1 [json_name = "ids"];</code>
+       * @return A list containing the ids.
+       */
+      public com.google.protobuf.ProtocolStringList
+          getIdsList() {
+        ids_.makeImmutable();
+        return ids_;
+      }
+      /**
+       * <code>repeated string ids = 1 [json_name = "ids"];</code>
+       * @return The count of ids.
+       */
+      public int getIdsCount() {
+        return ids_.size();
+      }
+      /**
+       * <code>repeated string ids = 1 [json_name = "ids"];</code>
+       * @param index The index of the element to return.
+       * @return The ids at the given index.
+       */
+      public java.lang.String getIds(int index) {
+        return ids_.get(index);
+      }
+      /**
+       * <code>repeated string ids = 1 [json_name = "ids"];</code>
+       * @param index The index of the value to return.
+       * @return The bytes of the ids at the given index.
+       */
+      public com.google.protobuf.ByteString
+          getIdsBytes(int index) {
+        return ids_.getByteString(index);
+      }
+      /**
+       * <code>repeated string ids = 1 [json_name = "ids"];</code>
+       * @param index The index to set the value at.
+       * @param value The ids to set.
+       * @return This builder for chaining.
+       */
+      public Builder setIds(
+          int index, java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        ensureIdsIsMutable();
+        ids_.set(index, value);
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string ids = 1 [json_name = "ids"];</code>
+       * @param value The ids to add.
+       * @return This builder for chaining.
+       */
+      public Builder addIds(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        ensureIdsIsMutable();
+        ids_.add(value);
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string ids = 1 [json_name = "ids"];</code>
+       * @param values The ids to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllIds(
+          java.lang.Iterable<java.lang.String> values) {
+        ensureIdsIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, ids_);
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string ids = 1 [json_name = "ids"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearIds() {
+        ids_ =
+          com.google.protobuf.LazyStringArrayList.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000001);;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string ids = 1 [json_name = "ids"];</code>
+       * @param value The bytes of the ids to add.
+       * @return This builder for chaining.
+       */
+      public Builder addIdsBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        ensureIdsIsMutable();
+        ids_.add(value);
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:smsgateway.v1.SmsReceivedAck)
+    }
+
+    // @@protoc_insertion_point(class_scope:smsgateway.v1.SmsReceivedAck)
+    private static final smsgateway.v1.Device.SmsReceivedAck DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new smsgateway.v1.Device.SmsReceivedAck();
+    }
+
+    public static smsgateway.v1.Device.SmsReceivedAck getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<SmsReceivedAck>
+        PARSER = new com.google.protobuf.AbstractParser<SmsReceivedAck>() {
+      @java.lang.Override
+      public SmsReceivedAck parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<SmsReceivedAck> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<SmsReceivedAck> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public smsgateway.v1.Device.SmsReceivedAck getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   public interface CancelJobOrBuilder extends
       // @@protoc_insertion_point(interface_extends:smsgateway.v1.CancelJob)
       com.google.protobuf.MessageOrBuilder {
@@ -28254,6 +34031,11 @@ public final class Device extends com.google.protobuf.GeneratedFile {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_smsgateway_v1_DevicePolicy_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_smsgateway_v1_InboundRules_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_smsgateway_v1_InboundRules_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_smsgateway_v1_SendLimits_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -28283,6 +34065,11 @@ public final class Device extends com.google.protobuf.GeneratedFile {
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_smsgateway_v1_Leave_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_smsgateway_v1_SmsReceived_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_smsgateway_v1_SmsReceived_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_smsgateway_v1_Heartbeat_descriptor;
   private static final 
@@ -28319,6 +34106,16 @@ public final class Device extends com.google.protobuf.GeneratedFile {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_smsgateway_v1_SendSmsJob_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_smsgateway_v1_UssdJob_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_smsgateway_v1_UssdJob_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_smsgateway_v1_SmsReceivedAck_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_smsgateway_v1_SmsReceivedAck_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_smsgateway_v1_CancelJob_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -28343,7 +34140,7 @@ public final class Device extends com.google.protobuf.GeneratedFile {
       "\017enrollmentToken\022:\n\013device_info\030\002 \001(\0132\031." +
       "smsgateway.v1.DeviceInfoR\ndeviceInfo\"P\n\016" +
       "EnrollResponse\022\033\n\tdevice_id\030\001 \001(\tR\010devic" +
-      "eId\022!\n\014device_token\030\002 \001(\tR\013deviceToken\"\307" +
+      "eId\022!\n\014device_token\030\002 \001(\tR\013deviceToken\"\353" +
       "\002\n\nDeviceInfo\022\024\n\005label\030\001 \001(\tR\005label\022!\n\014p" +
       "hone_number\030\002 \001(\tR\013phoneNumber\022\"\n\014manufa" +
       "cturer\030\003 \001(\tR\014manufacturer\022\024\n\005model\030\004 \001(" +
@@ -28352,87 +34149,101 @@ public final class Device extends com.google.protobuf.GeneratedFile {
       "carrier\030\007 \001(\tR\007carrier\022*\n\004sims\030\010 \003(\0132\026.s" +
       "msgateway.v1.SimInfoR\004sims\022\037\n\013hardware_i" +
       "d\030\t \001(\tR\nhardwareId\022\033\n\ttime_zone\030\n \001(\tR\010" +
-      "timeZone\"\327\001\n\007SimInfo\022\'\n\017subscription_id\030" +
-      "\001 \001(\005R\016subscriptionId\022\035\n\nslot_index\030\002 \001(" +
-      "\005R\tslotIndex\022!\n\014phone_number\030\003 \001(\tR\013phon" +
-      "eNumber\022\030\n\007carrier\030\004 \001(\tR\007carrier\022!\n\014dis" +
-      "play_name\030\005 \001(\tR\013displayName\022$\n\016is_defau" +
-      "lt_sms\030\006 \001(\010R\014isDefaultSms\"\341\003\n\rDeviceMes" +
-      "sage\022\035\n\nmessage_id\030\001 \001(\tR\tmessageId\022!\n\014d" +
-      "evice_token\030\002 \001(\tR\013deviceToken\0223\n\007sent_a" +
-      "t\030\003 \001(\0132\032.google.protobuf.TimestampR\006sen" +
-      "tAt\0225\n\010register\030\n \001(\0132\027.smsgateway.v1.Re" +
-      "gisterH\000R\010register\0228\n\theartbeat\030\013 \001(\0132\030." +
-      "smsgateway.v1.HeartbeatH\000R\theartbeat\0220\n\007" +
-      "job_ack\030\014 \001(\0132\025.smsgateway.v1.JobAckH\000R\006" +
-      "jobAck\0229\n\njob_result\030\r \001(\0132\030.smsgateway." +
-      "v1.JobResultH\000R\tjobResult\022,\n\005leave\030\016 \001(\013" +
-      "2\024.smsgateway.v1.LeaveH\000R\005leave\022B\n\rpolic" +
-      "y_update\030\017 \001(\0132\033.smsgateway.v1.PolicyUpd" +
-      "ateH\000R\014policyUpdateB\t\n\007payload\"\213\003\n\rServe" +
-      "rMessage\022\035\n\nmessage_id\030\001 \001(\tR\tmessageId\022" +
-      "3\n\007sent_at\030\002 \001(\0132\032.google.protobuf.Times" +
-      "tampR\006sentAt\022?\n\014register_ack\030\n \001(\0132\032.sms" +
-      "gateway.v1.RegisterAckH\000R\013registerAck\022=\n" +
-      "\014send_sms_job\030\013 \001(\0132\031.smsgateway.v1.Send" +
-      "SmsJobH\000R\nsendSmsJob\0229\n\ncancel_job\030\014 \001(\013" +
-      "2\030.smsgateway.v1.CancelJobH\000R\tcancelJob\022" +
-      ")\n\004ping\030\r \001(\0132\023.smsgateway.v1.PingH\000R\004pi" +
-      "ng\0225\n\006policy\030\016 \001(\0132\033.smsgateway.v1.Devic" +
-      "ePolicyH\000R\006policyB\t\n\007payload\"\243\001\n\010Registe" +
-      "r\022:\n\013device_info\030\001 \001(\0132\031.smsgateway.v1.D" +
-      "eviceInfoR\ndeviceInfo\0223\n\006health\030\002 \001(\0132\033." +
-      "smsgateway.v1.DeviceHealthR\006health\022&\n\017pe" +
-      "nding_job_ids\030\003 \003(\tR\rpendingJobIds\"C\n\014Po" +
-      "licyUpdate\0223\n\006policy\030\001 \001(\0132\033.smsgateway." +
-      "v1.DevicePolicyR\006policy\"\271\002\n\014DevicePolicy" +
-      "\022\030\n\007version\030\001 \001(\003R\007version\022?\n\014availabili" +
-      "ty\030\002 \001(\0132\033.smsgateway.v1.AvailabilityR\014a" +
-      "vailability\0222\n\006accept\030\003 \001(\0132\032.smsgateway" +
-      ".v1.AcceptRulesR\006accept\022,\n\004sims\030\004 \003(\0132\030." +
-      "smsgateway.v1.SimPolicyR\004sims\0229\n\nupdated" +
-      "_at\030\005 \001(\0132\032.google.protobuf.TimestampR\tu" +
-      "pdatedAt\0221\n\006limits\030\006 \001(\0132\031.smsgateway.v1" +
-      ".SendLimitsR\006limits\"@\n\nSendLimits\022\031\n\010per" +
-      "_hour\030\001 \001(\005R\007perHour\022\027\n\007per_day\030\002 \001(\005R\006p" +
-      "erDay\"`\n\014Availability\022\033\n\ttime_zone\030\001 \001(\t" +
-      "R\010timeZone\0223\n\007windows\030\002 \003(\0132\031.smsgateway" +
-      ".v1.TimeWindowR\007windows\"b\n\nTimeWindow\022\022\n" +
-      "\004days\030\001 \003(\005R\004days\022!\n\014start_minute\030\002 \001(\005R" +
-      "\013startMinute\022\035\n\nend_minute\030\003 \001(\005R\tendMin" +
-      "ute\"X\n\013AcceptRules\022\034\n\tcountries\030\001 \003(\tR\tc" +
-      "ountries\022+\n\021recipient_pattern\030\002 \001(\tR\020rec" +
-      "ipientPattern\"\370\001\n\tSimPolicy\022\'\n\017subscript" +
-      "ion_id\030\001 \001(\005R\016subscriptionId\022\032\n\010disabled" +
-      "\030\002 \001(\010R\010disabled\0222\n\006accept\030\003 \001(\0132\032.smsga" +
-      "teway.v1.AcceptRulesR\006accept\022?\n\014availabi" +
-      "lity\030\004 \001(\0132\033.smsgateway.v1.AvailabilityR" +
-      "\014availability\0221\n\006limits\030\005 \001(\0132\031.smsgatew" +
-      "ay.v1.SendLimitsR\006limits\"\037\n\005Leave\022\026\n\006rea" +
-      "son\030\001 \001(\tR\006reason\"@\n\tHeartbeat\0223\n\006health" +
-      "\030\001 \001(\0132\033.smsgateway.v1.DeviceHealthR\006hea" +
-      "lth\"\270\002\n\014DeviceHealth\022#\n\rbattery_level\030\001 " +
-      "\001(\005R\014batteryLevel\022\037\n\013is_charging\030\002 \001(\010R\n" +
-      "isCharging\022\'\n\017signal_strength\030\003 \001(\005R\016sig" +
-      "nalStrength\022!\n\014network_type\030\004 \001(\tR\013netwo" +
-      "rkType\022\033\n\tsim_ready\030\005 \001(\010R\010simReady\022$\n\016s" +
-      "ent_last_hour\030\006 \001(\005R\014sentLastHour\022%\n\016per" +
-      "missions_ok\030\007 \001(\010R\rpermissionsOk\022,\n\004sims" +
-      "\030\010 \003(\0132\030.smsgateway.v1.SimHealthR\004sims\"\240" +
-      "\001\n\tSimHealth\022\'\n\017subscription_id\030\001 \001(\005R\016s" +
-      "ubscriptionId\022\'\n\017signal_strength\030\002 \001(\005R\016" +
-      "signalStrength\022\033\n\tsim_ready\030\003 \001(\010R\010simRe" +
-      "ady\022$\n\016sent_last_hour\030\004 \001(\005R\014sentLastHou" +
-      "r\"q\n\006JobAck\022\025\n\006job_id\030\001 \001(\tR\005jobId\022\032\n\010ac" +
-      "cepted\030\002 \001(\010R\010accepted\022\026\n\006reason\030\003 \001(\tR\006" +
-      "reason\022\034\n\tpermanent\030\004 \001(\010R\tpermanent\"\366\001\n" +
-      "\tJobResult\022\025\n\006job_id\030\001 \001(\tR\005jobId\0220\n\006sta" +
-      "tus\030\002 \001(\0162\030.smsgateway.v1.JobStatusR\006sta" +
-      "tus\022\035\n\nerror_code\030\003 \001(\tR\terrorCode\022#\n\rer" +
-      "ror_message\030\004 \001(\tR\014errorMessage\022\035\n\nparts" +
-      "_sent\030\005 \001(\005R\tpartsSent\022=\n\014completed_at\030\006" +
-      " \001(\0132\032.google.protobuf.TimestampR\013comple" +
-      "tedAt\"\330\001\n\013RegisterAck\022\032\n\010accepted\030\001 \001(\010R" +
+      "timeZone\022\"\n\014capabilities\030\013 \003(\tR\014capabili" +
+      "ties\"\327\001\n\007SimInfo\022\'\n\017subscription_id\030\001 \001(" +
+      "\005R\016subscriptionId\022\035\n\nslot_index\030\002 \001(\005R\ts" +
+      "lotIndex\022!\n\014phone_number\030\003 \001(\tR\013phoneNum" +
+      "ber\022\030\n\007carrier\030\004 \001(\tR\007carrier\022!\n\014display" +
+      "_name\030\005 \001(\tR\013displayName\022$\n\016is_default_s" +
+      "ms\030\006 \001(\010R\014isDefaultSms\"\242\004\n\rDeviceMessage" +
+      "\022\035\n\nmessage_id\030\001 \001(\tR\tmessageId\022!\n\014devic" +
+      "e_token\030\002 \001(\tR\013deviceToken\0223\n\007sent_at\030\003 " +
+      "\001(\0132\032.google.protobuf.TimestampR\006sentAt\022" +
+      "5\n\010register\030\n \001(\0132\027.smsgateway.v1.Regist" +
+      "erH\000R\010register\0228\n\theartbeat\030\013 \001(\0132\030.smsg" +
+      "ateway.v1.HeartbeatH\000R\theartbeat\0220\n\007job_" +
+      "ack\030\014 \001(\0132\025.smsgateway.v1.JobAckH\000R\006jobA" +
+      "ck\0229\n\njob_result\030\r \001(\0132\030.smsgateway.v1.J" +
+      "obResultH\000R\tjobResult\022,\n\005leave\030\016 \001(\0132\024.s" +
+      "msgateway.v1.LeaveH\000R\005leave\022B\n\rpolicy_up" +
+      "date\030\017 \001(\0132\033.smsgateway.v1.PolicyUpdateH" +
+      "\000R\014policyUpdate\022?\n\014sms_received\030\020 \001(\0132\032." +
+      "smsgateway.v1.SmsReceivedH\000R\013smsReceived" +
+      "B\t\n\007payload\"\213\004\n\rServerMessage\022\035\n\nmessage" +
+      "_id\030\001 \001(\tR\tmessageId\0223\n\007sent_at\030\002 \001(\0132\032." +
+      "google.protobuf.TimestampR\006sentAt\022?\n\014reg" +
+      "ister_ack\030\n \001(\0132\032.smsgateway.v1.Register" +
+      "AckH\000R\013registerAck\022=\n\014send_sms_job\030\013 \001(\013" +
+      "2\031.smsgateway.v1.SendSmsJobH\000R\nsendSmsJo" +
+      "b\0229\n\ncancel_job\030\014 \001(\0132\030.smsgateway.v1.Ca" +
+      "ncelJobH\000R\tcancelJob\022)\n\004ping\030\r \001(\0132\023.sms" +
+      "gateway.v1.PingH\000R\004ping\0225\n\006policy\030\016 \001(\0132" +
+      "\033.smsgateway.v1.DevicePolicyH\000R\006policy\0223" +
+      "\n\010ussd_job\030\017 \001(\0132\026.smsgateway.v1.UssdJob" +
+      "H\000R\007ussdJob\022I\n\020sms_received_ack\030\020 \001(\0132\035." +
+      "smsgateway.v1.SmsReceivedAckH\000R\016smsRecei" +
+      "vedAckB\t\n\007payload\"\243\001\n\010Register\022:\n\013device" +
+      "_info\030\001 \001(\0132\031.smsgateway.v1.DeviceInfoR\n" +
+      "deviceInfo\0223\n\006health\030\002 \001(\0132\033.smsgateway." +
+      "v1.DeviceHealthR\006health\022&\n\017pending_job_i" +
+      "ds\030\003 \003(\tR\rpendingJobIds\"C\n\014PolicyUpdate\022" +
+      "3\n\006policy\030\001 \001(\0132\033.smsgateway.v1.DevicePo" +
+      "licyR\006policy\"\360\002\n\014DevicePolicy\022\030\n\007version" +
+      "\030\001 \001(\003R\007version\022?\n\014availability\030\002 \001(\0132\033." +
+      "smsgateway.v1.AvailabilityR\014availability" +
+      "\0222\n\006accept\030\003 \001(\0132\032.smsgateway.v1.AcceptR" +
+      "ulesR\006accept\022,\n\004sims\030\004 \003(\0132\030.smsgateway." +
+      "v1.SimPolicyR\004sims\0229\n\nupdated_at\030\005 \001(\0132\032" +
+      ".google.protobuf.TimestampR\tupdatedAt\0221\n" +
+      "\006limits\030\006 \001(\0132\031.smsgateway.v1.SendLimits" +
+      "R\006limits\0225\n\007inbound\030\007 \001(\0132\033.smsgateway.v" +
+      "1.InboundRulesR\007inbound\"B\n\014InboundRules\022" +
+      "\030\n\007enabled\030\001 \001(\010R\007enabled\022\030\n\007senders\030\002 \003" +
+      "(\tR\007senders\"@\n\nSendLimits\022\031\n\010per_hour\030\001 " +
+      "\001(\005R\007perHour\022\027\n\007per_day\030\002 \001(\005R\006perDay\"`\n" +
+      "\014Availability\022\033\n\ttime_zone\030\001 \001(\tR\010timeZo" +
+      "ne\0223\n\007windows\030\002 \003(\0132\031.smsgateway.v1.Time" +
+      "WindowR\007windows\"b\n\nTimeWindow\022\022\n\004days\030\001 " +
+      "\003(\005R\004days\022!\n\014start_minute\030\002 \001(\005R\013startMi" +
+      "nute\022\035\n\nend_minute\030\003 \001(\005R\tendMinute\"X\n\013A" +
+      "cceptRules\022\034\n\tcountries\030\001 \003(\tR\tcountries" +
+      "\022+\n\021recipient_pattern\030\002 \001(\tR\020recipientPa" +
+      "ttern\"\370\001\n\tSimPolicy\022\'\n\017subscription_id\030\001" +
+      " \001(\005R\016subscriptionId\022\032\n\010disabled\030\002 \001(\010R\010" +
+      "disabled\0222\n\006accept\030\003 \001(\0132\032.smsgateway.v1" +
+      ".AcceptRulesR\006accept\022?\n\014availability\030\004 \001" +
+      "(\0132\033.smsgateway.v1.AvailabilityR\014availab" +
+      "ility\0221\n\006limits\030\005 \001(\0132\031.smsgateway.v1.Se" +
+      "ndLimitsR\006limits\"\037\n\005Leave\022\026\n\006reason\030\001 \001(" +
+      "\tR\006reason\"\257\001\n\013SmsReceived\022\016\n\002id\030\001 \001(\tR\002i" +
+      "d\022\026\n\006sender\030\002 \001(\tR\006sender\022\022\n\004body\030\003 \001(\tR" +
+      "\004body\022;\n\013received_at\030\004 \001(\0132\032.google.prot" +
+      "obuf.TimestampR\nreceivedAt\022\'\n\017subscripti" +
+      "on_id\030\005 \001(\005R\016subscriptionId\"@\n\tHeartbeat" +
+      "\0223\n\006health\030\001 \001(\0132\033.smsgateway.v1.DeviceH" +
+      "ealthR\006health\"\270\002\n\014DeviceHealth\022#\n\rbatter" +
+      "y_level\030\001 \001(\005R\014batteryLevel\022\037\n\013is_chargi" +
+      "ng\030\002 \001(\010R\nisCharging\022\'\n\017signal_strength\030" +
+      "\003 \001(\005R\016signalStrength\022!\n\014network_type\030\004 " +
+      "\001(\tR\013networkType\022\033\n\tsim_ready\030\005 \001(\010R\010sim" +
+      "Ready\022$\n\016sent_last_hour\030\006 \001(\005R\014sentLastH" +
+      "our\022%\n\016permissions_ok\030\007 \001(\010R\rpermissions" +
+      "Ok\022,\n\004sims\030\010 \003(\0132\030.smsgateway.v1.SimHeal" +
+      "thR\004sims\"\240\001\n\tSimHealth\022\'\n\017subscription_i" +
+      "d\030\001 \001(\005R\016subscriptionId\022\'\n\017signal_streng" +
+      "th\030\002 \001(\005R\016signalStrength\022\033\n\tsim_ready\030\003 " +
+      "\001(\010R\010simReady\022$\n\016sent_last_hour\030\004 \001(\005R\014s" +
+      "entLastHour\"q\n\006JobAck\022\025\n\006job_id\030\001 \001(\tR\005j" +
+      "obId\022\032\n\010accepted\030\002 \001(\010R\010accepted\022\026\n\006reas" +
+      "on\030\003 \001(\tR\006reason\022\034\n\tpermanent\030\004 \001(\010R\tper" +
+      "manent\"\224\002\n\tJobResult\022\025\n\006job_id\030\001 \001(\tR\005jo" +
+      "bId\0220\n\006status\030\002 \001(\0162\030.smsgateway.v1.JobS" +
+      "tatusR\006status\022\035\n\nerror_code\030\003 \001(\tR\terror" +
+      "Code\022#\n\rerror_message\030\004 \001(\tR\014errorMessag" +
+      "e\022\035\n\nparts_sent\030\005 \001(\005R\tpartsSent\022=\n\014comp" +
+      "leted_at\030\006 \001(\0132\032.google.protobuf.Timesta" +
+      "mpR\013completedAt\022\034\n\tresponses\030\007 \003(\tR\tresp" +
+      "onses\"\330\001\n\013RegisterAck\022\032\n\010accepted\030\001 \001(\010R" +
       "\010accepted\022\026\n\006reason\030\002 \001(\tR\006reason\022<\n\032hea" +
       "rtbeat_interval_seconds\030\003 \001(\005R\030heartbeat" +
       "IntervalSeconds\022\"\n\rstale_job_ids\030\004 \003(\tR\013" +
@@ -28443,17 +34254,22 @@ public final class Device extends com.google.protobuf.GeneratedFile {
       "rity\030\004 \001(\005R\010priority\0229\n\nexpires_at\030\005 \001(\013" +
       "2\032.google.protobuf.TimestampR\texpiresAt\022" +
       "\'\n\017subscription_id\030\006 \001(\005R\016subscriptionId" +
-      "\"\"\n\tCancelJob\022\025\n\006job_id\030\001 \001(\tR\005jobId\"\006\n\004" +
-      "Ping*\207\001\n\tJobStatus\022\032\n\026JOB_STATUS_UNSPECI" +
-      "FIED\020\000\022\023\n\017JOB_STATUS_SENT\020\001\022\030\n\024JOB_STATU" +
-      "S_DELIVERED\020\002\022\025\n\021JOB_STATUS_FAILED\020\003\022\030\n\024" +
-      "JOB_STATUS_CANCELLED\020\0042\241\001\n\rDeviceGateway" +
-      "\022E\n\006Enroll\022\034.smsgateway.v1.EnrollRequest" +
-      "\032\035.smsgateway.v1.EnrollResponse\022I\n\007Conne" +
-      "ct\022\034.smsgateway.v1.DeviceMessage\032\034.smsga" +
-      "teway.v1.ServerMessage(\0010\001B@Z>github.com" +
-      "/KGMA74/relaix-server/gen/smsgateway/v1;" +
-      "smsgatewayv1b\006proto3"
+      "\"\262\001\n\007UssdJob\022\025\n\006job_id\030\001 \001(\tR\005jobId\022\022\n\004c" +
+      "ode\030\002 \001(\tR\004code\022\'\n\017subscription_id\030\003 \001(\005" +
+      "R\016subscriptionId\0229\n\nexpires_at\030\004 \001(\0132\032.g" +
+      "oogle.protobuf.TimestampR\texpiresAt\022\030\n\007r" +
+      "eplies\030\005 \003(\tR\007replies\"\"\n\016SmsReceivedAck\022" +
+      "\020\n\003ids\030\001 \003(\tR\003ids\"\"\n\tCancelJob\022\025\n\006job_id" +
+      "\030\001 \001(\tR\005jobId\"\006\n\004Ping*\207\001\n\tJobStatus\022\032\n\026J" +
+      "OB_STATUS_UNSPECIFIED\020\000\022\023\n\017JOB_STATUS_SE" +
+      "NT\020\001\022\030\n\024JOB_STATUS_DELIVERED\020\002\022\025\n\021JOB_ST" +
+      "ATUS_FAILED\020\003\022\030\n\024JOB_STATUS_CANCELLED\020\0042" +
+      "\241\001\n\rDeviceGateway\022E\n\006Enroll\022\034.smsgateway" +
+      ".v1.EnrollRequest\032\035.smsgateway.v1.Enroll" +
+      "Response\022I\n\007Connect\022\034.smsgateway.v1.Devi" +
+      "ceMessage\032\034.smsgateway.v1.ServerMessage(" +
+      "\0010\001B@Z>github.com/KGMA74/relaix-server/g" +
+      "en/smsgateway/v1;smsgatewayv1b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -28477,7 +34293,7 @@ public final class Device extends com.google.protobuf.GeneratedFile {
     internal_static_smsgateway_v1_DeviceInfo_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_smsgateway_v1_DeviceInfo_descriptor,
-        new java.lang.String[] { "Label", "PhoneNumber", "Manufacturer", "Model", "OsVersion", "AgentVersion", "Carrier", "Sims", "HardwareId", "TimeZone", });
+        new java.lang.String[] { "Label", "PhoneNumber", "Manufacturer", "Model", "OsVersion", "AgentVersion", "Carrier", "Sims", "HardwareId", "TimeZone", "Capabilities", });
     internal_static_smsgateway_v1_SimInfo_descriptor =
       getDescriptor().getMessageType(3);
     internal_static_smsgateway_v1_SimInfo_fieldAccessorTable = new
@@ -28489,13 +34305,13 @@ public final class Device extends com.google.protobuf.GeneratedFile {
     internal_static_smsgateway_v1_DeviceMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_smsgateway_v1_DeviceMessage_descriptor,
-        new java.lang.String[] { "MessageId", "DeviceToken", "SentAt", "Register", "Heartbeat", "JobAck", "JobResult", "Leave", "PolicyUpdate", "Payload", });
+        new java.lang.String[] { "MessageId", "DeviceToken", "SentAt", "Register", "Heartbeat", "JobAck", "JobResult", "Leave", "PolicyUpdate", "SmsReceived", "Payload", });
     internal_static_smsgateway_v1_ServerMessage_descriptor =
       getDescriptor().getMessageType(5);
     internal_static_smsgateway_v1_ServerMessage_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_smsgateway_v1_ServerMessage_descriptor,
-        new java.lang.String[] { "MessageId", "SentAt", "RegisterAck", "SendSmsJob", "CancelJob", "Ping", "Policy", "Payload", });
+        new java.lang.String[] { "MessageId", "SentAt", "RegisterAck", "SendSmsJob", "CancelJob", "Ping", "Policy", "UssdJob", "SmsReceivedAck", "Payload", });
     internal_static_smsgateway_v1_Register_descriptor =
       getDescriptor().getMessageType(6);
     internal_static_smsgateway_v1_Register_fieldAccessorTable = new
@@ -28513,93 +34329,117 @@ public final class Device extends com.google.protobuf.GeneratedFile {
     internal_static_smsgateway_v1_DevicePolicy_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_smsgateway_v1_DevicePolicy_descriptor,
-        new java.lang.String[] { "Version", "Availability", "Accept", "Sims", "UpdatedAt", "Limits", });
-    internal_static_smsgateway_v1_SendLimits_descriptor =
+        new java.lang.String[] { "Version", "Availability", "Accept", "Sims", "UpdatedAt", "Limits", "Inbound", });
+    internal_static_smsgateway_v1_InboundRules_descriptor =
       getDescriptor().getMessageType(9);
+    internal_static_smsgateway_v1_InboundRules_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_smsgateway_v1_InboundRules_descriptor,
+        new java.lang.String[] { "Enabled", "Senders", });
+    internal_static_smsgateway_v1_SendLimits_descriptor =
+      getDescriptor().getMessageType(10);
     internal_static_smsgateway_v1_SendLimits_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_smsgateway_v1_SendLimits_descriptor,
         new java.lang.String[] { "PerHour", "PerDay", });
     internal_static_smsgateway_v1_Availability_descriptor =
-      getDescriptor().getMessageType(10);
+      getDescriptor().getMessageType(11);
     internal_static_smsgateway_v1_Availability_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_smsgateway_v1_Availability_descriptor,
         new java.lang.String[] { "TimeZone", "Windows", });
     internal_static_smsgateway_v1_TimeWindow_descriptor =
-      getDescriptor().getMessageType(11);
+      getDescriptor().getMessageType(12);
     internal_static_smsgateway_v1_TimeWindow_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_smsgateway_v1_TimeWindow_descriptor,
         new java.lang.String[] { "Days", "StartMinute", "EndMinute", });
     internal_static_smsgateway_v1_AcceptRules_descriptor =
-      getDescriptor().getMessageType(12);
+      getDescriptor().getMessageType(13);
     internal_static_smsgateway_v1_AcceptRules_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_smsgateway_v1_AcceptRules_descriptor,
         new java.lang.String[] { "Countries", "RecipientPattern", });
     internal_static_smsgateway_v1_SimPolicy_descriptor =
-      getDescriptor().getMessageType(13);
+      getDescriptor().getMessageType(14);
     internal_static_smsgateway_v1_SimPolicy_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_smsgateway_v1_SimPolicy_descriptor,
         new java.lang.String[] { "SubscriptionId", "Disabled", "Accept", "Availability", "Limits", });
     internal_static_smsgateway_v1_Leave_descriptor =
-      getDescriptor().getMessageType(14);
+      getDescriptor().getMessageType(15);
     internal_static_smsgateway_v1_Leave_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_smsgateway_v1_Leave_descriptor,
         new java.lang.String[] { "Reason", });
+    internal_static_smsgateway_v1_SmsReceived_descriptor =
+      getDescriptor().getMessageType(16);
+    internal_static_smsgateway_v1_SmsReceived_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_smsgateway_v1_SmsReceived_descriptor,
+        new java.lang.String[] { "Id", "Sender", "Body", "ReceivedAt", "SubscriptionId", });
     internal_static_smsgateway_v1_Heartbeat_descriptor =
-      getDescriptor().getMessageType(15);
+      getDescriptor().getMessageType(17);
     internal_static_smsgateway_v1_Heartbeat_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_smsgateway_v1_Heartbeat_descriptor,
         new java.lang.String[] { "Health", });
     internal_static_smsgateway_v1_DeviceHealth_descriptor =
-      getDescriptor().getMessageType(16);
+      getDescriptor().getMessageType(18);
     internal_static_smsgateway_v1_DeviceHealth_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_smsgateway_v1_DeviceHealth_descriptor,
         new java.lang.String[] { "BatteryLevel", "IsCharging", "SignalStrength", "NetworkType", "SimReady", "SentLastHour", "PermissionsOk", "Sims", });
     internal_static_smsgateway_v1_SimHealth_descriptor =
-      getDescriptor().getMessageType(17);
+      getDescriptor().getMessageType(19);
     internal_static_smsgateway_v1_SimHealth_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_smsgateway_v1_SimHealth_descriptor,
         new java.lang.String[] { "SubscriptionId", "SignalStrength", "SimReady", "SentLastHour", });
     internal_static_smsgateway_v1_JobAck_descriptor =
-      getDescriptor().getMessageType(18);
+      getDescriptor().getMessageType(20);
     internal_static_smsgateway_v1_JobAck_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_smsgateway_v1_JobAck_descriptor,
         new java.lang.String[] { "JobId", "Accepted", "Reason", "Permanent", });
     internal_static_smsgateway_v1_JobResult_descriptor =
-      getDescriptor().getMessageType(19);
+      getDescriptor().getMessageType(21);
     internal_static_smsgateway_v1_JobResult_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_smsgateway_v1_JobResult_descriptor,
-        new java.lang.String[] { "JobId", "Status", "ErrorCode", "ErrorMessage", "PartsSent", "CompletedAt", });
+        new java.lang.String[] { "JobId", "Status", "ErrorCode", "ErrorMessage", "PartsSent", "CompletedAt", "Responses", });
     internal_static_smsgateway_v1_RegisterAck_descriptor =
-      getDescriptor().getMessageType(20);
+      getDescriptor().getMessageType(22);
     internal_static_smsgateway_v1_RegisterAck_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_smsgateway_v1_RegisterAck_descriptor,
         new java.lang.String[] { "Accepted", "Reason", "HeartbeatIntervalSeconds", "StaleJobIds", "Policy", });
     internal_static_smsgateway_v1_SendSmsJob_descriptor =
-      getDescriptor().getMessageType(21);
+      getDescriptor().getMessageType(23);
     internal_static_smsgateway_v1_SendSmsJob_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_smsgateway_v1_SendSmsJob_descriptor,
         new java.lang.String[] { "JobId", "Recipient", "Body", "Priority", "ExpiresAt", "SubscriptionId", });
+    internal_static_smsgateway_v1_UssdJob_descriptor =
+      getDescriptor().getMessageType(24);
+    internal_static_smsgateway_v1_UssdJob_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_smsgateway_v1_UssdJob_descriptor,
+        new java.lang.String[] { "JobId", "Code", "SubscriptionId", "ExpiresAt", "Replies", });
+    internal_static_smsgateway_v1_SmsReceivedAck_descriptor =
+      getDescriptor().getMessageType(25);
+    internal_static_smsgateway_v1_SmsReceivedAck_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_smsgateway_v1_SmsReceivedAck_descriptor,
+        new java.lang.String[] { "Ids", });
     internal_static_smsgateway_v1_CancelJob_descriptor =
-      getDescriptor().getMessageType(22);
+      getDescriptor().getMessageType(26);
     internal_static_smsgateway_v1_CancelJob_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_smsgateway_v1_CancelJob_descriptor,
         new java.lang.String[] { "JobId", });
     internal_static_smsgateway_v1_Ping_descriptor =
-      getDescriptor().getMessageType(23);
+      getDescriptor().getMessageType(27);
     internal_static_smsgateway_v1_Ping_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_smsgateway_v1_Ping_descriptor,

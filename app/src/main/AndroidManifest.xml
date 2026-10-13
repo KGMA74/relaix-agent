@@ -30,6 +30,15 @@
          is why permissions_ok travels in every health report. -->
     <uses-permission android:name="android.permission.SEND_SMS" />
 
+    <!-- USSD codes (TelephonyManager.sendUssdRequest), run when the server
+         asks for one: a balance, a bundle, a transfer. -->
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
+    <!-- Received SMS, forwarded only when the device's rules say so and only
+         from the senders they name. The messaging app still gets every SMS:
+         this reads a copy. -->
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+
     <!-- Declared required="false" only to keep the manifest honest for stores
          and Chrome OS; an agent without telephony is useless in practice, but
          it installs, reports sim_ready=false and is simply never scheduled. -->
@@ -69,6 +78,15 @@
                     push SMS jobs to this device at any time; the connection must not be
                     interrupted while the device is enrolled." />
         </service>
+
+        <receiver
+            android:name=".inbound.SmsReceiver"
+            android:exported="true"
+            android:permission="android.permission.BROADCAST_SMS">
+            <intent-filter>
+                <action android:name="android.provider.Telephony.SMS_RECEIVED" />
+            </intent-filter>
+        </receiver>
 
         <receiver
             android:name=".connect.BootReceiver"

@@ -90,11 +90,24 @@ fun OverviewScreen(
         ActivityResultContracts.RequestPermission(),
     ) { phoneGranted = it }
 
+    // USSD codes need CALL_PHONE; forwarding received SMS needs RECEIVE_SMS.
+    // Both optional: without them the phone still sends SMS.
+    var ussdGranted by remember { mutableStateOf(granted(context, Manifest.permission.CALL_PHONE)) }
+    val ussdLauncher = rememberLauncherForActivityResult(
+        ActivityResultContracts.RequestPermission(),
+    ) { ussdGranted = it }
+    var receiveGranted by remember { mutableStateOf(granted(context, Manifest.permission.RECEIVE_SMS)) }
+    val receiveLauncher = rememberLauncherForActivityResult(
+        ActivityResultContracts.RequestPermission(),
+    ) { receiveGranted = it }
+
     // Re-read on every health tick: a permission granted (or revoked) from
     // system settings never comes back through the launchers above.
     LaunchedEffect(health) {
         smsGranted = granted(context, Manifest.permission.SEND_SMS)
         phoneGranted = granted(context, Manifest.permission.READ_PHONE_STATE)
+        ussdGranted = granted(context, Manifest.permission.CALL_PHONE)
+        receiveGranted = granted(context, Manifest.permission.RECEIVE_SMS)
     }
 
     val h = health
@@ -123,6 +136,24 @@ fun OverviewScreen(
                 detail = if (phoneGranted) "Signal et SIM lisibles" else "Nécessaire pour lire le signal et les SIM",
                 actionLabel = "Autoriser",
                 onAction = { phoneLauncher.launch(Manifest.permission.READ_PHONE_STATE) },
+            ),
+        )
+        add(
+            Check(
+                title = "Codes USSD",
+                ok = ussdGranted,
+                detail = if (ussdGranted) "Le serveur peut lancer *144# & co." else "Facultatif : pour exécuter des codes USSD",
+                actionLabel = "Autoriser",
+                onAction = { ussdLauncher.launch(Manifest.permission.CALL_PHONE) },
+            ),
+        )
+        add(
+            Check(
+                title = "SMS reçus",
+                ok = receiveGranted,
+                detail = if (receiveGranted) "Transmis selon les règles" else "Facultatif : pour transmettre des SMS reçus",
+                actionLabel = "Autoriser",
+                onAction = { receiveLauncher.launch(Manifest.permission.RECEIVE_SMS) },
             ),
         )
         if (h != null) {

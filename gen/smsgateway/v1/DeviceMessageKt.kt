@@ -275,6 +275,30 @@ public object DeviceMessageKt {
     public fun hasPolicyUpdate(): kotlin.Boolean {
       return _builder.hasPolicyUpdate()
     }
+
+    /**
+     * `.smsgateway.v1.SmsReceived sms_received = 16 [json_name = "smsReceived"];`
+     */
+    public var smsReceived: smsgateway.v1.Device.SmsReceived
+      @kotlin.jvm.JvmName("getSmsReceived")
+        get() = _builder.smsReceived
+      @kotlin.jvm.JvmName("setSmsReceived")
+        set(value) {
+        _builder.smsReceived = value
+      }
+    /**
+     * `.smsgateway.v1.SmsReceived sms_received = 16 [json_name = "smsReceived"];`
+     */
+    public fun clearSmsReceived() {
+      _builder.clearSmsReceived()
+    }
+    /**
+     * `.smsgateway.v1.SmsReceived sms_received = 16 [json_name = "smsReceived"];`
+     * @return Whether the smsReceived field is set.
+     */
+    public fun hasSmsReceived(): kotlin.Boolean {
+      return _builder.hasSmsReceived()
+    }
     public val payloadCase: smsgateway.v1.Device.DeviceMessage.PayloadCase
     @kotlin.jvm.JvmName("getPayloadCase")
       get() = _builder.getPayloadCase()
@@ -308,4 +332,7 @@ public val smsgateway.v1.Device.DeviceMessageOrBuilder.leaveOrNull: smsgateway.v
 
 public val smsgateway.v1.Device.DeviceMessageOrBuilder.policyUpdateOrNull: smsgateway.v1.Device.PolicyUpdate?
   get() = if (hasPolicyUpdate()) getPolicyUpdate() else null
+
+public val smsgateway.v1.Device.DeviceMessageOrBuilder.smsReceivedOrNull: smsgateway.v1.Device.SmsReceived?
+  get() = if (hasSmsReceived()) getSmsReceived() else null
 

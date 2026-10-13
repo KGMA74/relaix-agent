@@ -7,6 +7,7 @@ import io.github.kgma74.relaix.di.IoDispatcher
 import io.github.kgma74.relaix.enroll.DeviceInfoProvider
 import io.github.kgma74.relaix.grpc.ChannelFactory
 import io.github.kgma74.relaix.health.HealthProvider
+import io.github.kgma74.relaix.inbound.InboundForwarder
 import io.github.kgma74.relaix.jobs.JobProcessor
 import io.github.kgma74.relaix.policy.PolicyStore
 import io.github.kgma74.relaix.security.DeviceIdentityStore
@@ -56,6 +57,7 @@ class ConnectionManager @Inject constructor(
     private val healthProvider: HealthProvider,
     private val jobProcessor: JobProcessor,
     private val policyStore: PolicyStore,
+    private val inboundForwarder: InboundForwarder,
     @param:IoDispatcher private val ioDispatcher: kotlinx.coroutines.CoroutineDispatcher,
 ) {
     private val _state = MutableStateFlow<ConnectionState>(ConnectionState.Idle)
@@ -221,6 +223,7 @@ class ConnectionManager @Inject constructor(
 
         var heartbeatJob: Job? = null
         var lateResultsJob: Job? = null
+        var inboundJob: Job? = null
         try {
             withContext(ioDispatcher) {
                 // The heartbeat and late-result loops below are children of
@@ -270,6 +273,21 @@ class ConnectionManager @Inject constructor(
                                         outgoing.send(envelope(token).setJobResult(result).build())
                                     }
                                 }
+
+                                // Received SMS kept while offline go out now,
+                                // and new ones as they arrive.
+                                inboundJob?.cancel()
+                                inboundJob = launch {
+                                    inboundForwarder.forward { sms ->
+                                        outgoing.send(envelope(token).setSmsReceived(sms).build())
+                                    }
+                                }
+                            }
+
+                            message.hasUssdJob() -> launch { handleUssd(message.ussdJob, outgoing, token) }
+
+                            message.hasSmsReceivedAck() -> launch {
+                                inboundForwarder.acknowledged(message.smsReceivedAck.idsList)
                             }
 
                             message.hasSendSmsJob() -> {
@@ -305,6 +323,7 @@ class ConnectionManager @Inject constructor(
                 } finally {
                     heartbeatJob?.cancel()
                     lateResultsJob?.cancel()
+                    inboundJob?.cancel()
                 }
                 Log.i(TAG, "stream ended by the server")
             }
@@ -313,6 +332,7 @@ class ConnectionManager @Inject constructor(
             liveToken = null
             heartbeatJob?.cancel()
             lateResultsJob?.cancel()
+            inboundJob?.cancel()
             outgoing.close()
         }
     }
@@ -331,6 +351,19 @@ class ConnectionManager @Inject constructor(
         if (!decision.shouldSend) return
 
         val result = jobProcessor.send(job)
+        outgoing.send(envelope(token).setJobResult(result).build())
+    }
+
+    /** Like [handleJob]: acknowledge, then dial and report what the network said. */
+    private suspend fun handleUssd(
+        job: Device.UssdJob,
+        outgoing: Channel<Device.DeviceMessage>,
+        token: String,
+    ) {
+        val decision = jobProcessor.acceptUssd(job)
+        outgoing.send(envelope(token).setJobAck(decision.ack).build())
+        if (!decision.shouldSend) return
+        val result = jobProcessor.runUssd(job)
         outgoing.send(envelope(token).setJobResult(result).build())
     }
 

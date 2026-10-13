@@ -192,7 +192,119 @@ public object JobResultKt {
 
     public val JobResultKt.Dsl.completedAtOrNull: com.google.protobuf.Timestamp?
       get() = _builder.completedAtOrNull
-  }
+
+    /**
+     * An uninstantiable, behaviorless type to represent the field in
+     * generics.
+     */
+    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
+    public class ResponsesProxy private constructor() : com.google.protobuf.kotlin.DslProxy()
+    /**
+     * ```
+     * For a UssdJob: what the network displayed, one entry per screen, in
+     * order — the answer to the code, then to each reply. Also on a failure,
+     * up to the screen where it stopped.
+     * ```
+     *
+     * `repeated string responses = 7 [json_name = "responses"];`
+     * @return A list containing the responses.
+     */
+    public val responses: com.google.protobuf.kotlin.DslList<kotlin.String, ResponsesProxy>
+    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
+      get() = com.google.protobuf.kotlin.DslList(
+        _builder.responsesList
+      )
+    /**
+     * ```
+     * For a UssdJob: what the network displayed, one entry per screen, in
+     * order — the answer to the code, then to each reply. Also on a failure,
+     * up to the screen where it stopped.
+     * ```
+     *
+     * `repeated string responses = 7 [json_name = "responses"];`
+     * @param value The responses to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+@kotlin.jvm.JvmName("addResponses")
+    public fun com.google.protobuf.kotlin.DslList<kotlin.String, ResponsesProxy>.add(value: kotlin.String) {
+      _builder.addResponses(value)
+    }
+    /**
+     * ```
+     * For a UssdJob: what the network displayed, one entry per screen, in
+     * order — the answer to the code, then to each reply. Also on a failure,
+     * up to the screen where it stopped.
+     * ```
+     *
+     * `repeated string responses = 7 [json_name = "responses"];`
+     * @param value The responses to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+@kotlin.jvm.JvmName("plusAssignResponses")
+    @Suppress("NOTHING_TO_INLINE")
+    public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, ResponsesProxy>.plusAssign(value: kotlin.String) {
+      add(value)
+    }
+    /**
+     * ```
+     * For a UssdJob: what the network displayed, one entry per screen, in
+     * order — the answer to the code, then to each reply. Also on a failure,
+     * up to the screen where it stopped.
+     * ```
+     *
+     * `repeated string responses = 7 [json_name = "responses"];`
+     * @param values The responses to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+@kotlin.jvm.JvmName("addAllResponses")
+    public fun com.google.protobuf.kotlin.DslList<kotlin.String, ResponsesProxy>.addAll(values: kotlin.collections.Iterable<kotlin.String>) {
+      _builder.addAllResponses(values)
+    }
+    /**
+     * ```
+     * For a UssdJob: what the network displayed, one entry per screen, in
+     * order — the answer to the code, then to each reply. Also on a failure,
+     * up to the screen where it stopped.
+     * ```
+     *
+     * `repeated string responses = 7 [json_name = "responses"];`
+     * @param values The responses to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+@kotlin.jvm.JvmName("plusAssignAllResponses")
+    @Suppress("NOTHING_TO_INLINE")
+    public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, ResponsesProxy>.plusAssign(values: kotlin.collections.Iterable<kotlin.String>) {
+      addAll(values)
+    }
+    /**
+     * ```
+     * For a UssdJob: what the network displayed, one entry per screen, in
+     * order — the answer to the code, then to each reply. Also on a failure,
+     * up to the screen where it stopped.
+     * ```
+     *
+     * `repeated string responses = 7 [json_name = "responses"];`
+     * @param index The index to set the value at.
+     * @param value The responses to set.
+     */
+    @kotlin.jvm.JvmSynthetic
+@kotlin.jvm.JvmName("setResponses")
+    public operator fun com.google.protobuf.kotlin.DslList<kotlin.String, ResponsesProxy>.set(index: kotlin.Int, value: kotlin.String) {
+      _builder.setResponses(index, value)
+    }/**
+     * ```
+     * For a UssdJob: what the network displayed, one entry per screen, in
+     * order — the answer to the code, then to each reply. Also on a failure,
+     * up to the screen where it stopped.
+     * ```
+     *
+     * `repeated string responses = 7 [json_name = "responses"];`
+     */
+    @kotlin.jvm.JvmSynthetic
+@kotlin.jvm.JvmName("setResponses")
+    public fun com.google.protobuf.kotlin.DslList<kotlin.String, ResponsesProxy>.clear() {
+      _builder.clearResponses()
+    }}
 }
 @kotlin.jvm.JvmSynthetic
 public inline fun smsgateway.v1.Device.JobResult.copy(block: `smsgateway.v1`.JobResultKt.Dsl.() -> kotlin.Unit): smsgateway.v1.Device.JobResult =

@@ -285,6 +285,45 @@ public object DevicePolicyKt {
 
     public val DevicePolicyKt.Dsl.limitsOrNull: smsgateway.v1.Device.SendLimits?
       get() = _builder.limitsOrNull
+
+    /**
+     * ```
+     * Which received SMS the phone forwards. Off unless turned on.
+     * ```
+     *
+     * `.smsgateway.v1.InboundRules inbound = 7 [json_name = "inbound"];`
+     */
+    public var inbound: smsgateway.v1.Device.InboundRules
+      @kotlin.jvm.JvmName("getInbound")
+        get() = _builder.inbound
+      @kotlin.jvm.JvmName("setInbound")
+        set(value) {
+        _builder.inbound = value
+      }
+    /**
+     * ```
+     * Which received SMS the phone forwards. Off unless turned on.
+     * ```
+     *
+     * `.smsgateway.v1.InboundRules inbound = 7 [json_name = "inbound"];`
+     */
+    public fun clearInbound() {
+      _builder.clearInbound()
+    }
+    /**
+     * ```
+     * Which received SMS the phone forwards. Off unless turned on.
+     * ```
+     *
+     * `.smsgateway.v1.InboundRules inbound = 7 [json_name = "inbound"];`
+     * @return Whether the inbound field is set.
+     */
+    public fun hasInbound(): kotlin.Boolean {
+      return _builder.hasInbound()
+    }
+
+    public val DevicePolicyKt.Dsl.inboundOrNull: smsgateway.v1.Device.InboundRules?
+      get() = _builder.inboundOrNull
   }
 }
 @kotlin.jvm.JvmSynthetic
@@ -302,4 +341,7 @@ public val smsgateway.v1.Device.DevicePolicyOrBuilder.updatedAtOrNull: com.googl
 
 public val smsgateway.v1.Device.DevicePolicyOrBuilder.limitsOrNull: smsgateway.v1.Device.SendLimits?
   get() = if (hasLimits()) getLimits() else null
+
+public val smsgateway.v1.Device.DevicePolicyOrBuilder.inboundOrNull: smsgateway.v1.Device.InboundRules?
+  get() = if (hasInbound()) getInbound() else null
 

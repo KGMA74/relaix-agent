@@ -8,6 +8,7 @@ import android.util.Log
 import dagger.hilt.android.qualifiers.ApplicationContext
 import io.github.kgma74.relaix.health.SimProvider
 import io.github.kgma74.relaix.sms.SmsSender
+import io.github.kgma74.relaix.ussd.UssdRunner
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.channels.ReceiveChannel
 import smsgateway.v1.Device
@@ -34,7 +35,74 @@ class JobProcessor @Inject constructor(
     private val jobDao: JobDao,
     private val smsSender: SmsSender,
     private val simProvider: SimProvider,
+    private val ussdRunner: UssdRunner,
 ) {
+    /**
+     * Decides whether to run a USSD job, like [accept] does for an SMS.
+     *
+     * Stricter on duplicates: a code can move money, so a job seen before is
+     * never run again unless it never started — not even when the first run
+     * was interrupted, since the network may have executed it anyway.
+     */
+    suspend fun acceptUssd(job: Device.UssdJob): JobDecision {
+        val now = System.currentTimeMillis()
+        ussdRefusal(job, now)?.let { r ->
+            return JobDecision(ack(job.jobId, accepted = false, reason = r.reason, permanent = r.permanent), shouldSend = false)
+        }
+        val inserted = jobDao.insertIfNew(
+            JobRecord(
+                jobId = job.jobId,
+                // The code may carry a PIN: it is not written to disk.
+                recipient = "",
+                status = JobState.ACCEPTED,
+                subscriptionId = job.subscriptionId,
+                receivedAtMillis = now,
+                expiresAtMillis = if (job.hasExpiresAt()) job.expiresAt.seconds * 1_000 else null,
+            ),
+        )
+        if (inserted == -1L) {
+            val existing = jobDao.find(job.jobId)
+            Log.i(TAG, "duplicate USSD job ${job.jobId} (state=${existing?.status}); not running again")
+            return JobDecision(ack(job.jobId, accepted = true, reason = ""), shouldSend = existing?.status == JobState.ACCEPTED)
+        }
+        return JobDecision(ack(job.jobId, accepted = true, reason = ""), shouldSend = true)
+    }
+
+    /** Runs the code and returns the terminal result, with what the network displayed. */
+    suspend fun runUssd(job: Device.UssdJob): Device.JobResult {
+        if (job.hasExpiresAt() && System.currentTimeMillis() > job.expiresAt.seconds * 1_000) {
+            jobDao.updateOutcome(job.jobId, JobState.FAILED, 0, "EXPIRED", "job expired before it could run", System.currentTimeMillis())
+            return result(job.jobId, Device.JobStatus.JOB_STATUS_FAILED, 0, "EXPIRED", "job expired")
+        }
+        jobDao.updateStatus(job.jobId, JobState.SENDING)
+        val outcome = ussdRunner.run(job.code, job.subscriptionId)
+        val completedAt = System.currentTimeMillis()
+        val state = if (outcome.success) JobState.SENT else JobState.FAILED
+        jobDao.updateOutcome(job.jobId, state, 0, outcome.errorCode, outcome.errorMessage, completedAt)
+        return result(
+            jobId = job.jobId,
+            status = if (outcome.success) Device.JobStatus.JOB_STATUS_SENT else Device.JobStatus.JOB_STATUS_FAILED,
+            partsSent = 0,
+            errorCode = outcome.errorCode,
+            errorMessage = outcome.errorMessage,
+            completedAtMillis = completedAt,
+        ).toBuilder().addAllResponses(outcome.responses).build()
+    }
+
+    private fun ussdRefusal(job: Device.UssdJob, now: Long): Refusal? = when {
+        !ussdRunner.permitted() -> Refusal("CALL_PHONE permission not granted", permanent = false)
+        context.getSystemService(TelephonyManager::class.java)?.simState != TelephonyManager.SIM_STATE_READY ->
+            Refusal("SIM not ready", permanent = false)
+        job.code.isBlank() -> Refusal("code is empty", permanent = true)
+        // This agent answers no menus: refusing beats running the code and
+        // leaving the menu it opens unanswered.
+        job.repliesCount > 0 -> Refusal("this agent does not answer USSD menus", permanent = true)
+        job.hasExpiresAt() && now > job.expiresAt.seconds * 1_000 -> Refusal("job already expired", permanent = true)
+        !simProvider.hasSubscription(job.subscriptionId) ->
+            Refusal("subscription ${job.subscriptionId} is not on this device", permanent = true)
+        else -> null
+    }
+
     /**
      * Decides whether to take the job, before sending anything.
      *

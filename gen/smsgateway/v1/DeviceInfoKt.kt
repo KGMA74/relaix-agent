@@ -433,7 +433,154 @@ public object DeviceInfoKt {
     public fun clearTimeZone() {
       _builder.clearTimeZone()
     }
-  }
+
+    /**
+     * An uninstantiable, behaviorless type to represent the field in
+     * generics.
+     */
+    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
+    public class CapabilitiesProxy private constructor() : com.google.protobuf.kotlin.DslProxy()
+    /**
+     * ```
+     * What this agent can do beyond sending SMS, so the server never hands a
+     * job to an agent that would not understand it: an unknown ServerMessage
+     * payload is silently dropped by an older agent, and the job would sit
+     * assigned to a phone that never saw it. Values:
+     * "ussd"         runs a UssdJob with no replies (one request, one answer)
+     * "ussd_menu"    also runs one with replies (a menu, step by step)
+     * "inbound_sms"  forwards received SMS (SmsReceived) when its rules say so
+     * Empty from agents that predate the field: SMS only.
+     * ```
+     *
+     * `repeated string capabilities = 11 [json_name = "capabilities"];`
+     * @return A list containing the capabilities.
+     */
+    public val capabilities: com.google.protobuf.kotlin.DslList<kotlin.String, CapabilitiesProxy>
+    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
+      get() = com.google.protobuf.kotlin.DslList(
+        _builder.capabilitiesList
+      )
+    /**
+     * ```
+     * What this agent can do beyond sending SMS, so the server never hands a
+     * job to an agent that would not understand it: an unknown ServerMessage
+     * payload is silently dropped by an older agent, and the job would sit
+     * assigned to a phone that never saw it. Values:
+     * "ussd"         runs a UssdJob with no replies (one request, one answer)
+     * "ussd_menu"    also runs one with replies (a menu, step by step)
+     * "inbound_sms"  forwards received SMS (SmsReceived) when its rules say so
+     * Empty from agents that predate the field: SMS only.
+     * ```
+     *
+     * `repeated string capabilities = 11 [json_name = "capabilities"];`
+     * @param value The capabilities to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+@kotlin.jvm.JvmName("addCapabilities")
+    public fun com.google.protobuf.kotlin.DslList<kotlin.String, CapabilitiesProxy>.add(value: kotlin.String) {
+      _builder.addCapabilities(value)
+    }
+    /**
+     * ```
+     * What this agent can do beyond sending SMS, so the server never hands a
+     * job to an agent that would not understand it: an unknown ServerMessage
+     * payload is silently dropped by an older agent, and the job would sit
+     * assigned to a phone that never saw it. Values:
+     * "ussd"         runs a UssdJob with no replies (one request, one answer)
+     * "ussd_menu"    also runs one with replies (a menu, step by step)
+     * "inbound_sms"  forwards received SMS (SmsReceived) when its rules say so
+     * Empty from agents that predate the field: SMS only.
+     * ```
+     *
+     * `repeated string capabilities = 11 [json_name = "capabilities"];`
+     * @param value The capabilities to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+@kotlin.jvm.JvmName("plusAssignCapabilities")
+    @Suppress("NOTHING_TO_INLINE")
+    public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, CapabilitiesProxy>.plusAssign(value: kotlin.String) {
+      add(value)
+    }
+    /**
+     * ```
+     * What this agent can do beyond sending SMS, so the server never hands a
+     * job to an agent that would not understand it: an unknown ServerMessage
+     * payload is silently dropped by an older agent, and the job would sit
+     * assigned to a phone that never saw it. Values:
+     * "ussd"         runs a UssdJob with no replies (one request, one answer)
+     * "ussd_menu"    also runs one with replies (a menu, step by step)
+     * "inbound_sms"  forwards received SMS (SmsReceived) when its rules say so
+     * Empty from agents that predate the field: SMS only.
+     * ```
+     *
+     * `repeated string capabilities = 11 [json_name = "capabilities"];`
+     * @param values The capabilities to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+@kotlin.jvm.JvmName("addAllCapabilities")
+    public fun com.google.protobuf.kotlin.DslList<kotlin.String, CapabilitiesProxy>.addAll(values: kotlin.collections.Iterable<kotlin.String>) {
+      _builder.addAllCapabilities(values)
+    }
+    /**
+     * ```
+     * What this agent can do beyond sending SMS, so the server never hands a
+     * job to an agent that would not understand it: an unknown ServerMessage
+     * payload is silently dropped by an older agent, and the job would sit
+     * assigned to a phone that never saw it. Values:
+     * "ussd"         runs a UssdJob with no replies (one request, one answer)
+     * "ussd_menu"    also runs one with replies (a menu, step by step)
+     * "inbound_sms"  forwards received SMS (SmsReceived) when its rules say so
+     * Empty from agents that predate the field: SMS only.
+     * ```
+     *
+     * `repeated string capabilities = 11 [json_name = "capabilities"];`
+     * @param values The capabilities to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+@kotlin.jvm.JvmName("plusAssignAllCapabilities")
+    @Suppress("NOTHING_TO_INLINE")
+    public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, CapabilitiesProxy>.plusAssign(values: kotlin.collections.Iterable<kotlin.String>) {
+      addAll(values)
+    }
+    /**
+     * ```
+     * What this agent can do beyond sending SMS, so the server never hands a
+     * job to an agent that would not understand it: an unknown ServerMessage
+     * payload is silently dropped by an older agent, and the job would sit
+     * assigned to a phone that never saw it. Values:
+     * "ussd"         runs a UssdJob with no replies (one request, one answer)
+     * "ussd_menu"    also runs one with replies (a menu, step by step)
+     * "inbound_sms"  forwards received SMS (SmsReceived) when its rules say so
+     * Empty from agents that predate the field: SMS only.
+     * ```
+     *
+     * `repeated string capabilities = 11 [json_name = "capabilities"];`
+     * @param index The index to set the value at.
+     * @param value The capabilities to set.
+     */
+    @kotlin.jvm.JvmSynthetic
+@kotlin.jvm.JvmName("setCapabilities")
+    public operator fun com.google.protobuf.kotlin.DslList<kotlin.String, CapabilitiesProxy>.set(index: kotlin.Int, value: kotlin.String) {
+      _builder.setCapabilities(index, value)
+    }/**
+     * ```
+     * What this agent can do beyond sending SMS, so the server never hands a
+     * job to an agent that would not understand it: an unknown ServerMessage
+     * payload is silently dropped by an older agent, and the job would sit
+     * assigned to a phone that never saw it. Values:
+     * "ussd"         runs a UssdJob with no replies (one request, one answer)
+     * "ussd_menu"    also runs one with replies (a menu, step by step)
+     * "inbound_sms"  forwards received SMS (SmsReceived) when its rules say so
+     * Empty from agents that predate the field: SMS only.
+     * ```
+     *
+     * `repeated string capabilities = 11 [json_name = "capabilities"];`
+     */
+    @kotlin.jvm.JvmSynthetic
+@kotlin.jvm.JvmName("setCapabilities")
+    public fun com.google.protobuf.kotlin.DslList<kotlin.String, CapabilitiesProxy>.clear() {
+      _builder.clearCapabilities()
+    }}
 }
 @kotlin.jvm.JvmSynthetic
 public inline fun smsgateway.v1.Device.DeviceInfo.copy(block: `smsgateway.v1`.DeviceInfoKt.Dsl.() -> kotlin.Unit): smsgateway.v1.Device.DeviceInfo =
