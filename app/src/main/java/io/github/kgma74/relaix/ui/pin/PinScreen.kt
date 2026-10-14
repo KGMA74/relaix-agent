@@ -8,41 +8,62 @@ import android.provider.Settings
 import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material3.AlertDialog
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Visibility
+import androidx.compose.material.icons.filled.VisibilityOff
+import androidx.compose.material3.FilterChip
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import io.github.kgma74.relaix.pin.PinApproval
+import io.github.kgma74.relaix.ui.components.FormSheet
 import io.github.kgma74.relaix.ui.components.ListCard
 import io.github.kgma74.relaix.ui.components.PageHeader
 import io.github.kgma74.relaix.ui.components.RowDivider
 import io.github.kgma74.relaix.ui.components.SectionCard
+import io.github.kgma74.relaix.ui.components.SheetSection
+import io.github.kgma74.relaix.ui.theme.GeistMono
+import io.github.kgma74.relaix.ui.theme.soft
+import smsgateway.v1.Device
 
 /**
  * The SIMs' PINs and the codes allowed to use them. Everything here stays on
@@ -225,13 +246,20 @@ fun PinScreen(
     }
 
     pinFor?.let { sim ->
-        PinDialog(onDismiss = { pinFor = null }, onSave = { pin ->
-            viewModel.setPin(sim, pin)
-            pinFor = null
-        })
+        val info = sims.firstOrNull { it.subscriptionId == sim }
+        PinSheet(
+            simLabel = info?.let { "SIM ${it.slotIndex + 1} · ${it.carrier.ifBlank { it.displayName }}" } ?: "SIM $sim",
+            replacing = sim in configured,
+            onDismiss = { pinFor = null },
+            onSave = { pin ->
+                viewModel.setPin(sim, pin)
+                pinFor = null
+            },
+        )
     }
     approving?.let { (sim, template) ->
-        ApproveDialog(
+        ApproveSheet(
+            sims = sims,
             initialSim = sim,
             initialTemplate = template,
             onDismiss = { approving = null },
@@ -267,90 +295,209 @@ private fun openAccessibilitySettings(context: Context) {
 }
 
 @Composable
-private fun PinDialog(onDismiss: () -> Unit, onSave: (String) -> Unit) {
+private fun PinSheet(simLabel: String, replacing: Boolean, onDismiss: () -> Unit, onSave: (String) -> Unit) {
     var pin by remember { mutableStateOf("") }
+    var shown by remember { mutableStateOf(false) }
     val ok = pin.matches(Regex("[0-9]{4,8}"))
-    AlertDialog(
-        onDismissRequest = onDismiss,
-        title = { Text("PIN de la SIM") },
-        text = {
-            OutlinedTextField(
-                value = pin,
-                onValueChange = { pin = it.filter(Char::isDigit).take(8) },
-                label = { Text("4 à 8 chiffres") },
-                visualTransformation = PasswordVisualTransformation(),
-                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.NumberPassword),
-                singleLine = true,
-            )
-        },
-        confirmButton = { TextButton(enabled = ok, onClick = { onSave(pin) }) { Text("Enregistrer") } },
-        dismissButton = { TextButton(onClick = onDismiss) { Text("Annuler") } },
-    )
+    val focus = remember { FocusRequester() }
+    LaunchedEffect(Unit) { focus.requestFocus() }
+
+    FormSheet(
+        title = if (replacing) "Changer le PIN" else "PIN de la SIM",
+        subtitle = "$simLabel · gardé chiffré sur ce téléphone, jamais envoyé à la passerelle.",
+        onDismiss = onDismiss,
+        action = "Enregistrer",
+        actionEnabled = ok,
+        onAction = { onSave(pin) },
+    ) {
+        OutlinedTextField(
+            value = pin,
+            onValueChange = { pin = it.filter(Char::isDigit).take(8) },
+            label = { Text("PIN") },
+            supportingText = { Text("4 à 8 chiffres · ${pin.length}/8") },
+            visualTransformation = if (shown) VisualTransformation.None else PasswordVisualTransformation(),
+            trailingIcon = {
+                IconButton(onClick = { shown = !shown }) {
+                    Icon(
+                        if (shown) Icons.Default.VisibilityOff else Icons.Default.Visibility,
+                        contentDescription = if (shown) "Masquer le PIN" else "Afficher le PIN",
+                    )
+                }
+            },
+            textStyle = MaterialTheme.typography.titleLarge.copy(fontFamily = GeistMono, letterSpacing = 6.sp),
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.NumberPassword, imeAction = ImeAction.Done),
+            singleLine = true,
+            modifier = Modifier.fillMaxWidth().focusRequester(focus),
+        )
+    }
 }
 
+/** A variable in a template: {to}, {amount}, {pin}. */
+private val VARIABLE = Regex("""\{([A-Za-z][A-Za-z0-9]*)\}""")
+
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
-private fun ApproveDialog(initialSim: Int, initialTemplate: String, onDismiss: () -> Unit, onApprove: (PinApproval) -> Unit) {
+private fun ApproveSheet(
+    sims: List<Device.SimInfo>,
+    initialSim: Int,
+    initialTemplate: String,
+    onDismiss: () -> Unit,
+    onApprove: (PinApproval) -> Unit,
+) {
+    val fixed = initialTemplate.isNotEmpty()
     var template by remember { mutableStateOf(initialTemplate) }
-    var sim by remember { mutableStateOf(if (initialSim == 0) "" else initialSim.toString()) }
+    var sim by remember { mutableIntStateOf(initialSim) }
     var maxAmount by remember { mutableStateOf("") }
     var perDay by remember { mutableStateOf("5") }
     var totalPerDay by remember { mutableStateOf("") }
-    val templateOk = template.matches(Regex("""^[*#]([0-9*#+]|\{[A-Za-z][A-Za-z0-9]*\})*#$""")) && template.contains("{pin}")
+
+    val shaped = template.matches(Regex("""^[*#]([0-9*#+]|\{[A-Za-z][A-Za-z0-9]*\})*#$"""))
+    val templateOk = shaped && template.contains("{pin}")
+    val variables = VARIABLE.findAll(template).map { it.groupValues[1] }.distinct().toList()
+    val hasAmount = "amount" in variables
     val ok = templateOk && (perDay.toIntOrNull() ?: 0) > 0
 
-    AlertDialog(
-        onDismissRequest = onDismiss,
-        title = { Text("Autoriser un code") },
-        text = {
-            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+    FormSheet(
+        title = "Autoriser un code",
+        subtitle = "Le téléphone ne remplira {pin} que pour ce modèle, sur cette SIM, dans ces plafonds.",
+        onDismiss = onDismiss,
+        action = "Approuver",
+        actionEnabled = ok,
+        onAction = {
+            onApprove(
+                PinApproval(
+                    subscriptionId = sim,
+                    template = template,
+                    // Without {amount} there is no amount to cap: none is kept.
+                    maxAmount = if (hasAmount) maxAmount.toDoubleOrNull() else null,
+                    maxPerDay = perDay.toInt(),
+                    maxTotalPerDay = if (hasAmount) totalPerDay.toDoubleOrNull() else null,
+                    approvedAtMillis = System.currentTimeMillis(),
+                ),
+            )
+        },
+    ) {
+        SheetSection("Modèle") {
+            if (fixed) {
+                // Asked for by an automation: approved as it is or not at all.
+                Surface(
+                    shape = RoundedCornerShape(10.dp),
+                    color = MaterialTheme.colorScheme.surfaceVariant,
+                    modifier = Modifier.fillMaxWidth(),
+                ) {
+                    Text(
+                        template,
+                        fontFamily = GeistMono,
+                        style = MaterialTheme.typography.bodyLarge,
+                        modifier = Modifier.padding(horizontal = 14.dp, vertical = 12.dp),
+                    )
+                }
+            } else {
                 OutlinedTextField(
                     value = template,
                     onValueChange = { template = it.trim() },
-                    label = { Text("Modèle, ex. *144*2*1*{to}*{amount}*{pin}#") },
-                    enabled = initialTemplate.isEmpty(),
+                    placeholder = { Text("*144*2*1*{to}*{amount}*{pin}#", fontFamily = GeistMono) },
+                    textStyle = MaterialTheme.typography.bodyLarge.copy(fontFamily = GeistMono),
+                    isError = template.isNotEmpty() && !templateOk,
+                    supportingText = {
+                        Text(
+                            when {
+                                template.isEmpty() -> "Le code tout-en-un, ou le code suivi des réponses d'un menu, {pin} à sa place."
+                                !shaped -> "Commence par * ou #, finit par #, chiffres et {variables} seulement."
+                                !templateOk -> "Il manque {pin} : sans lui, rien à autoriser."
+                                else -> "Un champ comme {to} ou {amount} accepte n'importe quels chiffres."
+                            },
+                        )
+                    },
+                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Ascii),
                     singleLine = true,
+                    modifier = Modifier.fillMaxWidth(),
                 )
-                OutlinedTextField(
-                    value = sim, onValueChange = { sim = it.filter(Char::isDigit) },
-                    label = { Text("SIM (subscription id) — vide : toute SIM") }, singleLine = true,
-                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-                )
-                OutlinedTextField(
-                    value = maxAmount, onValueChange = { maxAmount = it.filter(Char::isDigit) },
-                    label = { Text("Montant max par opération ({amount})") }, singleLine = true,
-                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-                )
-                OutlinedTextField(
-                    value = perDay, onValueChange = { perDay = it.filter(Char::isDigit) },
-                    label = { Text("Opérations max par 24 h") }, singleLine = true,
-                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-                )
-                OutlinedTextField(
-                    value = totalPerDay, onValueChange = { totalPerDay = it.filter(Char::isDigit) },
-                    label = { Text("Total max par 24 h") }, singleLine = true,
-                    keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-                )
+            }
+            if (variables.isNotEmpty()) {
+                FlowRow(horizontalArrangement = Arrangement.spacedBy(6.dp), verticalArrangement = Arrangement.spacedBy(6.dp)) {
+                    variables.sortedBy { it != "pin" }.forEach { v ->
+                        VariableTag(
+                            name = v,
+                            meaning = when (v) {
+                                "pin" -> "PIN du coffre"
+                                "amount" -> "montant plafonné"
+                                else -> "libre"
+                            },
+                            accent = v == "pin",
+                        )
+                    }
+                }
+            }
+        }
+
+        SheetSection("SIM") {
+            FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                FilterChip(selected = sim == 0, onClick = { sim = 0 }, label = { Text("Toutes") })
+                sims.forEach { s ->
+                    FilterChip(
+                        selected = sim == s.subscriptionId,
+                        onClick = { sim = s.subscriptionId },
+                        label = { Text("SIM ${s.slotIndex + 1} · ${s.carrier.ifBlank { s.displayName }}") },
+                    )
+                }
+                // An automation's SIM that is not in the phone right now.
+                if (sim != 0 && sims.none { it.subscriptionId == sim }) {
+                    FilterChip(selected = true, onClick = {}, label = { Text("SIM $sim") })
+                }
+            }
+        }
+
+        SheetSection("Plafonds sur 24 h") {
+            NumberField("Opérations max", perDay, Modifier.fillMaxWidth(), suffix = "par jour") { perDay = it }
+            if (hasAmount) {
+                Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                    NumberField("Par opération", maxAmount, Modifier.weight(1f), placeholder = "Sans limite") { maxAmount = it }
+                    NumberField("Total du jour", totalPerDay, Modifier.weight(1f), placeholder = "Sans limite") { totalPerDay = it }
+                }
+            } else {
                 Text(
-                    "Sans montant max, toute opération passe tant que le nombre par jour le permet.",
+                    "Pas de {amount} dans le modèle : seul le nombre d'opérations est plafonné.",
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                 )
             }
-        },
-        confirmButton = {
-            TextButton(enabled = ok, onClick = {
-                onApprove(
-                    PinApproval(
-                        subscriptionId = sim.toIntOrNull() ?: 0,
-                        template = template,
-                        maxAmount = maxAmount.toDoubleOrNull(),
-                        maxPerDay = perDay.toInt(),
-                        maxTotalPerDay = totalPerDay.toDoubleOrNull(),
-                        approvedAtMillis = System.currentTimeMillis(),
-                    ),
-                )
-            }) { Text("Approuver") }
-        },
-        dismissButton = { TextButton(onClick = onDismiss) { Text("Annuler") } },
+        }
+    }
+}
+
+@Composable
+private fun VariableTag(name: String, meaning: String, accent: Boolean) {
+    val color = if (accent) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant
+    Row(
+        modifier = Modifier
+            .background(soft(color), RoundedCornerShape(6.dp))
+            .padding(horizontal = 8.dp, vertical = 4.dp),
+        horizontalArrangement = Arrangement.spacedBy(6.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Text("{$name}", fontFamily = GeistMono, style = MaterialTheme.typography.labelMedium, color = color)
+        Text(meaning, style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+    }
+}
+
+@Composable
+private fun NumberField(
+    label: String,
+    value: String,
+    modifier: Modifier,
+    placeholder: String? = null,
+    suffix: String? = null,
+    onChange: (String) -> Unit,
+) {
+    OutlinedTextField(
+        value = value,
+        onValueChange = { onChange(it.filter(Char::isDigit).take(9)) },
+        label = { Text(label) },
+        placeholder = placeholder?.let { { Text(it) } },
+        suffix = suffix?.let { { Text(it) } },
+        singleLine = true,
+        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+        modifier = modifier,
     )
 }

@@ -17,6 +17,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ContentPaste
 import androidx.compose.material.icons.filled.QrCodeScanner
 import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
@@ -40,7 +41,9 @@ import androidx.core.content.ContextCompat
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import io.github.kgma74.relaix.ui.components.BrandMark
+import io.github.kgma74.relaix.ui.components.FormSheet
 import io.github.kgma74.relaix.ui.components.SectionCard
+import io.github.kgma74.relaix.ui.theme.GeistMono
 import io.github.kgma74.relaix.ui.theme.LocalStatusColors
 import io.github.kgma74.relaix.ui.theme.soft
 
@@ -60,6 +63,7 @@ fun EnrollmentScreen(
     val state by viewModel.state.collectAsStateWithLifecycle()
     val context = LocalContext.current
     val status = LocalStatusColors.current
+    var pasting by remember { mutableStateOf(false) }
 
     var cameraGranted by remember {
         mutableStateOf(
@@ -128,41 +132,16 @@ fun EnrollmentScreen(
             Text("Scanner le QR code")
         }
 
-        SectionCard {
-            Column(
-                modifier = Modifier.padding(16.dp),
-                verticalArrangement = Arrangement.spacedBy(10.dp),
-            ) {
-                Text("Ou collez la configuration", style = MaterialTheme.typography.titleSmall)
-                Text(
-                    "Le bouton « Copier la configuration » sous le QR code, ou le champ payload " +
-                        "de POST /admin/devices/enroll-token. Les guillemets échappés sont acceptés.",
-                    style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                )
-                OutlinedTextField(
-                    value = state.payloadText,
-                    onValueChange = viewModel::onPayloadChange,
-                    placeholder = { Text("""{"endpoint":"grpc://…","token":"…"}""") },
-                    minLines = 3,
-                    modifier = Modifier.fillMaxWidth(),
-                )
-                OutlinedTextField(
-                    value = state.label,
-                    onValueChange = viewModel::onLabelChange,
-                    label = { Text("Nom (facultatif)") },
-                    placeholder = { Text("téléphone du bureau") },
-                    singleLine = true,
-                    modifier = Modifier.fillMaxWidth(),
-                )
-                OutlinedButton(
-                    onClick = viewModel::enroll,
-                    enabled = state.canSubmit,
-                    modifier = Modifier.fillMaxWidth(),
-                ) {
-                    Text(if (state.isEnrolling) "Enrôlement…" else "Enrôler")
-                }
-            }
+        OutlinedButton(
+            onClick = { pasting = true },
+            enabled = !state.isEnrolling,
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(52.dp),
+        ) {
+            Icon(Icons.Default.ContentPaste, contentDescription = null, modifier = Modifier.size(20.dp))
+            Spacer(Modifier.size(8.dp))
+            Text("Coller la configuration")
         }
 
         if (state.isEnrolling) {
@@ -181,6 +160,43 @@ fun EnrollmentScreen(
                     style = MaterialTheme.typography.bodyMedium,
                 )
             }
+        }
+    }
+
+    // What was pasted lives in the view model: a failed enrollment reopens
+    // on the same text, only the error to read on the screen behind.
+    if (pasting) {
+        FormSheet(
+            title = "Coller la configuration",
+            subtitle = "Le bouton « Copier la configuration » sous le QR code, ou le champ payload " +
+                "de POST /admin/devices/enroll-token. Les guillemets échappés sont acceptés.",
+            onDismiss = { pasting = false },
+            action = "Enrôler",
+            actionEnabled = state.canSubmit,
+            onAction = {
+                pasting = false
+                viewModel.enroll()
+            },
+        ) {
+            OutlinedTextField(
+                value = state.payloadText,
+                onValueChange = viewModel::onPayloadChange,
+                label = { Text("Configuration") },
+                placeholder = { Text("""{"endpoint":"grpc://…","token":"…"}""", fontFamily = GeistMono) },
+                textStyle = MaterialTheme.typography.bodyMedium.copy(fontFamily = GeistMono),
+                minLines = 4,
+                maxLines = 8,
+                modifier = Modifier.fillMaxWidth(),
+            )
+            OutlinedTextField(
+                value = state.label,
+                onValueChange = viewModel::onLabelChange,
+                label = { Text("Nom (facultatif)") },
+                placeholder = { Text("téléphone du bureau") },
+                supportingText = { Text("Le nom de ce téléphone dans le dashboard.") },
+                singleLine = true,
+                modifier = Modifier.fillMaxWidth(),
+            )
         }
     }
 }

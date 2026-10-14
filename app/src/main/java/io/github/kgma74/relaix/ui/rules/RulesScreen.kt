@@ -29,7 +29,6 @@ import androidx.compose.material.icons.filled.Schedule
 import androidx.compose.material.icons.filled.Speed
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.SimCard
-import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.HorizontalDivider
@@ -49,6 +48,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.foundation.text.KeyboardOptions
@@ -59,6 +59,7 @@ import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import io.github.kgma74.relaix.connect.ConnectionState
 import io.github.kgma74.relaix.policy.CALLING_CODES
+import io.github.kgma74.relaix.ui.components.FormSheet
 import io.github.kgma74.relaix.ui.components.PageHeader
 import io.github.kgma74.relaix.ui.components.SectionCard
 import io.github.kgma74.relaix.ui.components.SectionLabel
@@ -430,47 +431,57 @@ private fun CountryPicker(exclude: List<String>, onPick: (String) -> Unit, onDis
             )
     }
 
-    AlertDialog(
-        onDismissRequest = onDismiss,
-        title = { Text("Ajouter un pays") },
-        text = {
-            Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                OutlinedTextField(
-                    value = query,
-                    onValueChange = { query = it },
-                    placeholder = { Text("Nom, code ou +indicatif") },
-                    leadingIcon = { Icon(Icons.Default.Search, null) },
-                    singleLine = true,
-                    modifier = Modifier.fillMaxWidth(),
-                )
-                LazyColumn(Modifier.heightIn(max = 360.dp)) {
-                    items(shown, key = { it.first }) { (code, name) ->
-                        Row(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .clickable { onPick(code) }
-                                .padding(vertical = 10.dp, horizontal = 4.dp),
-                            verticalAlignment = Alignment.CenterVertically,
-                        ) {
-                            Text(name, style = MaterialTheme.typography.bodyMedium, modifier = Modifier.weight(1f))
-                            Box(
-                                Modifier
-                                    .background(soft(MaterialTheme.colorScheme.primary), RoundedCornerShape(6.dp))
-                                    .padding(horizontal = 6.dp, vertical = 2.dp),
-                            ) {
-                                Text(
-                                    "+" + CALLING_CODES[code].orEmpty().joinToString(", +"),
-                                    style = MaterialTheme.typography.labelMedium,
-                                    fontFamily = GeistMono,
-                                )
-                            }
-                        }
+    // A list to search, not a form to submit: picking a row is the answer,
+    // and the sheet's height is the list's room rather than a dialog's.
+    FormSheet(
+        title = "Ajouter un pays",
+        subtitle = "Les numéros de ce pays pourront recevoir des SMS de ce téléphone.",
+        onDismiss = onDismiss,
+        scrollable = false,
+    ) {
+        OutlinedTextField(
+            value = query,
+            onValueChange = { query = it },
+            placeholder = { Text("Nom, code ou +indicatif") },
+            leadingIcon = { Icon(Icons.Default.Search, null) },
+            singleLine = true,
+            shape = RoundedCornerShape(12.dp),
+            modifier = Modifier.fillMaxWidth(),
+        )
+        if (shown.isEmpty()) {
+            Text(
+                "Aucun pays pour « ${query.trim()} ».",
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = Modifier.padding(vertical = 24.dp),
+            )
+        }
+        LazyColumn(Modifier.heightIn(max = 420.dp)) {
+            items(shown, key = { it.first }) { (code, name) ->
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clip(RoundedCornerShape(10.dp))
+                        .clickable { onPick(code) }
+                        .padding(vertical = 14.dp, horizontal = 8.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    Text(name, style = MaterialTheme.typography.bodyLarge, modifier = Modifier.weight(1f))
+                    Box(
+                        Modifier
+                            .background(soft(MaterialTheme.colorScheme.primary), RoundedCornerShape(6.dp))
+                            .padding(horizontal = 6.dp, vertical = 2.dp),
+                    ) {
+                        Text(
+                            "+" + CALLING_CODES[code].orEmpty().joinToString(", +"),
+                            style = MaterialTheme.typography.labelMedium,
+                            fontFamily = GeistMono,
+                        )
                     }
                 }
             }
-        },
-        confirmButton = { TextButton(onClick = onDismiss) { Text("Fermer") } },
-    )
+        }
+    }
 }
 
 @Composable
