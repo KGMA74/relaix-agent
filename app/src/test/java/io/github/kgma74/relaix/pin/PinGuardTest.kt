@@ -112,7 +112,7 @@ class PinGuardTest {
         )
 
         // Another answer to the same code is another operation.
-        assertDenied(guard.authorize(1, null, "*144#", replies = listOf("2", "2", "{pin}")), "not approved")
+        assertDenied(guard.authorize(1, null, "*144#", replies = listOf("2", "2", "{pin}")), "*144*2*2*{pin}# is not approved")
 
         // No PIN anywhere in the session: no approval, no caps spent.
         assertEquals(

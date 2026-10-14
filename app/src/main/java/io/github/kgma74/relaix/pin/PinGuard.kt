@@ -116,7 +116,9 @@ class PinGuard @Inject constructor(
             candidates.firstNotNullOfOrNull { a -> matchTemplate(a.template, session)?.let { fields -> a to fields["amount"]?.let(AutomationRules::number) } }
                 ?: (null to null)
         }
-        if (approval == null) return@withLock PinDecision.Denied("this code is not approved on the phone for SIM $sim")
+        // The string to approve, spelled out: for a menu it is not what the
+        // job was sent as, and nobody should have to work it out.
+        if (approval == null) return@withLock PinDecision.Denied("$session is not approved on the phone for SIM $sim")
 
         val since = System.currentTimeMillis() - DAY_MS
         val max = approval.maxAmount

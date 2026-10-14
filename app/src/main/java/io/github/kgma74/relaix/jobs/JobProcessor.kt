@@ -3,6 +3,7 @@ package io.github.kgma74.relaix.jobs
 import android.Manifest
 import android.content.Context
 import android.content.pm.PackageManager
+import android.telephony.SubscriptionManager
 import android.telephony.TelephonyManager
 import android.util.Log
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -81,8 +82,14 @@ class JobProcessor @Inject constructor(
         // only. The approval is the code and the replies together, since the
         // PIN is most often the last of them — the prompt at the end of the
         // menu, typed into the dialog by the accessibility service.
+        // A job for "the default SIM" (0) is checked against the SIM that will
+        // actually dial: the PIN and its approvals are kept per real SIM, and
+        // no SIM is ever numbered 0.
+        val sim = job.subscriptionId.takeIf { it != 0 }
+            ?: SubscriptionManager.getDefaultSubscriptionId().takeIf { it != SubscriptionManager.INVALID_SUBSCRIPTION_ID }
+            ?: 0
         val (code, typed) = when (
-            val decision = pinGuard.authorize(job.subscriptionId, null, job.code, replies = job.repliesList)
+            val decision = pinGuard.authorize(sim, null, job.code, replies = job.repliesList)
         ) {
             is PinDecision.Granted -> decision.code to decision.replies.toList()
             is PinDecision.Denied -> {
