@@ -23,6 +23,28 @@ class PinTemplateTest {
     }
 
     @Test
+    fun `a menu session is approved as the all-in-one code it amounts to`() {
+        // The gateway dials *144# and sends the answers one screen at a time;
+        // what the owner approved on the phone is one string either way, so
+        // the same approval covers both shapes of the same operation.
+        assertEquals("*144*2*1*{pin}#", PinGuard.sessionTemplate("*144#", listOf("2", "1", "{pin}")))
+        assertEquals("*144#", PinGuard.sessionTemplate("*144#", emptyList()))
+        assertEquals(
+            "*144*2*1*70000000*5000*{pin}#",
+            PinGuard.sessionTemplate("*144#", listOf("2", "1", "70000000", "5000", "{pin}")),
+        )
+    }
+
+    @Test
+    fun `the replies of a menu job match the approval written as one code`() {
+        val fields = PinGuard.matchTemplate(
+            "*144*2*1*{to}*{amount}*{pin}#",
+            PinGuard.sessionTemplate("*144#", listOf("2", "1", "70000000", "5000", "{pin}")),
+        )
+        assertEquals(mapOf("to" to "70000000", "amount" to "5000"), fields)
+    }
+
+    @Test
     fun `webhooks are signed like the gateway's callbacks`() {
         // callback.Sign([]byte("s3cret"), "1700000000", []byte(`{"a":1}`)) in the gateway.
         assertEquals(

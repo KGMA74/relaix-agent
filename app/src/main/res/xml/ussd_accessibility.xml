@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  What the menu service is allowed to see and when it is woken.
+
+  Events: only windows appearing and changing — a menu is a dialog coming up
+  and its text being replaced. No view clicks, no typing, no focus: this
+  service is not a keylogger and has no business being woken by those.
+
+  flagRetrieveInteractiveWindows: without it getWindows() is always empty, and
+  the USSD dialog is a window of the phone app, never one of ours.
+
+  packageNames is left out deliberately: which app owns the USSD dialog is the
+  phone's doing (com.android.phone on most, a dialer elsewhere), and the
+  decision of what to read is taken per window in code, where it can be
+  limited to a session the server asked for.
+-->
+<accessibility-service xmlns:android="http://schemas.android.com/apk/res/android"
+    android:accessibilityEventTypes="typeWindowStateChanged|typeWindowContentChanged"
+    android:accessibilityFeedbackType="feedbackGeneric"
+    android:accessibilityFlags="flagDefault|flagIncludeNotImportantViews|flagReportViewIds|flagRetrieveInteractiveWindows"
+    android:canRetrieveWindowContent="true"
+    android:description="@string/ussd_accessibility_description"
+    android:notificationTimeout="100" />

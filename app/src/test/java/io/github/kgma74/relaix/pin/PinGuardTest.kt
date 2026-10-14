@@ -98,6 +98,29 @@ class PinGuardTest {
         assertEquals(PinDecision.Granted("*144#"), guard.authorize(1, null, "*144#"))
     }
 
+    @Test
+    fun `a menu whose last reply is the PIN is approved as the code it amounts to`() = runBlocking {
+        vault.set(1, "1234")
+        approve(maxAmount = 10_000.0, perDay = 2, total = 15_000.0)
+
+        // The gateway dials *144# and answers the menus itself; the approval
+        // the owner wrote covers the whole session, PIN reply included, and
+        // the PIN stays on the phone either way.
+        assertEquals(
+            PinDecision.Granted("*144#", listOf("2", "1", "70000000", "5000", "1234")),
+            guard.authorize(1, null, "*144#", replies = listOf("2", "1", "70000000", "5000", "{pin}")),
+        )
+
+        // Another answer to the same code is another operation.
+        assertDenied(guard.authorize(1, null, "*144#", replies = listOf("2", "2", "{pin}")), "not approved")
+
+        // No PIN anywhere in the session: no approval, no caps spent.
+        assertEquals(
+            PinDecision.Granted("*144#", listOf("1")),
+            guard.authorize(1, null, "*144#", replies = listOf("1")),
+        )
+    }
+
     private fun assertDenied(d: PinDecision, reason: String) {
         assertTrue("expected a refusal about '$reason', got $d", d is PinDecision.Denied && d.reason.contains(reason))
     }

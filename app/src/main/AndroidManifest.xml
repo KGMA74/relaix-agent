@@ -34,6 +34,11 @@
          asks for one: a balance, a bundle, a transfer. -->
     <uses-permission android:name="android.permission.CALL_PHONE" />
 
+    <!-- Only for a menu session, where the dialog the system puts up has to be
+         rendered for the accessibility service to type into it: held for the
+         length of one session, never across runs. -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
     <!-- Received SMS, forwarded only when the device's rules say so and only
          from the senders they name. The messaging app still gets every SMS:
          this reads a copy. -->
@@ -77,6 +82,27 @@
                 android:value="Holds a persistent gRPC control-plane stream so the server can
                     push SMS jobs to this device at any time; the connection must not be
                     interrupted while the device is enrolled." />
+        </service>
+
+        <!-- Answers the menus a USSD code opens (the "ussd_menu" capability):
+             it is the only way Android allows to type into the dialog the
+             phone app owns, which is where a carrier wants a PIN or a choice
+             entered. Off until the user switches it on under Settings ›
+             Accessibility, reads nothing while no menu runs, and a job asking
+             for replies is refused without it rather than left half answered.
+             BIND_ACCESSIBILITY_SERVICE is what lets only the system bind it,
+             and only from the screen where the user turned it on. -->
+        <service
+            android:name=".ussd.UssdAccessibilityService"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/ussd_accessibility" />
         </service>
 
         <receiver

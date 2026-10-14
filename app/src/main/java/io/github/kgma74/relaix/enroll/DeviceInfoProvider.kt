@@ -1,11 +1,13 @@
 package io.github.kgma74.relaix.enroll
 
+import android.accessibilityservice.AccessibilityServiceInfo
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Build
 import android.provider.Settings
 import android.telephony.TelephonyManager
+import android.view.accessibility.AccessibilityManager
 import dagger.hilt.android.qualifiers.ApplicationContext
 import io.github.kgma74.relaix.health.SimProvider
 import smsgateway.v1.Device
@@ -42,14 +44,39 @@ class DeviceInfoProvider @Inject constructor(
             // rules means eight o'clock where the phone is.
             .setTimeZone(java.time.ZoneId.systemDefault().id)
             // What this agent can do beyond SMS, so the server sends it
-            // nothing it would drop. No "ussd_menu": codes run whole.
+            // nothing it would drop. "ussd_menu" only while the accessibility
+            // service that types into the USSD dialog is on in Android's
+            // settings: the server fails a job whose capability the device
+            // does not list, so a capability claimed and not had is worse than
+            // one offered when it is there.
             .addAllCapabilities(
-                listOf(
-                    "ussd", "ussd_pin", "inbound_sms",
-                    "automations", "automation_reply_sms", "automation_webhook", "automation_ussd",
-                ),
+                buildList {
+                    add("ussd")
+                    if (ussdMenusEnabled()) add("ussd_menu")
+                    add("ussd_pin")
+                    add("inbound_sms")
+                    add("automations")
+                    add("automation_reply_sms")
+                    add("automation_webhook")
+                    add("automation_ussd")
+                },
             )
             .build()
+
+    /**
+     * Whether Android has Relaix's accessibility service switched on.
+     *
+     * Asked of the platform rather than of the bound service: enrollment and
+     * every `Register` come right after a boot, when the service may not have
+     * been bound yet, and a capability reported one connection late is a job
+     * the server refuses outright instead of one it retries.
+     */
+    private fun ussdMenusEnabled(): Boolean {
+        val manager = context.getSystemService(AccessibilityManager::class.java) ?: return false
+        if (!manager.isEnabled) return false
+        return manager.getEnabledAccessibilityServiceList(AccessibilityServiceInfo.FEEDBACK_GENERIC)
+            .any { it.resolveInfo?.serviceInfo?.packageName == context.packageName }
+    }
 
     /**
      * Settings.Secure.ANDROID_ID: what lets the server keep one entry per

@@ -77,16 +77,21 @@ class JobProcessor @Inject constructor(
             jobDao.updateOutcome(job.jobId, JobState.FAILED, 0, "EXPIRED", "job expired before it could run", System.currentTimeMillis())
             return result(job.jobId, Device.JobStatus.JOB_STATUS_FAILED, 0, "EXPIRED", "job expired")
         }
-        // {pin}: filled in from the phone's vault, for an approved code only.
-        val code = when (val decision = pinGuard.authorize(job.subscriptionId, null, job.code)) {
-            is PinDecision.Granted -> decision.code
+        // {pin}: filled in from the phone's vault, for an approved session
+        // only. The approval is the code and the replies together, since the
+        // PIN is most often the last of them — the prompt at the end of the
+        // menu, typed into the dialog by the accessibility service.
+        val (code, typed) = when (
+            val decision = pinGuard.authorize(job.subscriptionId, null, job.code, replies = job.repliesList)
+        ) {
+            is PinDecision.Granted -> decision.code to decision.replies.toList()
             is PinDecision.Denied -> {
                 jobDao.updateOutcome(job.jobId, JobState.FAILED, 0, "PIN_REFUSED", decision.reason, System.currentTimeMillis())
                 return result(job.jobId, Device.JobStatus.JOB_STATUS_FAILED, 0, "PIN_REFUSED", decision.reason)
             }
         }
         jobDao.updateStatus(job.jobId, JobState.SENDING)
-        val outcome = ussdRunner.run(code, job.subscriptionId)
+        val outcome = ussdRunner.run(code, job.subscriptionId, typed)
         val completedAt = System.currentTimeMillis()
         val state = if (outcome.success) JobState.SENT else JobState.FAILED
         jobDao.updateOutcome(job.jobId, state, 0, outcome.errorCode, outcome.errorMessage, completedAt)
@@ -105,9 +110,16 @@ class JobProcessor @Inject constructor(
         context.getSystemService(TelephonyManager::class.java)?.simState != TelephonyManager.SIM_STATE_READY ->
             Refusal("SIM not ready", permanent = false)
         job.code.isBlank() -> Refusal("code is empty", permanent = true)
-        // This agent answers no menus: refusing beats running the code and
-        // leaving the menu it opens unanswered.
-        job.repliesCount > 0 -> Refusal("this agent does not answer USSD menus", permanent = true)
+        // Answering a menu means typing into the dialog the system puts up,
+        // which only the accessibility service can do. Transient rather than
+        // permanent: switching it on in Android's settings changes the answer,
+        // and the scheduler tries again on its next tick instead of failing a
+        // job the phone will be able to run a minute later.
+        job.repliesCount > 0 && !ussdRunner.menuCapable() ->
+            Refusal(
+                "this agent does not answer USSD menus: turn Relaix on in Android's accessibility settings",
+                permanent = false,
+            )
         job.hasExpiresAt() && now > job.expiresAt.seconds * 1_000 -> Refusal("job already expired", permanent = true)
         !simProvider.hasSubscription(job.subscriptionId) ->
             Refusal("subscription ${job.subscriptionId} is not on this device", permanent = true)

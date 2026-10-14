@@ -41,9 +41,14 @@ data class PinApproval(
     val approvedAtMillis: Long,
 )
 
-/** Whether a code may use the PIN, and the code to dial when it may. */
+/** Whether a code may use the PIN, and what to dial and type when it may. */
 sealed interface PinDecision {
-    data class Granted(val code: String) : PinDecision
+    /**
+     * The code to dial and the replies to type into the menus it opens, both
+     * with {pin} already replaced. Replies are here and not on the wire: the
+     * placeholder is what the gateway sends, the PIN never leaves the phone.
+     */
+    data class Granted(val code: String, val replies: List<String> = emptyList()) : PinDecision
     data class Denied(val reason: String) : PinDecision
 }
 
@@ -87,14 +92,28 @@ class PinGuard @Inject constructor(
      *   approved templates.
      * @param code the code with every field filled in but {pin}.
      * @param amount the operation's amount, when known.
+     * @param replies what will be typed into the menus the code opens, in
+     *   order. A menu's last screen is often the PIN prompt, so {pin} lives
+     *   there as often as in the code — approved as one and the same string,
+     *   [sessionTemplate].
      */
-    suspend fun authorize(sim: Int, template: String?, code: String, amount: Double? = null): PinDecision = decisions.withLock {
-        if (!code.contains(PIN)) return@withLock PinDecision.Granted(code)
+    suspend fun authorize(
+        sim: Int,
+        template: String?,
+        code: String,
+        amount: Double? = null,
+        replies: List<String> = emptyList(),
+    ): PinDecision = decisions.withLock {
+        // What is approved is the whole session: the code and every answer it
+        // will be given, so a template covers the menu whether the network
+        // asks it in one line or one screen at a time.
+        val session = if (replies.isEmpty()) code else sessionTemplate(code, replies)
+        if (!session.contains(PIN)) return@withLock PinDecision.Granted(code, replies)
         val candidates = approvals.first().filter { it.subscriptionId == sim || it.subscriptionId == 0 }
         val (approval, found) = if (template != null) {
             candidates.firstOrNull { it.template == template } to amount
         } else {
-            candidates.firstNotNullOfOrNull { a -> matchTemplate(a.template, code)?.let { fields -> a to fields["amount"]?.let(AutomationRules::number) } }
+            candidates.firstNotNullOfOrNull { a -> matchTemplate(a.template, session)?.let { fields -> a to fields["amount"]?.let(AutomationRules::number) } }
                 ?: (null to null)
         }
         if (approval == null) return@withLock PinDecision.Denied("this code is not approved on the phone for SIM $sim")
@@ -117,7 +136,10 @@ class PinGuard @Inject constructor(
         // Counted before dialing: an attempt the network ran but did not
         // confirm must still count against the caps.
         uses.insert(PinUseRecord(UUID.randomUUID().toString(), sim, approval.template, found ?: 0.0, System.currentTimeMillis()))
-        PinDecision.Granted(code.replace(PIN, pin))
+        PinDecision.Granted(
+            code.replace(PIN, pin),
+            replies.map { it.replace(PIN, pin) },
+        )
     }
 
     companion object {
@@ -125,6 +147,22 @@ class PinGuard @Inject constructor(
         private const val DAY_MS = 24 * 3_600_000L
         private val KEY = stringPreferencesKey("pin_approvals")
         private val placeholder = Regex("""\{([A-Za-z][A-Za-z0-9]*)\}""")
+
+        /**
+         * What a menu session is, as the one string it is approved as.
+         *
+         * `*144#` answered with `2`, `1`, `{pin}` is the session
+         * `*144*2*1*{pin}#` — the all-in-one code the operator would have
+         * written — so one approval covers the same operation whether the
+         * carrier takes it in a single line or one screen at a time, and a
+         * reply's place in the session is as visible as a code's.
+         */
+        fun sessionTemplate(code: String, replies: List<String>): String =
+            if (replies.isEmpty()) {
+                code
+            } else {
+                code.removeSuffix("#") + replies.joinToString(separator = "*", prefix = "*", postfix = "#")
+            }
 
         /**
          * The fields of [code] when it is [template] filled in — {pin} kept as

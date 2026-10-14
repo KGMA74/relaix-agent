@@ -3,6 +3,9 @@ package io.github.kgma74.relaix.ui.pin
 import android.app.Activity
 import android.app.KeyguardManager
 import android.content.Context
+import android.content.Intent
+import android.provider.Settings
+import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.Arrangement
@@ -54,6 +57,7 @@ fun PinScreen(
     val configured by viewModel.configured.collectAsStateWithLifecycle()
     val approvals by viewModel.approvals.collectAsStateWithLifecycle()
     val pending by viewModel.pending.collectAsStateWithLifecycle()
+    val menus by viewModel.ussdMenus.collectAsStateWithLifecycle()
     val context = LocalContext.current
     val keyguard = context.getSystemService(Context.KEYGUARD_SERVICE) as KeyguardManager
     val secure = keyguard.isDeviceSecure
@@ -183,6 +187,41 @@ fun PinScreen(
                 }
             }
         }
+
+        item {
+            ListCard(title = "Réponses dans les menus USSD") {
+                Column(
+                    modifier = Modifier.padding(16.dp),
+                    verticalArrangement = Arrangement.spacedBy(8.dp),
+                ) {
+                    Text(
+                        if (menus) {
+                            "Service actif : pendant un code avec des réponses, Relaix lit l'écran " +
+                                "du téléphone et tape chaque réponse — le PIN à la fin du menu, " +
+                                "compris — dans la boîte de dialogue USSD du système."
+                        } else {
+                            "Service inactif : les jobs qui demandent à répondre à un menu " +
+                                "(le PIN saisi à la dernière étape, par exemple) sont refusés tant " +
+                                "qu'il n'est pas allumé. Android veut que ce soit vous qui " +
+                                "l'activiez : Paramètres › Accessibilité › Relaix."
+                        },
+                        style = MaterialTheme.typography.bodyMedium,
+                    )
+                    Text(
+                        "Rien n'est lu ni tapé hors d'une session USSD demandée par la passerelle, " +
+                            "et le PIN ne quitte jamais ce téléphone.",
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    )
+                    OutlinedButton(
+                        onClick = { openAccessibilitySettings(context) },
+                        modifier = Modifier.fillMaxWidth(),
+                    ) {
+                        Text(if (menus) "Ouvrir les réglages" else "Activer dans les réglages")
+                    }
+                }
+            }
+        }
     }
 
     pinFor?.let { sim ->
@@ -210,6 +249,22 @@ private fun caps(a: PinApproval): String = buildList {
     add("${a.maxPerDay}/jour")
     a.maxTotalPerDay?.let { add("≤ ${it.toLong()} par jour") }
 }.joinToString(" · ")
+
+/**
+ * Into Android's accessibility list, where this app's switch lives.
+ *
+ * Only the user can throw it — no API turns a service on from inside the app
+ * that owns it, and rightly so — so what the app owes them is the way there
+ * and the name to look for.
+ */
+private fun openAccessibilitySettings(context: Context) {
+    val started = runCatching {
+        context.startActivity(Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
+    }
+    started.onFailure {
+        Toast.makeText(context, "Ouvrez Paramètres › Accessibilité", Toast.LENGTH_LONG).show()
+    }
+}
 
 @Composable
 private fun PinDialog(onDismiss: () -> Unit, onSave: (String) -> Unit) {
