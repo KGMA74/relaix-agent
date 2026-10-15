@@ -18,6 +18,7 @@ import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.withTimeoutOrNull
 import org.json.JSONObject
 import smsgateway.v1.Device
+import java.math.BigDecimal
 import java.security.MessageDigest
 import java.time.Instant
 import java.util.UUID
@@ -142,21 +143,32 @@ class AutomationEngine @Inject constructor(
         }
 
         action.hasWebhook() -> {
-            val body = if (action.webhook.body.isNotEmpty()) {
-                AutomationRules.render(action.webhook.body, fields)
-            } else {
-                JSONObject()
-                    .put("type", "automation")
-                    .put("automationId", a.id)
-                    .put("automation", a.name)
-                    .put("sender", sms.sender)
-                    .put("body", sms.body)
-                    .put("receivedAt", fields["receivedAt"])
-                    .put("sim", sms.subscriptionId)
-                    .put("fields", JSONObject(fields.filterKeys { it !in AutomationRules.BUILTINS }))
-                    .toString()
+            // One id per SMS, automation and action, the same however often it
+            // is posted: the receiver's way to never credit a payment twice.
+            val delivery = UUID.nameUUIDFromBytes("${smsKey(sms)}|${a.id}|$index".toByteArray()).toString()
+            val template = action.webhook.body
+            val body = when {
+                template.isEmpty() -> {
+                    val numbers = JSONObject()
+                    for ((k, v) in AutomationRules.numbers(fields)) numbers.put(k, BigDecimal(v))
+                    JSONObject()
+                        .put("type", "automation")
+                        .put("deliveryId", delivery)
+                        .put("automationId", a.id)
+                        .put("automation", a.name)
+                        .put("sender", sms.sender)
+                        .put("body", sms.body)
+                        .put("receivedAt", fields["receivedAt"])
+                        .put("sim", sms.subscriptionId)
+                        .put("fields", JSONObject(fields.filterKeys { it !in AutomationRules.BUILTINS }))
+                        .put("numbers", numbers)
+                        .toString()
+                }
+                // Escaped and typed, so a quote in the SMS cannot break it.
+                AutomationRules.isJsonTemplate(template) -> AutomationRules.renderJson(template, fields)
+                else -> AutomationRules.render(template, fields)
             }
-            outbox.enqueue(action.webhook.url, body, action.webhook.secret)
+            outbox.enqueue(delivery, action.webhook.url, body, action.webhook.secret)
             step("webhook", true, action.webhook.url)
         }
 

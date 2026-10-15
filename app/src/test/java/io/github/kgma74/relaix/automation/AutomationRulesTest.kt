@@ -3,7 +3,9 @@ package io.github.kgma74.relaix.automation
 import org.json.JSONArray
 import org.json.JSONObject
 import org.junit.Assert.assertEquals
+import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNull
+import org.junit.Assert.assertTrue
 import org.junit.Test
 import smsgateway.v1.Device
 
@@ -31,7 +33,26 @@ class AutomationRulesTest {
                 for (k in want.keys()) assertEquals("$name: $k", want.getString(k), fields!![k])
             }
             if (c.has("template")) assertEquals(name, c.getString("rendered"), AutomationRules.render(c.getString("template"), fields!!))
+            if (c.has("jsonTemplate")) {
+                val template = c.getString("jsonTemplate")
+                assertTrue(name, AutomationRules.isJsonTemplate(template))
+                assertEquals(name, c.getString("jsonRendered"), AutomationRules.renderJson(template, fields!!))
+            }
+            c.optJSONObject("numbers")?.let { want ->
+                assertEquals(name, want.keys().asSequence().associateWith { want.getString(it) }, AutomationRules.numbers(fields!!))
+            }
         }
+    }
+
+    @Test
+    fun `a body is JSON when it opens like an object or an array`() {
+        assertTrue(AutomationRules.isJsonTemplate("""{"a": 1}"""))
+        assertTrue(AutomationRules.isJsonTemplate(""" { "a": {amount}}"""))
+        assertTrue(AutomationRules.isJsonTemplate("{}"))
+        assertTrue(AutomationRules.isJsonTemplate("[{amount}]"))
+        assertFalse(AutomationRules.isJsonTemplate("{amount}"))
+        assertFalse(AutomationRules.isJsonTemplate("{amount} recus"))
+        assertFalse(AutomationRules.isJsonTemplate(""))
     }
 
     @Test

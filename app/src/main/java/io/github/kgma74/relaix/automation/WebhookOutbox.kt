@@ -7,7 +7,6 @@ import kotlinx.coroutines.withContext
 import kotlinx.coroutines.withTimeoutOrNull
 import java.net.HttpURLConnection
 import java.net.URL
-import java.util.UUID
 import javax.crypto.Mac
 import javax.crypto.spec.SecretKeySpec
 import javax.inject.Inject
@@ -19,13 +18,19 @@ import javax.inject.Singleton
  *
  * Signed like the gateway's callbacks: X-Relaix-Timestamp, and
  * X-Relaix-Signature = "sha256=" + hex HMAC-SHA256(secret, timestamp + "." + body).
+ * X-Relaix-Delivery names the delivery and stays the same across retries.
  */
 @Singleton
 class WebhookOutbox @Inject constructor(private val dao: OutboxDao) {
     private val wake = Channel<Unit>(Channel.CONFLATED)
 
-    suspend fun enqueue(url: String, body: String, secret: String) {
-        dao.insert(OutboxRecord(UUID.randomUUID().toString(), url, body, secret, nextAttemptAtMillis = System.currentTimeMillis()))
+    /**
+     * @param delivery stable for what is being told — posted as
+     *   X-Relaix-Delivery on every attempt, and the record's key, so the same
+     *   delivery queued twice is posted once.
+     */
+    suspend fun enqueue(delivery: String, url: String, body: String, secret: String) {
+        dao.insert(OutboxRecord(delivery, url, body, secret, nextAttemptAtMillis = System.currentTimeMillis()))
         wake.trySend(Unit)
     }
 
@@ -73,9 +78,11 @@ class WebhookOutbox @Inject constructor(private val dao: OutboxDao) {
             conn.connectTimeout = TIMEOUT_MS
             conn.readTimeout = TIMEOUT_MS
             conn.doOutput = true
-            conn.setRequestProperty("Content-Type", if (r.body.trimStart().startsWith("{")) "application/json" else "text/plain; charset=utf-8")
+            val json = r.body.trimStart().let { it.startsWith("{") || it.startsWith("[") }
+            conn.setRequestProperty("Content-Type", if (json) "application/json" else "text/plain; charset=utf-8")
             conn.setRequestProperty("User-Agent", "relaix-agent")
             conn.setRequestProperty("X-Relaix-Timestamp", stamp)
+            conn.setRequestProperty("X-Relaix-Delivery", r.id)
             if (r.secret.isNotEmpty()) conn.setRequestProperty("X-Relaix-Signature", "sha256=" + sign(r.secret, stamp, body))
             conn.outputStream.use { it.write(body) }
             conn.responseCode to "status ${conn.responseCode}"
