@@ -151,8 +151,8 @@ class AutomationEngine @Inject constructor(
                 template.isEmpty() -> {
                     val numbers = JSONObject()
                     for ((k, v) in AutomationRules.numbers(fields)) numbers.put(k, BigDecimal(v))
-                    JSONObject()
-                        .put("type", "automation")
+                    // The gateway's webhook envelope: {"event", "data"}.
+                    val data = JSONObject()
                         .put("deliveryId", delivery)
                         .put("automationId", a.id)
                         .put("automation", a.name)
@@ -162,6 +162,9 @@ class AutomationEngine @Inject constructor(
                         .put("sim", sms.subscriptionId)
                         .put("fields", JSONObject(fields.filterKeys { it !in AutomationRules.BUILTINS }))
                         .put("numbers", numbers)
+                    JSONObject()
+                        .put("event", "automation.triggered")
+                        .put("data", data)
                         .toString()
                 }
                 // Escaped and typed, so a quote in the SMS cannot break it.
