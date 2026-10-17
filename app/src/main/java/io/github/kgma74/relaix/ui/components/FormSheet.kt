@@ -83,11 +83,11 @@ fun FormSheet(
                 content = content,
             )
             action?.let {
-                Button(shape = MaterialTheme.shapes.small,
+                Button(
                     onClick = { close(onAction) },
                     enabled = actionEnabled,
                     modifier = Modifier.fillMaxWidth().height(48.dp),
-                    shape = RoundedCornerShape(4.dp),
+                    shape = MaterialTheme.shapes.small,
                 ) { Text(it) }
             }
         }
