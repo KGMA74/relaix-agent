@@ -193,7 +193,92 @@ public object AutomationStepKt {
 @kotlin.jvm.JvmName("setResponses")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, ResponsesProxy>.clear() {
       _builder.clearResponses()
-    }}
+    }
+    /**
+     * An uninstantiable, behaviorless type to represent the field in
+     * generics.
+     */
+    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
+    public class FieldsProxy private constructor() : com.google.protobuf.kotlin.DslProxy()
+    /**
+     * ```
+     * A USSD step with extract: the fields it found.
+     * ```
+     *
+     * `map<string, string> fields = 5 [json_name = "fields"];`
+     */
+     public val fields: com.google.protobuf.kotlin.DslMap<kotlin.String, kotlin.String, FieldsProxy>
+      @kotlin.jvm.JvmSynthetic
+@kotlin.jvm.JvmName("getFieldsMap")
+      get() = com.google.protobuf.kotlin.DslMap(
+        _builder.fieldsMap
+      )
+    /**
+     * ```
+     * A USSD step with extract: the fields it found.
+     * ```
+     *
+     * `map<string, string> fields = 5 [json_name = "fields"];`
+     */
+    @kotlin.jvm.JvmName("putFields")
+    public fun com.google.protobuf.kotlin.DslMap<kotlin.String, kotlin.String, FieldsProxy>
+      .put(key: kotlin.String, value: kotlin.String) {
+         _builder.putFields(key, value)
+       }
+    /**
+     * ```
+     * A USSD step with extract: the fields it found.
+     * ```
+     *
+     * `map<string, string> fields = 5 [json_name = "fields"];`
+     */
+    @kotlin.jvm.JvmSynthetic
+@kotlin.jvm.JvmName("setFields")
+    @Suppress("NOTHING_TO_INLINE")
+    public inline operator fun com.google.protobuf.kotlin.DslMap<kotlin.String, kotlin.String, FieldsProxy>
+      .set(key: kotlin.String, value: kotlin.String) {
+         put(key, value)
+       }
+    /**
+     * ```
+     * A USSD step with extract: the fields it found.
+     * ```
+     *
+     * `map<string, string> fields = 5 [json_name = "fields"];`
+     */
+    @kotlin.jvm.JvmSynthetic
+@kotlin.jvm.JvmName("removeFields")
+    public fun com.google.protobuf.kotlin.DslMap<kotlin.String, kotlin.String, FieldsProxy>
+      .remove(key: kotlin.String) {
+         _builder.removeFields(key)
+       }
+    /**
+     * ```
+     * A USSD step with extract: the fields it found.
+     * ```
+     *
+     * `map<string, string> fields = 5 [json_name = "fields"];`
+     */
+    @kotlin.jvm.JvmSynthetic
+@kotlin.jvm.JvmName("putAllFields")
+    public fun com.google.protobuf.kotlin.DslMap<kotlin.String, kotlin.String, FieldsProxy>
+      .putAll(map: kotlin.collections.Map<kotlin.String, kotlin.String>) {
+         _builder.putAllFields(map)
+       }
+    /**
+     * ```
+     * A USSD step with extract: the fields it found.
+     * ```
+     *
+     * `map<string, string> fields = 5 [json_name = "fields"];`
+     */
+    @kotlin.jvm.JvmSynthetic
+@kotlin.jvm.JvmName("clearFields")
+    public fun com.google.protobuf.kotlin.DslMap<kotlin.String, kotlin.String, FieldsProxy>
+      .clear() {
+         _builder.clearFields()
+       }
+  }
 }
 @kotlin.jvm.JvmSynthetic
 public inline fun smsgateway.v1.Device.AutomationStep.copy(block: `smsgateway.v1`.AutomationStepKt.Dsl.() -> kotlin.Unit): smsgateway.v1.Device.AutomationStep =

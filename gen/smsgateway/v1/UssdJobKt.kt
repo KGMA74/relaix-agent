@@ -266,7 +266,46 @@ public object UssdJobKt {
 @kotlin.jvm.JvmName("setReplies")
     public fun com.google.protobuf.kotlin.DslList<kotlin.String, RepliesProxy>.clear() {
       _builder.clearReplies()
-    }}
+    }
+    /**
+     * ```
+     * Follow screens that say there is more ("n Suivant").
+     * ```
+     *
+     * `.smsgateway.v1.UssdPaging paging = 6 [json_name = "paging"];`
+     */
+    public var paging: smsgateway.v1.Device.UssdPaging
+      @kotlin.jvm.JvmName("getPaging")
+        get() = _builder.paging
+      @kotlin.jvm.JvmName("setPaging")
+        set(value) {
+        _builder.paging = value
+      }
+    /**
+     * ```
+     * Follow screens that say there is more ("n Suivant").
+     * ```
+     *
+     * `.smsgateway.v1.UssdPaging paging = 6 [json_name = "paging"];`
+     */
+    public fun clearPaging() {
+      _builder.clearPaging()
+    }
+    /**
+     * ```
+     * Follow screens that say there is more ("n Suivant").
+     * ```
+     *
+     * `.smsgateway.v1.UssdPaging paging = 6 [json_name = "paging"];`
+     * @return Whether the paging field is set.
+     */
+    public fun hasPaging(): kotlin.Boolean {
+      return _builder.hasPaging()
+    }
+
+    public val UssdJobKt.Dsl.pagingOrNull: smsgateway.v1.Device.UssdPaging?
+      get() = _builder.pagingOrNull
+  }
 }
 @kotlin.jvm.JvmSynthetic
 public inline fun smsgateway.v1.Device.UssdJob.copy(block: `smsgateway.v1`.UssdJobKt.Dsl.() -> kotlin.Unit): smsgateway.v1.Device.UssdJob =
@@ -274,4 +313,7 @@ public inline fun smsgateway.v1.Device.UssdJob.copy(block: `smsgateway.v1`.UssdJ
 
 public val smsgateway.v1.Device.UssdJobOrBuilder.expiresAtOrNull: com.google.protobuf.Timestamp?
   get() = if (hasExpiresAt()) getExpiresAt() else null
+
+public val smsgateway.v1.Device.UssdJobOrBuilder.pagingOrNull: smsgateway.v1.Device.UssdPaging?
+  get() = if (hasPaging()) getPaging() else null
 

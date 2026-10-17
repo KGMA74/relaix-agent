@@ -55,9 +55,187 @@ public object UssdActionKt {
     public fun clearCode() {
       _builder.clearCode()
     }
+
+    /**
+     * An uninstantiable, behaviorless type to represent the field in
+     * generics.
+     */
+    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
+    public class RepliesProxy private constructor() : com.google.protobuf.kotlin.DslProxy()
+    /**
+     * ```
+     * Typed in order into the menus the code opens, like UssdJob.replies; may
+     * use fields. Needs the ussd_menu capability.
+     * ```
+     *
+     * `repeated string replies = 2 [json_name = "replies"];`
+     * @return A list containing the replies.
+     */
+    public val replies: com.google.protobuf.kotlin.DslList<kotlin.String, RepliesProxy>
+    @kotlin.OptIn(com.google.protobuf.kotlin.OnlyForUseByGeneratedProtoCode::class)
+      get() = com.google.protobuf.kotlin.DslList(
+        _builder.repliesList
+      )
+    /**
+     * ```
+     * Typed in order into the menus the code opens, like UssdJob.replies; may
+     * use fields. Needs the ussd_menu capability.
+     * ```
+     *
+     * `repeated string replies = 2 [json_name = "replies"];`
+     * @param value The replies to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+@kotlin.jvm.JvmName("addReplies")
+    public fun com.google.protobuf.kotlin.DslList<kotlin.String, RepliesProxy>.add(value: kotlin.String) {
+      _builder.addReplies(value)
+    }
+    /**
+     * ```
+     * Typed in order into the menus the code opens, like UssdJob.replies; may
+     * use fields. Needs the ussd_menu capability.
+     * ```
+     *
+     * `repeated string replies = 2 [json_name = "replies"];`
+     * @param value The replies to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+@kotlin.jvm.JvmName("plusAssignReplies")
+    @Suppress("NOTHING_TO_INLINE")
+    public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, RepliesProxy>.plusAssign(value: kotlin.String) {
+      add(value)
+    }
+    /**
+     * ```
+     * Typed in order into the menus the code opens, like UssdJob.replies; may
+     * use fields. Needs the ussd_menu capability.
+     * ```
+     *
+     * `repeated string replies = 2 [json_name = "replies"];`
+     * @param values The replies to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+@kotlin.jvm.JvmName("addAllReplies")
+    public fun com.google.protobuf.kotlin.DslList<kotlin.String, RepliesProxy>.addAll(values: kotlin.collections.Iterable<kotlin.String>) {
+      _builder.addAllReplies(values)
+    }
+    /**
+     * ```
+     * Typed in order into the menus the code opens, like UssdJob.replies; may
+     * use fields. Needs the ussd_menu capability.
+     * ```
+     *
+     * `repeated string replies = 2 [json_name = "replies"];`
+     * @param values The replies to add.
+     */
+    @kotlin.jvm.JvmSynthetic
+@kotlin.jvm.JvmName("plusAssignAllReplies")
+    @Suppress("NOTHING_TO_INLINE")
+    public inline operator fun com.google.protobuf.kotlin.DslList<kotlin.String, RepliesProxy>.plusAssign(values: kotlin.collections.Iterable<kotlin.String>) {
+      addAll(values)
+    }
+    /**
+     * ```
+     * Typed in order into the menus the code opens, like UssdJob.replies; may
+     * use fields. Needs the ussd_menu capability.
+     * ```
+     *
+     * `repeated string replies = 2 [json_name = "replies"];`
+     * @param index The index to set the value at.
+     * @param value The replies to set.
+     */
+    @kotlin.jvm.JvmSynthetic
+@kotlin.jvm.JvmName("setReplies")
+    public operator fun com.google.protobuf.kotlin.DslList<kotlin.String, RepliesProxy>.set(index: kotlin.Int, value: kotlin.String) {
+      _builder.setReplies(index, value)
+    }/**
+     * ```
+     * Typed in order into the menus the code opens, like UssdJob.replies; may
+     * use fields. Needs the ussd_menu capability.
+     * ```
+     *
+     * `repeated string replies = 2 [json_name = "replies"];`
+     */
+    @kotlin.jvm.JvmSynthetic
+@kotlin.jvm.JvmName("setReplies")
+    public fun com.google.protobuf.kotlin.DslList<kotlin.String, RepliesProxy>.clear() {
+      _builder.clearReplies()
+    }
+    /**
+     * ```
+     * Screens that end with "n Suivant" go on: see UssdPaging.
+     * ```
+     *
+     * `.smsgateway.v1.UssdPaging paging = 3 [json_name = "paging"];`
+     */
+    public var paging: smsgateway.v1.Device.UssdPaging
+      @kotlin.jvm.JvmName("getPaging")
+        get() = _builder.paging
+      @kotlin.jvm.JvmName("setPaging")
+        set(value) {
+        _builder.paging = value
+      }
+    /**
+     * ```
+     * Screens that end with "n Suivant" go on: see UssdPaging.
+     * ```
+     *
+     * `.smsgateway.v1.UssdPaging paging = 3 [json_name = "paging"];`
+     */
+    public fun clearPaging() {
+      _builder.clearPaging()
+    }
+    /**
+     * ```
+     * Screens that end with "n Suivant" go on: see UssdPaging.
+     * ```
+     *
+     * `.smsgateway.v1.UssdPaging paging = 3 [json_name = "paging"];`
+     * @return Whether the paging field is set.
+     */
+    public fun hasPaging(): kotlin.Boolean {
+      return _builder.hasPaging()
+    }
+
+    public val UssdActionKt.Dsl.pagingOrNull: smsgateway.v1.Device.UssdPaging?
+      get() = _builder.pagingOrNull
+
+    /**
+     * ```
+     * Regular expression searched in what the network displayed, every screen
+     * joined by a line break. Its named groups, like the pattern's, become
+     * fields for the actions after this one — "(?<solde>[0-9 .,]+) FCFA".
+     * The syntax both RE2 and Java accept. Empty: nothing extracted.
+     * ```
+     *
+     * `string extract = 4 [json_name = "extract"];`
+     */
+    public var extract: kotlin.String
+      @kotlin.jvm.JvmName("getExtract")
+        get() = _builder.extract
+      @kotlin.jvm.JvmName("setExtract")
+        set(value) {
+        _builder.extract = value
+      }
+    /**
+     * ```
+     * Regular expression searched in what the network displayed, every screen
+     * joined by a line break. Its named groups, like the pattern's, become
+     * fields for the actions after this one — "(?<solde>[0-9 .,]+) FCFA".
+     * The syntax both RE2 and Java accept. Empty: nothing extracted.
+     * ```
+     *
+     * `string extract = 4 [json_name = "extract"];`
+     */
+    public fun clearExtract() {
+      _builder.clearExtract()
+    }
   }
 }
 @kotlin.jvm.JvmSynthetic
 public inline fun smsgateway.v1.Device.UssdAction.copy(block: `smsgateway.v1`.UssdActionKt.Dsl.() -> kotlin.Unit): smsgateway.v1.Device.UssdAction =
   `smsgateway.v1`.UssdActionKt.Dsl._create(this.toBuilder()).apply { block() }._build()
+
+public val smsgateway.v1.Device.UssdActionOrBuilder.pagingOrNull: smsgateway.v1.Device.UssdPaging?
+  get() = if (hasPaging()) getPaging() else null
 

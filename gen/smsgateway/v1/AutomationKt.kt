@@ -513,6 +513,48 @@ public object AutomationKt {
     public fun clearDescription() {
       _builder.clearDescription()
     }
+
+    /**
+     * ```
+     * Set: the automation runs on this schedule instead of on received SMS;
+     * senders and pattern are then empty.
+     * ```
+     *
+     * `.smsgateway.v1.AutomationSchedule schedule = 11 [json_name = "schedule"];`
+     */
+    public var schedule: smsgateway.v1.Device.AutomationSchedule
+      @kotlin.jvm.JvmName("getSchedule")
+        get() = _builder.schedule
+      @kotlin.jvm.JvmName("setSchedule")
+        set(value) {
+        _builder.schedule = value
+      }
+    /**
+     * ```
+     * Set: the automation runs on this schedule instead of on received SMS;
+     * senders and pattern are then empty.
+     * ```
+     *
+     * `.smsgateway.v1.AutomationSchedule schedule = 11 [json_name = "schedule"];`
+     */
+    public fun clearSchedule() {
+      _builder.clearSchedule()
+    }
+    /**
+     * ```
+     * Set: the automation runs on this schedule instead of on received SMS;
+     * senders and pattern are then empty.
+     * ```
+     *
+     * `.smsgateway.v1.AutomationSchedule schedule = 11 [json_name = "schedule"];`
+     * @return Whether the schedule field is set.
+     */
+    public fun hasSchedule(): kotlin.Boolean {
+      return _builder.hasSchedule()
+    }
+
+    public val AutomationKt.Dsl.scheduleOrNull: smsgateway.v1.Device.AutomationSchedule?
+      get() = _builder.scheduleOrNull
   }
 }
 @kotlin.jvm.JvmSynthetic
@@ -521,4 +563,7 @@ public inline fun smsgateway.v1.Device.Automation.copy(block: `smsgateway.v1`.Au
 
 public val smsgateway.v1.Device.AutomationOrBuilder.limitsOrNull: smsgateway.v1.Device.SendLimits?
   get() = if (hasLimits()) getLimits() else null
+
+public val smsgateway.v1.Device.AutomationOrBuilder.scheduleOrNull: smsgateway.v1.Device.AutomationSchedule?
+  get() = if (hasSchedule()) getSchedule() else null
 
