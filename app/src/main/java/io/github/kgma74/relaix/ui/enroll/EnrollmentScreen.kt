@@ -117,7 +117,7 @@ fun EnrollmentScreen(
 
         Spacer(Modifier.height(8.dp))
 
-        Button(
+        Button(shape = MaterialTheme.shapes.small,
             onClick = {
                 if (cameraGranted) viewModel.startScanning()
                 else cameraLauncher.launch(Manifest.permission.CAMERA)
@@ -132,7 +132,7 @@ fun EnrollmentScreen(
             Text("Scanner le QR code")
         }
 
-        OutlinedButton(
+        OutlinedButton(shape = MaterialTheme.shapes.small,
             onClick = { pasting = true },
             enabled = !state.isEnrolling,
             modifier = Modifier
@@ -226,7 +226,7 @@ private fun ScanningView(
                 .height(380.dp)
                 .clip(RoundedCornerShape(4.dp)),
         )
-        OutlinedButton(onClick = onCancel, modifier = Modifier.fillMaxWidth()) {
+        OutlinedButton(shape = MaterialTheme.shapes.small, onClick = onCancel, modifier = Modifier.fillMaxWidth()) {
             Text("Annuler")
         }
     }

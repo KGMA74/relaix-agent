@@ -17,3 +17,7 @@ local.properties
 # --- Local working files ---
 # Backlog is a personal working document, not part of the public repo.
 /docs/backlog.md
+
+# Release signing: the keystore and its passwords stay on this machine.
+/release.jks
+/keystore.properties

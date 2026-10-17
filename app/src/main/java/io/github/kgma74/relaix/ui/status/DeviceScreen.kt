@@ -151,7 +151,7 @@ fun DeviceScreen(
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                     )
-                    OutlinedButton(
+                    OutlinedButton(shape = MaterialTheme.shapes.small,
                         onClick = { confirming = true },
                         modifier = Modifier.fillMaxWidth(),
                         colors = ButtonDefaults.outlinedButtonColors(contentColor = status.bad),

@@ -210,7 +210,7 @@ fun RulesScreen(
                         )
                     }
                 }
-                Button(
+                Button(shape = MaterialTheme.shapes.small,
                     onClick = viewModel::submit,
                     enabled = connected && !invalid && save !is SaveState.Saving,
                     modifier = Modifier.fillMaxWidth(),

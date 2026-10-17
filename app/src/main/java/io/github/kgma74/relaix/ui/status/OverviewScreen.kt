@@ -378,7 +378,7 @@ private fun Checklist(checks: List<Check>) {
                         )
                     }
                     if (!check.ok && check.actionLabel != null && check.onAction != null) {
-                        FilledTonalButton(onClick = check.onAction) { Text(check.actionLabel) }
+                        FilledTonalButton(shape = MaterialTheme.shapes.small, onClick = check.onAction) { Text(check.actionLabel) }
                     }
                 }
             }

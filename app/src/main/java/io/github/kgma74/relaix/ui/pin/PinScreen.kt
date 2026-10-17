@@ -144,7 +144,7 @@ fun PinScreen(
                                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                                 )
                             }
-                            OutlinedButton(enabled = secure, onClick = { guarded { pinFor = sim.subscriptionId } }) {
+                            OutlinedButton(shape = MaterialTheme.shapes.small, enabled = secure, onClick = { guarded { pinFor = sim.subscriptionId } }) {
                                 Text(if (sim.subscriptionId in configured) "Changer" else "Définir")
                             }
                             if (sim.subscriptionId in configured) {
@@ -174,7 +174,7 @@ fun PinScreen(
                                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                                     )
                                 }
-                                OutlinedButton(enabled = secure, onClick = { approving = p.subscriptionId to p.template }) { Text("Approuver") }
+                                OutlinedButton(shape = MaterialTheme.shapes.small, enabled = secure, onClick = { approving = p.subscriptionId to p.template }) { Text("Approuver") }
                             }
                         }
                     }
@@ -234,7 +234,7 @@ fun PinScreen(
                         style = MaterialTheme.typography.bodySmall,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                     )
-                    OutlinedButton(
+                    OutlinedButton(shape = MaterialTheme.shapes.small,
                         onClick = { openAccessibilitySettings(context) },
                         modifier = Modifier.fillMaxWidth(),
                     ) {
