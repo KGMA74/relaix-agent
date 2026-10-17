@@ -19,8 +19,10 @@ android {
         applicationId = "io.github.kgma74.relaix"
         minSdk = 26
         targetSdk = 36
-        versionCode = 1
-        versionName = "1.0"
+        // Raised for every release (make release): Android installs an APK
+        // over another only when its versionCode is higher.
+        versionCode = 2
+        versionName = "1.1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }

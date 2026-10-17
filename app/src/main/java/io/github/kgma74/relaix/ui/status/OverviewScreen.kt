@@ -42,7 +42,11 @@ import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import android.content.Intent
+import android.net.Uri
 import io.github.kgma74.relaix.config.ServerEndpoint
+import io.github.kgma74.relaix.update.Update
+import io.github.kgma74.relaix.update.UpdateChecker
 import io.github.kgma74.relaix.connect.ConnectionState
 import io.github.kgma74.relaix.ui.components.ListCard
 import io.github.kgma74.relaix.ui.components.PageHeader
@@ -96,6 +100,9 @@ fun OverviewScreen(
     val ussdLauncher = rememberLauncherForActivityResult(
         ActivityResultContracts.RequestPermission(),
     ) { ussdGranted = it }
+    // A newer release of the app, asked of GitHub once per visit.
+    var update by remember { mutableStateOf<Update?>(null) }
+    LaunchedEffect(Unit) { update = UpdateChecker.check(context) }
     var receiveGranted by remember { mutableStateOf(granted(context, Manifest.permission.RECEIVE_SMS)) }
     val receiveLauncher = rememberLauncherForActivityResult(
         ActivityResultContracts.RequestPermission(),
@@ -154,6 +161,20 @@ fun OverviewScreen(
                 detail = if (receiveGranted) "Transmis selon les règles" else "Facultatif : pour transmettre des SMS reçus",
                 actionLabel = "Autoriser",
                 onAction = { receiveLauncher.launch(Manifest.permission.RECEIVE_SMS) },
+            ),
+        )
+        val u = update
+        add(
+            Check(
+                title = "Application",
+                ok = u == null,
+                detail = if (u == null) {
+                    "Version ${UpdateChecker.current(context)}"
+                } else {
+                    "Version ${u.version} disponible (vous avez ${UpdateChecker.current(context)})"
+                },
+                actionLabel = "Télécharger",
+                onAction = { context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(u?.downloadUrl ?: UpdateChecker.RELEASES))) },
             ),
         )
         if (h != null) {
