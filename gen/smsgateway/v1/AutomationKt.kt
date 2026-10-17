@@ -488,6 +488,31 @@ public object AutomationKt {
 
     public val AutomationKt.Dsl.limitsOrNull: smsgateway.v1.Device.SendLimits?
       get() = _builder.limitsOrNull
+
+    /**
+     * ```
+     * What it is for, in a sentence or two, shown under its name on the phone.
+     * ```
+     *
+     * `string description = 10 [json_name = "description"];`
+     */
+    public var description: kotlin.String
+      @kotlin.jvm.JvmName("getDescription")
+        get() = _builder.description
+      @kotlin.jvm.JvmName("setDescription")
+        set(value) {
+        _builder.description = value
+      }
+    /**
+     * ```
+     * What it is for, in a sentence or two, shown under its name on the phone.
+     * ```
+     *
+     * `string description = 10 [json_name = "description"];`
+     */
+    public fun clearDescription() {
+      _builder.clearDescription()
+    }
   }
 }
 @kotlin.jvm.JvmSynthetic

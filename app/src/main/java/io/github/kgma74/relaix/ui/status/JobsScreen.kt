@@ -37,7 +37,7 @@ import io.github.kgma74.relaix.ui.components.SegmentedControl
 import io.github.kgma74.relaix.ui.components.SectionCard
 import io.github.kgma74.relaix.ui.components.StatTile
 import io.github.kgma74.relaix.ui.components.StatusChip
-import io.github.kgma74.relaix.ui.theme.GeistMono
+import io.github.kgma74.relaix.ui.theme.PlexMono
 import io.github.kgma74.relaix.ui.theme.LocalStatusColors
 import io.github.kgma74.relaix.ui.theme.soft
 import java.text.SimpleDateFormat
@@ -182,7 +182,7 @@ private fun JobRow(job: JobRecord) {
                 Text(
                     job.recipient,
                     style = MaterialTheme.typography.titleSmall,
-                    fontFamily = GeistMono,
+                    fontFamily = PlexMono,
                 )
                 StatusChip(labelFor(job.status), colour)
             }
@@ -215,7 +215,7 @@ private fun JobRow(job: JobRecord) {
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .background(soft(status.bad, 0.10f), RoundedCornerShape(8.dp))
+                        .background(soft(status.bad, 0.10f), RoundedCornerShape(3.dp))
                         .padding(horizontal = 10.dp, vertical = 8.dp),
                     verticalArrangement = Arrangement.spacedBy(2.dp),
                 ) {
@@ -224,7 +224,7 @@ private fun JobRow(job: JobRecord) {
                             job.errorCode,
                             style = MaterialTheme.typography.labelMedium,
                             color = status.bad,
-                            fontFamily = GeistMono,
+                            fontFamily = PlexMono,
                         )
                     }
                     if (job.errorMessage.isNotBlank()) {

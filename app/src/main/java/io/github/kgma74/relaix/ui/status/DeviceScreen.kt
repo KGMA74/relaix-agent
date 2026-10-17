@@ -46,7 +46,7 @@ import io.github.kgma74.relaix.ui.components.PageHeader
 import io.github.kgma74.relaix.ui.components.RowDivider
 import io.github.kgma74.relaix.ui.components.SectionCard
 import io.github.kgma74.relaix.ui.components.SectionLabel
-import io.github.kgma74.relaix.ui.theme.GeistMono
+import io.github.kgma74.relaix.ui.theme.PlexMono
 import io.github.kgma74.relaix.ui.theme.LocalStatusColors
 import io.github.kgma74.relaix.ui.theme.soft
 
@@ -84,7 +84,7 @@ fun DeviceScreen(
                     Box(
                         modifier = Modifier
                             .size(48.dp)
-                            .background(soft(MaterialTheme.colorScheme.primary), RoundedCornerShape(12.dp)),
+                            .background(soft(MaterialTheme.colorScheme.primary), RoundedCornerShape(4.dp)),
                         contentAlignment = Alignment.Center,
                     ) {
                         Icon(
@@ -217,7 +217,7 @@ private fun DetailRow(
             Text(
                 value,
                 style = MaterialTheme.typography.bodyMedium,
-                fontFamily = if (monospace) GeistMono else FontFamily.Default,
+                fontFamily = if (monospace) PlexMono else FontFamily.Default,
             )
         }
         if (onCopy != null) {

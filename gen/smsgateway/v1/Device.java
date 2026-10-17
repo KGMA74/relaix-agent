@@ -16395,6 +16395,26 @@ public final class Device extends com.google.protobuf.GeneratedFile {
      * <code>.smsgateway.v1.SendLimits limits = 9 [json_name = "limits"];</code>
      */
     smsgateway.v1.Device.SendLimitsOrBuilder getLimitsOrBuilder();
+
+    /**
+     * <pre>
+     * What it is for, in a sentence or two, shown under its name on the phone.
+     * </pre>
+     *
+     * <code>string description = 10 [json_name = "description"];</code>
+     * @return The description.
+     */
+    java.lang.String getDescription();
+    /**
+     * <pre>
+     * What it is for, in a sentence or two, shown under its name on the phone.
+     * </pre>
+     *
+     * <code>string description = 10 [json_name = "description"];</code>
+     * @return The bytes for description.
+     */
+    com.google.protobuf.ByteString
+        getDescriptionBytes();
   }
   /**
    * <pre>
@@ -16430,6 +16450,7 @@ public final class Device extends com.google.protobuf.GeneratedFile {
       pattern_ = "";
       conditions_ = java.util.Collections.emptyList();
       actions_ = java.util.Collections.emptyList();
+      description_ = "";
     }
 
     public static final com.google.protobuf.Descriptors.Descriptor
@@ -16831,6 +16852,53 @@ public final class Device extends com.google.protobuf.GeneratedFile {
       return limits_ == null ? smsgateway.v1.Device.SendLimits.getDefaultInstance() : limits_;
     }
 
+    public static final int DESCRIPTION_FIELD_NUMBER = 10;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object description_ = "";
+    /**
+     * <pre>
+     * What it is for, in a sentence or two, shown under its name on the phone.
+     * </pre>
+     *
+     * <code>string description = 10 [json_name = "description"];</code>
+     * @return The description.
+     */
+    @java.lang.Override
+    public java.lang.String getDescription() {
+      java.lang.Object ref = description_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        description_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * What it is for, in a sentence or two, shown under its name on the phone.
+     * </pre>
+     *
+     * <code>string description = 10 [json_name = "description"];</code>
+     * @return The bytes for description.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getDescriptionBytes() {
+      java.lang.Object ref = description_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        description_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -16871,6 +16939,9 @@ public final class Device extends com.google.protobuf.GeneratedFile {
       }
       if (((bitField0_ & 0x00000001) != 0)) {
         output.writeMessage(9, getLimits());
+      }
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(description_)) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 10, description_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -16923,6 +16994,9 @@ public final class Device extends com.google.protobuf.GeneratedFile {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(9, getLimits());
       }
+      if (!com.google.protobuf.GeneratedMessage.isStringEmpty(description_)) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(10, description_);
+      }
       return size;
     }
     @java.lang.Override
@@ -16968,6 +17042,8 @@ public final class Device extends com.google.protobuf.GeneratedFile {
         if (!getLimits()
             .equals(other.getLimits())) return false;
       }
+      if (!getDescription()
+          .equals(other.getDescription())) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -17006,6 +17082,8 @@ public final class Device extends com.google.protobuf.GeneratedFile {
         hash = (37 * hash) + LIMITS_FIELD_NUMBER;
         hash = (53 * hash) + getLimits().hashCode();
       }
+      hash = (37 * hash) + DESCRIPTION_FIELD_NUMBER;
+      hash = (53 * hash) + getDescription().hashCode();
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -17176,6 +17254,7 @@ public final class Device extends com.google.protobuf.GeneratedFile {
           limitsBuilder_.dispose();
           limitsBuilder_ = null;
         }
+        description_ = "";
         return this;
       }
 
@@ -17256,6 +17335,9 @@ public final class Device extends com.google.protobuf.GeneratedFile {
               ? limits_
               : limitsBuilder_.build();
           to_bitField0_ |= 0x00000001;
+        }
+        if (((from_bitField0_ & 0x00000200) != 0)) {
+          result.description_ = description_;
         }
         result.bitField0_ |= to_bitField0_;
       }
@@ -17358,6 +17440,11 @@ public final class Device extends com.google.protobuf.GeneratedFile {
         if (other.hasLimits()) {
           mergeLimits(other.getLimits());
         }
+        if (!other.getDescription().isEmpty()) {
+          description_ = other.description_;
+          bitField0_ |= 0x00000200;
+          onChanged();
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
@@ -17447,6 +17534,11 @@ public final class Device extends com.google.protobuf.GeneratedFile {
                 bitField0_ |= 0x00000100;
                 break;
               } // case 74
+              case 82: {
+                description_ = input.readStringRequireUtf8();
+                bitField0_ |= 0x00000200;
+                break;
+              } // case 82
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -18741,6 +18833,98 @@ public final class Device extends com.google.protobuf.GeneratedFile {
           limits_ = null;
         }
         return limitsBuilder_;
+      }
+
+      private java.lang.Object description_ = "";
+      /**
+       * <pre>
+       * What it is for, in a sentence or two, shown under its name on the phone.
+       * </pre>
+       *
+       * <code>string description = 10 [json_name = "description"];</code>
+       * @return The description.
+       */
+      public java.lang.String getDescription() {
+        java.lang.Object ref = description_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          description_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * What it is for, in a sentence or two, shown under its name on the phone.
+       * </pre>
+       *
+       * <code>string description = 10 [json_name = "description"];</code>
+       * @return The bytes for description.
+       */
+      public com.google.protobuf.ByteString
+          getDescriptionBytes() {
+        java.lang.Object ref = description_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          description_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * What it is for, in a sentence or two, shown under its name on the phone.
+       * </pre>
+       *
+       * <code>string description = 10 [json_name = "description"];</code>
+       * @param value The description to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDescription(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        description_ = value;
+        bitField0_ |= 0x00000200;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * What it is for, in a sentence or two, shown under its name on the phone.
+       * </pre>
+       *
+       * <code>string description = 10 [json_name = "description"];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearDescription() {
+        description_ = getDefaultInstance().getDescription();
+        bitField0_ = (bitField0_ & ~0x00000200);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * What it is for, in a sentence or two, shown under its name on the phone.
+       * </pre>
+       *
+       * <code>string description = 10 [json_name = "description"];</code>
+       * @param value The bytes for description to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDescriptionBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        description_ = value;
+        bitField0_ |= 0x00000200;
+        onChanged();
+        return this;
       }
 
       // @@protoc_insertion_point(builder_scope:smsgateway.v1.Automation)
@@ -47001,7 +47185,7 @@ java.lang.String defaultValue) {
       "\006 \001(\0132\031.smsgateway.v1.SendLimitsR\006limits" +
       "\0225\n\007inbound\030\007 \001(\0132\033.smsgateway.v1.Inboun" +
       "dRulesR\007inbound\022;\n\013automations\030\010 \003(\0132\031.s" +
-      "msgateway.v1.AutomationR\013automations\"\331\002\n" +
+      "msgateway.v1.AutomationR\013automations\"\373\002\n" +
       "\nAutomation\022\016\n\002id\030\001 \001(\tR\002id\022\022\n\004name\030\002 \001(" +
       "\tR\004name\022\030\n\007enabled\030\003 \001(\010R\007enabled\022\'\n\017sub" +
       "scription_id\030\004 \001(\005R\016subscriptionId\022\030\n\007se" +
@@ -47010,108 +47194,109 @@ java.lang.String defaultValue) {
       "v1.AutomationConditionR\nconditions\0229\n\007ac" +
       "tions\030\010 \003(\0132\037.smsgateway.v1.AutomationAc" +
       "tionR\007actions\0221\n\006limits\030\t \001(\0132\031.smsgatew" +
-      "ay.v1.SendLimitsR\006limits\"Q\n\023AutomationCo" +
-      "ndition\022\024\n\005field\030\001 \001(\tR\005field\022\016\n\002op\030\002 \001(" +
-      "\tR\002op\022\024\n\005value\030\003 \001(\tR\005value\"\377\001\n\020Automati" +
-      "onAction\0228\n\007forward\030\001 \001(\0132\034.smsgateway.v" +
-      "1.ForwardActionH\000R\007forward\022<\n\treply_sms\030" +
-      "\002 \001(\0132\035.smsgateway.v1.ReplySmsActionH\000R\010" +
-      "replySms\0228\n\007webhook\030\003 \001(\0132\034.smsgateway.v" +
-      "1.WebhookActionH\000R\007webhook\022/\n\004ussd\030\004 \001(\013" +
-      "2\031.smsgateway.v1.UssdActionH\000R\004ussdB\010\n\006a" +
-      "ction\"\017\n\rForwardAction\"4\n\016ReplySmsAction" +
-      "\022\016\n\002to\030\001 \001(\tR\002to\022\022\n\004text\030\002 \001(\tR\004text\"M\n\r" +
-      "WebhookAction\022\020\n\003url\030\001 \001(\tR\003url\022\022\n\004body\030" +
-      "\002 \001(\tR\004body\022\026\n\006secret\030\003 \001(\tR\006secret\" \n\nU" +
-      "ssdAction\022\022\n\004code\030\001 \001(\tR\004code\"B\n\014Inbound" +
-      "Rules\022\030\n\007enabled\030\001 \001(\010R\007enabled\022\030\n\007sende" +
-      "rs\030\002 \003(\tR\007senders\"@\n\nSendLimits\022\031\n\010per_h" +
-      "our\030\001 \001(\005R\007perHour\022\027\n\007per_day\030\002 \001(\005R\006per" +
-      "Day\"`\n\014Availability\022\033\n\ttime_zone\030\001 \001(\tR\010" +
-      "timeZone\0223\n\007windows\030\002 \003(\0132\031.smsgateway.v" +
-      "1.TimeWindowR\007windows\"b\n\nTimeWindow\022\022\n\004d" +
-      "ays\030\001 \003(\005R\004days\022!\n\014start_minute\030\002 \001(\005R\013s" +
-      "tartMinute\022\035\n\nend_minute\030\003 \001(\005R\tendMinut" +
-      "e\"X\n\013AcceptRules\022\034\n\tcountries\030\001 \003(\tR\tcou" +
-      "ntries\022+\n\021recipient_pattern\030\002 \001(\tR\020recip" +
-      "ientPattern\"\370\001\n\tSimPolicy\022\'\n\017subscriptio" +
-      "n_id\030\001 \001(\005R\016subscriptionId\022\032\n\010disabled\030\002" +
-      " \001(\010R\010disabled\0222\n\006accept\030\003 \001(\0132\032.smsgate" +
-      "way.v1.AcceptRulesR\006accept\022?\n\014availabili" +
-      "ty\030\004 \001(\0132\033.smsgateway.v1.AvailabilityR\014a" +
-      "vailability\0221\n\006limits\030\005 \001(\0132\031.smsgateway" +
-      ".v1.SendLimitsR\006limits\"\037\n\005Leave\022\026\n\006reaso" +
-      "n\030\001 \001(\tR\006reason\"\317\002\n\013SmsReceived\022\016\n\002id\030\001 " +
-      "\001(\tR\002id\022\026\n\006sender\030\002 \001(\tR\006sender\022\022\n\004body\030" +
-      "\003 \001(\tR\004body\022;\n\013received_at\030\004 \001(\0132\032.googl" +
-      "e.protobuf.TimestampR\nreceivedAt\022\'\n\017subs" +
-      "cription_id\030\005 \001(\005R\016subscriptionId\022#\n\raut" +
-      "omation_id\030\006 \001(\tR\014automationId\022>\n\006fields" +
-      "\030\007 \003(\0132&.smsgateway.v1.SmsReceived.Field" +
-      "sEntryR\006fields\0329\n\013FieldsEntry\022\020\n\003key\030\001 \001" +
-      "(\tR\003key\022\024\n\005value\030\002 \001(\tR\005value:\0028\001\"@\n\tHea" +
-      "rtbeat\0223\n\006health\030\001 \001(\0132\033.smsgateway.v1.D" +
-      "eviceHealthR\006health\"\270\002\n\014DeviceHealth\022#\n\r" +
-      "battery_level\030\001 \001(\005R\014batteryLevel\022\037\n\013is_" +
-      "charging\030\002 \001(\010R\nisCharging\022\'\n\017signal_str" +
-      "ength\030\003 \001(\005R\016signalStrength\022!\n\014network_t" +
-      "ype\030\004 \001(\tR\013networkType\022\033\n\tsim_ready\030\005 \001(" +
-      "\010R\010simReady\022$\n\016sent_last_hour\030\006 \001(\005R\014sen" +
-      "tLastHour\022%\n\016permissions_ok\030\007 \001(\010R\rpermi" +
-      "ssionsOk\022,\n\004sims\030\010 \003(\0132\030.smsgateway.v1.S" +
-      "imHealthR\004sims\"\240\001\n\tSimHealth\022\'\n\017subscrip" +
-      "tion_id\030\001 \001(\005R\016subscriptionId\022\'\n\017signal_" +
-      "strength\030\002 \001(\005R\016signalStrength\022\033\n\tsim_re" +
-      "ady\030\003 \001(\010R\010simReady\022$\n\016sent_last_hour\030\004 " +
-      "\001(\005R\014sentLastHour\"q\n\006JobAck\022\025\n\006job_id\030\001 " +
-      "\001(\tR\005jobId\022\032\n\010accepted\030\002 \001(\010R\010accepted\022\026" +
-      "\n\006reason\030\003 \001(\tR\006reason\022\034\n\tpermanent\030\004 \001(" +
-      "\010R\tpermanent\"\224\002\n\tJobResult\022\025\n\006job_id\030\001 \001" +
-      "(\tR\005jobId\0220\n\006status\030\002 \001(\0162\030.smsgateway.v" +
-      "1.JobStatusR\006status\022\035\n\nerror_code\030\003 \001(\tR" +
-      "\terrorCode\022#\n\rerror_message\030\004 \001(\tR\014error" +
-      "Message\022\035\n\nparts_sent\030\005 \001(\005R\tpartsSent\022=" +
-      "\n\014completed_at\030\006 \001(\0132\032.google.protobuf.T" +
-      "imestampR\013completedAt\022\034\n\tresponses\030\007 \003(\t" +
-      "R\tresponses\"\330\001\n\013RegisterAck\022\032\n\010accepted\030" +
-      "\001 \001(\010R\010accepted\022\026\n\006reason\030\002 \001(\tR\006reason\022" +
-      "<\n\032heartbeat_interval_seconds\030\003 \001(\005R\030hea" +
-      "rtbeatIntervalSeconds\022\"\n\rstale_job_ids\030\004" +
-      " \003(\tR\013staleJobIds\0223\n\006policy\030\005 \001(\0132\033.smsg" +
-      "ateway.v1.DevicePolicyR\006policy\"\325\001\n\nSendS" +
-      "msJob\022\025\n\006job_id\030\001 \001(\tR\005jobId\022\034\n\trecipien" +
-      "t\030\002 \001(\tR\trecipient\022\022\n\004body\030\003 \001(\tR\004body\022\032" +
-      "\n\010priority\030\004 \001(\005R\010priority\0229\n\nexpires_at" +
-      "\030\005 \001(\0132\032.google.protobuf.TimestampR\texpi" +
-      "resAt\022\'\n\017subscription_id\030\006 \001(\005R\016subscrip" +
-      "tionId\"\262\001\n\007UssdJob\022\025\n\006job_id\030\001 \001(\tR\005jobI" +
-      "d\022\022\n\004code\030\002 \001(\tR\004code\022\'\n\017subscription_id" +
-      "\030\003 \001(\005R\016subscriptionId\0229\n\nexpires_at\030\004 \001" +
-      "(\0132\032.google.protobuf.TimestampR\texpiresA" +
-      "t\022\030\n\007replies\030\005 \003(\tR\007replies\"\257\002\n\rAutomati" +
-      "onRun\022\016\n\002id\030\001 \001(\tR\002id\022#\n\rautomation_id\030\002" +
-      " \001(\tR\014automationId\022\026\n\006sender\030\003 \001(\tR\006send" +
-      "er\0229\n\nstarted_at\030\004 \001(\0132\032.google.protobuf" +
-      ".TimestampR\tstartedAt\022;\n\013finished_at\030\005 \001" +
-      "(\0132\032.google.protobuf.TimestampR\nfinished" +
-      "At\022\016\n\002ok\030\006 \001(\010R\002ok\0223\n\005steps\030\007 \003(\0132\035.smsg" +
-      "ateway.v1.AutomationStepR\005steps\022\024\n\005error" +
-      "\030\010 \001(\tR\005error\"n\n\016AutomationStep\022\026\n\006actio" +
-      "n\030\001 \001(\tR\006action\022\016\n\002ok\030\002 \001(\010R\002ok\022\026\n\006detai" +
-      "l\030\003 \001(\tR\006detail\022\034\n\tresponses\030\004 \003(\tR\tresp" +
-      "onses\"$\n\020AutomationRunAck\022\020\n\003ids\030\001 \003(\tR\003" +
-      "ids\"\"\n\016SmsReceivedAck\022\020\n\003ids\030\001 \003(\tR\003ids\"" +
-      "\"\n\tCancelJob\022\025\n\006job_id\030\001 \001(\tR\005jobId\"\006\n\004P" +
-      "ing*\207\001\n\tJobStatus\022\032\n\026JOB_STATUS_UNSPECIF" +
-      "IED\020\000\022\023\n\017JOB_STATUS_SENT\020\001\022\030\n\024JOB_STATUS" +
-      "_DELIVERED\020\002\022\025\n\021JOB_STATUS_FAILED\020\003\022\030\n\024J" +
-      "OB_STATUS_CANCELLED\020\0042\241\001\n\rDeviceGateway\022" +
-      "E\n\006Enroll\022\034.smsgateway.v1.EnrollRequest\032" +
-      "\035.smsgateway.v1.EnrollResponse\022I\n\007Connec" +
-      "t\022\034.smsgateway.v1.DeviceMessage\032\034.smsgat" +
-      "eway.v1.ServerMessage(\0010\001B@Z>github.com/" +
-      "KGMA74/relaix-server/gen/smsgateway/v1;s" +
-      "msgatewayv1b\006proto3"
+      "ay.v1.SendLimitsR\006limits\022 \n\013description\030" +
+      "\n \001(\tR\013description\"Q\n\023AutomationConditio" +
+      "n\022\024\n\005field\030\001 \001(\tR\005field\022\016\n\002op\030\002 \001(\tR\002op\022" +
+      "\024\n\005value\030\003 \001(\tR\005value\"\377\001\n\020AutomationActi" +
+      "on\0228\n\007forward\030\001 \001(\0132\034.smsgateway.v1.Forw" +
+      "ardActionH\000R\007forward\022<\n\treply_sms\030\002 \001(\0132" +
+      "\035.smsgateway.v1.ReplySmsActionH\000R\010replyS" +
+      "ms\0228\n\007webhook\030\003 \001(\0132\034.smsgateway.v1.Webh" +
+      "ookActionH\000R\007webhook\022/\n\004ussd\030\004 \001(\0132\031.sms" +
+      "gateway.v1.UssdActionH\000R\004ussdB\010\n\006action\"" +
+      "\017\n\rForwardAction\"4\n\016ReplySmsAction\022\016\n\002to" +
+      "\030\001 \001(\tR\002to\022\022\n\004text\030\002 \001(\tR\004text\"M\n\rWebhoo" +
+      "kAction\022\020\n\003url\030\001 \001(\tR\003url\022\022\n\004body\030\002 \001(\tR" +
+      "\004body\022\026\n\006secret\030\003 \001(\tR\006secret\" \n\nUssdAct" +
+      "ion\022\022\n\004code\030\001 \001(\tR\004code\"B\n\014InboundRules\022" +
+      "\030\n\007enabled\030\001 \001(\010R\007enabled\022\030\n\007senders\030\002 \003" +
+      "(\tR\007senders\"@\n\nSendLimits\022\031\n\010per_hour\030\001 " +
+      "\001(\005R\007perHour\022\027\n\007per_day\030\002 \001(\005R\006perDay\"`\n" +
+      "\014Availability\022\033\n\ttime_zone\030\001 \001(\tR\010timeZo" +
+      "ne\0223\n\007windows\030\002 \003(\0132\031.smsgateway.v1.Time" +
+      "WindowR\007windows\"b\n\nTimeWindow\022\022\n\004days\030\001 " +
+      "\003(\005R\004days\022!\n\014start_minute\030\002 \001(\005R\013startMi" +
+      "nute\022\035\n\nend_minute\030\003 \001(\005R\tendMinute\"X\n\013A" +
+      "cceptRules\022\034\n\tcountries\030\001 \003(\tR\tcountries" +
+      "\022+\n\021recipient_pattern\030\002 \001(\tR\020recipientPa" +
+      "ttern\"\370\001\n\tSimPolicy\022\'\n\017subscription_id\030\001" +
+      " \001(\005R\016subscriptionId\022\032\n\010disabled\030\002 \001(\010R\010" +
+      "disabled\0222\n\006accept\030\003 \001(\0132\032.smsgateway.v1" +
+      ".AcceptRulesR\006accept\022?\n\014availability\030\004 \001" +
+      "(\0132\033.smsgateway.v1.AvailabilityR\014availab" +
+      "ility\0221\n\006limits\030\005 \001(\0132\031.smsgateway.v1.Se" +
+      "ndLimitsR\006limits\"\037\n\005Leave\022\026\n\006reason\030\001 \001(" +
+      "\tR\006reason\"\317\002\n\013SmsReceived\022\016\n\002id\030\001 \001(\tR\002i" +
+      "d\022\026\n\006sender\030\002 \001(\tR\006sender\022\022\n\004body\030\003 \001(\tR" +
+      "\004body\022;\n\013received_at\030\004 \001(\0132\032.google.prot" +
+      "obuf.TimestampR\nreceivedAt\022\'\n\017subscripti" +
+      "on_id\030\005 \001(\005R\016subscriptionId\022#\n\rautomatio" +
+      "n_id\030\006 \001(\tR\014automationId\022>\n\006fields\030\007 \003(\013" +
+      "2&.smsgateway.v1.SmsReceived.FieldsEntry" +
+      "R\006fields\0329\n\013FieldsEntry\022\020\n\003key\030\001 \001(\tR\003ke" +
+      "y\022\024\n\005value\030\002 \001(\tR\005value:\0028\001\"@\n\tHeartbeat" +
+      "\0223\n\006health\030\001 \001(\0132\033.smsgateway.v1.DeviceH" +
+      "ealthR\006health\"\270\002\n\014DeviceHealth\022#\n\rbatter" +
+      "y_level\030\001 \001(\005R\014batteryLevel\022\037\n\013is_chargi" +
+      "ng\030\002 \001(\010R\nisCharging\022\'\n\017signal_strength\030" +
+      "\003 \001(\005R\016signalStrength\022!\n\014network_type\030\004 " +
+      "\001(\tR\013networkType\022\033\n\tsim_ready\030\005 \001(\010R\010sim" +
+      "Ready\022$\n\016sent_last_hour\030\006 \001(\005R\014sentLastH" +
+      "our\022%\n\016permissions_ok\030\007 \001(\010R\rpermissions" +
+      "Ok\022,\n\004sims\030\010 \003(\0132\030.smsgateway.v1.SimHeal" +
+      "thR\004sims\"\240\001\n\tSimHealth\022\'\n\017subscription_i" +
+      "d\030\001 \001(\005R\016subscriptionId\022\'\n\017signal_streng" +
+      "th\030\002 \001(\005R\016signalStrength\022\033\n\tsim_ready\030\003 " +
+      "\001(\010R\010simReady\022$\n\016sent_last_hour\030\004 \001(\005R\014s" +
+      "entLastHour\"q\n\006JobAck\022\025\n\006job_id\030\001 \001(\tR\005j" +
+      "obId\022\032\n\010accepted\030\002 \001(\010R\010accepted\022\026\n\006reas" +
+      "on\030\003 \001(\tR\006reason\022\034\n\tpermanent\030\004 \001(\010R\tper" +
+      "manent\"\224\002\n\tJobResult\022\025\n\006job_id\030\001 \001(\tR\005jo" +
+      "bId\0220\n\006status\030\002 \001(\0162\030.smsgateway.v1.JobS" +
+      "tatusR\006status\022\035\n\nerror_code\030\003 \001(\tR\terror" +
+      "Code\022#\n\rerror_message\030\004 \001(\tR\014errorMessag" +
+      "e\022\035\n\nparts_sent\030\005 \001(\005R\tpartsSent\022=\n\014comp" +
+      "leted_at\030\006 \001(\0132\032.google.protobuf.Timesta" +
+      "mpR\013completedAt\022\034\n\tresponses\030\007 \003(\tR\tresp" +
+      "onses\"\330\001\n\013RegisterAck\022\032\n\010accepted\030\001 \001(\010R" +
+      "\010accepted\022\026\n\006reason\030\002 \001(\tR\006reason\022<\n\032hea" +
+      "rtbeat_interval_seconds\030\003 \001(\005R\030heartbeat" +
+      "IntervalSeconds\022\"\n\rstale_job_ids\030\004 \003(\tR\013" +
+      "staleJobIds\0223\n\006policy\030\005 \001(\0132\033.smsgateway" +
+      ".v1.DevicePolicyR\006policy\"\325\001\n\nSendSmsJob\022" +
+      "\025\n\006job_id\030\001 \001(\tR\005jobId\022\034\n\trecipient\030\002 \001(" +
+      "\tR\trecipient\022\022\n\004body\030\003 \001(\tR\004body\022\032\n\010prio" +
+      "rity\030\004 \001(\005R\010priority\0229\n\nexpires_at\030\005 \001(\013" +
+      "2\032.google.protobuf.TimestampR\texpiresAt\022" +
+      "\'\n\017subscription_id\030\006 \001(\005R\016subscriptionId" +
+      "\"\262\001\n\007UssdJob\022\025\n\006job_id\030\001 \001(\tR\005jobId\022\022\n\004c" +
+      "ode\030\002 \001(\tR\004code\022\'\n\017subscription_id\030\003 \001(\005" +
+      "R\016subscriptionId\0229\n\nexpires_at\030\004 \001(\0132\032.g" +
+      "oogle.protobuf.TimestampR\texpiresAt\022\030\n\007r" +
+      "eplies\030\005 \003(\tR\007replies\"\257\002\n\rAutomationRun\022" +
+      "\016\n\002id\030\001 \001(\tR\002id\022#\n\rautomation_id\030\002 \001(\tR\014" +
+      "automationId\022\026\n\006sender\030\003 \001(\tR\006sender\0229\n\n" +
+      "started_at\030\004 \001(\0132\032.google.protobuf.Times" +
+      "tampR\tstartedAt\022;\n\013finished_at\030\005 \001(\0132\032.g" +
+      "oogle.protobuf.TimestampR\nfinishedAt\022\016\n\002" +
+      "ok\030\006 \001(\010R\002ok\0223\n\005steps\030\007 \003(\0132\035.smsgateway" +
+      ".v1.AutomationStepR\005steps\022\024\n\005error\030\010 \001(\t" +
+      "R\005error\"n\n\016AutomationStep\022\026\n\006action\030\001 \001(" +
+      "\tR\006action\022\016\n\002ok\030\002 \001(\010R\002ok\022\026\n\006detail\030\003 \001(" +
+      "\tR\006detail\022\034\n\tresponses\030\004 \003(\tR\tresponses\"" +
+      "$\n\020AutomationRunAck\022\020\n\003ids\030\001 \003(\tR\003ids\"\"\n" +
+      "\016SmsReceivedAck\022\020\n\003ids\030\001 \003(\tR\003ids\"\"\n\tCan" +
+      "celJob\022\025\n\006job_id\030\001 \001(\tR\005jobId\"\006\n\004Ping*\207\001" +
+      "\n\tJobStatus\022\032\n\026JOB_STATUS_UNSPECIFIED\020\000\022" +
+      "\023\n\017JOB_STATUS_SENT\020\001\022\030\n\024JOB_STATUS_DELIV" +
+      "ERED\020\002\022\025\n\021JOB_STATUS_FAILED\020\003\022\030\n\024JOB_STA" +
+      "TUS_CANCELLED\020\0042\241\001\n\rDeviceGateway\022E\n\006Enr" +
+      "oll\022\034.smsgateway.v1.EnrollRequest\032\035.smsg" +
+      "ateway.v1.EnrollResponse\022I\n\007Connect\022\034.sm" +
+      "sgateway.v1.DeviceMessage\032\034.smsgateway.v" +
+      "1.ServerMessage(\0010\001B@Z>github.com/KGMA74" +
+      "/relaix-server/gen/smsgateway/v1;smsgate" +
+      "wayv1b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -47177,7 +47362,7 @@ java.lang.String defaultValue) {
     internal_static_smsgateway_v1_Automation_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_smsgateway_v1_Automation_descriptor,
-        new java.lang.String[] { "Id", "Name", "Enabled", "SubscriptionId", "Senders", "Pattern", "Conditions", "Actions", "Limits", });
+        new java.lang.String[] { "Id", "Name", "Enabled", "SubscriptionId", "Senders", "Pattern", "Conditions", "Actions", "Limits", "Description", });
     internal_static_smsgateway_v1_AutomationCondition_descriptor =
       getDescriptor().getMessageType(10);
     internal_static_smsgateway_v1_AutomationCondition_fieldAccessorTable = new

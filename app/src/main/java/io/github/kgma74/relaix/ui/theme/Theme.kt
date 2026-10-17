@@ -1,7 +1,9 @@
 package io.github.kgma74.relaix.ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Shapes
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
@@ -9,20 +11,21 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.compositeOver
+import androidx.compose.ui.unit.dp
 
 // `surface` is the card colour and `background` the page behind it: kept apart
 // so a card reads as a card without leaning on elevation shadows.
 private val DarkColorScheme = darkColorScheme(
-    primary = Indigo400,
-    onPrimary = Color(0xFF11122B),
-    primaryContainer = Indigo900,
-    onPrimaryContainer = Indigo100,
+    primary = InkDark,
+    onPrimary = BackgroundDark,
+    primaryContainer = SubtleDark,
+    onPrimaryContainer = InkDark,
     secondary = MutedInkDark,
     onSecondary = BackgroundDark,
     // Drives the pill behind a selected navigation item; left undefined it
     // falls back to Material's purple and undoes the palette.
-    secondaryContainer = Color(0xFF272A52),
-    onSecondaryContainer = Color(0xFFC7D2FE),
+    secondaryContainer = SubtleDark,
+    onSecondaryContainer = InkDark,
     background = BackgroundDark,
     onBackground = InkDark,
     surface = CardDark,
@@ -38,14 +41,14 @@ private val DarkColorScheme = darkColorScheme(
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = Indigo600,
-    onPrimary = Color.White,
-    primaryContainer = Indigo100,
-    onPrimaryContainer = Indigo900,
+    primary = InkLight,
+    onPrimary = CardLight,
+    primaryContainer = SubtleLight,
+    onPrimaryContainer = InkLight,
     secondary = MutedInkLight,
-    onSecondary = Color.White,
-    secondaryContainer = Indigo100,
-    onSecondaryContainer = Color(0xFF3730A3),
+    onSecondary = CardLight,
+    secondaryContainer = SubtleLight,
+    onSecondaryContainer = InkLight,
     background = BackgroundLight,
     onBackground = InkLight,
     surface = CardLight,
@@ -58,6 +61,18 @@ private val LightColorScheme = lightColorScheme(
     error = StatusBadLight,
     outline = BorderLight,
     outlineVariant = BorderLight,
+)
+
+/**
+ * Near-square corners, as on the dashboard: a rule-drawn panel, not a stack
+ * of pills. Buttons, fields, chips and sheets all take these.
+ */
+private val RelaixShapes = Shapes(
+    extraSmall = RoundedCornerShape(2.dp),
+    small = RoundedCornerShape(3.dp),
+    medium = RoundedCornerShape(3.dp),
+    large = RoundedCornerShape(4.dp),
+    extraLarge = RoundedCornerShape(4.dp),
 )
 
 /**
@@ -83,7 +98,7 @@ val LocalStatusColors = staticCompositionLocalOf {
  * sits behind it.
  */
 @Composable
-fun soft(color: Color, amount: Float = 0.14f): Color =
+fun soft(color: Color, amount: Float = 0.10f): Color =
     color.copy(alpha = amount).compositeOver(MaterialTheme.colorScheme.surface)
 
 /**
@@ -107,6 +122,7 @@ fun RelaixTheme(
         MaterialTheme(
             colorScheme = colorScheme,
             typography = Typography,
+            shapes = RelaixShapes,
             content = content,
         )
     }

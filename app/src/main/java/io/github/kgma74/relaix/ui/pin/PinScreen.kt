@@ -61,7 +61,7 @@ import io.github.kgma74.relaix.ui.components.PageHeader
 import io.github.kgma74.relaix.ui.components.RowDivider
 import io.github.kgma74.relaix.ui.components.SectionCard
 import io.github.kgma74.relaix.ui.components.SheetSection
-import io.github.kgma74.relaix.ui.theme.GeistMono
+import io.github.kgma74.relaix.ui.theme.PlexMono
 import io.github.kgma74.relaix.ui.theme.soft
 import smsgateway.v1.Device
 
@@ -324,7 +324,7 @@ private fun PinSheet(simLabel: String, replacing: Boolean, onDismiss: () -> Unit
                     )
                 }
             },
-            textStyle = MaterialTheme.typography.titleLarge.copy(fontFamily = GeistMono, letterSpacing = 6.sp),
+            textStyle = MaterialTheme.typography.titleLarge.copy(fontFamily = PlexMono, letterSpacing = 6.sp),
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.NumberPassword, imeAction = ImeAction.Done),
             singleLine = true,
             modifier = Modifier.fillMaxWidth().focusRequester(focus),
@@ -381,13 +381,13 @@ private fun ApproveSheet(
             if (fixed) {
                 // Asked for by an automation: approved as it is or not at all.
                 Surface(
-                    shape = RoundedCornerShape(10.dp),
+                    shape = RoundedCornerShape(3.dp),
                     color = MaterialTheme.colorScheme.surfaceVariant,
                     modifier = Modifier.fillMaxWidth(),
                 ) {
                     Text(
                         template,
-                        fontFamily = GeistMono,
+                        fontFamily = PlexMono,
                         style = MaterialTheme.typography.bodyLarge,
                         modifier = Modifier.padding(horizontal = 14.dp, vertical = 12.dp),
                     )
@@ -396,8 +396,8 @@ private fun ApproveSheet(
                 OutlinedTextField(
                     value = template,
                     onValueChange = { template = it.trim() },
-                    placeholder = { Text("*144*2*1*{to}*{amount}*{pin}#", fontFamily = GeistMono) },
-                    textStyle = MaterialTheme.typography.bodyLarge.copy(fontFamily = GeistMono),
+                    placeholder = { Text("*144*2*1*{to}*{amount}*{pin}#", fontFamily = PlexMono) },
+                    textStyle = MaterialTheme.typography.bodyLarge.copy(fontFamily = PlexMono),
                     isError = template.isNotEmpty() && !templateOk,
                     supportingText = {
                         Text(
@@ -471,12 +471,12 @@ private fun VariableTag(name: String, meaning: String, accent: Boolean) {
     val color = if (accent) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurfaceVariant
     Row(
         modifier = Modifier
-            .background(soft(color), RoundedCornerShape(6.dp))
+            .background(soft(color), RoundedCornerShape(2.dp))
             .padding(horizontal = 8.dp, vertical = 4.dp),
         horizontalArrangement = Arrangement.spacedBy(6.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        Text("{$name}", fontFamily = GeistMono, style = MaterialTheme.typography.labelMedium, color = color)
+        Text("{$name}", fontFamily = PlexMono, style = MaterialTheme.typography.labelMedium, color = color)
         Text(meaning, style = MaterialTheme.typography.labelMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
     }
 }

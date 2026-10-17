@@ -61,7 +61,7 @@ fun FormSheet(
         onDismissRequest = onDismiss,
         sheetState = state,
         containerColor = MaterialTheme.colorScheme.surface,
-        shape = RoundedCornerShape(topStart = 20.dp, topEnd = 20.dp),
+        shape = RoundedCornerShape(topStart = 4.dp, topEnd = 4.dp),
     ) {
         Column(
             modifier = Modifier
@@ -87,7 +87,7 @@ fun FormSheet(
                     onClick = { close(onAction) },
                     enabled = actionEnabled,
                     modifier = Modifier.fillMaxWidth().height(48.dp),
-                    shape = RoundedCornerShape(12.dp),
+                    shape = RoundedCornerShape(4.dp),
                 ) { Text(it) }
             }
         }

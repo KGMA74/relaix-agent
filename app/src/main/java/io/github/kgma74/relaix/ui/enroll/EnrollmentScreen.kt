@@ -43,7 +43,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import io.github.kgma74.relaix.ui.components.BrandMark
 import io.github.kgma74.relaix.ui.components.FormSheet
 import io.github.kgma74.relaix.ui.components.SectionCard
-import io.github.kgma74.relaix.ui.theme.GeistMono
+import io.github.kgma74.relaix.ui.theme.PlexMono
 import io.github.kgma74.relaix.ui.theme.LocalStatusColors
 import io.github.kgma74.relaix.ui.theme.soft
 
@@ -182,8 +182,8 @@ fun EnrollmentScreen(
                 value = state.payloadText,
                 onValueChange = viewModel::onPayloadChange,
                 label = { Text("Configuration") },
-                placeholder = { Text("""{"endpoint":"grpc://…","token":"…"}""", fontFamily = GeistMono) },
-                textStyle = MaterialTheme.typography.bodyMedium.copy(fontFamily = GeistMono),
+                placeholder = { Text("""{"endpoint":"grpc://…","token":"…"}""", fontFamily = PlexMono) },
+                textStyle = MaterialTheme.typography.bodyMedium.copy(fontFamily = PlexMono),
                 minLines = 4,
                 maxLines = 8,
                 modifier = Modifier.fillMaxWidth(),
@@ -224,7 +224,7 @@ private fun ScanningView(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(380.dp)
-                .clip(RoundedCornerShape(20.dp)),
+                .clip(RoundedCornerShape(4.dp)),
         )
         OutlinedButton(onClick = onCancel, modifier = Modifier.fillMaxWidth()) {
             Text("Annuler")

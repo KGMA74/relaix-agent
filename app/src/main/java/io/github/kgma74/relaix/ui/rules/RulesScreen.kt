@@ -64,7 +64,7 @@ import io.github.kgma74.relaix.ui.components.PageHeader
 import io.github.kgma74.relaix.ui.components.SectionCard
 import io.github.kgma74.relaix.ui.components.SectionLabel
 import io.github.kgma74.relaix.ui.components.StatusChip
-import io.github.kgma74.relaix.ui.theme.GeistMono
+import io.github.kgma74.relaix.ui.theme.PlexMono
 import io.github.kgma74.relaix.ui.theme.LocalStatusColors
 import io.github.kgma74.relaix.ui.theme.soft
 import java.util.Locale
@@ -331,14 +331,14 @@ private fun AvailabilityCard(
 private fun TimeChip(text: String, onClick: () -> Unit) {
     Surface(
         onClick = onClick,
-        shape = RoundedCornerShape(8.dp),
+        shape = RoundedCornerShape(3.dp),
         color = MaterialTheme.colorScheme.surfaceVariant,
     ) {
         Text(
             text,
             modifier = Modifier.padding(horizontal = 14.dp, vertical = 8.dp),
             style = MaterialTheme.typography.titleSmall,
-            fontFamily = GeistMono,
+            fontFamily = PlexMono,
         )
     }
 }
@@ -381,7 +381,7 @@ private fun AcceptCard(value: AcceptDraft, onChange: (AcceptDraft) -> Unit) {
                 isError = error != null,
                 supportingText = { Text(error ?: "Vide : tout numéro.") },
                 singleLine = true,
-                textStyle = MaterialTheme.typography.bodyMedium.copy(fontFamily = GeistMono),
+                textStyle = MaterialTheme.typography.bodyMedium.copy(fontFamily = PlexMono),
                 modifier = Modifier.fillMaxWidth(),
             )
 
@@ -445,7 +445,7 @@ private fun CountryPicker(exclude: List<String>, onPick: (String) -> Unit, onDis
             placeholder = { Text("Nom, code ou +indicatif") },
             leadingIcon = { Icon(Icons.Default.Search, null) },
             singleLine = true,
-            shape = RoundedCornerShape(12.dp),
+            shape = RoundedCornerShape(4.dp),
             modifier = Modifier.fillMaxWidth(),
         )
         if (shown.isEmpty()) {
@@ -461,7 +461,7 @@ private fun CountryPicker(exclude: List<String>, onPick: (String) -> Unit, onDis
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .clip(RoundedCornerShape(10.dp))
+                        .clip(RoundedCornerShape(3.dp))
                         .clickable { onPick(code) }
                         .padding(vertical = 14.dp, horizontal = 8.dp),
                     verticalAlignment = Alignment.CenterVertically,
@@ -469,13 +469,13 @@ private fun CountryPicker(exclude: List<String>, onPick: (String) -> Unit, onDis
                     Text(name, style = MaterialTheme.typography.bodyLarge, modifier = Modifier.weight(1f))
                     Box(
                         Modifier
-                            .background(soft(MaterialTheme.colorScheme.primary), RoundedCornerShape(6.dp))
+                            .background(soft(MaterialTheme.colorScheme.primary), RoundedCornerShape(2.dp))
                             .padding(horizontal = 6.dp, vertical = 2.dp),
                     ) {
                         Text(
                             "+" + CALLING_CODES[code].orEmpty().joinToString(", +"),
                             style = MaterialTheme.typography.labelMedium,
-                            fontFamily = GeistMono,
+                            fontFamily = PlexMono,
                         )
                     }
                 }

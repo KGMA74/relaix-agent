@@ -53,7 +53,7 @@ import io.github.kgma74.relaix.ui.components.SignalBars
 import io.github.kgma74.relaix.ui.components.StatTile
 import io.github.kgma74.relaix.ui.components.StatusChip
 import io.github.kgma74.relaix.ui.components.StatusDot
-import io.github.kgma74.relaix.ui.theme.GeistMono
+import io.github.kgma74.relaix.ui.theme.PlexMono
 import io.github.kgma74.relaix.ui.theme.LocalStatusColors
 import io.github.kgma74.relaix.ui.theme.soft
 import smsgateway.v1.Device
@@ -325,7 +325,7 @@ private fun ConnectionHero(state: ConnectionState, endpoint: ServerEndpoint?, re
                     Text(
                         "${endpoint.host}:${endpoint.port}",
                         style = MaterialTheme.typography.bodySmall,
-                        fontFamily = GeistMono,
+                        fontFamily = PlexMono,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                     )
                 }

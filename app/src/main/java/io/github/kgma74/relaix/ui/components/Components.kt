@@ -122,7 +122,7 @@ fun SectionCard(
 ) {
     Surface(
         modifier = modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(12.dp),
+        shape = RoundedCornerShape(4.dp),
         color = color,
         border = BorderStroke(1.dp, borderColor),
     ) {
@@ -256,8 +256,8 @@ fun <T> SegmentedControl(
 ) {
     Row(
         modifier = modifier
-            .border(1.dp, MaterialTheme.colorScheme.outline, RoundedCornerShape(10.dp))
-            .background(MaterialTheme.colorScheme.surface, RoundedCornerShape(10.dp))
+            .border(1.dp, MaterialTheme.colorScheme.outline, RoundedCornerShape(3.dp))
+            .background(MaterialTheme.colorScheme.surface, RoundedCornerShape(3.dp))
             .padding(3.dp),
         horizontalArrangement = Arrangement.spacedBy(2.dp),
     ) {
@@ -267,7 +267,7 @@ fun <T> SegmentedControl(
                 modifier = Modifier
                     .background(
                         if (on) MaterialTheme.colorScheme.primary else Color.Transparent,
-                        RoundedCornerShape(7.dp),
+                        RoundedCornerShape(2.dp),
                     )
                     .clickable { onSelect(value) }
                     .padding(horizontal = 14.dp, vertical = 6.dp),
