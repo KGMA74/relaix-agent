@@ -21,8 +21,8 @@ android {
         targetSdk = 36
         // Raised for every release (make release): Android installs an APK
         // over another only when its versionCode is higher.
-        versionCode = 2
-        versionName = "1.1.0"
+        versionCode = 3
+        versionName = "1.1.1"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }

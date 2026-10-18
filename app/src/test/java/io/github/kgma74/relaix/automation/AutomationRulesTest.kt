@@ -17,6 +17,22 @@ import smsgateway.v1.Device
 class AutomationRulesTest {
 
     @Test
+    fun `an amount goes into a USSD code as the network will read it`() {
+        val template = "*144*2*1*{payer}*{amount}#"
+        // The bug this guards: "200.0" dialled lost its dot, and 2000 left.
+        assertEquals("*144*2*1*65530101*200#", AutomationRules.renderUssd(template, mapOf("payer" to "65530101", "amount" to "200.0")))
+        assertEquals("*144*2*1*65530101*5000#", AutomationRules.renderUssd(template, mapOf("payer" to "65 53 01 01", "amount" to "5 000,00")))
+        assertTrue(AutomationRules.isDialable(AutomationRules.renderUssd(template, mapOf("payer" to "1", "amount" to "200"))))
+        assertTrue(AutomationRules.isDialable("*144*4*{pin}#"))
+
+        // Real decimals cannot be dialled: refused, never sent as another amount.
+        val decimal = AutomationRules.renderUssd(template, mapOf("payer" to "65530101", "amount" to "200.5"))
+        assertEquals("*144*2*1*65530101*200.5#", decimal)
+        assertFalse(AutomationRules.isDialable(decimal))
+        assertFalse(AutomationRules.isDialable("*144*2*1*abc#"))
+    }
+
+    @Test
     fun `the shared automation cases`() {
         val text = javaClass.classLoader!!.getResource("automation_vectors.json")!!.readText()
         val cases = JSONObject(text).getJSONArray("cases")

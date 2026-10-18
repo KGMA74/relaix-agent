@@ -81,7 +81,28 @@ object AutomationRules {
      * code has no spaces. {pin} is left for the vault.
      */
     fun renderUssd(template: String, fields: Map<String, String>): String =
-        render(template, fields.mapValues { (_, v) -> v.filterNot { it.isWhitespace() || it == '\u00a0' || it == '\u202f' } }, keepPin = true)
+        render(template, fields.mapValues { (_, v) -> ussdValue(v) }, keepPin = true)
+
+    /**
+     * A field as it goes into a USSD code: no spaces, and an amount with zero
+     * decimals as a whole number \u2014 "200.0" is 200, "5 000,00" is 5000. A code
+     * cannot carry a decimal point: left in, the network would read 200.0 as
+     * 2000.
+     */
+    fun ussdValue(v: String): String {
+        val compact = v.filterNot { it.isWhitespace() || it == '\u00a0' || it == '\u202f' }
+        val whole = Regex("^([0-9]+)[.,]0+$").find(compact)
+        return whole?.groupValues?.get(1) ?: compact
+    }
+
+    /**
+     * Whether a filled USSD code can be dialled as it is: digits, * and #, and
+     * {pin} for the vault. Anything else \u2014 a decimal amount, a letter \u2014 would
+     * be dropped or misread on the way, and the code send another amount.
+     */
+    fun isDialable(code: String): Boolean = USSD_CODE.matches(code)
+
+    private val USSD_CODE = Regex("^[*#]([0-9*#]|\\{pin\\})*#$")
 
     /**
      * A webhook body meant as JSON: an object or an array. "{amount}" alone

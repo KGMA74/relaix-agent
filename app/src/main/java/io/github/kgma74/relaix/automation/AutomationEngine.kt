@@ -178,17 +178,22 @@ class AutomationEngine @Inject constructor(
         action.hasUssd() -> {
             val template = action.ussd.code
             val code = AutomationRules.renderUssd(template, fields)
-            when (val decision = pinGuard.authorize(sms.subscriptionId, template, code, fields["amount"]?.let(AutomationRules::number))) {
-                is PinDecision.Denied -> step("ussd", false, "$code — ${decision.reason}")
-                is PinDecision.Granted -> {
-                    val outcome = ussdRunner.run(decision.code, sms.subscriptionId)
-                    // The step reports the code with {pin} unresolved.
-                    Device.AutomationStep.newBuilder()
-                        .setAction("ussd")
-                        .setOk(outcome.success)
-                        .setDetail(if (outcome.success) code else "$code — ${outcome.errorMessage}")
-                        .addAllResponses(outcome.responses)
-                        .build()
+            if (!AutomationRules.isDialable(code)) {
+                // Never dial what the network would read as another amount.
+                step("ussd", false, "$code — pas un code USSD une fois rempli (montant à décimales ?) : non composé")
+            } else {
+                when (val decision = pinGuard.authorize(sms.subscriptionId, template, code, fields["amount"]?.let(AutomationRules::number))) {
+                    is PinDecision.Denied -> step("ussd", false, "$code — ${decision.reason}")
+                    is PinDecision.Granted -> {
+                        val outcome = ussdRunner.run(decision.code, sms.subscriptionId)
+                        // The step reports the code with {pin} unresolved.
+                        Device.AutomationStep.newBuilder()
+                            .setAction("ussd")
+                            .setOk(outcome.success)
+                            .setDetail(if (outcome.success) code else "$code — ${outcome.errorMessage}")
+                            .addAllResponses(outcome.responses)
+                            .build()
+                    }
                 }
             }
         }
