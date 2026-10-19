@@ -21,3 +21,6 @@ local.properties
 # Release signing: the keystore and its passwords stay on this machine.
 /release.jks
 /keystore.properties
+
+# Android Studio settings: per machine
+/.idea/
