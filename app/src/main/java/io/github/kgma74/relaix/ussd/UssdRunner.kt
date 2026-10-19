@@ -16,9 +16,11 @@ import android.telephony.SubscriptionManager
 import android.telephony.TelephonyManager
 import android.util.Log
 import dagger.hilt.android.qualifiers.ApplicationContext
+import kotlinx.coroutines.NonCancellable
 import kotlinx.coroutines.suspendCancellableCoroutine
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
+import kotlinx.coroutines.withContext
 import kotlinx.coroutines.withTimeoutOrNull
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -81,10 +83,7 @@ class UssdRunner @Inject constructor(
             ?: return@withLock UssdOutcome(false, errorCode = "NO_TELEPHONY", errorMessage = "no telephony on this device")
         val telephony = if (subscriptionId != 0) base.createForSubscriptionId(subscriptionId) else base
 
-        if (replies.isEmpty()) {
-            return@withLock withTimeoutOrNull(TIMEOUT_MS) { dial(telephony, code) }
-                ?: UssdOutcome(false, errorCode = "TIMEOUT", errorMessage = "the network did not answer in ${TIMEOUT_MS / 1_000} s")
-        }
+        if (replies.isEmpty()) return@withLock runOnce(telephony, code)
 
         if (!menuCapable()) {
             return@withLock UssdOutcome(
@@ -120,8 +119,41 @@ class UssdRunner @Inject constructor(
                 errorMessage = "the menu did not finish in ${MENU_TIMEOUT_MS / 1_000} s",
             )
         } finally {
+            // The menu is over, answered or not: its dialog left up would hold
+            // the radio's session open and fail the next code.
+            withContext(NonCancellable) { driver.close() }
             driver.end()
             screen.off()
+        }
+    }
+
+    /**
+     * A code with no replies, by `sendUssdRequest`. Many phones report a
+     * short code's answer (*160#, *444#) as a failure — the network sent it as
+     * a notice, or as a menu — while the phone app shows it in its dialog.
+     * With the accessibility service on, that dialog is watched while the
+     * code runs: a failure with a screen in it is the answer, and the dialog
+     * is closed, which ends the session.
+     */
+    private suspend fun runOnce(telephony: TelephonyManager, code: String): UssdOutcome {
+        val watching = menuCapable() && driver.begin(emptyList())
+        try {
+            val outcome = withTimeoutOrNull(TIMEOUT_MS) { dial(telephony, code) }
+                ?: UssdOutcome(false, errorCode = "TIMEOUT", errorMessage = "the network did not answer in ${TIMEOUT_MS / 1_000} s")
+            if (outcome.success || !watching) return outcome
+            // A dark screen draws no dialog for the service to read.
+            val screen = keepScreenOn()
+            try {
+                val shown = withTimeoutOrNull(CAPTURE_MS) { driver.await() }
+                if (shown == null || shown.responses.isEmpty()) return outcome
+                Log.d(TAG, "the code was reported failed, but its answer is in the dialog: taken from there")
+                return UssdOutcome(true, shown.responses)
+            } finally {
+                withContext(NonCancellable) { driver.close() }
+                screen.off()
+            }
+        } finally {
+            if (watching) driver.end()
         }
     }
 
@@ -230,5 +262,9 @@ class UssdRunner @Inject constructor(
         const val MENU_TIMEOUT_MS = 180_000L
 
         const val SCREEN_LOCK_TIMEOUT_MS = MENU_TIMEOUT_MS + 30_000L
+
+        // A failed code's dialog: drawn within a second or two of the failure,
+        // then read once it has stopped changing (Waits.settleMillis).
+        const val CAPTURE_MS = 10_000L
     }
 }

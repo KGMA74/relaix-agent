@@ -65,6 +65,20 @@ class UssdAccessibilityService : AccessibilityService() {
         if (started) return
         started = true
         scope.launch {
+            for (request in driver.closeRequests) {
+                request.complete(
+                    try {
+                        close()
+                    } catch (e: CancellationException) {
+                        throw e
+                    } catch (e: Exception) {
+                        Log.w(TAG, "could not close the USSD dialog", e)
+                        false
+                    },
+                )
+            }
+        }
+        scope.launch {
             while (true) {
                 signal.receive()
                 // The dialog is mid-change until it stops changing: typing into
@@ -162,6 +176,34 @@ class UssdAccessibilityService : AccessibilityService() {
             // a menu that could not be answered, with the package it saw.
             Log.w(TAG, "giving up on a reply into the USSD dialog of $pkg after $attempts attempts")
         }
+    }
+
+    /**
+     * Closes the dialog a finished session left up: a menu's own Cancel — the
+     * network then ends the session — or a notice's OK. Back only on the
+     * dialog itself, focused; nothing is pressed in any other window.
+     */
+    private suspend fun close(): Boolean {
+        delay(SETTLE_MILLIS)
+        val window = menuWindow() ?: noticeWindow() ?: return false
+        val root = window.root ?: return false
+        val button = if (findEditable(root, requireVisible = false) == null) findSendButton(root) else findCancelButton(root)
+        if (button?.performAction(AccessibilityNodeInfo.ACTION_CLICK, null) == true) return true
+        return window.isFocused && performGlobalAction(GLOBAL_ACTION_BACK)
+    }
+
+    /** The dialog's negative action: `button2` on the platform dialog, else the label. */
+    private fun findCancelButton(node: AccessibilityNodeInfo): AccessibilityNodeInfo? {
+        if (node.isClickable) {
+            val id = node.viewIdResourceName.orEmpty()
+            val label = node.text?.toString()?.trim()?.lowercase()
+            if (id.endsWith(":id/button2") || id.endsWith(":id/negative") || label in CANCEL_LABELS) return node
+        }
+        for (i in 0 until node.childCount) {
+            val child = node.getChild(i) ?: continue
+            findCancelButton(child)?.let { return it }
+        }
+        return null
     }
 
     /** Sets the reply in the field, then submits it. */
@@ -354,6 +396,11 @@ class UssdAccessibilityService : AccessibilityService() {
             "send", "ok", "okay", "submit", "enter", "confirm", "continue", "next",
             "valider", "envoyer", "confirmer", "continuer", "suivant",
             "envia", "invia", "versturen", "verzenden", "enviar", "envío",
+        )
+
+        /** Cancel, likewise: what ends a menu without answering it. */
+        val CANCEL_LABELS = setOf(
+            "cancel", "close", "dismiss", "annuler", "fermer", "quitter", "cancelar", "annulla", "annuleren",
         )
 
         val WHITESPACE = Regex("""\s+""")

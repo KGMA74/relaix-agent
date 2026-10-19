@@ -1,5 +1,6 @@
 package io.github.kgma74.relaix.ussd
 
+import kotlinx.coroutines.CompletableDeferred
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -74,6 +75,12 @@ class UssdDialogDriver @Inject constructor() {
     val enabled: StateFlow<Boolean> = _enabled.asStateFlow()
 
     internal var waits: Waits = Waits()
+
+    /**
+     * Asks to close the dialog still up, answered with whether it was: read
+     * by the service, which alone can press a button in it.
+     */
+    internal val closeRequests = Channel<CompletableDeferred<Boolean>>(Channel.CONFLATED)
 
     // ---- the accessibility service ----
 
@@ -153,6 +160,19 @@ class UssdDialogDriver @Inject constructor() {
             session = Session(replies)
             true
         }
+    }
+
+    /**
+     * Ends the session on the network's side too: the dialog left up once a
+     * menu is over keeps the radio's one USSD session open — the next code
+     * fails until the network times it out. Closed with its own Cancel (a menu)
+     * or OK (a notice). False when there was nothing to close, or no service.
+     */
+    suspend fun close(): Boolean {
+        if (!enabled.value || !active()) return false
+        val done = CompletableDeferred<Boolean>()
+        closeRequests.trySend(done)
+        return withTimeoutOrNull(CLOSE_MILLIS) { done.await() } ?: false
     }
 
     /** Forgets the session: whatever happens next is nobody's reply. */
@@ -255,5 +275,6 @@ class UssdDialogDriver @Inject constructor() {
 
     private companion object {
         val WHITESPACE = Regex("""\s+""")
+        const val CLOSE_MILLIS = 2_000L
     }
 }

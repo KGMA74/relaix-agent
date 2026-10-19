@@ -191,4 +191,35 @@ class UssdDialogDriverTest {
         assertTrue(driver.acceptsFinalScreen())
         driver.end()
     }
+
+    @Test
+    fun `a short code answered in the dialog is read from there`() = runBlocking {
+        // sendUssdRequest reported a failure; the dialog had the answer.
+        val driver = driver()
+        assertTrue(driver.begin(emptyList()))
+        val shown = async { driver.await() }
+        assertTrue(driver.acceptsFinalScreen())
+        assertTrue(driver.screen("Votre forfait: 1.2 Go valable jusqu au 30/10"))
+        assertNull(driver.replyToType())
+        val outcome = shown.await()
+        assertTrue(outcome.success)
+        assertEquals(listOf("Votre forfait: 1.2 Go valable jusqu au 30/10"), outcome.responses)
+        driver.end()
+    }
+
+    @Test
+    fun `closing the dialog goes through the service, and only during a session`() = runBlocking {
+        val driver = driver()
+        // No service bound: nothing to close with.
+        assertTrue(driver.begin(emptyList()))
+        assertFalse(driver.close())
+
+        driver.attach()
+        val service = async { driver.closeRequests.receive().complete(true) }
+        assertTrue(driver.close())
+        service.await()
+
+        driver.end()
+        assertFalse(driver.close())
+    }
 }
