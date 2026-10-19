@@ -54,6 +54,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import io.github.kgma74.relaix.automation.AutomationRules
 import io.github.kgma74.relaix.pin.PinApproval
 import io.github.kgma74.relaix.ui.components.FormSheet
 import io.github.kgma74.relaix.ui.components.ListCard
@@ -332,8 +333,8 @@ private fun PinSheet(simLabel: String, replacing: Boolean, onDismiss: () -> Unit
     }
 }
 
-/** A variable in a template: {to}, {amount}, {pin}. */
-private val VARIABLE = Regex("""\{([A-Za-z][A-Za-z0-9]*)\}""")
+/** A variable in a template: {to}, {amount}, {pin}, or a calculation such as {amount * 2}. */
+private val VARIABLE = Regex("""\{([A-Za-z][A-Za-z0-9]*|[A-Za-z0-9. ()+*/-]+)\}""")
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
@@ -351,9 +352,10 @@ private fun ApproveSheet(
     var perDay by remember { mutableStateOf("5") }
     var totalPerDay by remember { mutableStateOf("") }
 
-    val shaped = template.matches(Regex("""^[*#]([0-9*#+]|\{[A-Za-z][A-Za-z0-9]*\})*#$"""))
+    val shaped = template.matches(Regex("""^[*#]([0-9*#+]|${VARIABLE.pattern})*#$"""))
     val templateOk = shaped && template.contains("{pin}")
-    val variables = VARIABLE.findAll(template).map { it.groupValues[1] }.distinct().toList()
+    // {amount * 2} reads amount: its caps apply, to the amount dialled.
+    val variables = VARIABLE.findAll(template).flatMap { AutomationRules.fieldsOf(it.groupValues[1]) }.distinct().toList()
     val hasAmount = "amount" in variables
     val ok = templateOk && (perDay.toIntOrNull() ?: 0) > 0
 
@@ -403,7 +405,7 @@ private fun ApproveSheet(
                         Text(
                             when {
                                 template.isEmpty() -> "Le code tout-en-un, ou le code suivi des réponses d'un menu, {pin} à sa place."
-                                !shaped -> "Commence par * ou #, finit par #, chiffres et {variables} seulement."
+                                !shaped -> "Commence par * ou #, finit par #, chiffres, {variables} et {calculs} seulement."
                                 !templateOk -> "Il manque {pin} : sans lui, rien à autoriser."
                                 else -> "Un champ comme {to} ou {amount} accepte n'importe quels chiffres."
                             },

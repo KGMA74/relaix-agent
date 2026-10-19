@@ -182,7 +182,7 @@ class AutomationEngine @Inject constructor(
                 // Never dial what the network would read as another amount.
                 step("ussd", false, "$code — pas un code USSD une fois rempli (montant à décimales ?) : non composé")
             } else {
-                when (val decision = pinGuard.authorize(sms.subscriptionId, template, code, fields["amount"]?.let(AutomationRules::number))) {
+                when (val decision = pinGuard.authorize(sms.subscriptionId, template, code, AutomationRules.ussdAmount(template, fields))) {
                     is PinDecision.Denied -> step("ussd", false, "$code — ${decision.reason}")
                     is PinDecision.Granted -> {
                         val outcome = ussdRunner.run(decision.code, sms.subscriptionId)

@@ -33,6 +33,15 @@ class AutomationRulesTest {
     }
 
     @Test
+    fun `a PIN cap is about the amount dialled, calculation included`() {
+        val fields = mapOf("payer" to "65530101", "amount" to "5 000")
+        assertEquals(5000.0, AutomationRules.ussdAmount("*144*{payer}*{amount}*{pin}#", fields)!!, 0.0)
+        assertEquals(10000.0, AutomationRules.ussdAmount("*144*{payer}*{amount * 2}*{pin}#", fields)!!, 0.0)
+        assertNull(AutomationRules.ussdAmount("*144*{payer}*{pin}#", fields))
+        assertEquals(listOf("amount", "fee"), AutomationRules.fieldsOf("(amount + fee) * 0.98"))
+    }
+
+    @Test
     fun `the shared automation cases`() {
         val text = javaClass.classLoader!!.getResource("automation_vectors.json")!!.readText()
         val cases = JSONObject(text).getJSONArray("cases")

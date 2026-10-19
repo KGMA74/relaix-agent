@@ -130,6 +130,24 @@ object AutomationRules {
      */
     fun isDialable(code: String): Boolean = USSD_CODE.matches(code)
 
+    /**
+     * The amount a USSD code sends, as it is dialled: its {amount}, or the
+     * calculation on amount it holds ({amount * 2} sends twice the SMS's).
+     * What a PIN approval's caps are about. Null when it has none.
+     */
+    fun ussdAmount(template: String, fields: Map<String, String>): Double? =
+        placeholder.findAll(template).firstNotNullOfOrNull { m ->
+            val inner = m.groupValues[1]
+            when {
+                inner == "amount" -> fields["amount"]?.let(::number)
+                Expressions.isExpression(inner) && "amount" in fieldsOf(inner) -> Expressions.eval(inner, fields, 0)?.toDouble()
+                else -> null
+            }
+        }
+
+    /** The field names a {placeholder}'s inside reads: itself, or those of a calculation. */
+    fun fieldsOf(inner: String): List<String> = Regex("[A-Za-z][A-Za-z0-9]*").findAll(inner).map { it.value }.toList()
+
     private val USSD_CODE = Regex("^[*#]([0-9*#]|\\{pin\\})*#$")
 
     /**
