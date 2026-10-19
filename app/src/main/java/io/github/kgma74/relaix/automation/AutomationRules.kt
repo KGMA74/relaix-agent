@@ -13,7 +13,10 @@ object AutomationRules {
     val BUILTINS = listOf("sender", "body", "receivedAt", "sim")
     const val PIN = "pin"
 
-    private val placeholder = Regex("""\{([A-Za-z][A-Za-z0-9]*)\}""")
+    // What a template fills between braces: a field name, or a calculation
+    // (Expressions). Anything else in braces ({1}, { }) stays as written.
+    private val placeholder = Regex("""\{([A-Za-z][A-Za-z0-9]*|[A-Za-z0-9. ()+*/-]+)\}""")
+    private val fieldOnly = Regex("^[A-Za-z][A-Za-z0-9]*$")
     private val groupName = Regex("""\(\?P?<([^>]*)>""")
 
     /** The fields the automation yields for this SMS, or null when it does not apply. */
@@ -69,19 +72,44 @@ object AutomationRules {
     fun number(s: String): Double? =
         s.filterNot { it == ' ' || it == '\u00a0' || it == '\u202f' }.replace(',', '.').toDoubleOrNull()
 
-    /** Fills {name}; [keepPin] leaves {pin} for the vault to fill. */
+    /**
+     * What a template puts for a token: the field, or the calculation's result
+     * rounded to [places]; null when it is not a token. ok is false for a
+     * calculation that cannot be computed.
+     */
+    private class Fill(val value: String, val computed: Boolean, val ok: Boolean)
+
+    private fun fill(inner: String, fields: Map<String, String>, places: Int): Fill? {
+        if (fieldOnly.matches(inner)) return Fill(fields[inner].orEmpty(), computed = false, ok = true)
+        if (!Expressions.isExpression(inner)) return null
+        val v = Expressions.eval(inner, fields, places)
+        return Fill(v.orEmpty(), computed = true, ok = v != null)
+    }
+
+    /** Fills {name} and {calculations}; [keepPin] leaves {pin} for the vault to fill. */
     fun render(template: String, fields: Map<String, String>, keepPin: Boolean = false): String =
         placeholder.replace(template) { m ->
-            val name = m.groupValues[1]
-            if (name == PIN && keepPin) m.value else fields[name].orEmpty()
+            val inner = m.groupValues[1]
+            if (inner == PIN && keepPin) m.value else fill(inner, fields, 2)?.value ?: m.value
         }
 
     /**
      * Fills a USSD code: a field read as "5 000" goes in as 5000, since a
-     * code has no spaces. {pin} is left for the vault.
+     * code has no spaces; a calculation is rounded to a whole number, and one
+     * that cannot be computed leaves "?", which [isDialable] refuses. {pin} is
+     * left for the vault.
      */
     fun renderUssd(template: String, fields: Map<String, String>): String =
-        render(template, fields.mapValues { (_, v) -> ussdValue(v) }, keepPin = true)
+        placeholder.replace(template) { m ->
+            val inner = m.groupValues[1]
+            if (inner == PIN) return@replace m.value
+            val f = fill(inner, fields, 0) ?: return@replace m.value
+            when {
+                !f.ok -> "?"
+                f.computed -> f.value
+                else -> ussdValue(f.value)
+            }
+        }
 
     /**
      * A field as it goes into a USSD code: no spaces, and an amount with zero
@@ -137,9 +165,16 @@ object AutomationRules {
                 inString = !inString
             } else if (c == '{') {
                 val m = placeholderAt.find(template.substring(i))
-                if (m != null) {
-                    val v = fields[m.groupValues[1]].orEmpty()
-                    out.append(if (inString) escapeJson(v) else jsonValue(v))
+                val f = m?.let { fill(it.groupValues[1], fields, 2) }
+                if (m != null && f != null) {
+                    // A calculation is a number, or null when it cannot be computed.
+                    out.append(
+                        when {
+                            inString -> escapeJson(f.value)
+                            !f.ok -> "null"
+                            else -> jsonValue(f.value)
+                        },
+                    )
                     i += m.value.length
                     continue
                 }
@@ -184,6 +219,6 @@ object AutomationRules {
         else -> jsonNumber(v) ?: "\"${escapeJson(v)}\""
     }
 
-    private val placeholderAt = Regex("""^\{([A-Za-z][A-Za-z0-9]*)\}""")
+    private val placeholderAt = Regex("""^\{([A-Za-z][A-Za-z0-9]*|[A-Za-z0-9. ()+*/-]+)\}""")
     private val jsonNumberShape = Regex("""-?(0|[1-9][0-9]*)(\.[0-9]+)?""")
 }

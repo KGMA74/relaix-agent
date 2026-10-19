@@ -54,6 +54,7 @@ class AutomationRulesTest {
                 assertTrue(name, AutomationRules.isJsonTemplate(template))
                 assertEquals(name, c.getString("jsonRendered"), AutomationRules.renderJson(template, fields!!))
             }
+            if (c.has("ussdTemplate")) assertEquals(name, c.getString("ussdRendered"), AutomationRules.renderUssd(c.getString("ussdTemplate"), fields!!))
             c.optJSONObject("numbers")?.let { want ->
                 assertEquals(name, want.keys().asSequence().associateWith { want.getString(it) }, AutomationRules.numbers(fields!!))
             }
